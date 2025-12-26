@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDYZ中学 - 官方网站</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        :root {
+            --primary-blue: #0056a6;
+            --secondary-blue: #0077cc;
+            --light-blue: #e6f2ff;
+            --accent-gold: #ffcc00;
+            --dark-gray: #333333;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+        
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .contact-info span {
+            margin-right: 20px;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            margin-left: 15px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-gold);
+        }
+        
+        .main-header {
+            padding: 20px 0;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 70px;
+            margin-right: 15px;
+        }
+        
+        .school-name h1 {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .school-name p {
+            color: var(--secondary-blue);
+            font-size: 1rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        nav ul li a.active {
+            color: var(--primary-blue);
+        }
+        
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-gold);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+        
+        /* 横幅/轮播图样式 */
+        .banner {
+            background: linear-gradient(rgba(0, 86, 166, 0.8), rgba(0, 119, 204, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .banner h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .banner p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--dark-gray);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #e6b800;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* 主要内容区域 */
+        section {
+            padding: 70px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent-gold);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 特色卡片 */
+        .features {
+            background-color: var(--light-gray);
+        }
+        
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            font-size: 2.5rem;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .feature-content {
+            padding: 25px;
+        }
+        
+        .feature-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        /* 新闻部分 */
+        .news-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+        
+        .main-news {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-item {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .news-date {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .news-item h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .news-item h3 a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .news-item h3 a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .sidebar {
+            background-color: var(--light-blue);
+            padding: 25px;
+            border-radius: 8px;
+        }
+        
+        .sidebar h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        
+        .quick-links li {
+            list-style: none;
+            margin-bottom: 12px;
+        }
+        
+        .quick-links li a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        
+        .quick-links li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .quick-links li a i {
+            margin-right: 10px;
+            color: var(--secondary-blue);
+        }
+        
+        /* 通知部分 */
+        .notice-board {
+            background-color: var(--light-gray);
+        }
+        
+        .notices {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .notice-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .notice-item:last-child {
+            border-bottom: none;
+        }
+        
+        .notice-badge {
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-right: 15px;
+        }
+        
+        .notice-badge.important {
+            background-color: #ff6b6b;
+        }
+        
+        .notice-badge.general {
+            background-color: var(--secondary-blue);
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo img {
+            height: 70px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links ul li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--accent-gold);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-gold);
+        }
+        
+        .copyright {
+            background-color: #222;
+            padding: 20px 0;
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-info {
+                margin-bottom: 10px;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px 0;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .banner h2 {
+                font-size: 2.2rem;
+            }
+            
+            .banner p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .feature-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-news {
+                grid-template-columns: 1fr;
+            }
+            
+            .banner {
+                padding: 60px 0;
+            }
+            
+            section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone-alt"></i> 电话: 123</span>
+                    <span><i class="fas fa-envelope"></i> 邮箱: 123</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-qq"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-header">
+            <div class="container">
+                <div class="logo-section">
+                    <div class="logo">
+                        <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="70" height="70" rx="10" fill="#0056A6"/>
+                            <path d="M35 20L50 40H20L35 20Z" fill="#FFCC00"/>
+                            <circle cx="35" cy="50" r="8" fill="#FFCC00"/>
+                            <path d="M30 35H40" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="school-name">
+                        <h1>BD区YZ中学</h1>
+                        <p>B-D-Y-Z</p>
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav>
+                    <ul id="mainMenu">
+                        <li><a href="#" class="active">首页</a></li>
+                        <li><a href="#">学校概况</a></li>
+                        <li><a href="#">教育教学</a></li>
+                        <li><a href="#">师资队伍</a></li>
+                        <li><a href="#">校园生活</a></li>
+                        <li><a href="#">招生信息</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 横幅/轮播图 -->
+    <section class="banner">
+        <div class="container">
+            <h2>厚**发，追求卓越</h2>
+            <p>BDYZ是一个极为伟大的学校</p>
+            <a href="#" class="btn">了解更多</a>
+            <a href="#" class="btn btn-secondary">参观校园</a>
+        </div>
+    </section>
+
+    <!-- 特色介绍 -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>学校特色</h2>
+                <p>我们以优质的教育资源和先进的教学理念，为学生提供全面发展的平台</p>
+            </div>
+            
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>卓越的教学质量</h3>
+                        <p>连续多年高考本科上线率达200%以上，重点大学录取率稳居全市前列。多名学生被清华、北大等顶尖高校录取。</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>优秀的师资队伍</h3>
+                        <p>拥有特级教师100名，高级教师占比365%，硕士研究生以上学历教师达885%。教师团队多次获得宇宙级教学奖项。</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>先进的设施设备</h3>
+                        <p>拥有现代化的实验室、图书馆、体育馆和艺术中心。所有教室配备多媒体教学设备，校园实现无线网络全覆盖。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新闻动态 -->
+    <section class="news">
+        <div class="container">
+            <div class="section-title">
+                <h2>新闻动态</h2>
+                <p>了解学校最新活动和教育教学成果</p>
+            </div>
+            
+            <div class="news-container">
+                <div class="main-news">
+                    <div class="news-item">
+                        <div class="news-date">2047年10月15日</div>
+                        <h3><a href="#">我校学生在全宇宙数学竞赛中荣获一等奖</a></h3>
+                        <p>在刚刚结束的全宇宙中学生数学竞赛中，我校同学刘天清荣获一等奖，指导教师董新飞获得优秀指导教师奖。</p>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="news-date">2047年10月10日</div>
+                        <h3><a href="#">BDYZ秋季运动会圆满落幕</a></h3>
+                        <p>为期两年的秋季运动会在全校师生的热情参与下圆满结束。本次运动会共有0个项目打破校纪录，展现了学生们良好的体育素养。</p>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="news-date">2047年10月5日</div>
+                        <h3><a href="#">我校与大肥羊学校建立友好合作关系</a></h3>
+                        <p>经过友好协商，我校与大肥羊学校正式建立友好学校关系。双方将在师生交流、课程共建等方面开展深度合作。</p>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="news-date">2047年9月28日</div>
+                        <h3><a href="#">BDYZ举办"吃饭"文艺汇演</a></h3>
+                        <p>为庆祝食堂开门，我校举办了丰富多彩的"吃饭"文艺汇演活动，师生同台演出，展现了我校艺术教育的丰硕成果。</p>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h3>快速链接</h3>
+                    <ul class="quick-links">
+                        <li><a href="#"><i class="fas fa-calendar-alt"></i> 校历安排</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> 招生简章</a></li>
+                        <li><a href="#"><i class="fas fa-chart-line"></i> 成绩查询</a></li>
+                        <li><a href="#"><i class="fas fa-book"></i> 数字图书馆</a></li>
+                        <li><a href="#"><i class="fas fa-user-graduate"></i> 校友会</a></li>
+                        <li><a href="#"><i class="fas fa-newspaper"></i> 校报在线阅读</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 通知公告 -->
+    <section class="notice-board">
+        <div class="container">
+            <div class="section-title">
+                <h2>通知公告</h2>
+                <p>重要通知和公告信息</p>
+            </div>
+            
+            <div class="notices">
+                <div class="notice-item">
+                    <span class="notice-badge important">重要</span>
+                    <span>2048年BDYZ艺术特长生招生简章发布</span>
+                </div>
+                
+                <div class="notice-item">
+                    <span class="notice-badge general">一般</span>
+                    <span>关于2047年秋季学期期中考试安排的通知</span>
+                </div>
+                
+                <div class="notice-item">
+                    <span class="notice-badge important">重要</span>
+                    <span>BDYZ冬季校园安全教育活动周安排</span>
+                </div>
+                
+                <div class="notice-item">
+                    <span class="notice-badge general">一般</span>
+                    <span>图书馆新书到馆通知(2047年10月)</span>
+                </div>
+                
+                <div class="notice-item">
+                    <span class="notice-badge important">重要</span>
+                    <span>关于申报2048年度教育科研课题的通知</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="70" height="70" rx="10" fill="#FFCC00"/>
+                        <path d="M35 20L50 40H20L35 20Z" fill="#0056A6"/>
+                        <circle cx="35" cy="50" r="8" fill="#0056A6"/>
+                        <path d="M30 35H40" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                    <h3>BDYZ中学</h3>
+                    <p>厚**发，追求卓越</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>快速导航</h3>
+                    <ul>
+                        <li><a href="#">学校首页</a></li>
+                        <li><a href="#">学校简介</a></li>
+                        <li><a href="#">教育教学</a></li>
+                        <li><a href="#">师资队伍</a></li>
+                        <li><a href="#">校园生活</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>联系我们</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 地址: 宇宙BD区教育路123号</p>
+                    <p><i class="fas fa-phone-alt"></i> 电话: (010) 1234-5678</p>
+                    <p><i class="fas fa-fax"></i> 传真: (010) 1234-5679</p>
+                    <p><i class="fas fa-envelope"></i> 邮箱: info@bdyz.edu.cn</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <div class="container">
+                <p>© 2047 BDYZ中学 版权所有 | 宇宙ICP备11451419号</p>
+                <p>本网站建议使用Chrome、Firefox、Edge等现代浏览器访问</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const menu = document.getElementById('mainMenu');
+            menu.classList.toggle('show');
+            
+            // 切换菜单图标
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // 当前年份更新
+        document.addEventListener('DOMContentLoaded', function() {
+            // 更新版权年份
+            const yearSpan = document.querySelector('.copyright p');
+            if (yearSpan) {
+                const currentYear = new Date().getFullYear();
+                yearSpan.innerHTML = yearSpan.innerHTML.replace('2047', currentYear);
+            }
+            
+            // 简单新闻切换效果
+            const newsItems = document.querySelectorAll('.news-item');
+            newsItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(5px)';
+                    this.style.transition = 'transform 0.3s';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
