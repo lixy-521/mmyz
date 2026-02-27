@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>门卫管理系统 · 狼堡一中</title>
+    <link rel="stylesheet" href="css/campus.css" />
+</head>
+
+<body>
+    <!-- 简单顶部栏 -->
+    <nav class="campus-nav">
+        <div class="campus-nav-inner">
+            <a class="campus-nav-logo" href="index.html">
+                <img src="assets/logo.png" onerror="this.style.display='none'" alt="校徽" />
+                <div>
+                    <div class="school-name">狼堡一中</div>
+                    <div class="school-sub">内部系统</div>
+                </div>
+            </a>
+            <div class="campus-nav-links"></div>
+            <div id="nav-user-area"></div>
+        </div>
+    </nav>
+
+    <div class="sys-layout">
+        <!-- 侧边栏 -->
+        <div class="sys-sidebar">
+            <div class="sys-sidebar-header">
+                <div class="sys-sidebar-title">门卫管理系统</div>
+                <div class="sys-sidebar-user" id="sidebar-user">security_li</div>
+            </div>
+            <div class="sys-sidebar-nav">
+                <div class="sys-sidebar-item active" data-section="monitor">
+                    <span class="sys-sidebar-icon">📹</span>监控记录查询
+                </div>
+                <div class="sys-sidebar-item" data-section="about">
+                    <span class="sys-sidebar-icon">ℹ️</span>关于本系统
+                </div>
+            </div>
+            <div style="padding:16px;margin-top:auto;position:absolute;bottom:0">
+                <button class="logout-btn" onclick="doLogout()"
+                    style="width:100%;text-align:center;padding:8px;border:1px solid rgba(255,255,255,0.2);background:none;color:rgba(255,255,255,0.6);cursor:pointer;border-radius:4px;font-size:12px;font-family:var(--font-main);">退出登录</button>
+            </div>
+        </div>
+
+        <!-- 主内容 -->
+        <div class="sys-main">
+            <!-- 监控查询 -->
+            <div class="sys-section active" id="sec-monitor">
+                <div class="sys-main-header">
+                    <div class="sys-main-title">📹 监控记录查询</div>
+                    <span style="font-size:12px;color:#6b7f93">系统时间：20XX-10-16 &nbsp;|&nbsp; 数据截止：10月15日</span>
+                </div>
+
+                <div class="campus-card mb-16">
+                    <div class="campus-card-header">查询条件</div>
+                    <div class="campus-card-body">
+                        <div class="terminal">
+                            <div class="terminal-header">
+                                门卫管理系统 v2.1 &gt;&gt; 进出人员监控记录<br />
+                                <span class="t-dim">操作员：security_li &nbsp;|&nbsp; 本系统仅限授权人员操作</span>
+                            </div>
+                            <div class="terminal-row">
+                                <span class="terminal-label">查询日期：</span>
+                                <select id="date-select" style="flex:none;min-width:150px"></select>
+                            </div>
+                            <div class="terminal-row">
+                                <span class="terminal-label">查询区域：</span>
+                                <select id="loc-select" style="flex:none;min-width:150px"></select>
+                            </div>
+                            <button class="terminal-btn" id="query-btn">▶ 执行查询</button>
+                            <div style="margin:10px 0;border-top:1px solid rgba(255,255,255,0.08);padding-top:10px">
+                                <div style="font-size:11px;color:#556677;margin-bottom:8px;letter-spacing:1px">─ 或手动输入关键词查询 ─</div>
+                                <div class="terminal-row">
+                                    <span class="terminal-label">日期：</span>
+                                    <input type="text" id="manual-date" placeholder="例：9月12日" style="background:#0f1a2e;border:1px solid #1a3a2a;color:#00cc88;padding:4px 8px;font-family:'Courier New',monospace;font-size:12px;border-radius:3px;width:130px;outline:none">
+                                    <span class="terminal-label" style="margin-left:10px">地点：</span>
+                                    <input type="text" id="manual-loc" placeholder="例：旧实验楼" style="background:#0f1a2e;border:1px solid #1a3a2a;color:#00cc88;padding:4px 8px;font-family:'Courier New',monospace;font-size:12px;border-radius:3px;width:130px;outline:none">
+                                    <button class="terminal-btn" id="manual-query-btn" style="margin-left:8px;padding:4px 14px">查询</button>
+                                </div>
+                            </div>
+                            <div class="terminal-result" id="terminal-result">
+                                <span class="t-dim">─ 等待输入查询条件 ─</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 关于 -->
+            <div class="sys-section" id="sec-about">
+                <div class="sys-main-header">
+                    <div class="sys-main-title">ℹ 关于本系统</div>
+                </div>
+                <div class="campus-card">
+                    <div class="campus-card-body">
+                        <p style="line-height:1.9;color:#2c3e50">
+                            <strong>系统名称：</strong>狼堡一中门卫管理系统 v2.1<br />
+                            <strong>运营单位：</strong>后勤保障部门<br />
+                            <strong>功能说明：</strong>本系统记录校园各区域的进出人员信息（通过刷卡或人脸识别），<br />
+                            &emsp;&emsp;&emsp;&emsp;&emsp;用于校园安全管理及事后核查。<br />
+                            <strong>维护提醒：</strong>10月16日起录像设备进入例行维护，相关记录暂不可查阅。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/security.js"></script>
+    <script>
+        // 侧边栏切换
+        document.querySelectorAll(".sys-sidebar-item").forEach(item => {
+            item.addEventListener("click", function () {
+                document.querySelectorAll(".sys-sidebar-item").forEach(i => i.classList.remove("active"));
+                document.querySelectorAll(".sys-section").forEach(s => s.classList.remove("active"));
+                this.classList.add("active");
+                document.getElementById("sec-" + this.dataset.section)?.classList.add("active");
+            });
+        });
+        // 显示当前用户
+        const uname = localStorage.getItem("lbyz_username");
+        if (uname) document.getElementById("sidebar-user").textContent = uname;
+    </script>
+</body>
+
+</html>

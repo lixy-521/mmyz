@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>师资团队 · 狼堡一中校园信息网</title>
+    <link rel="stylesheet" href="css/campus.css" />
+</head>
+
+<body>
+    <nav class="campus-nav">
+        <div class="campus-nav-inner">
+            <a class="campus-nav-logo" href="index.html">
+                <img src="assets/logo.png" onerror="this.style.display='none'" alt="校徽" />
+                <div>
+                    <div class="school-name">狼堡一中</div>
+                    <div class="school-sub">校园信息网</div>
+                </div>
+            </a>
+            <div class="campus-nav-links">
+                <a href="index.html">首页</a>
+                <a href="staff.html" class="active">师资团队</a>
+                <a href="alumni.html">知名校友</a>
+                <a href="forum.html">校园论坛</a>
+            </div>
+            <div id="nav-user-area"></div>
+        </div>
+    </nav>
+    <div class="campus-ticker">
+        <div class="campus-ticker-inner">
+            <div class="campus-ticker-label">公告</div>
+            <div class="campus-ticker-track">
+                <div class="campus-ticker-content">
+                    <span>旧实验楼整修中，禁止学生进入（10月10日起）</span>
+                    <span>期中考试将于10月20日举行，请同学们做好备考准备</span>
+                    <span>11月校运会报名通知即将发布，请关注校园论坛</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="campus-container">
+        <div class="campus-page-header">
+            <div class="campus-page-title">师资团队</div>
+        </div>
+
+        <div class="campus-search-bar" style="margin-bottom:8px">
+            <input class="campus-input" type="text" id="staff-search-input" placeholder="输入教职工姓名查询（支持中文或拼音）…" />
+            <button class="campus-btn campus-btn-primary" id="staff-search-btn">查 询</button>
+        </div>
+        <p style="font-size:12px;color:#6b7f93;margin-bottom:20px;padding:0 2px">例：输入「董新飞」或「dongxinfei」均可查询</p>
+
+        <!-- 搜索结果 -->
+        <div id="staff-result"></div>
+
+        <!-- 默认：校长介绍 -->
+        <div id="staff-default">
+            <div class="campus-card">
+                <div class="campus-card-header">校长介绍</div>
+                <div class="campus-card-body">
+                    <div class="staff-profile">
+                        <div class="staff-avatar">👨‍💼</div>
+                        <div class="staff-info">
+                            <h2>王明德</h2>
+                            <div class="staff-title">校长 · 党委书记</div>
+                            <p>
+                                王明德，男，1968年生，教育学博士，正高级职称。现任狼堡市第一中学校长、党委书记。
+                                从事教育工作逾30年，曾先后荣获省级"优秀教育工作者"、市级"劳动模范"等荣誉称号。
+                            </p>
+                            <p style="margin-top:8px">
+                                在任期间，大力推行素质教育与科研创新并重的育人模式，积极推动学校与外部科研机构的合作交流，
+                                致力于将狼堡一中打造为省内一流实验性高中。
+                            </p>
+                            <p style="margin-top:8px">
+                                座右铭：<em>"格物致知，方能知行合一。"</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="campus-card">
+                <div class="campus-card-header">教研团队概览</div>
+                <div class="campus-card-body">
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px">
+                        <div style="text-align:center;padding:16px;border:1px solid #cdd8e3;border-radius:6px">
+                            <div style="font-size:28px;margin-bottom:8px">👨‍🏫</div>
+                            <div style="font-weight:600;font-size:14px">语文组</div>
+                            <div style="font-size:12px;color:#6b7f93;margin-top:4px">12位教师</div>
+                        </div>
+                        <div style="text-align:center;padding:16px;border:1px solid #cdd8e3;border-radius:6px">
+                            <div style="font-size:28px;margin-bottom:8px">📐</div>
+                            <div style="font-weight:600;font-size:14px">数学组</div>
+                            <div style="font-size:12px;color:#6b7f93;margin-top:4px">10位教师</div>
+                        </div>
+                        <div style="text-align:center;padding:16px;border:1px solid #cdd8e3;border-radius:6px">
+                            <div style="font-size:28px;margin-bottom:8px">🧪</div>
+                            <div style="font-weight:600;font-size:14px">理化组</div>
+                            <div style="font-size:12px;color:#6b7f93;margin-top:4px">8位教师</div>
+                        </div>
+                        <div style="text-align:center;padding:16px;border:1px solid #cdd8e3;border-radius:6px">
+                            <div style="font-size:28px;margin-bottom:8px">🌍</div>
+                            <div style="font-weight:600;font-size:14px">外语组</div>
+                            <div style="font-size:12px;color:#6b7f93;margin-top:4px">9位教师</div>
+                        </div>
+                        <div style="text-align:center;padding:16px;border:1px solid #cdd8e3;border-radius:6px">
+                            <div style="font-size:28px;margin-bottom:8px">📖</div>
+                            <div style="font-weight:600;font-size:14px">历史政治组</div>
+                            <div style="font-size:12px;color:#6b7f93;margin-top:4px">7位教师</div>
+                        </div>
+                        <div style="text-align:center;padding:16px;border:1px solid #cdd8e3;border-radius:6px">
+                            <div style="font-size:28px;margin-bottom:8px">🏃</div>
+                            <div style="font-weight:600;font-size:14px">体艺组</div>
+                            <div style="font-size:12px;color:#6b7f93;margin-top:4px">6位教师</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="campus-footer">
+        © 狼堡市第一中学 信息中心 &emsp;|&emsp; 技术支持：教务处信息组
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // 拼音/别名映射
+        const STAFF_ALIAS = {
+            "王明德": "王明德", "wangmingde": "王明德", "wmd": "王明德", "校长": "王明德",
+            "董新飞": "董新飞", "dongxinfei": "董新飞", "dxf": "董新飞",
+            "李慧敏": "李慧敏", "lihuimin": "李慧敏",
+            "张国强": "张国强", "zhangguoqiang": "张国强",
+            "陈丽丽": "陈丽丽", "chenlili": "陈丽丽",
+            "刘芳": "刘芳", "liufang": "刘芳"
+        };
+
+        const STAFF_DB = {
+            "王明德": null, // 用默认展示
+            "董新飞": {
+                avatar: "🧪",
+                name: "董新飞",
+                title: "理化组教师 · 实验室负责人",
+                id: "dxf_teacher",
+                bio: `董新飞，男，理学硕士，中学一级教师。现任狼堡一中理化组教师，兼任旧实验楼改造项目负责人。\n\n负责高一高二化学实验课程，同时主持学校与外部科研机构合作的「格致计划」项目。\n\n联系方式：教学楼B座319室（实验室管理办公室）`
+            },
+            "李慧敏": {
+                avatar: "📚",
+                name: "李慧敏",
+                title: "语文组组长 · 高级教师",
+                id: "—",
+                bio: `李慧敏，女，文学硕士，高级教师。从教22年，现担任高三语文组组长。\n\n曾获省级优秀班主任称号，主编校内作文教辅读本两册。`
+            },
+            "张国强": {
+                avatar: "📐",
+                name: "张国强",
+                title: "数学组教师",
+                id: "—",
+                bio: `张国强，男，理学学士，中学一级教师。负责高一数学教学工作，兼任数学竞赛辅导。`
+            },
+            "陈丽丽": {
+                avatar: "🌏",
+                name: "陈丽丽",
+                title: "英语组教师",
+                id: "—",
+                bio: `陈丽丽，女，英语教育专业，从事高中英语教学十余年，语音标准，深受学生喜爱。`
+            },
+            "刘芳": {
+                avatar: "📖",
+                name: "刘芳",
+                title: "图书馆管理员",
+                id: "lib_admin",
+                bio: `刘芳，女，图书馆学专业，现任狼堡一中图书馆馆长，负责图书采购、数字化管理及阅读推广工作。\n\n图书馆管理系统由其主管，如有借阅问题请联系。`
+            }
+        };
+
+        function resolveStaff(raw) {
+            const q = raw.trim().toLowerCase().replace(/\s/g, "");
+            for (const [k, v] of Object.entries(STAFF_ALIAS)) {
+                if (q === k.toLowerCase().replace(/\s/g, "")) return v;
+            }
+            return raw.trim();
+        }
+
+        document.getElementById("staff-search-btn").addEventListener("click", doSearch);
+        document.getElementById("staff-search-input").addEventListener("keydown", e => {
+            if (e.key === "Enter") doSearch();
+        });
+
+        function doSearch() {
+            const raw = document.getElementById("staff-search-input").value.trim();
+            const q = resolveStaff(raw);
+            const defaultEl = document.getElementById("staff-default");
+            const resultEl = document.getElementById("staff-result");
+
+            if (!raw) { resultEl.innerHTML = ""; defaultEl.classList.remove("hidden"); return; }
+
+            if (q === "王明德") {
+                defaultEl.classList.remove("hidden");
+                resultEl.innerHTML = "";
+                return;
+            }
+
+            const info = STAFF_DB[q];
+            if (info) {
+                defaultEl.classList.add("hidden");
+                resultEl.innerHTML = `
+      <div class="campus-card">
+        <div class="campus-card-header">教职工信息</div>
+        <div class="campus-card-body">
+          <div class="staff-profile">
+            <div class="staff-avatar">${info.avatar}</div>
+            <div class="staff-info">
+              <h2>${info.name}</h2>
+              <div class="staff-title">${info.title}</div>
+              <p style="white-space:pre-line;margin-top:8px">${info.bio}</p>
+              ${info.id !== "—" ? `<div class="staff-id" style="margin-top:10px">校园网账号：<code style="background:#eef2f7;padding:2px 6px;border-radius:3px">${info.id}</code></div>` : ""}
+            </div>
+          </div>
+        </div>
+      </div>`;
+            } else {
+                defaultEl.classList.add("hidden");
+                resultEl.innerHTML = `
+      <div class="campus-alert campus-alert-info">
+        未找到教职工「${raw}」的相关信息，请确认姓名后重试
+      </div>`;
+            }
+        }
+    </script>
+</body>
+
+</html>

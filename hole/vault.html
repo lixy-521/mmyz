@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>资料库 · hole.lbyz.internal/vault</title>
+    <link rel="stylesheet" href="../css/hole.css" />
+</head>
+
+<body>
+    <nav class="hole-nav">
+        <div class="hole-nav-logo">
+            <div class="logo-icon">🕳</div>
+            <div class="logo-text">
+                <span class="name">树 洞</span>
+                <span class="sub">hole.lbyz.internal / vault</span>
+            </div>
+        </div>
+        <div class="hole-nav-info">
+            <a href="index.html" style="color:var(--hole-muted);font-size:13px">← 返回树洞</a>
+        </div>
+    </nav>
+
+    <div class="vault-page">
+        <div id="vault-particles" class="vault-particles"></div>
+
+        <div class="vault-box">
+            <!-- 锁定状态 -->
+            <div id="vault-lock-area">
+                <div class="vault-icon">🔐</div>
+                <div class="vault-title">刘天清的资料库</div>
+                <div class="vault-hint">
+                    只有你懂得我留下的谜<br />
+                    <span style="font-size:12px;opacity:0.6">你已经找到了这里。答案就在你读过的东西里。</span>
+                </div>
+                <div class="vault-input-wrap">
+                    <input type="text" class="vault-input" id="vault-input" placeholder="在此输入密码…" autocomplete="off" />
+                </div>
+                <button class="vault-btn" id="vault-unlock-btn">解 开</button>
+            </div>
+
+            <!-- 解锁成功提示 -->
+            <div id="vault-success-bar" class="hidden"
+                style="margin-bottom:20px;padding:12px 16px;background:rgba(105,240,174,0.1);border:1px solid rgba(105,240,174,0.3);border-radius:8px;color:#69f0ae;font-size:14px;text-align:center">
+                ✅ 密码正确，欢迎进入
+            </div>
+
+            <!-- 解锁内容 -->
+            <div id="vault-content-area" class="vault-content">
+                <div class="vault-section">
+                    <div class="vault-section-title">📓 关于格致计划的猜测</div>
+                    <div class="vault-section-body">——刘天清 私人调查记录
+
+                        10月10日
+
+                        我确认了。格致计划不是什么健康计划。
+
+                        那些仪器我在网上查过，是用来采集脑电波的，专业设备，不是什么普通体检能用到的东西。
+
+                        林小雨9月就参与了"志愿者计划"，我当时劝她不要去，但她说有购物券，就去了。
+                        然后……她"回老家"了。她妈打过我电话，说完全联系不上她。
+
+                        我不知道我能做什么，所以我去了旧实验楼看了看。
+
+                        10月13日，那里有人，晚上。
+
+                        今天我找到了一些渠道，但再写下去太危险了。
+
+                        如果有天我也"消失"了，拜托，去图书馆查一下我最近借的书。
+                        书里有我留下的东西。
+
+                        ——ltq</div>
+                </div>
+
+                <div class="vault-section">
+                    <div class="vault-section-title">🔑 下一步</div>
+                    <div class="vault-section-body">图书管理系统的账号是 <span class="vault-code">lib_admin</span>。
+
+密码……树洞里某个帖子的评论里有人提过，找一找。不难的，就是有点绕。
+
+进去之后，<strong style="color:#a07bff">重点看书籍留言</strong>，不是借阅人名单，是留言那一栏。
+我在几本书里写了一些东西。
+
+另外：师资团队那边，图书馆馆长的信息可能有用。她叫刘芳。
+                    </div>
+                </div>
+                <div class="vault-section">
+                    <div class="vault-section-title">📌 关于董新飞</div>
+                    <div class="vault-section-body">他有一个校园网账号，在论坛发过帖子，你搜一下就找到了。
+
+进入他的系统之后，看邮件。
+
+看完邮件再看档案，档案密码我不知道，但邮件里应该有。
+
+我没有时间了。如果你看到这里的时候我已经联系不上，就去旧实验楼地下室。
+
+记住那两个字。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/vault.js"></script>
+</body>
+
+</html>

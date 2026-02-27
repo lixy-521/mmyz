@@ -1,0 +1,138 @@
+/**
+ * auth.js — 登录验证与状态管理
+ * 狼堡一中·学生失踪
+ */
+
+const ACCOUNTS = {
+    "security_li": { password: "202020", role: "security", name: "李保安", redirect: "../security.html" },
+    "lib_admin": { password: "tuzhang123", role: "library", name: "图书管理员", redirect: "../library.html" },
+    "dxf_teacher": { password: "Lbyz@dxf2023!", role: "teacher", name: "董新飞", redirect: "../teacher.html" }
+};
+
+// 密码别名兼容（大小写、格式）
+const PASSWORD_ALIASES = {
+    "tuzhang123": ["tuzhang123", "Tuzhang123", "TUZHANG123"],
+    "202020": ["202020"],
+    "Lbyz@dxf2023!": ["Lbyz@dxf2023!", "lbyz@dxf2023!", "Lbyz@dxf2023"]
+};
+
+function checkPassword(account, inputPwd) {
+    const correctPwd = account.password;
+    if (correctPwd === inputPwd) return true;
+    const aliases = PASSWORD_ALIASES[correctPwd];
+    return aliases ? aliases.includes(inputPwd) : false;
+}
+
+/**
+ * 执行登录
+ */
+function doLogin(username, password) {
+    const account = ACCOUNTS[username.trim()];
+    if (account && checkPassword(account, password)) {
+        localStorage.setItem("lbyz_role", account.role);
+        localStorage.setItem("lbyz_username", username.trim());
+        localStorage.setItem("lbyz_name", account.name);
+        window.location.href = account.redirect;
+        return true;
+    }
+    return false;
+}
+
+/**
+ * 执行登出
+ */
+function doLogout() {
+    localStorage.removeItem("lbyz_role");
+    localStorage.removeItem("lbyz_username");
+    localStorage.removeItem("lbyz_name");
+    window.location.href = "../login.html";
+}
+
+/**
+ * 权限检查：若角色不符则跳转登录页
+ */
+function requireRole(expectedRole) {
+    const role = localStorage.getItem("lbyz_role");
+    if (role !== expectedRole) {
+        window.location.href = "../login.html";
+    }
+}
+
+/**
+ * 渲染导航栏用户信息（校园内网各页通用）
+ * 需要页面中有 #nav-user-area 元素
+ */
+function renderNavUser() {
+    const area = document.getElementById("nav-user-area");
+    if (!area) return;
+    const username = localStorage.getItem("lbyz_username");
+    const name = localStorage.getItem("lbyz_name");
+    if (username) {
+        area.innerHTML = `
+      <div class="campus-nav-user">
+        <span class="username">👤 ${name || username}</span>
+        <button class="logout-btn" onclick="doLogout()">退出</button>
+      </div>`;
+    } else {
+        area.innerHTML = `<div class="campus-nav-user">
+      <a href="login.html" style="color:rgba(255,255,255,0.75);font-size:13px;">🔐 登录</a>
+    </div>`;
+    }
+}
+
+/**
+ * 页面加载时初始化
+ */
+document.addEventListener("DOMContentLoaded", () => {
+    renderNavUser();
+
+    // 登录表单
+    const loginForm = document.getElementById("login-form");
+    if (loginForm) {
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errEl = document.getElementById("login-error");
+
+            if (!username || !password) {
+                showLoginError("请填写账号和密码");
+                return;
+            }
+
+            const ok = doLogin(username, password);
+            if (!ok) {
+                showLoginError("账号或密码错误，请联系教务处");
+                document.getElementById("password").value = "";
+                document.getElementById("password").focus();
+                // 抖动动画
+                const box = document.querySelector(".login-box");
+                if (box) {
+                    box.classList.add("shake-login");
+                    setTimeout(() => box.classList.remove("shake-login"), 500);
+                }
+            }
+        });
+    }
+});
+
+function showLoginError(msg) {
+    let err = document.getElementById("login-error");
+    if (!err) return;
+    err.textContent = msg;
+    err.classList.remove("hidden");
+}
+
+// 登录框抖动CSS（动态注入）
+const shakeStyle = document.createElement("style");
+shakeStyle.textContent = `
+  @keyframes shakeLogin {
+    0%,100%{transform:translateX(0)}
+    20%{transform:translateX(-10px)}
+    40%{transform:translateX(10px)}
+    60%{transform:translateX(-6px)}
+    80%{transform:translateX(6px)}
+  }
+  .shake-login { animation: shakeLogin 0.5s ease; }
+`;
+document.head.appendChild(shakeStyle);

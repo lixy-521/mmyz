@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>校园论坛 · 狼堡一中校园信息网</title>
+    <link rel="stylesheet" href="css/campus.css" />
+</head>
+
+<body>
+    <nav class="campus-nav">
+        <div class="campus-nav-inner">
+            <a class="campus-nav-logo" href="index.html">
+                <img src="assets/logo.png" onerror="this.style.display='none'" alt="校徽" />
+                <div>
+                    <div class="school-name">狼堡一中</div>
+                    <div class="school-sub">校园信息网</div>
+                </div>
+            </a>
+            <div class="campus-nav-links">
+                <a href="index.html">首页</a>
+                <a href="staff.html">师资团队</a>
+                <a href="alumni.html">知名校友</a>
+                <a href="forum.html" class="active">校园论坛</a>
+            </div>
+            <div id="nav-user-area"></div>
+        </div>
+    </nav>
+    <div class="campus-ticker">
+        <div class="campus-ticker-inner">
+            <div class="campus-ticker-label">公告</div>
+            <div class="campus-ticker-track">
+                <div class="campus-ticker-content">
+                    <span>旧实验楼整修中，禁止学生进入（10月10日起）</span>
+                    <span>期中考试将于10月20日举行</span>
+                    <span>11月校运会报名通知即将发布</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="campus-container">
+        <div class="campus-page-header">
+            <div class="campus-page-title">校园论坛</div>
+        </div>
+
+        <!-- ID搜索区 -->
+        <div class="campus-card" style="margin-bottom:24px">
+            <div class="campus-card-header">🔍 按ID搜索发帖记录</div>
+            <div class="campus-card-body">
+                <div class="campus-search-bar">
+                    <input class="campus-input" type="text" id="forum-search-input" placeholder="输入用户ID搜索其所有帖子…" />
+                    <button class="campus-btn campus-btn-primary" id="forum-search-btn">搜 索</button>
+                </div>
+                <p class="text-muted" style="font-size:12px">提示：可通过帖子中的回复者ID进行搜索</p>
+            </div>
+        </div>
+
+        <!-- 搜索结果 -->
+        <div id="forum-search-result"></div>
+
+        <!-- 固定帖子 -->
+        <div class="campus-card mb-16" style="border-left:4px solid #c8962e">
+            <div class="campus-card-body" style="padding:10px 20px;font-size:13px;color:#856404;background:#fffbf0">
+                📌 以下为最新3条帖子，更多内容请使用ID搜索功能
+            </div>
+        </div>
+        <div id="forum-posts"></div>
+    </div>
+
+    <footer class="campus-footer">
+        © 狼堡市第一中学 信息中心 &emsp;|&emsp; 技术支持：教务处信息组
+    </footer>
+    <script src="js/auth.js"></script>
+    <script src="js/forum.js"></script>
+</body>
+
+</html>

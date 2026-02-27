@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>狼堡一中 · 校园信息网</title>
+    <link rel="stylesheet" href="css/campus.css" />
+    <style>
+        .banner-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 2px;
+        }
+
+        .banner-bg-1 {
+            background: linear-gradient(135deg, #1a3a5c, #2a6090);
+        }
+
+        .banner-bg-2 {
+            background: linear-gradient(135deg, #0f2540, #1a5a3a);
+        }
+
+        .banner-bg-3 {
+            background: linear-gradient(135deg, #2a1a5c, #1a3a5c);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航 -->
+    <nav class="campus-nav">
+        <div class="campus-nav-inner">
+            <a class="campus-nav-logo" href="index.html">
+                <img src="assets/logo.png" onerror="this.style.display='none'" alt="校徽" />
+                <div>
+                    <div class="school-name">狼堡一中</div>
+                    <div class="school-sub">校园信息网</div>
+                </div>
+            </a>
+            <div class="campus-nav-links">
+                <a href="index.html" class="active">首页</a>
+                <a href="staff.html">师资团队</a>
+                <a href="alumni.html">知名校友</a>
+                <a href="forum.html">校园论坛</a>
+            </div>
+            <div id="nav-user-area"></div>
+        </div>
+    </nav>
+
+    <!-- 公告滚动栏 -->
+    <div class="campus-ticker">
+        <div class="campus-ticker-inner">
+            <div class="campus-ticker-label">公告</div>
+            <div class="campus-ticker-track">
+                <div class="campus-ticker-content">
+                    <span>旧实验楼整修中，禁止学生进入（10月10日起）</span>
+                    <span>期中考试将于10月20日举行，请同学们做好备考准备</span>
+                    <span>11月校运会报名通知即将发布，请关注校园论坛</span>
+                    <span>学生处提醒：校园内禁止使用滑板及其他轮滑工具</span>
+                    <span>图书馆新增学术期刊数据库，欢迎同学查阅</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="campus-container">
+        <!-- 轮播图 -->
+        <div class="campus-banner" id="banner">
+            <div class="campus-banner-slide active">
+                <div class="banner-placeholder banner-bg-1">
+                    <span>🏅 &nbsp; 10月校运会报名即将开始</span>
+                </div>
+                <div class="campus-banner-caption">2023年秋季运动会 · 报名通道即将开放</div>
+            </div>
+            <div class="campus-banner-slide">
+                <div class="banner-placeholder banner-bg-2">
+                    <span>📚 &nbsp; 期中考试备考指南</span>
+                </div>
+                <div class="campus-banner-caption">期中考试倒计时 · 图书馆延长开放至21:30</div>
+            </div>
+            <div class="campus-banner-slide">
+                <div class="banner-placeholder banner-bg-3">
+                    <span>🏫 &nbsp; 狼堡一中 · 格物致知，知行合一</span>
+                </div>
+                <div class="campus-banner-caption">20XX年秋季开学典礼圆满举行</div>
+            </div>
+            <div class="campus-banner-dots">
+                <div class="campus-banner-dot active" onclick="goBanner(0)"></div>
+                <div class="campus-banner-dot" onclick="goBanner(1)"></div>
+                <div class="campus-banner-dot" onclick="goBanner(2)"></div>
+            </div>
+        </div>
+
+        <div class="campus-layout">
+            <!-- 左侧：新闻 -->
+            <div>
+                <div class="campus-card">
+                    <div class="campus-card-header">🗞 校园新闻</div>
+                    <div class="campus-card-body">
+                        <ul class="news-list">
+                            <li class="news-item">
+                                <div class="news-date"><span class="day">16</span>10月</div>
+                                <div>
+                                    <span class="news-tag notice">通知</span>
+                                    <span class="news-title">关于期中考试座位安排及考场纪律的通知</span>
+                                </div>
+                            </li>
+                            <li class="news-item">
+                                <div class="news-date"><span class="day">14</span>10月</div>
+                                <div>
+                                    <span class="news-tag info">新闻</span>
+                                    <span class="news-title">我校学生在全市数学联赛中荣获二等奖</span>
+                                </div>
+                            </li>
+                            <li class="news-item">
+                                <div class="news-date"><span class="day">12</span>10月</div>
+                                <div>
+                                    <span class="news-tag notice">通知</span>
+                                    <span class="news-title">关于旧实验楼整修期间实验课调整安排</span>
+                                </div>
+                            </li>
+                            <li class="news-item">
+                                <div class="news-date"><span class="day">10</span>10月</div>
+                                <div>
+                                    <span class="news-tag important">重要</span>
+                                    <span class="news-title">旧实验楼整修公告：10月10日起暂停使用，禁止学生进入，违者按校规处理</span>
+                                </div>
+                            </li>
+                            <li class="news-item">
+                                <div class="news-date"><span class="day">08</span>10月</div>
+                                <div>
+                                    <span class="news-tag info">新闻</span>
+                                    <span class="news-title">教师节系列活动圆满落幕，学生代表献花感恩师情</span>
+                                </div>
+                            </li>
+                            <li class="news-item">
+                                <div class="news-date"><span class="day">03</span>10月</div>
+                                <div>
+                                    <span class="news-tag info">新闻</span>
+                                    <span class="news-title">格致创新教育计划成果展示会圆满举行，董新飞老师代表项目组发言</span>
+                                </div>
+                            </li>
+                            <li class="news-item">
+                                <div class="news-date"><span class="day">28</span>9月</div>
+                                <div>
+                                    <span class="news-tag notice">通知</span>
+                                    <span class="news-title">关于近期学生晚间在旧实验楼附近逗留问题的专项通报</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="campus-card">
+                    <div class="campus-card-header">🏛 学校简介</div>
+                    <div class="campus-card-body">
+                        <p style="line-height:1.9;color:#2c3e50;font-size:14px">
+                            狼堡市第一中学（简称"狼堡一中"）创建于1978年，是狼堡市重点示范高中，
+                            连续多年荣获市级"先进集体"称号。学校位于狼堡市中心，占地面积约
+                            7万平方米，现有在校学生1800余名。
+                        </p>
+                        <p style="line-height:1.9;color:#2c3e50;font-size:14px;margin-top:10px">
+                            校训：<strong style="color:#1a3a5c">格物致知，知行合一</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧边栏 -->
+            <div>
+                <div class="campus-card">
+                    <div class="campus-card-header">⚡ 快速导航</div>
+                    <div class="campus-card-body">
+                        <div class="quick-links">
+                            <a class="quick-link-item" href="staff.html">
+                                <span class="quick-link-icon">👨‍🏫</span>师资团队
+                            </a>
+                            <a class="quick-link-item" href="alumni.html">
+                                <span class="quick-link-icon">🏆</span>知名校友
+                            </a>
+                            <a class="quick-link-item" href="forum.html">
+                                <span class="quick-link-icon">💬</span>校园论坛
+                            </a>
+                            <a class="quick-link-item" href="login.html">
+                                <span class="quick-link-icon">🔐</span>登录系统
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="campus-card">
+                    <div class="campus-card-header">📌 近期通知</div>
+                    <div class="campus-card-body">
+                        <ul class="notice-list">
+                            <li class="notice-item">旧实验楼整修中，禁止入内</li>
+                            <li class="notice-item">期中考试：10月20日，请备考</li>
+                            <li class="notice-item">图书馆延长至21:30开放</li>
+                            <li class="notice-item">运动会报名通知待发布</li>
+                            <li class="notice-item">心理辅导室开放时间调整</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="campus-card">
+                    <div class="campus-card-header">🕐 当前时间</div>
+                    <div class="campus-card-body text-center">
+                        <div style="font-size:26px;font-weight:700;color:#1a3a5c;font-family:'Courier New',monospace"
+                            id="clock">--:--:--</div>
+                        <div style="margin-top:6px;font-size:13px;color:#6b7f93">20XX年10月16日 星期三</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="campus-footer">
+        © 狼堡市第一中学 信息中心 &emsp;|&emsp; 技术支持：教务处信息组 &emsp;|&emsp; 版本 v3.2.1
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // 轮播图
+        let cur = 0;
+        const slides = document.querySelectorAll(".campus-banner-slide");
+        const dots = document.querySelectorAll(".campus-banner-dot");
+        function goBanner(n) {
+            slides[cur].classList.remove("active"); dots[cur].classList.remove("active");
+            cur = n;
+            slides[cur].classList.add("active"); dots[cur].classList.add("active");
+        }
+        setInterval(() => goBanner((cur + 1) % slides.length), 4000);
+
+        // 时钟
+        function updateClock() {
+            const now = new Date();
+            document.getElementById("clock").textContent =
+                [now.getHours(), now.getMinutes(), now.getSeconds()]
+                    .map(n => String(n).padStart(2, "0")).join(":");
+        }
+        updateClock(); setInterval(updateClock, 1000);
+    </script>
+</body>
+
+</html>

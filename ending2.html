@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>结局二 · 完整的醒来</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background: #0a0f1a;
+            color: #c8d8f0;
+            font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 深夜星空装饰 */
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(26, 58, 92, 0.4), transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(124, 77, 255, 0.08), transparent 50%);
+            pointer-events: none;
+        }
+
+        /* 窗户光 */
+        .window-glow {
+            position: absolute;
+            top: 20%;
+            right: 15%;
+            width: 80px;
+            height: 100px;
+            background: rgba(200, 180, 100, 0.12);
+            border: 2px solid rgba(200, 180, 100, 0.2);
+            border-radius: 4px;
+            box-shadow: 0 0 40px rgba(200, 180, 100, 0.15), 0 0 80px rgba(200, 180, 100, 0.08);
+            animation: windowPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes windowPulse {
+
+            0%,
+            100% {
+                opacity: 0.6
+            }
+
+            50% {
+                opacity: 1
+            }
+        }
+
+        .stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle linear infinite
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.2
+            }
+
+            50% {
+                opacity: 0.8
+            }
+        }
+
+        .ending-wrap {
+            max-width: 620px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1
+        }
+
+        .ending-tag {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(124, 77, 255, 0.12);
+            border: 1px solid rgba(124, 77, 255, 0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #a07bff;
+            letter-spacing: 2px;
+            margin-bottom: 28px;
+        }
+
+        .ending-title {
+            font-size: 22px;
+            font-weight: 500;
+            color: #e0ecff;
+            letter-spacing: 2px;
+            margin-bottom: 36px;
+            text-shadow: 0 0 20px rgba(124, 77, 255, 0.3);
+        }
+
+        .ending-text p {
+            font-size: 15px;
+            line-height: 2.2;
+            color: #a0b8d8;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInLine 0.8s ease forwards;
+            margin-bottom: 6px;
+        }
+
+        .ending-text p:nth-child(1) {
+            animation-delay: 0.8s
+        }
+
+        .ending-text p:nth-child(2) {
+            animation-delay: 1.8s
+        }
+
+        .ending-text p:nth-child(3) {
+            animation-delay: 2.8s
+        }
+
+        .ending-text p:nth-child(4) {
+            animation-delay: 3.8s
+        }
+
+        .ending-text .name {
+            color: #7cd4ff;
+            font-weight: 500
+        }
+
+        .ending-text .danger {
+            color: #ff6b6b
+        }
+
+        .ending-text .final {
+            color: #e0ecff;
+            font-weight: 500
+        }
+
+        @keyframes fadeInLine {
+            from {
+                opacity: 0;
+                transform: translateY(8px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        /* 终端警报 */
+        .terminal-alert {
+            display: inline-block;
+            margin: 12px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #ff5252;
+            background: #0a0505;
+            border: 1px solid #3a1a1a;
+            padding: 12px 20px;
+            border-radius: 4px;
+            opacity: 0;
+            animation: fadeInLine 0.8s ease forwards;
+            animation-delay: 4.8s;
+            box-shadow: 0 0 12px rgba(255, 82, 82, 0.1);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: #ff5252;
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0
+            }
+        }
+
+        .open-ending {
+            font-size: 14px;
+            color: #6080a0;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeInLine 0.8s ease forwards;
+            animation-delay: 6s;
+            margin-top: 8px;
+        }
+
+        .restart-btn {
+            display: inline-block;
+            margin-top: 48px;
+            padding: 10px 28px;
+            background: linear-gradient(135deg, #7c4dff, #a07bff);
+            border-radius: 4px;
+            color: white;
+            font-size: 13px;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            font-family: 'Noto Sans SC', sans-serif;
+            opacity: 0;
+            animation: fadeInLine 0.8s ease forwards;
+            animation-delay: 7s;
+            box-shadow: 0 4px 20px rgba(124, 77, 255, 0.35);
+        }
+
+        .restart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(124, 77, 255, 0.5)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="window-glow"></div>
+
+    <div class="ending-wrap">
+        <div class="ending-tag">E N D I N G &nbsp; 2</div>
+        <div class="ending-title">完整的醒来</div>
+        <div class="ending-text">
+            <p>逆向参数开始运行。数据缓缓回流，脑波逐渐恢复正常。</p>
+            <p><span class="name">刘天清</span>和<span class="name">林小雨</span>在警察赶到前就已经睁开了眼睛。<br />他们记得一切。</p>
+            <p>王明德校长被捕了。<br />但<span class="danger">董新飞失踪了</span>。</p>
+            <p>你再次用他的账号登录实验室系统——</p>
+            <div class="terminal-alert">警告：实验参数异常，设备自检失败。<br />远程连接已断开。<span class="cursor"></span></div>
+            <p class="open-ending final">他去了哪里？带走了什么？<br />也许，这不是最后一个学校……</p>
+        </div>
+        <a class="restart-btn" href="index.html">重新开始</a>
+    </div>
+
+    <script>
+        // 生成星星
+        const starsEl = document.getElementById("stars");
+        for (let i = 0; i < 60; i++) {
+            const s = document.createElement("div");
+            s.className = "star";
+            const size = 1 + Math.random() * 2;
+            s.style.cssText = `
+      left:${Math.random() * 100}%;top:${Math.random() * 100}%;
+      width:${size}px;height:${size}px;
+      animation-duration:${2 + Math.random() * 4}s;
+      animation-delay:${Math.random() * 4}s;
+    `;
+            starsEl.appendChild(s);
+        }
+    </script>
+</body>
+
+</html>
