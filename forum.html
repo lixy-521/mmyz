@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>校园论坛 · 狼堡一中校园信息网</title>
+    <link rel="stylesheet" href="css/campus.css" />
+</head>
+
+<body>
+    <nav class="campus-nav">
+        <div class="campus-nav-inner">
+            <a class="campus-nav-logo" href="index.html">
+                <img src="assets/logo.png" onerror="this.style.display='none'" alt="校徽" />
+                <div>
+                    <div class="school-name">狼堡一中</div>
+                    <div class="school-sub">校园信息网</div>
+                </div>
+            </a>
+            <div class="campus-nav-links">
+                <a href="index.html">首页</a>
+                <a href="staff.html">师资团队</a>
+                <a href="alumni.html">知名校友</a>
+                <a href="forum.html" class="active">校园论坛</a>
+            </div>
+            <div id="nav-user-area"></div>
+        </div>
+    </nav>
+    <div class="campus-ticker">
+        <div class="campus-ticker-inner">
+            <div class="campus-ticker-label">公告</div>
+            <div class="campus-ticker-track">
+                <div class="campus-ticker-content">
+                    <span>旧实验楼整修中，禁止学生进入（10月10日起）</span>
+                    <span>期末考试将于1月中旬举行，请认真复习</span>
+                    <span>关于近期部分同学请假事宜，如有疑问请联系班主任</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 系统通知：帖子被删 -->
+    <div style="background:#fff3cd;border-bottom:1px solid #f0c040;padding:8px 24px;font-size:12px;color:#856404;display:flex;align-items:center;gap:8px">
+        <span>⚠</span>
+        <span>系统通知：近期部分帖子因涉及违规内容已由管理员删除，如有异议请联系教务处。</span>
+    </div>
+
+    <div class="campus-container">
+        <div class="campus-page-header">
+            <div class="campus-page-title">校园论坛</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:start">
+            <!-- 左侧主体 -->
+            <div>
+                <!-- ID搜索区 -->
+                <div class="campus-card" style="margin-bottom:24px">
+                    <div class="campus-card-header">🔍 按ID搜索发帖记录</div>
+                    <div class="campus-card-body">
+                        <div class="campus-search-bar">
+                            <input class="campus-input" type="text" id="forum-search-input" placeholder="输入用户ID搜索其所有帖子…" />
+                            <button class="campus-btn campus-btn-primary" id="forum-search-btn">搜 索</button>
+                        </div>
+                        <p class="text-muted" style="font-size:12px">可搜索论坛内出现过的用户ID</p>
+                    </div>
+                </div>
+
+                <!-- 搜索结果 -->
+                <div id="forum-search-result"></div>
+
+                <!-- 固定帖子 -->
+                <div class="campus-card mb-16" style="border-left:4px solid #c8962e">
+                    <div class="campus-card-body" style="padding:10px 20px;font-size:13px;color:#856404;background:#fffbf0">
+                        📌 以下为最新帖子，更多内容请使用ID搜索功能
+                    </div>
+                </div>
+                <div id="forum-posts"></div>
+            </div>
+
+            <!-- 右侧：在线用户 -->
+            <div>
+                <div class="campus-card" style="position:sticky;top:80px">
+                    <div class="campus-card-header">🟢 当前在线</div>
+                    <div class="campus-card-body">
+                        <div style="font-size:13px;color:#2c3e50;line-height:2.2">
+                            <div>stu_4401 <span style="color:#27ae60;font-size:11px">●</span></div>
+                            <div>stu_8812 <span style="color:#27ae60;font-size:11px">●</span></div>
+                            <div>stu_0334 <span style="color:#27ae60;font-size:11px">●</span></div>
+                            <div>stu_2291 <span style="color:#27ae60;font-size:11px">●</span></div>
+                            <div style="background:#fff3cd;border-radius:4px;padding:2px 6px;margin:4px 0;border:1px solid #f0c040">
+                                <span style="font-weight:600">ltq2007</span> <span style="color:#27ae60;font-size:11px">●</span>
+                                <div style="font-size:10px;color:#c0392b;margin-top:2px">⚠ 状态异常</div>
+                            </div>
+                            <div>admin_jw <span style="color:#27ae60;font-size:11px">●</span></div>
+                        </div>
+                        <div style="margin-top:12px;padding-top:10px;border-top:1px solid #eee;font-size:11px;color:#c0392b;line-height:1.6">
+                            ⚠ ltq2007 账号已超过 <strong>61天</strong> 未正常登出，系统检测到异常在线状态。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="campus-card" style="margin-top:16px;position:sticky;top:340px">
+                    <div class="campus-card-header">📊 论坛统计</div>
+                    <div class="campus-card-body" style="font-size:12px;color:#6b7f93;line-height:2">
+                        <div>今日发帖：<strong>23</strong></div>
+                        <div>本周发帖：<strong>147</strong></div>
+                        <div>注册用户：<strong>1,832</strong></div>
+                        <div style="color:#c0392b">已删除帖子：<strong>7</strong>（本月）</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="campus-footer">
+        © 狼堡市第一中学 信息中心 &emsp;|&emsp; 技术支持：教务处信息组
+    </footer>
+    <script src="js/auth.js"></script>
+    <script src="js/forum.js"></script>
+</body>
+
+</html>

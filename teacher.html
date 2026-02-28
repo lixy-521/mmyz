@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>教师工作平台 · 狼堡一中</title>
+    <link rel="stylesheet" href="css/campus.css" />
+</head>
+
+<body>
+    <nav class="campus-nav">
+        <div class="campus-nav-inner">
+            <a class="campus-nav-logo" href="index.html">
+                <img src="assets/logo.png" onerror="this.style.display='none'" alt="校徽" />
+                <div>
+                    <div class="school-name">狼堡一中</div>
+                    <div class="school-sub">教师工作平台</div>
+                </div>
+            </a>
+            <div class="campus-nav-links"></div>
+            <div id="nav-user-area"></div>
+        </div>
+    </nav>
+
+    <div class="sys-layout">
+        <div class="sys-sidebar">
+            <div class="sys-sidebar-header">
+                <div class="sys-sidebar-title">教师工作平台</div>
+                <div class="sys-sidebar-user">dxf_teacher</div>
+                <div style="font-size:11px;color:rgba(255,150,150,0.7);margin-top:4px">上次登录：10月14日 23:47</div>
+            </div>
+            <div class="sys-sidebar-nav">
+                <div class="sys-sidebar-item active" data-section="mail">
+                    <span class="sys-sidebar-icon">✉️</span>校内信息交流
+                </div>
+                <div class="sys-sidebar-item" data-section="archive">
+                    <span class="sys-sidebar-icon">🗂</span>档案查询
+                </div>
+                <div class="sys-sidebar-item" data-section="lab">
+                    <span class="sys-sidebar-icon">🧪</span>实验室管理
+                </div>
+            </div>
+            <div style="padding:12px 16px;position:absolute;bottom:0;width:100%">
+                <button onclick="doLogout()"
+                    style="width:100%;text-align:center;padding:8px;border:1px solid rgba(255,255,255,0.2);background:none;color:rgba(255,255,255,0.6);cursor:pointer;border-radius:4px;font-size:12px;font-family:var(--font-main);">退出登录</button>
+            </div>
+        </div>
+
+        <div class="sys-main">
+
+            <!-- 邮件 -->
+            <div class="sys-section active" id="sec-mail">
+                <div class="sys-main-header">
+                    <div class="sys-main-title">✉ 校内信息交流</div>
+                    <span style="font-size:12px;color:#6b7f93">共 5 封邮件 · 点击展开详情</span>
+                </div>
+                <div class="campus-card">
+                    <div class="campus-card-body" style="padding:0 0 8px">
+                        <ul class="mail-list" id="mail-list" style="padding:0 20px"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 档案 -->
+            <div class="sys-section" id="sec-archive">
+                <div class="sys-main-header">
+                    <div class="sys-main-title">🗂 档案查询系统</div>
+                </div>
+                <div class="campus-card" id="archive-lock">
+                    <div class="campus-card-header">输入访问密码</div>
+                    <div class="campus-card-body">
+                        <p style="font-size:14px;color:#6b7f93;margin-bottom:16px">
+                            本档案系统受密码保护，请输入授权密码后访问
+                        </p>
+                        <div class="campus-search-bar">
+                            <input class="campus-input" type="password" id="archive-password"
+                                placeholder="请输入档案访问密码…" />
+                            <button class="campus-btn campus-btn-primary" id="archive-unlock-btn">解 锁</button>
+                        </div>
+                        <div class="campus-alert campus-alert-error hidden" id="archive-error"></div>
+                    </div>
+                </div>
+                <div id="archive-content" class="hidden"></div>
+            </div>
+
+            <!-- 实验室 -->
+            <div class="sys-section" id="sec-lab">
+                <div class="sys-main-header">
+                    <div class="sys-main-title">🧪 实验室管理系统</div>
+                    <span style="font-size:12px;color:#6b7f93">搜索项目名称以查看详情</span>
+                </div>
+                <div class="campus-search-bar" style="margin-bottom:20px">
+                    <input class="campus-input" type="text" id="lab-search-input" placeholder="输入实验项目名称…" />
+                    <button class="campus-btn campus-btn-primary" id="lab-search-btn">搜 索</button>
+                </div>
+                <!-- 普通项目列表（噪声） -->
+                <div class="campus-card mb-16">
+                    <div class="campus-card-header">当前活跃项目</div>
+                    <div class="campus-card-body" style="padding:0">
+                        <table class="campus-table">
+                            <thead>
+                                <tr>
+                                    <th>项目名称</th>
+                                    <th>负责人</th>
+                                    <th>状态</th>
+                                    <th>更新日期</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>高一化学实验改良计划</td>
+                                    <td>理化组</td>
+                                    <td><span class="campus-badge campus-badge-success">进行中</span></td>
+                                    <td>10月10日</td>
+                                </tr>
+                                <tr>
+                                    <td>生物标本室整理工作</td>
+                                    <td>生物组</td>
+                                    <td><span class="campus-badge campus-badge-warning">暂停</span></td>
+                                    <td>9月28日</td>
+                                </tr>
+                                <tr>
+                                    <td>实验室安全培训课程</td>
+                                    <td>教务处</td>
+                                    <td><span class="campus-badge campus-badge-success">进行中</span></td>
+                                    <td>10月5日</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="lab-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模态对话框 -->
+    <div class="modal-overlay" id="app-modal">
+        <div class="modal-box">
+            <div class="modal-title" id="modal-title"></div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer">
+                <button class="campus-btn campus-btn-outline" id="modal-cancel">取消</button>
+                <button class="campus-btn campus-btn-primary" id="modal-confirm">确认</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/teacher.js"></script>
+</body>
+
+</html>

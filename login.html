@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录 · 狼堡一中校园内网</title>
+    <link rel="stylesheet" href="css/campus.css" />
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="login-box">
+            <div class="login-logo">
+                <img src="assets/logo.png" onerror="this.style.background='#1a3a5c';this.style.borderRadius='50%'"
+                    alt="校徽" />
+                <h1>狼堡一中</h1>
+                <p>校园信息管理系统 · 教职工登录</p>
+            </div>
+            <form id="login-form" autocomplete="off">
+                <div class="campus-form-group">
+                    <label class="campus-label" for="username">账号</label>
+                    <input class="campus-input" type="text" id="username" placeholder="请输入账号" autofocus />
+                </div>
+                <div class="campus-form-group">
+                    <label class="campus-label" for="password">密码</label>
+                    <input class="campus-input" type="password" id="password" placeholder="请输入密码" />
+                </div>
+                <div id="login-error" class="campus-alert campus-alert-error hidden" style="margin-bottom:14px"></div>
+                <button type="submit" class="campus-btn campus-btn-primary w-full"
+                    style="justify-content:center;padding:12px;">
+                    登 录
+                </button>
+            </form>
+            <p style="text-align:center;margin-top:16px;font-size:12px;color:#6b7f93">
+                本系统仅供教职工及授权人员使用<br />
+                普通学生账号不支持后台登录
+            </p>
+            <div style="margin-top:20px;text-align:center">
+                <a href="index.html" style="font-size:13px;color:#1a3a5c">← 返回校园网首页</a>
+            </div>
+        </div>
+    </div>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

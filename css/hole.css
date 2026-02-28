@@ -1,0 +1,721 @@
+/* ============================================
+   树洞匿名论坛 — 全局样式
+   设计风格：暗黑赛博，紫色荧光
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+:root {
+    --hole-bg: #0d0d1a;
+    --hole-bg2: #111128;
+    --hole-card: rgba(255, 255, 255, 0.042);
+    --hole-border: rgba(124, 77, 255, 0.18);
+    --hole-accent: #7c4dff;
+    --hole-accent2: #a07bff;
+    --hole-glow: 0 0 18px rgba(124, 77, 255, 0.28);
+    --hole-text: #dde4f0;
+    --hole-muted: #6a748a;
+    --hole-dim: #3a4055;
+    --hole-danger: #ff5252;
+    --hole-success: #69f0ae;
+    --hole-warn: #ffcc00;
+    --font: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    --mono: 'Courier New', monospace;
+    --r: 10px;
+    --tr: all 0.22s ease;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--hole-bg);
+    color: var(--hole-text);
+    min-height: 100vh;
+    line-height: 1.7;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: var(--hole-accent2);
+    text-decoration: none;
+    transition: var(--tr);
+}
+
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+/* ——— 顶部导航 ——— */
+.hole-nav {
+    background: rgba(13, 13, 26, 0.95);
+    border-bottom: 1px solid var(--hole-border);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0 24px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hole-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.hole-nav-logo .logo-icon {
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(135deg, var(--hole-accent), var(--hole-accent2));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: var(--hole-glow);
+}
+
+.hole-nav-logo .logo-text .name {
+    background: linear-gradient(90deg, var(--hole-accent2), #c9b3ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hole-nav-logo .logo-text .sub {
+    font-size: 11px;
+    color: var(--hole-muted);
+    font-weight: 400;
+    letter-spacing: 2px;
+    display: block;
+    margin-top: -2px;
+}
+
+.hole-nav-info {
+    font-size: 12px;
+    color: var(--hole-muted);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.hole-nav-info span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ——— 主容器 ——— */
+.hole-container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px 20px;
+    flex: 1;
+    width: 100%;
+}
+
+/* ——— 帖子卡片 ——— */
+.hole-post-card {
+    background: var(--hole-card);
+    border: 1px solid var(--hole-border);
+    border-radius: var(--r);
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: var(--tr);
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+}
+
+.hole-post-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--hole-accent);
+    opacity: 0;
+    transition: var(--tr);
+}
+
+.hole-post-card:hover {
+    border-color: rgba(124, 77, 255, 0.4);
+    box-shadow: var(--hole-glow);
+    transform: translateY(-1px);
+}
+
+.hole-post-card:hover::before {
+    opacity: 1;
+}
+
+.hole-post-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.hole-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    border: 1px solid var(--hole-border);
+}
+
+.hole-post-meta {
+    flex: 1;
+}
+
+.hole-post-anon {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--hole-text);
+}
+
+.hole-post-time {
+    font-size: 11px;
+    color: var(--hole-muted);
+    margin-top: 1px;
+}
+
+.hole-post-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.hole-post-tag.hot {
+    background: rgba(255, 82, 82, 0.15);
+    color: #ff5252;
+    border: 1px solid rgba(255, 82, 82, 0.3);
+}
+
+.hole-post-tag.key {
+    background: rgba(124, 77, 255, 0.15);
+    color: var(--hole-accent2);
+    border: 1px solid var(--hole-border);
+}
+
+.hole-post-tag.locked {
+    background: rgba(255, 204, 0, 0.12);
+    color: var(--hole-warn);
+    border: 1px solid rgba(255, 204, 0, 0.3);
+}
+
+.hole-post-tag.normal {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--hole-muted);
+    border: 1px solid var(--hole-dim);
+}
+
+.hole-post-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.hole-post-body {
+    font-size: 14px;
+    color: var(--hole-text);
+    line-height: 1.85;
+    margin-bottom: 14px;
+    white-space: pre-line;
+}
+
+.hole-post-body .highlight {
+    background: rgba(124, 77, 255, 0.15);
+    color: var(--hole-accent2);
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-size: 13px;
+}
+
+.hole-post-body a {
+    color: var(--hole-accent2);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.hole-post-img {
+    width: 100%;
+    max-height: 380px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    border: 1px solid var(--hole-border);
+    cursor: zoom-in;
+}
+
+.hole-post-footer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--hole-dim);
+}
+
+.hole-stat {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--hole-muted);
+}
+
+.hole-stat.fire {
+    color: #ff7043;
+}
+
+.hole-expand-btn {
+    margin-left: auto;
+    background: none;
+    border: 1px solid var(--hole-dim);
+    color: var(--hole-muted);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: var(--font);
+    transition: var(--tr);
+}
+
+.hole-expand-btn:hover {
+    border-color: var(--hole-accent);
+    color: var(--hole-accent2);
+    background: rgba(124, 77, 255, 0.08);
+}
+
+/* ——— 评论区 ——— */
+.hole-comments {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.hole-comments.open {
+    max-height: 800px;
+}
+
+.hole-comments-inner {
+    border-top: 1px solid var(--hole-dim);
+    padding: 14px 0 4px;
+    margin-top: 14px;
+}
+
+.hole-comment {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--hole-dim);
+    font-size: 13px;
+}
+
+.hole-comment:last-child {
+    border-bottom: none;
+}
+
+.hole-comment-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.hole-comment-anon {
+    font-weight: 600;
+    color: var(--hole-accent2);
+    margin-right: 6px;
+    font-size: 12px;
+}
+
+.hole-comment-time {
+    color: var(--hole-muted);
+    font-size: 11px;
+}
+
+.hole-comment-body {
+    color: var(--hole-text);
+    line-height: 1.7;
+    margin-top: 4px;
+}
+
+/* ——— 图片灯箱 ——— */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+}
+
+.lightbox.open {
+    display: flex;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+}
+
+/* ——— Vault 加密页 ——— */
+.vault-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--hole-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.vault-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.vault-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: var(--hole-accent);
+    animation: float linear infinite;
+    opacity: 0.4;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.4;
+    }
+
+    90% {
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translateY(-100px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.vault-box {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+    max-width: 460px;
+    width: 100%;
+}
+
+.vault-icon {
+    font-size: 56px;
+    margin-bottom: 16px;
+    animation: iconGlow 3s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 8px rgba(124, 77, 255, 0.5));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 20px rgba(124, 77, 255, 0.9));
+    }
+}
+
+.vault-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.vault-hint {
+    font-size: 14px;
+    color: var(--hole-muted);
+    margin-bottom: 28px;
+    line-height: 1.7;
+}
+
+.vault-input-wrap {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.vault-input {
+    width: 100%;
+    padding: 14px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--hole-border);
+    border-radius: 8px;
+    color: white;
+    font-family: var(--mono);
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 3px;
+    outline: none;
+    transition: var(--tr);
+}
+
+.vault-input:focus {
+    border-color: var(--hole-accent);
+    box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.2), var(--hole-glow);
+    background: rgba(124, 77, 255, 0.06);
+}
+
+.vault-input::placeholder {
+    letter-spacing: 1px;
+    color: var(--hole-dim);
+    font-size: 13px;
+}
+
+.vault-input.shake {
+    animation: shake 0.4s ease;
+    border-color: var(--hole-danger) !important;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-8px);
+    }
+
+    40% {
+        transform: translateX(8px);
+    }
+
+    60% {
+        transform: translateX(-5px);
+    }
+
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+.vault-btn {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, var(--hole-accent), var(--hole-accent2));
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--tr);
+    letter-spacing: 1px;
+    box-shadow: var(--hole-glow);
+}
+
+.vault-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(124, 77, 255, 0.45);
+}
+
+/* ——— Vault 内容 ——— */
+.vault-content {
+    display: none;
+    animation: revealContent 0.6s ease;
+}
+
+.vault-content.open {
+    display: block;
+}
+
+@keyframes revealContent {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.vault-section {
+    background: var(--hole-card);
+    border: 1px solid var(--hole-border);
+    border-radius: var(--r);
+    padding: 22px;
+    margin-bottom: 16px;
+    text-align: left;
+    backdrop-filter: blur(8px);
+}
+
+.vault-section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--hole-accent2);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vault-section-body {
+    font-size: 14px;
+    color: var(--hole-text);
+    line-height: 1.9;
+    white-space: pre-line;
+}
+
+.vault-code {
+    display: inline-block;
+    font-family: var(--mono);
+    background: rgba(124, 77, 255, 0.12);
+    border: 1px solid var(--hole-border);
+    color: var(--hole-accent2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+/* ——— 首页标题栏 ——— */
+.hole-hero {
+    text-align: center;
+    margin-bottom: 28px;
+    padding: 24px 0 12px;
+}
+
+.hole-hero-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.hole-hero-title span {
+    background: linear-gradient(90deg, var(--hole-accent), #c9b3ff, var(--hole-accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hole-hero-sub {
+    color: var(--hole-muted);
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+/* ——— 分割线 ——— */
+.hole-divider {
+    border: none;
+    border-top: 1px solid var(--hole-dim);
+    margin: 20px 0;
+}
+
+/* ——— 底部 ——— */
+.hole-footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--hole-muted);
+    font-size: 12px;
+    border-top: 1px solid var(--hole-dim);
+    margin-top: auto;
+}
+
+/* ——— 工具类 ——— */
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--hole-muted);
+}
+
+.text-accent {
+    color: var(--hole-accent2);
+}
+
+.text-danger {
+    color: var(--hole-danger);
+}
+
+.mb-8 {
+    margin-bottom: 8px;
+}
+
+.mb-16 {
+    margin-bottom: 16px;
+}
+
+.mt-12 {
+    margin-top: 12px;
+}

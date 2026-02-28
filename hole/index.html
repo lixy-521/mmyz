@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>树洞 · hole.lbyz.internal</title>
+    <link rel="stylesheet" href="../css/hole.css" />
+</head>
+
+<body>
+    <nav class="hole-nav">
+        <div class="hole-nav-logo">
+            <div class="logo-icon">🕳</div>
+            <div class="logo-text">
+                <span class="name">树 洞</span>
+                <span class="sub">hole.lbyz.internal</span>
+            </div>
+        </div>
+        <div class="hole-nav-info">
+            <span>👁 匿名发布</span>
+            <span>🔒 校内访问</span>
+            <a href="../index.html" style="color:var(--hole-muted);font-size:13px;text-decoration:none;border:1px solid rgba(255,255,255,0.15);padding:4px 10px;border-radius:4px">← 返回校园官网</a>
+        </div>
+    </nav>
+
+    <div class="hole-container">
+        <div class="hole-hero">
+            <div class="hole-hero-title">欢迎来到<span>树洞</span></div>
+            <div class="hole-hero-sub">匿名 · 真实 · 只有狼堡一中的人才懂</div>
+        </div>
+
+        <!-- 帖子1：食堂 噪声 -->
+        <div class="hole-post-card">
+            <div class="hole-post-head">
+                <div class="hole-avatar" style="background:#1a4a1a">🐊</div>
+                <div class="hole-post-meta">
+                    <div class="hole-post-anon">低调的鳄鱼</div>
+                    <div class="hole-post-time">1天前 · 11月26日</div>
+                </div>
+                <span class="hole-post-tag hot">🔥 热门</span>
+            </div>
+            <div class="hole-post-title">食堂红烧肉今天复活了！！</div>
+            <div class="hole-post-body">三楼靠窗口，周二和周五才有，今天是周五！！上午十一点二十开卖，去晚了绝对没有。
+
+上次有人说要去晚了能抢到，结果当场被打脸。
+
+这条帖子就是给你们的福利，自己决定信不信。</div>
+            <div class="hole-post-footer">
+                <span class="hole-stat fire">🔥 893</span>
+                <span class="hole-stat">💬 41</span>
+                <button class="hole-expand-btn" onclick="toggleComments('c1',this)">展开评论 ▾</button>
+            </div>
+            <div class="hole-comments" id="c1">
+                <div class="hole-comments-inner">
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2d1b69">🦇</div>
+                        <div><span class="hole-comment-anon">夜晚的蝙蝠</span><span class="hole-comment-time">1天前</span>
+                            <div class="hole-comment-body">已验证，今天十一点一刻到，最后一份，属实。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a3a5c">🐧</div>
+                        <div><span class="hole-comment-anon">迷路的企鹅</span><span class="hole-comment-time">1天前</span>
+                            <div class="hole-comment-body">谢谢好人！！明天去！</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a4a1a">🐊</div>
+                        <div><span class="hole-comment-anon">低调的鳄鱼</span><span class="hole-comment-time">23小时前</span>
+                            <div class="hole-comment-body">明天是周六……没有的。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a3a5c">🐧</div>
+                        <div><span class="hole-comment-anon">迷路的企鹅</span><span class="hole-comment-time">23小时前</span>
+                            <div class="hole-comment-body">……</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子2：保安室照片 线索 -->
+        <div class="hole-post-card">
+            <div class="hole-post-head">
+                <div class="hole-avatar" style="background:#2d1b69">🐢</div>
+                <div class="hole-post-meta">
+                    <div class="hole-post-anon">沉默的乌龟</div>
+                    <div class="hole-post-time">14天前 · 11月12日</div>
+                </div>
+                <span class="hole-post-tag hot">🔥 热门</span>
+            </div>
+            <div class="hole-post-title">第一次进保安室的体验……</div>
+            <div class="hole-post-body">哈哈哈今天放学忘带饭卡在教室里了，保安室借了张备用卡。
+
+那个地方真的很乱，桌上贴了一堆便利贴，老李（保安大叔）说那是他记密码的地方……
+
+附一张我偷拍的图，太好笑了（</div>
+            <img class="hole-post-img" src="../assets/security_room.jpg" alt="保安室内景" id="security-img"
+                onerror="this.style.display='none';document.getElementById('security-img-fallback').style.display='block'" />
+            <div id="security-img-fallback"
+                style="display:none;background:#1a1a2e;border:1px solid rgba(124,77,255,0.2);border-radius:8px;padding:20px;margin-bottom:14px;font-family:'Courier New',monospace;font-size:13px;color:#00cc44">
+                <div style="color:#7c4dff;font-weight:700;margin-bottom:12px">[📸 保安室照片]</div>
+                <div style="margin-bottom:8px">画面：杂乱的桌子，各种本子和设备</div>
+                <div style="background:#0a0e0a;padding:10px;border-radius:4px;border:1px solid #1a3a1a">
+                    桌角的黄色便利贴：<br />
+                    <span style="color:#ffcc00">账号：security_li</span><br />
+                    <span style="color:#ffcc00">密码：101028</span><br />
+                    <span style="color:#338833;font-size:11px">（别忘了！！）</span>
+                </div>
+            </div>
+            <div class="hole-post-footer">
+                <span class="hole-stat fire">🔥 347</span>
+                <span class="hole-stat">💬 8</span>
+                <button class="hole-expand-btn" onclick="toggleComments('c2',this)">展开评论 ▾</button>
+            </div>
+            <div class="hole-comments" id="c2">
+                <div class="hole-comments-inner">
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a3a5c">🐧</div>
+                        <div><span class="hole-comment-anon">迷路的企鹅</span><span class="hole-comment-time">14天前</span>
+                            <div class="hole-comment-body">哈哈哈密码贴便利贴上！老李太可爱了。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2d4a1a">🐸</div>
+                        <div><span class="hole-comment-anon">安静的青蛙</span><span class="hole-comment-time">14天前</span>
+                            <div class="hole-comment-body">保安室那个系统能查人员进出记录吗？</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#4a1a1a">🐢</div>
+                        <div><span class="hole-comment-anon">沉默的乌龟</span><span class="hole-comment-time">13天前</span>
+                            <div class="hole-comment-body">能的，我看老李查过，登录那个系统就行。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#3a1a5c">🦉</div>
+                        <div><span class="hole-comment-anon">夜行的猫头鹰</span><span class="hole-comment-time">13天前</span>
+                            <div class="hole-comment-body">账号密码不就在图上么……</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子3：期中备考 噪声（内藏图书馆密码线索） -->
+        <div class="hole-post-card">
+            <div class="hole-post-head">
+                <div class="hole-avatar" style="background:#1a3a5c">🐑</div>
+                <div class="hole-post-meta">
+                    <div class="hole-post-anon">困惑的小羊</div>
+                    <div class="hole-post-time">9天前 · 11月17日</div>
+                </div>
+                <span class="hole-post-tag normal">学习</span>
+            </div>
+            <div class="hole-post-title">期中了，有人整理过数学重点吗</div>
+            <div class="hole-post-body">函数、导数、三角函数……感觉每个都是重点，根本不知道从哪里下手。
+
+求有缘人分享一下备考思路。</div>
+            <div class="hole-post-footer">
+                <span class="hole-stat">🔥 201</span>
+                <span class="hole-stat">💬 9</span>
+                <button class="hole-expand-btn" onclick="toggleComments('c3',this)">展开评论 ▾</button>
+            </div>
+            <div class="hole-comments" id="c3">
+                <div class="hole-comments-inner">
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2d1b69">🦫</div>
+                        <div><span class="hole-comment-anon">无聊的河狸</span><span class="hole-comment-time">9天前</span>
+                            <div class="hole-comment-body">图书馆二楼有人自习，你可以去蹭一蹭气氛。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a4a2a">🦎</div>
+                        <div><span class="hole-comment-anon">冷静的蜥蜴</span><span class="hole-comment-time">8天前</span>
+                            <div class="hole-comment-body">三角函数今年必考大题，押题押这个。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#3a1a5c">🦉</div>
+                        <div><span class="hole-comment-anon">夜行的猫头鹰</span><span class="hole-comment-time">8天前</span>
+                            <div class="hole-comment-body">图书馆管理系统里有借阅记录，理论上能知道大家最近都在看什么书（x）。管理员账号才能进，lib_admin，密码嘛……我知道，但不直说，猜猜看。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a3a5c">🐑</div>
+                        <div><span class="hole-comment-anon">困惑的小羊</span><span class="hole-comment-time">8天前</span>
+                            <div class="hole-comment-body">猜？怎么猜</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#3a1a5c">🦉</div>
+                        <div><span class="hole-comment-anon">夜行的猫头鹰</span><span class="hole-comment-time">7天前</span>
+                            <div class="hole-comment-body">你去师资页面找图书馆那边负责人，看看她的职务是什么，职务名称的拼音小写加123就是。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a4a2a">🦎</div>
+                        <div><span class="hole-comment-anon">冷静的蜥蜴</span><span class="hole-comment-time">7天前</span>
+                            <div class="hole-comment-body">……你们在聊什么，我去背三角了。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子4：失眠 噪声（埋旧实验楼线索） -->
+        <div class="hole-post-card">
+            <div class="hole-post-head">
+                <div class="hole-avatar" style="background:#2d1b69">🦒</div>
+                <div class="hole-post-meta">
+                    <div class="hole-post-anon">高挑的长颈鹿</div>
+                    <div class="hole-post-time">2天前 · 11月24日</div>
+                </div>
+                <span class="hole-post-tag normal">日常</span>
+            </div>
+            <div class="hole-post-title">失眠第十一天</div>
+            <div class="hole-post-body">闭上眼睛就开始想各种事情，然后天就亮了。
+
+上课的时候又困得要死，形成闭环了。
+
+有没有同病相怜的。</div>
+            <div class="hole-post-footer">
+                <span class="hole-stat fire">🔥 731</span>
+                <span class="hole-stat">💬 6</span>
+                <button class="hole-expand-btn" onclick="toggleComments('c4',this)">展开评论 ▾</button>
+            </div>
+            <div class="hole-comments" id="c4">
+                <div class="hole-comments-inner">
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#3a1a5c">🦋</div>
+                        <div><span class="hole-comment-anon">夜里的蝴蝶</span><span class="hole-comment-time">2天前</span>
+                            <div class="hole-comment-body">同，已经不记得上次睡着是什么感觉了</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2d1b69">🦒</div>
+                        <div><span class="hole-comment-anon">高挑的长颈鹿</span><span class="hole-comment-time">1天前</span>
+                            <div class="hole-comment-body">昨晚两点多睡不着，站起来往窗外看，旧实验楼那边居然有灯。我以为我在做梦。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#3a1a5c">🦋</div>
+                        <div><span class="hole-comment-anon">夜里的蝴蝶</span><span class="hole-comment-time">1天前</span>
+                            <div class="hole-comment-body">旧实验楼不是封着吗……</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子5：旧实验楼有灯 线索 -->
+        <div class="hole-post-card">
+            <div class="hole-post-head">
+                <div class="hole-avatar" style="background:#3a1a1a">🐺</div>
+                <div class="hole-post-meta">
+                    <div class="hole-post-anon">警觉的狼</div>
+                    <div class="hole-post-time">4天前 · 11月22日</div>
+                </div>
+                <span class="hole-post-tag hot">🔥 热门</span>
+            </div>
+            <div class="hole-post-title">旧实验楼深夜有人？</div>
+            <div class="hole-post-body">昨晚（10月12日）大概11点多，我从宿舍看到旧实验楼地下室的窗子透出灯光。
+
+不是路灯，是那种白色日光灯的光，一直亮着没熄。
+
+实验楼不是说整修中禁止进入吗？怎么会有人？</div>
+            <div class="hole-post-footer">
+                <span class="hole-stat fire">🔥 521</span>
+                <span class="hole-stat">💬 12</span>
+                <button class="hole-expand-btn" onclick="toggleComments('c5',this)">展开评论 ▾</button>
+            </div>
+            <div class="hole-comments" id="c5">
+                <div class="hole-comments-inner">
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2d1b69">🦇</div>
+                        <div><span class="hole-comment-anon">夜晚的蝙蝠</span><span class="hole-comment-time">4天前</span>
+                            <div class="hole-comment-body">工人加班整修？</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#3a1a1a">🐺</div>
+                        <div><span class="hole-comment-anon">警觉的狼</span><span class="hole-comment-time">4天前</span>
+                            <div class="hole-comment-body">深夜11点整修？？</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a3a5c">🐋</div>
+                        <div><span class="hole-comment-anon">深蓝的鲸鱼</span><span class="hole-comment-time">3天前</span>
+                            <div class="hole-comment-body">我也注意到了，不止这一次了。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a4a2a">🦎</div>
+                        <div><span class="hole-comment-anon">冷静的蜥蜴</span><span class="hole-comment-time">3天前</span>
+                            <div class="hole-comment-body">9月初就有了，我那时候就觉得奇怪，禁止进入的通知反而是10月才发的。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2d1b69">🦇</div>
+                        <div><span class="hole-comment-anon">夜晚的蝙蝠</span><span class="hole-comment-time">3天前</span>
+                            <div class="hole-comment-body">有没有人知道9月的时候谁进去过，保安室那边应该有记录吧。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子6：吐槽董老师 噪声 -->
+        <div class="hole-post-card">
+            <div class="hole-post-head">
+                <div class="hole-avatar" style="background:#1a3a1a">🦔</div>
+                <div class="hole-post-meta">
+                    <div class="hole-post-anon">好奇的刺猬</div>
+                    <div class="hole-post-time">20天前 · 11月6日</div>
+                </div>
+                <span class="hole-post-tag normal">吐槽</span>
+            </div>
+            <div class="hole-post-title">有没有人觉得董老师最近状态不对</div>
+            <div class="hole-post-body">感觉这学期开学之后他上课就有点心不在焉，经常看手机，有时候课讲到一半突然发呆。
+
+上周还提前下课了，说是有事情要处理。
+
+不知道是不是我的错觉。</div>
+            <div class="hole-post-footer">
+                <span class="hole-stat">🔥 156</span>
+                <span class="hole-stat">💬 7</span>
+                <button class="hole-expand-btn" onclick="toggleComments('c6',this)">展开评论 ▾</button>
+            </div>
+            <div class="hole-comments" id="c6">
+                <div class="hole-comments-inner">
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a3a5c">🐧</div>
+                        <div><span class="hole-comment-anon">迷路的企鹅</span><span class="hole-comment-time">20天前</span>
+                            <div class="hole-comment-body">不是错觉，我们班也这样。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#3a1a5c">🦙</div>
+                        <div><span class="hole-comment-anon">安静的羊驼</span><span class="hole-comment-time">20天前</span>
+                            <div class="hole-comment-body">好像在搞什么格致计划的项目，跟校长一起的，占用了旧实验楼。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a3a1a">🦔</div>
+                        <div><span class="hole-comment-anon">好奇的刺猬</span><span class="hole-comment-time">19天前</span>
+                            <div class="hole-comment-body">校园网论坛上他发过招募贴，那个实验是什么情况</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#3a1a5c">🦙</div>
+                        <div><span class="hole-comment-anon">安静的羊驼</span><span class="hole-comment-time">19天前</span>
+                            <div class="hole-comment-body">说是健康检测，我不信。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子7：刘天清加密帖（纯谜语，零暗示） -->
+        <div class="hole-post-card" style="border-color:rgba(124,77,255,0.4);box-shadow:0 0 20px rgba(124,77,255,0.15)">
+            <div class="hole-post-head">
+                <div class="hole-avatar" style="background:linear-gradient(135deg,#7c4dff,#a07bff)">🦌</div>
+                <div class="hole-post-meta">
+                    <div class="hole-post-anon">困惑的麋鹿</div>
+                    <div class="hole-post-time">6天前 · 11月20日</div>
+                </div>
+                <span class="hole-post-tag locked">🔒 加密</span>
+            </div>
+            <div class="hole-post-title">【密】把参数重置到起点</div>
+            <div class="hole-post-body">我在校园网论坛上发过一道题。
+
+一个物体沿某轴做了完整的镜像翻转——要把它完整还原到翻转之前，需要做什么操作？
+
+那道题的答案，就是这里的密码。
+
+两个字。
+
+——<a href="vault.html" style="color:#a07bff;text-decoration:underline">hole.lbyz.internal/vault</a></div>
+            <div class="hole-post-footer">
+                <span class="hole-stat">🔥 103</span>
+                <span class="hole-stat">💬 5</span>
+                <button class="hole-expand-btn" onclick="toggleComments('c7',this)">展开评论 ▾</button>
+            </div>
+            <div class="hole-comments" id="c7">
+                <div class="hole-comments-inner">
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a3a5c">🐬</div>
+                        <div><span class="hole-comment-anon">跳跃的海豚</span><span class="hole-comment-time">6天前</span>
+                            <div class="hole-comment-body">这在说什么……是谜语还是在说别的事</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:linear-gradient(135deg,#7c4dff,#a07bff)">🦌</div>
+                        <div><span class="hole-comment-anon">困惑的麋鹿</span><span class="hole-comment-time">6天前</span>
+                            <div class="hole-comment-body">两者都是。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a4a2a">🐸</div>
+                        <div><span class="hole-comment-anon">安静的青蛙</span><span class="hole-comment-time">5天前</span>
+                            <div class="hole-comment-body">那道论坛上的题是什么题，我去找找</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:linear-gradient(135deg,#7c4dff,#a07bff)">🦌</div>
+                        <div><span class="hole-comment-anon">困惑的麋鹿</span><span class="hole-comment-time">5天前</span>
+                            <div class="hole-comment-body">校园网论坛，搜ltq2007，那道题还在。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2d1b69">🦇</div>
+                        <div><span class="hole-comment-anon">夜晚的蝙蝠</span><span class="hole-comment-time">4天前</span>
+                            <div class="hole-comment-body">找到了那道题，答案应该是两个字……感觉有点方向了</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子8：宿管查寝 噪声 -->
+        <div class="hole-post-card">
+            <div class="hole-post-head">
+                <div class="hole-avatar" style="background:#3a2a1a">🐻</div>
+                <div class="hole-post-meta">
+                    <div class="hole-post-anon">慵懒的熊</div>
+                    <div class="hole-post-time">5天前 · 11月21日</div>
+                </div>
+                <span class="hole-post-tag normal">吐槽</span>
+            </div>
+            <div class="hole-post-title">宿管大妈今天查寝查出执照来了</div>
+            <div class="hole-post-body">手电筒照床底，翻行李箱，连充电宝都要检查……
+
+说是上面通知让严查，我们宿舍六个人被罚站了二十分钟。
+
+有没有人知道最近学校为什么突然这么严？</div>
+            <div class="hole-post-footer">
+                <span class="hole-stat">🔥 388</span>
+                <span class="hole-stat">💬 9</span>
+                <button class="hole-expand-btn" onclick="toggleComments('c8',this)">展开评论 ▾</button>
+            </div>
+            <div class="hole-comments" id="c8">
+                <div class="hole-comments-inner">
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2a2a5c">🐟</div>
+                        <div><span class="hole-comment-anon">漂流的小鱼</span><span class="hole-comment-time">5天前</span>
+                            <div class="hole-comment-body">我们宿舍也是，说是有学生深夜在校园里游荡被发现了。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a3a5c">🐋</div>
+                        <div><span class="hole-comment-anon">深蓝的鲸鱼</span><span class="hole-comment-time">4天前</span>
+                            <div class="hole-comment-body">最近好几个人提到旧实验楼那边，跟这个有关系吗</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#3a2a1a">🐻</div>
+                        <div><span class="hole-comment-anon">慵懒的熊</span><span class="hole-comment-time">4天前</span>
+                            <div class="hole-comment-body">管它，反正我就是不想被罚站。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子9：林小雨失踪 线索 -->
+        <div class="hole-post-card">
+            <div class="hole-post-head">
+                <div class="hole-avatar" style="background:#1a2a4a">🦅</div>
+                <div class="hole-post-meta">
+                    <div class="hole-post-anon">孤独的鹰</div>
+                    <div class="hole-post-time">12天前 · 11月14日</div>
+                </div>
+                <span class="hole-post-tag normal">求助</span>
+            </div>
+            <div class="hole-post-title">有没有人认识高二（3）班的林小雨</div>
+            <div class="hole-post-body">她9月底就突然说回老家了，但我跟她妈妈联系过，她妈妈说完全联系不上她。
+
+她手机也打不通，微信不回，已经两周了。
+
+班主任说她请假了但说不清楚原因。这正常吗？</div>
+            <div class="hole-post-footer">
+                <span class="hole-stat">🔥 267</span>
+                <span class="hole-stat">💬 10</span>
+                <button class="hole-expand-btn" onclick="toggleComments('c9',this)">展开评论 ▾</button>
+            </div>
+            <div class="hole-comments" id="c9">
+                <div class="hole-comments-inner">
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a3a5c">🐧</div>
+                        <div><span class="hole-comment-anon">迷路的企鹅</span><span class="hole-comment-time">12天前</span>
+                            <div class="hole-comment-body">我也是（3）班的，她走之前状态就很奇怪。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#3a3a1a">🦁</div>
+                        <div><span class="hole-comment-anon">沉睡的狮子</span><span class="hole-comment-time">11天前</span>
+                            <div class="hole-comment-body">她9月参加过那个健康志愿者活动吧，旧实验楼那边的。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a2a4a">🦅</div>
+                        <div><span class="hole-comment-anon">孤独的鹰</span><span class="hole-comment-time">11天前</span>
+                            <div class="hole-comment-body">那个活动是什么情况</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#3a3a1a">🦁</div>
+                        <div><span class="hole-comment-anon">沉睡的狮子</span><span class="hole-comment-time">11天前</span>
+                            <div class="hole-comment-body">校园网论坛上董老师发的招募帖，9月12号晚上，旧实验楼地下室。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a2a4a">🦅</div>
+                        <div><span class="hole-comment-anon">孤独的鹰</span><span class="hole-comment-time">10天前</span>
+                            <div class="hole-comment-body">……那之后就消失了。这也太巧了。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子10：图书馆账号（入口，不含密码） -->
+        <div class="hole-post-card">
+            <div class="hole-post-head">
+                <div class="hole-avatar" style="background:#1a4a3a">🦦</div>
+                <div class="hole-post-meta">
+                    <div class="hole-post-anon">深夜的海獭</div>
+                    <div class="hole-post-time">41天前 · 10月16日</div>
+                </div>
+                <span class="hole-post-tag hot">🔥 热门</span>
+            </div>
+            <div class="hole-post-title">我妈的图书馆账号被我看到了哈哈哈</div>
+            <div class="hole-post-body">我妈在学校图书馆当管理员，手机没锁屏，账号我看到了：lib_admin
+
+密码没看清，不过这个帖子里有人聊过，仔细翻翻。</div>
+            <div class="hole-post-footer">
+                <span class="hole-stat fire">🔥 892</span>
+                <span class="hole-stat">💬 7</span>
+                <button class="hole-expand-btn" onclick="toggleComments('c10',this)">展开评论 ▾</button>
+            </div>
+            <div class="hole-comments" id="c10">
+                <div class="hole-comments-inner">
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a3a5c">🐧</div>
+                        <div><span class="hole-comment-anon">迷路的企鹅</span><span class="hole-comment-time">41天前</span>
+                            <div class="hole-comment-body">哈哈哈你完蛋了</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2d1b69">🦇</div>
+                        <div><span class="hole-comment-anon">夜晚的蝙蝠</span><span class="hole-comment-time">41天前</span>
+                            <div class="hole-comment-body">密码在哪个帖子啊</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a4a3a">🦦</div>
+                        <div><span class="hole-comment-anon">深夜的海獭</span><span class="hole-comment-time">40天前</span>
+                            <div class="hole-comment-body">帖子里有人说过，仔细翻翻。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2d1b69">🦇</div>
+                        <div><span class="hole-comment-anon">夜晚的蝙蝠</span><span class="hole-comment-time">39天前</span>
+                            <div class="hole-comment-body">翻到了，帖3那边猫头鹰说的，要去师资页面查……真麻烦</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子11：高三压力 噪声 -->
+        <div class="hole-post-card">
+            <div class="hole-post-head">
+                <div class="hole-avatar" style="background:#3a1a5c">🦋</div>
+                <div class="hole-post-meta">
+                    <div class="hole-post-anon">夜里的蝴蝶</div>
+                    <div class="hole-post-time">3天前</div>
+                </div>
+                <span class="hole-post-tag normal">吐槽</span>
+            </div>
+            <div class="hole-post-title">高三到底有没有尽头</div>
+            <div class="hole-post-body">每天5点半起床，晚上11点熄灯，中间全是课和作业。
+
+我有时候会想，如果能暂停一下就好了，什么都不用记，什么都不用想。</div>
+            <div class="hole-post-footer">
+                <span class="hole-stat fire">🔥 1204</span>
+                <span class="hole-stat">💬 53</span>
+                <button class="hole-expand-btn" onclick="toggleComments('c11',this)">展开评论 ▾</button>
+            </div>
+            <div class="hole-comments" id="c11">
+                <div class="hole-comments-inner">
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2d1b69">🦒</div>
+                        <div><span class="hole-comment-anon">高挑的长颈鹿</span><span class="hole-comment-time">3天前</span>
+                            <div class="hole-comment-body">同哭。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a4a3a">🦦</div>
+                        <div><span class="hole-comment-anon">深夜的海獭</span><span class="hole-comment-time">3天前</span>
+                            <div class="hole-comment-body">还有五十几天就月考了……不说了。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子12：求答案 噪声 -->
+        <div class="hole-post-card">
+            <div class="hole-post-head">
+                <div class="hole-avatar" style="background:#1a3a5c">🐑</div>
+                <div class="hole-post-meta">
+                    <div class="hole-post-anon">困惑的小羊</div>
+                    <div class="hole-post-time">10天前 · 11月16日</div>
+                </div>
+                <span class="hole-post-tag normal">日常</span>
+            </div>
+            <div class="hole-post-title">求高二数学练习册答案！！！</div>
+            <div class="hole-post-body">急急急！！第三章导数部分，明天要交！！</div>
+            <div class="hole-post-footer">
+                <span class="hole-stat">🔥 89</span>
+                <span class="hole-stat">💬 3</span>
+                <button class="hole-expand-btn" onclick="toggleComments('c12',this)">展开评论 ▾</button>
+            </div>
+            <div class="hole-comments" id="c12">
+                <div class="hole-comments-inner">
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2d1b69">🦫</div>
+                        <div><span class="hole-comment-anon">无聊的河狸</span><span class="hole-comment-time">10天前</span>
+                            <div class="hole-comment-body">我也没有……一起摆烂（</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#1a4a2a">🦎</div>
+                        <div><span class="hole-comment-anon">冷静的蜥蜴</span><span class="hole-comment-time">9天前</span>
+                            <div class="hole-comment-body">直接问老师，别拖。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 帖子13：今天最新 噪声 -->
+        <div class="hole-post-card">
+            <div class="hole-post-head">
+                <div class="hole-avatar" style="background:#2a2a5c">🐟</div>
+                <div class="hole-post-meta">
+                    <div class="hole-post-anon">漂流的小鱼</div>
+                    <div class="hole-post-time">今天</div>
+                </div>
+                <span class="hole-post-tag normal">日常</span>
+            </div>
+            <div class="hole-post-title">有没有人发现最近刘天清不见了</div>
+            <div class="hole-post-body">11月20日之后就不见了，今天已经过去5天了，班里说他请假，但感觉不太对。
+
+他最近在研究什么奇怪的东西，发了一些看不懂的帖子，现在人不见了……
+
+有点怕。</div>
+            <div class="hole-post-footer">
+                <span class="hole-stat">🔥 178</span>
+                <span class="hole-stat">💬 4</span>
+                <button class="hole-expand-btn" onclick="toggleComments('c13',this)">展开评论 ▾</button>
+            </div>
+            <div class="hole-comments" id="c13">
+                <div class="hole-comments-inner">
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#3a1a5c">🦋</div>
+                        <div><span class="hole-comment-anon">夜里的蝴蝶</span><span class="hole-comment-time">今天</span>
+                            <div class="hole-comment-body">那个加密帖是他发的吗？</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2a2a5c">🐟</div>
+                        <div><span class="hole-comment-anon">漂流的小鱼</span><span class="hole-comment-time">今天</span>
+                            <div class="hole-comment-body">应该是，那个「困惑的麋鹿」就是他，风格很像。</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#3a1a5c">🦋</div>
+                        <div><span class="hole-comment-anon">夜里的蝴蝶</span><span class="hole-comment-time">今天</span>
+                            <div class="hole-comment-body">那个帖子里的谜语……有没有人搞懂了</div>
+                        </div>
+                    </div>
+                    <div class="hole-comment">
+                        <div class="hole-comment-avatar" style="background:#2a2a5c">🐟</div>
+                        <div><span class="hole-comment-anon">漂流的小鱼</span><span class="hole-comment-time">今天</span>
+                            <div class="hole-comment-body">他在校园网论坛发过类似的题，可以去看看。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="hole-footer">
+        hole.lbyz.internal · 匿名平台 · 仅限校园内网访问 · 言论自负
+        &emsp;|&emsp; <a href="../index.html" style="color:rgba(255,255,255,0.35);text-decoration:none">返回狼堡一中校园官网</a>
+    </footer>
+
+    <script>
+        function toggleComments(id, btn) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const isOpen = el.classList.toggle("open");
+            btn.textContent = isOpen ? btn.textContent.replace("展开", "收起").replace("▾", "▴")
+                : btn.textContent.replace("收起", "展开").replace("▴", "▾");
+        }
+    </script>
+</body>
+
+</html>
