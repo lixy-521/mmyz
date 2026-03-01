@@ -106,8 +106,7 @@ const BOOK_DB = {
       { user: "刘天清", date: "10月5日", returnDate: "-",
         comment: "这是什么密码吗？" },
       { user: "林小雨", date: "9月5日", returnDate: "9月7日",
-        comment: "这本书上次dxf借的，还的时候夹了张便条没取走。Lbyz@dxf2023! " },
-      }
+        comment: "这本书上次dxf借的，还的时候夹了张便条没取走。Lbyz@dxf2023! " }
     ]
     
   },
