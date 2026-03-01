@@ -122,7 +122,7 @@ const PRINCIPAL_ARCHIVE_CONTENT = `
     <p style="font-size:13px;color:#6b7f93;margin-bottom:16px">以下三种参数须由校长账号在实验室控制台执行，dxf账号无操作权限。</p>
 
     <div style="background:#f5f8fc;border-radius:6px;padding:16px;margin-bottom:16px">
-      <p style="margin-bottom:8px"><strong style="color:#c8962e">参数一：工作参数（WORK）— 默认状态</strong></p>
+      <p style="margin-bottom:8px"><strong style="color:#c8962e">参数一：工作参数（0.0.0.1）— 默认状态</strong></p>
       <p style="line-height:1.9;font-size:13px">
         维持受试者持续的深度诱导状态，同步采集脑波与思维模式数据。
         受试者意识完全离线，生命体征稳定。数据采集效率最高。
@@ -130,26 +130,12 @@ const PRINCIPAL_ARCHIVE_CONTENT = `
     </div>
 
     <div style="background:#fffbf0;border:1px solid #f0d090;border-radius:6px;padding:16px;margin-bottom:16px">
-      <p style="margin-bottom:8px"><strong style="color:#856404">参数二：待机参数（STANDBY）</strong></p>
+      <p style="margin-bottom:8px"><strong style="color:#856404">参数二：待机参数（168.112.96.255）</strong></p>
       <p style="line-height:1.9;font-size:13px">
         暂停数据采集，切换为生命维持模式。受试者仍处于诱导状态，可随时恢复采集。
       </p>
       <p style="color:#856404;font-size:12px;margin-top:8px">
         注意：超过48小时将导致受试者醒来后出现记忆碎片化，部分近期记忆模糊或丢失。
-      </p>
-    </div>
-
-    <div style="background:#f0fff5;border:1px solid #90d0a0;border-radius:6px;padding:16px;margin-bottom:16px">
-      <p style="margin-bottom:8px"><strong style="color:#1e7e4a">参数三：逆向参数</strong></p>
-      <p style="line-height:1.9;font-size:13px">
-        将已采集的全部思维数据完整写回受试者大脑，对所有采集操作执行逆向还原。
-        写回完成后仪器自动断开，受试者在15-30分钟内自然苏醒，记忆与认知完整无损。
-      </p>
-      <p style="color:#1e7e4a;font-size:12px;margin-top:8px;font-weight:600">
-        这是唯一能让受试者在无后遗症情况下苏醒的参数。
-      </p>
-      <p style="font-size:12px;color:#6b7f93;margin-top:6px;font-family:'Courier New',monospace">
-        参数值为数字串格式（xxx.xxx.xx.xxx），需从外部获取。本系统仅授权待机参数。
       </p>
     </div>
 
@@ -162,7 +148,7 @@ const PRINCIPAL_ARCHIVE_CONTENT = `
 
     <h3 style="color:#1a3a5c;margin:20px 0 8px">二、控制台操作说明</h3>
     <p style="font-size:13px;color:#6b7f93;line-height:1.9">
-      前往「实验室管理」→ 搜索「格致」→ 点击「调整参数」→ 输入参数名称（如：逆向参数）→ 确认执行。<br>
+      前往「实验室管理」→ 搜索「格致」→ 点击「调整参数」→ 输入参数 → 确认执行。<br>
       或点击「结束实验」强制中止（不推荐，后果不可逆）。
     </p>
   </div>
