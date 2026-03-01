@@ -376,17 +376,7 @@ const ID_POSTS = {
   ],
 
   // 干扰项
-  "lw2007": [
-    {
-      title: "树洞那个地址是什么",
-      time: "10月22日 11:30",
-      body: `有人说有个匿名网站，在哪里？`,
-      comments: [
-        { id: "yy2008", text: "hole.lbyz.internal，直接在地址栏输就行。" },
-        { id: "lw2007", text: "谢了" }
-      ]
-    }
-  ],
+  
   "zhanggq": [
     {
       title: "竞赛复习资料整理（数论部分）",
