@@ -101,7 +101,7 @@ const BOOK_DB = {
     status: "借出（逾期未还）",
     currentBorrower: "林小雨（逾期 53 天）",
     history: [
-      { user: "刘天清", date: "10月15日", returnDate: "10月25日",
+      { user: "刘天清", date: "11月5日", returnDate: "11月15日",
         comment: "这本书上次dxf借的，还的时候夹了张便条没取走。便条是北境神经工程研究院（bnei.edu）的内部联系单，上面写着dxf的系统密码：Lbyz@dxf2023! 。研究院统一管理合作学校的账号，难怪密码格式这么奇怪。" }
     ]
   },
@@ -120,7 +120,10 @@ const BOOK_DB = {
     category: "工程",
     status: "在馆",
     currentBorrower: "（当前无人借阅）",
-    history: [],
+    history: [
+      { user: "刘天清", date: "11月18日", returnDate: "11月19日",
+        comment: "114.255.14.191" }
+    ],
     newArrival: true
   },
   "高中数学竞赛指南": {

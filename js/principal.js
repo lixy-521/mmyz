@@ -140,13 +140,16 @@ const PRINCIPAL_ARCHIVE_CONTENT = `
     </div>
 
     <div style="background:#f0fff5;border:1px solid #90d0a0;border-radius:6px;padding:16px;margin-bottom:16px">
-      <p style="margin-bottom:8px"><strong style="color:#1e7e4a">参数三：逆向参数（REVERSE）</strong></p>
+      <p style="margin-bottom:8px"><strong style="color:#1e7e4a">参数三：逆向参数</strong></p>
       <p style="line-height:1.9;font-size:13px">
         将已采集的全部思维数据完整写回受试者大脑，对所有采集操作执行逆向还原。
         写回完成后仪器自动断开，受试者在15-30分钟内自然苏醒，记忆与认知完整无损。
       </p>
       <p style="color:#1e7e4a;font-size:12px;margin-top:8px;font-weight:600">
         这是唯一能让受试者在无后遗症情况下苏醒的参数。
+      </p>
+      <p style="font-size:12px;color:#6b7f93;margin-top:6px;font-family:'Courier New',monospace">
+        参数值为数字串格式（xxx.xxx.xx.xxx），需从外部获取。本系统仅授权待机参数。
       </p>
     </div>
 
@@ -198,7 +201,7 @@ function initMails() {
       </div>
       <div class="mail-subject">${m.subject}</div>
       <div class="mail-preview">${m.preview}</div>
-      <div class="mail-detail hidden">
+      <div class="mail-detail">
         <div class="mail-detail-meta">发件人：${m.from} | 收件人：${m.to} | 时间：${m.date}</div>
         <div class="mail-detail-body">${m.body.replace(/\n/g, "<br>")}</div>
       </div>
@@ -207,13 +210,13 @@ function initMails() {
 
 function toggleMail(i, el) {
     const detail = el.querySelector(".mail-detail");
-    const isOpen = !detail.classList.contains("hidden");
+    const isOpen = detail.classList.contains("open");
     document.querySelectorAll(".mail-item").forEach(li => {
-        li.querySelector(".mail-detail").classList.add("hidden");
+        li.querySelector(".mail-detail").classList.remove("open");
         li.style.background = "";
     });
     if (!isOpen) {
-        detail.classList.remove("hidden");
+        detail.classList.add("open");
         el.style.background = "#f5f8fc";
     }
 }
@@ -334,10 +337,10 @@ function submitParam() {
             "即将切换为<strong>待机参数</strong>。\n\n仪器将暂停数据采集，维持受试者基础生命体征。\n请确认此操作。",
             () => { window.location.href = "ending1.html"; }
         );
-    } else if (val === "逆向参数" || val === "REVERSE") {
+    } else if (val === "114.255.14.191") {
         openModal(
             "确认切换参数",
-            "即将启动<strong>逆向参数</strong>。\n\n系统将把采集到的全部数据写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
+            "即将启动逆向参数 <strong style='font-family:monospace'>114.255.14.191</strong>。\n\n系统将把采集到的全部数据完整写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
             () => { window.location.href = "ending2.html"; }
         );
     } else {
