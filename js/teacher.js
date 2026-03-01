@@ -157,7 +157,7 @@ const ARCHIVE_CONTENT = `
     </p>
 
     <h3 style="color:#1a3a5c;margin-bottom:8px">二、实验状态参数说明</h3>
-    <p style="font-size:13px;color:#6b7f93;margin-bottom:12px">共三种参数，由校长账号统一管理与执行。以下为技术备忘。</p>
+    <p style="font-size:13px;color:#6b7f93;margin-bottom:12px">参数由校长账号统一管理与执行。以下为技术备忘。</p>
     <div style="background:#f5f8fc;border-radius:6px;padding:16px;margin-bottom:16px">
       <p style="margin-bottom:8px;font-size:13px;color:#444"><strong>参数一（默认运行）</strong></p>
       <p style="line-height:1.9;font-size:13px;color:#666">
@@ -170,13 +170,6 @@ const ARCHIVE_CONTENT = `
         暂停数据读写，切换为生命维持模式。受试者仍处于诱导状态，但长期使用会导致记忆碎片化。
       </p>
     </div>
-    <div style="background:#f0fff5;border:1px solid #90d0a0;border-radius:6px;padding:16px;margin-bottom:16px">
-      <p style="margin-bottom:8px;font-size:13px;color:#444"><strong>参数三（数据写回）</strong></p>
-      <p style="line-height:1.9;font-size:13px;color:#666">
-        将已采集的所有数据完整写回受试者大脑——即对采集操作执行完全的<strong style="color:#1e7e4a">逆向</strong>还原。
-        写回完成后仪器自动断开，受试者在15-30分钟内自然苏醒，记忆与认知完整无损。
-        这是唯一不留后遗症的唤醒方式。
-      </p>
       <p style="font-size:12px;color:#6b7f93;margin-top:8px;font-family:'Courier New',monospace">
         参数值格式：<strong>xxx.xxx.xx.xxx</strong>（需从外部线索获取具体数值）
       </p>
