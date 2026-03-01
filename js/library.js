@@ -41,16 +41,17 @@ const BORROWER_DB = {
     { title: "都市传说研究", category: "社会学", status: "已还", statusClass: "success" },
     { title: "异常心理学", category: "心理学", status: "已还", statusClass: "success" },
     { title: "建筑结构安全", category: "工程", status: "已还", statusClass: "success" },
-    { title: "逆向思维训练", category: "心理学", status: "已还", statusClass: "success" }
+    { title: "逆向思维训练", category: "心理学", status: "已还", statusClass: "success" },
+    { title: "Klein有机化学", category: "化学", status: "逾期未还）", statusClass: "danger" }
   ],
   "林小雨": [
-    { title: "Klein有机化学", category: "化学", status: "逾期未还（75天）", statusClass: "danger" }
+    { title: "Klein有机化学", category: "化学", status: "已还）", statusClass: "success" }
   ],
   "王嘉宇": [
     { title: "高中数学竞赛指南", category: "数学", status: "已还", statusClass: "success" }
   ],
   "陈思雨": [
-    { title: "英语写作范文精选", category: "语文", status: "已还", statusClass: "success" }
+    { title: "英语写作范文精选", category: "英语", status: "已还", statusClass: "success" }
   ]
 };
 
@@ -82,7 +83,8 @@ const BOOK_DB = {
     currentBorrower: "（当前无人借阅）",
     history: [
       { user: "刘天清", date: "11月3日", returnDate: "11月12日",
-        comment: "旧实验楼1998年档案记录为「拆除」，但图纸显示地下B层结构完整保留。图书馆有没有1997年之前的校园建筑档案？" }
+        comment: "旧实验楼1998年档案记录为「拆除」，但图纸显示地下B层结构完整保留。图书馆有没有1997年之前的校园建筑档案？"      
+      },
     ]
   },
   "逆向思维训练": {
@@ -99,11 +101,15 @@ const BOOK_DB = {
     isbn: "978-7-04-567890-1",
     category: "化学",
     status: "借出（逾期未还）",
-    currentBorrower: "林小雨（逾期 53 天）",
+    currentBorrower: "刘天清（逾期 52 天）",
     history: [
-      { user: "刘天清", date: "11月5日", returnDate: "11月15日",
-        comment: "这本书上次dxf借的，还的时候夹了张便条没取走。便条是北境神经工程研究院（bnei.edu）的内部联系单，上面写着dxf的系统密码：Lbyz@dxf2023! 。研究院统一管理合作学校的账号，难怪密码格式这么奇怪。" }
+      { user: "刘天清", date: "10月5日", returnDate: "-",
+        comment: "这是什么密码吗？" },
+      { user: "林小雨", date: "9月5日", returnDate: "9月7日",
+        comment: "这本书上次dxf借的，还的时候夹了张便条没取走。Lbyz@dxf2023! " },
+      }
     ]
+    
   },
   "校园安全手册": {
     isbn: "978-7-05-112233-1",
