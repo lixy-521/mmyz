@@ -5,13 +5,13 @@
 
 // ─── 邮件（校长视角，比dxf更高层更冷静）───
 const PRINCIPAL_MAILS = [
-    {
-        from: "陈昱",
-        to: "王明德",
-        date: "8月12日 10:21",
-        subject: "格致计划合作意向确认",
-        preview: "王校长，感谢上次会面……",
-        body: `王校长，
+  {
+    from: "陈昱",
+    to: "王明德",
+    date: "8月12日 10:21",
+    subject: "格致计划合作意向确认",
+    preview: "王校长，感谢上次会面……",
+    body: `王校长，
 
 感谢上次会面。研究院决定将格致计划的第一个校园合作点定在狼堡一中，主要基于以下考虑：学校历史上与我院有过渊源（1998年），王校长本人的理解与配合，以及贵校理科生源的质量。
 
@@ -21,14 +21,14 @@ const PRINCIPAL_MAILS = [
 
 ——陈昱
 北境神经工程研究院`
-    },
-    {
-        from: "王明德",
-        to: "陈昱",
-        date: "8月14日 22:08",
-        subject: "Re: 同意，条件确认",
-        preview: "陈博士，合作条件我确认……",
-        body: `陈博士，
+  },
+  {
+    from: "王明德",
+    to: "陈昱",
+    date: "8月14日 22:08",
+    subject: "Re: 同意，条件确认",
+    preview: "陈博士，合作条件我确认……",
+    body: `陈博士，
 
 合作条件我确认，研究院的诉求我也理解。
 
@@ -37,14 +37,14 @@ const PRINCIPAL_MAILS = [
 另外，外部说辞已安排好。旧实验楼整修公告将在10月发布，对外解释楼内异常出入。校内知情人员只有我和董新飞，其余人员均不知情。
 
 ——王明德`
-    },
-    {
-        from: "陈昱",
-        to: "王明德",
-        date: "10月29日 07:55",
-        subject: "首批数据质量反馈",
-        preview: "王校长，昨晚首次采集完成……",
-        body: `王校长，
+  },
+  {
+    from: "陈昱",
+    to: "王明德",
+    date: "10月29日 07:55",
+    subject: "首批数据质量反馈",
+    preview: "王校长，昨晚首次采集完成……",
+    body: `王校长，
 
 昨晚首次采集完成，受试者林小雨体征平稳，脑波质量优于预期。这个受试者的认知模型构建价值很高。
 
@@ -53,14 +53,14 @@ const PRINCIPAL_MAILS = [
 预计完整采集周期6周，期间受试者将持续处于诱导状态。请做好对外解释工作，她家人那边的说辞需要统一。
 
 ——陈昱`
-    },
-    {
-        from: "董新飞",
-        to: "王明德",
-        date: "11月20日 23:47",
-        subject: "【紧急】刘天清已处置",
-        preview: "王校长，今晚出现意外……",
-        body: `王校长，
+  },
+  {
+    from: "董新飞",
+    to: "王明德",
+    date: "11月20日 23:47",
+    subject: "【紧急】刘天清已处置",
+    preview: "王校长，今晚出现意外……",
+    body: `王校长，
 
 今晚刘天清强行进入了旧实验楼。他一直在私下调查林小雨的失踪，图书馆的借阅记录暴露了他的调查方向，但我们没有及时注意到。
 
@@ -71,14 +71,14 @@ const PRINCIPAL_MAILS = [
 档案系统密码我将另行发送。
 
 ——董新飞  23:47`
-    },
-    {
-        from: "王明德",
-        to: "董新飞",
-        date: "11月20日 23:58",
-        subject: "Re: 知道了，处理后事",
-        preview: "知道了。档案密码你还记得……",
-        body: `知道了。
+  },
+  {
+    from: "王明德",
+    to: "董新飞",
+    date: "11月20日 23:58",
+    subject: "Re: 知道了，处理后事",
+    preview: "知道了。档案密码你还记得……",
+    body: `知道了。
 
 档案系统密码你应该记得，当初我们商定的那个：格致+年份+学校英文名，三段拼在一起。
 
@@ -87,14 +87,14 @@ const PRINCIPAL_MAILS = [
 那个孩子得了竞赛一等奖……算了。校园网的新闻留着，免得有人注意到时间差。
 
 ——王明德  23:58`
-    },
-    {
-        from: "陈昱",
-        to: "王明德",
-        date: "12月2日 08:30",
-        subject: "关于刘天清数据",
-        preview: "王校长，这个意外收获……",
-        body: `王校长，
+  },
+  {
+    from: "陈昱",
+    to: "王明德",
+    date: "12月2日 08:30",
+    subject: "关于刘天清数据",
+    preview: "王校长，这个意外收获……",
+    body: `王校长，
 
 刘天清的数学思维数据采集质量远超预期，这是我们一直缺少的维度——高度结构化的逻辑推理模式，和林小雨的创意型认知模型形成了绝佳互补。
 
@@ -105,11 +105,11 @@ const PRINCIPAL_MAILS = [
 关于「处置」方式——我需要再次提醒你，有且只有一种不留痕迹的唤醒方式。届时请使用实验室控制台的参数三，系统会自动完成数据写回并断开设备。强制断开或输入无效参数会造成不可逆损伤，那样后续会很麻烦。
 
 ——陈昱`
-    }
+  }
 ];
 
 // ─── 档案密码 ───
-const PRINCIPAL_ARCHIVE_PASSWORD = "GZ2023WOLF";
+const PRINCIPAL_ARCHIVE_PASSWORD = "GZ2023LBYZ";
 
 // ─── 档案内容（校长版：更高权限，含完整参数名称）───
 const PRINCIPAL_ARCHIVE_CONTENT = `
@@ -156,30 +156,30 @@ const PRINCIPAL_ARCHIVE_CONTENT = `
 
 // ─── 初始化 ───
 document.addEventListener("DOMContentLoaded", () => {
-    requireRole && requireRole("principal");
-    initSidebar();
-    initMails();
-    initArchive();
-    initLab();
-    initModal();
+  requireRole && requireRole("principal");
+  initSidebar();
+  initMails();
+  initArchive();
+  initLab();
+  initModal();
 });
 
 function initSidebar() {
-    document.querySelectorAll(".sys-sidebar-item").forEach(item => {
-        item.addEventListener("click", function () {
-            document.querySelectorAll(".sys-sidebar-item").forEach(i => i.classList.remove("active"));
-            document.querySelectorAll(".sys-section").forEach(s => s.classList.remove("active"));
-            this.classList.add("active");
-            document.getElementById("sec-" + this.dataset.section)?.classList.add("active");
-        });
+  document.querySelectorAll(".sys-sidebar-item").forEach(item => {
+    item.addEventListener("click", function () {
+      document.querySelectorAll(".sys-sidebar-item").forEach(i => i.classList.remove("active"));
+      document.querySelectorAll(".sys-section").forEach(s => s.classList.remove("active"));
+      this.classList.add("active");
+      document.getElementById("sec-" + this.dataset.section)?.classList.add("active");
     });
+  });
 }
 
 // ─── 邮件 ───
 function initMails() {
-    const list = document.getElementById("mail-list");
-    if (!list) return;
-    list.innerHTML = PRINCIPAL_MAILS.map((m, i) => `
+  const list = document.getElementById("mail-list");
+  if (!list) return;
+  list.innerHTML = PRINCIPAL_MAILS.map((m, i) => `
     <li class="mail-item" onclick="toggleMail(${i}, this)">
       <div class="mail-item-header">
         <span class="mail-from">${m.from} → ${m.to}</span>
@@ -195,61 +195,61 @@ function initMails() {
 }
 
 function toggleMail(i, el) {
-    const detail = el.querySelector(".mail-detail");
-    const isOpen = detail.classList.contains("open");
-    document.querySelectorAll(".mail-item").forEach(li => {
-        li.querySelector(".mail-detail").classList.remove("open");
-        li.style.background = "";
-    });
-    if (!isOpen) {
-        detail.classList.add("open");
-        el.style.background = "#f5f8fc";
-    }
+  const detail = el.querySelector(".mail-detail");
+  const isOpen = detail.classList.contains("open");
+  document.querySelectorAll(".mail-item").forEach(li => {
+    li.querySelector(".mail-detail").classList.remove("open");
+    li.style.background = "";
+  });
+  if (!isOpen) {
+    detail.classList.add("open");
+    el.style.background = "#f5f8fc";
+  }
 }
 
 // ─── 档案 ───
 let archiveUnlocked = false;
 function initArchive() {
-    const btn = document.getElementById("archive-unlock-btn");
-    const input = document.getElementById("archive-password");
-    if (btn) btn.addEventListener("click", tryUnlock);
-    if (input) input.addEventListener("keydown", e => { if (e.key === "Enter") tryUnlock(); });
+  const btn = document.getElementById("archive-unlock-btn");
+  const input = document.getElementById("archive-password");
+  if (btn) btn.addEventListener("click", tryUnlock);
+  if (input) input.addEventListener("keydown", e => { if (e.key === "Enter") tryUnlock(); });
 }
 
 function tryUnlock() {
-    const val = document.getElementById("archive-password")?.value.trim();
-    const errEl = document.getElementById("archive-error");
-    if (!val) return;
-    if (val === PRINCIPAL_ARCHIVE_PASSWORD) {
-        archiveUnlocked = true;
-        document.getElementById("archive-lock").classList.add("hidden");
-        const content = document.getElementById("archive-content");
-        content.classList.remove("hidden");
-        content.innerHTML = PRINCIPAL_ARCHIVE_CONTENT;
-    } else {
-        if (errEl) {
-            errEl.classList.remove("hidden");
-            errEl.textContent = "密码错误，请确认后重试";
-        }
+  const val = document.getElementById("archive-password")?.value.trim();
+  const errEl = document.getElementById("archive-error");
+  if (!val) return;
+  if (val === PRINCIPAL_ARCHIVE_PASSWORD) {
+    archiveUnlocked = true;
+    document.getElementById("archive-lock").classList.add("hidden");
+    const content = document.getElementById("archive-content");
+    content.classList.remove("hidden");
+    content.innerHTML = PRINCIPAL_ARCHIVE_CONTENT;
+  } else {
+    if (errEl) {
+      errEl.classList.remove("hidden");
+      errEl.textContent = "密码错误，请确认后重试";
     }
+  }
 }
 
 // ─── 实验室 ───
 function initLab() {
-    const btn = document.getElementById("lab-search-btn");
-    const input = document.getElementById("lab-search-input");
-    if (btn) btn.addEventListener("click", () => searchProject(input?.value));
-    if (input) input.addEventListener("keydown", e => { if (e.key === "Enter") searchProject(input.value); });
+  const btn = document.getElementById("lab-search-btn");
+  const input = document.getElementById("lab-search-input");
+  if (btn) btn.addEventListener("click", () => searchProject(input?.value));
+  if (input) input.addEventListener("keydown", e => { if (e.key === "Enter") searchProject(input.value); });
 }
 
 function searchProject(keyword) {
-    if (!keyword) return;
-    const q = keyword.trim();
-    const resultEl = document.getElementById("lab-result");
-    if (!resultEl) return;
+  if (!keyword) return;
+  const q = keyword.trim();
+  const resultEl = document.getElementById("lab-result");
+  if (!resultEl) return;
 
-    if (q.includes("格致") || q.toLowerCase() === "gezhi") {
-        resultEl.innerHTML = `
+  if (q.includes("格致") || q.toLowerCase() === "gezhi") {
+    resultEl.innerHTML = `
       <div class="experiment-card warning">
         <div class="experiment-header">
           <div class="status-dot"></div>
@@ -295,73 +295,73 @@ function searchProject(keyword) {
           </div>
         </div>
       </div>`;
-    } else {
-        resultEl.innerHTML = `<div class="campus-alert campus-alert-info">未找到项目 "${q}"，请检查项目名称</div>`;
-    }
+  } else {
+    resultEl.innerHTML = `<div class="campus-alert campus-alert-info">未找到项目 "${q}"，请检查项目名称</div>`;
+  }
 }
 
 function showParamInput() {
-    document.getElementById("param-area")?.classList.remove("hidden");
-    document.getElementById("param-input")?.focus();
+  document.getElementById("param-area")?.classList.remove("hidden");
+  document.getElementById("param-input")?.focus();
 }
 
 function confirmEnd() {
-    openModal(
-        "确认结束实验",
-        "你确定要<strong>强制结束实验</strong>吗？\n\n此操作将立即断开仪器连接，<strong style='color:#c0392b'>后果不可预测</strong>。",
-        () => { window.location.href = "ending0.html"; }
-    );
+  openModal(
+    "确认结束实验",
+    "你确定要<strong>强制结束实验</strong>吗？\n\n此操作将立即断开仪器连接，<strong style='color:#c0392b'>后果不可预测</strong>。",
+    () => { window.location.href = "ending0.html"; }
+  );
 }
 
 function submitParam() {
-    const val = document.getElementById("param-input")?.value.trim();
-    if (!val) return;
+  const val = document.getElementById("param-input")?.value.trim();
+  if (!val) return;
 
-    if (val === "168.112.96.255" ) {
-        openModal(
-            "确认切换参数",
-            "即将切换为<strong>待机参数</strong>。\n\n仪器将暂停数据采集，维持受试者基础生命体征。\n请确认此操作。",
-            () => { window.location.href = "ending1.html"; }
-        );
-    } else if (val === "114.255.14.191") {
-        openModal(
-            "确认切换参数",
-            "即将启动逆向参数 <strong style='font-family:monospace'>114.255.14.191</strong>。\n\n系统将把采集到的全部数据完整写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
-            () => { window.location.href = "ending2.html"; }
-        );
-    } else {
-        openModal(
-            "参数无效",
-            `输入的参数 "<strong>${val}</strong>" 不在有效参数列表中。\n\n系统将执行<strong style='color:#c0392b'>异常中止流程</strong>，后果不可预测。`,
-            () => { window.location.href = "ending0.html"; },
-            true
-        );
-    }
+  if (val === "168.112.96.255") {
+    openModal(
+      "确认切换参数",
+      "即将切换为<strong>待机参数</strong>。\n\n仪器将暂停数据采集，维持受试者基础生命体征。\n请确认此操作。",
+      () => { window.location.href = "ending1.html"; }
+    );
+  } else if (val === "114.255.14.191") {
+    openModal(
+      "确认切换参数",
+      "即将启动逆向参数 <strong style='font-family:monospace'>114.255.14.191</strong>。\n\n系统将把采集到的全部数据完整写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
+      () => { window.location.href = "ending2.html"; }
+    );
+  } else {
+    openModal(
+      "参数无效",
+      `输入的参数 "<strong>${val}</strong>" 不在有效参数列表中。\n\n系统将执行<strong style='color:#c0392b'>异常中止流程</strong>，后果不可预测。`,
+      () => { window.location.href = "ending0.html"; },
+      true
+    );
+  }
 }
 
 // ─── 模态框 ───
 function initModal() {
-    document.getElementById("modal-cancel")?.addEventListener("click", closeModal);
-    document.getElementById("modal-confirm")?.addEventListener("click", () => {
-        const cb = window._modalConfirmCb;
-        closeModal();
-        if (cb) cb();
-    });
-    document.getElementById("app-modal")?.addEventListener("click", e => {
-        if (e.target === document.getElementById("app-modal")) closeModal();
-    });
+  document.getElementById("modal-cancel")?.addEventListener("click", closeModal);
+  document.getElementById("modal-confirm")?.addEventListener("click", () => {
+    const cb = window._modalConfirmCb;
+    closeModal();
+    if (cb) cb();
+  });
+  document.getElementById("app-modal")?.addEventListener("click", e => {
+    if (e.target === document.getElementById("app-modal")) closeModal();
+  });
 }
 
 function openModal(title, body, onConfirm, danger = false) {
-    document.getElementById("modal-title").textContent = title;
-    document.getElementById("modal-body").innerHTML = body.replace(/\n/g, "<br>");
-    const confirmBtn = document.getElementById("modal-confirm");
-    confirmBtn.className = "campus-btn " + (danger ? "campus-btn-danger" : "campus-btn-primary");
-    window._modalConfirmCb = onConfirm;
-    document.getElementById("app-modal").classList.add("open");
+  document.getElementById("modal-title").textContent = title;
+  document.getElementById("modal-body").innerHTML = body.replace(/\n/g, "<br>");
+  const confirmBtn = document.getElementById("modal-confirm");
+  confirmBtn.className = "campus-btn " + (danger ? "campus-btn-danger" : "campus-btn-primary");
+  window._modalConfirmCb = onConfirm;
+  document.getElementById("app-modal").classList.add("open");
 }
 
 function closeModal() {
-    document.getElementById("app-modal")?.classList.remove("open");
-    window._modalConfirmCb = null;
+  document.getElementById("app-modal")?.classList.remove("open");
+  window._modalConfirmCb = null;
 }

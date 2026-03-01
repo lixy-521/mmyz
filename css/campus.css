@@ -245,6 +245,7 @@ img {
 /* LAYOUT */
 .campus-container {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     padding: 28px 24px;
     flex: 1;
@@ -298,7 +299,9 @@ img {
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow-md);
+    width: 100%;
     aspect-ratio: 16/5;
+    min-height: 240px;
     background: var(--primary-dark);
     margin-bottom: 24px;
 }
