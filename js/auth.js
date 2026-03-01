@@ -4,18 +4,18 @@
  */
 
 const ACCOUNTS = {
-    "security_li":   { password: "101028",       role: "security",   name: "李保安",  redirect: "security.html" },
-    "lib_admin":     { password: "guanzhang123",  role: "library",    name: "图书管理员", redirect: "library.html" },
-    "dxf_teacher":   { password: "Lbyz@dxf2023!", role: "teacher",    name: "董新飞",  redirect: "teacher.html" },
-    "wmd_principal": { password: "Gezhi@2023!",   role: "principal",  name: "王明德",  redirect: "principal.html" }
+    "security_li": { password: "101028", role: "security", name: "李保安", redirect: "security.html" },
+    "lib_admin": { password: "guanzhang123", role: "library", name: "图书管理员", redirect: "library.html" },
+    "dxf_teacher": { password: "Lbyz@dxf2023!", role: "teacher", name: "董新飞", redirect: "teacher.html" },
+    "wmd_principal": { password: "Gezhi@2023!", role: "principal", name: "王明德", redirect: "principal.html" }
 };
 
 // 密码别名兼容
 const PASSWORD_ALIASES = {
-    "guanzhang123":  ["guanzhang123", "Guanzhang123"],
-    "101028":        ["101028"],
+    "guanzhang123": ["guanzhang123", "Guanzhang123"],
+    "101028": ["101028"],
     "Lbyz@dxf2023!": ["Lbyz@dxf2023!", "lbyz@dxf2023!", "Lbyz@dxf2023"],
-    "Gezhi@2023!":   ["Gezhi@2023!", "gezhi@2023!", "Gezhi@2023"]
+    "Gezhi@2023!": ["Gezhi@2023!", "gezhi@2023!", "Gezhi@2023"]
 };
 
 function checkPassword(account, inputPwd) {
@@ -28,12 +28,17 @@ function checkPassword(account, inputPwd) {
 /**
  * 执行登录
  */
-function doLogin(username, password) {
+function doLogin(username, password, remember) {
     const account = ACCOUNTS[username.trim()];
     if (account && checkPassword(account, password)) {
         localStorage.setItem("lbyz_role", account.role);
         localStorage.setItem("lbyz_username", username.trim());
         localStorage.setItem("lbyz_name", account.name);
+        if (remember) {
+            localStorage.setItem("lbyz_saved_username", username.trim());
+        } else {
+            localStorage.removeItem("lbyz_saved_username");
+        }
         window.location.href = account.redirect;
         return true;
     }
@@ -69,10 +74,18 @@ function renderNavUser() {
     if (!area) return;
     const username = localStorage.getItem("lbyz_username");
     const name = localStorage.getItem("lbyz_name");
-    if (username) {
+    const role = localStorage.getItem("lbyz_role");
+    if (username && role) {
+        const roleRedirect = {
+            "security": "security.html",
+            "library": "library.html",
+            "teacher": "teacher.html",
+            "principal": "principal.html"
+        };
+        const href = roleRedirect[role] || "#";
         area.innerHTML = `
       <div class="campus-nav-user">
-        <span class="username">👤 ${name || username}</span>
+        <a href="${href}" class="username" style="color:rgba(255,255,255,0.9);font-size:13px;text-decoration:none;">👤 ${name || username}</a>
         <button class="logout-btn" onclick="doLogout()">退出</button>
       </div>`;
     } else {
@@ -91,18 +104,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // 登录表单
     const loginForm = document.getElementById("login-form");
     if (loginForm) {
+        // 预填已保存的账号
+        const savedUsername = localStorage.getItem("lbyz_saved_username");
+        const usernameInput = document.getElementById("username");
+        const rememberChk = document.getElementById("remember-me");
+        if (savedUsername && usernameInput) {
+            usernameInput.value = savedUsername;
+            if (rememberChk) rememberChk.checked = true;
+        }
+
         loginForm.addEventListener("submit", (e) => {
             e.preventDefault();
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
-            const errEl = document.getElementById("login-error");
+            const remember = document.getElementById("remember-me")?.checked || false;
 
             if (!username || !password) {
                 showLoginError("请填写账号和密码");
                 return;
             }
 
-            const ok = doLogin(username, password);
+            const ok = doLogin(username, password, remember);
             if (!ok) {
                 showLoginError("账号或密码错误，请联系教务处");
                 document.getElementById("password").value = "";
