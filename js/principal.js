@@ -317,7 +317,7 @@ function submitParam() {
     const val = document.getElementById("param-input")?.value.trim();
     if (!val) return;
 
-    if (val === "待机参数" || val === "STANDBY") {
+    if (val === "168.112.96.255" ) {
         openModal(
             "确认切换参数",
             "即将切换为<strong>待机参数</strong>。\n\n仪器将暂停数据采集，维持受试者基础生命体征。\n请确认此操作。",
