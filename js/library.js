@@ -102,7 +102,7 @@ const BOOK_DB = {
     currentBorrower: "林小雨（逾期 53 天）",
     history: [
       { user: "刘天清", date: "10月15日", returnDate: "10月25日",
-        comment: "这本书上次是dxf借的，还的时候夹了张纸条掉出来，上面写着「Lbyz@dxf2023!」，不知道是什么……还给他了。" }
+        comment: "这本书上次dxf借的，还的时候夹了张便条没取走。便条是北境神经工程研究院（bnei.edu）的内部联系单，上面写着dxf的系统密码：Lbyz@dxf2023! 。研究院统一管理合作学校的账号，难怪密码格式这么奇怪。" }
     ]
   },
   "校园安全手册": {

@@ -144,55 +144,50 @@ const ARCHIVE_CONTENT = `
   <div class="campus-card-header">📋 格致计划 — 实验参数说明文档 v2.3</div>
   <div class="campus-card-body">
     <p style="font-size:12px;color:#6b7f93;margin-bottom:16px">机密文件 | 仅限项目组核心成员查阅 | 最后更新：11月20日 | 实验地点：旧实验楼 B203</p>
-    <p style="font-size:11px;color:#c0392b;margin-bottom:16px">本项目承续自1998年中止的「格致原计划」，相关历史档案见校史室密封卷宗。技术支持方：北境神经工程研究院（顾问：陈昱）。</p>
+    <p style="font-size:11px;color:#888;margin-bottom:16px">本项目承续自1998年中止的「格致原计划」。技术支持方：北境神经工程研究院（顾问：陈昱）。</p>
 
     <h3 style="color:#1a3a5c;margin-bottom:8px">一、项目简介</h3>
     <p style="line-height:1.9;margin-bottom:16px">
       格致计划（GEZHI PROJECT）是狼堡一中与外部科研机构合作开展的思维数据采集实验。
       实验通过专用神经接口设备，在受试者处于深度诱导状态时，无创采集并记录其思维模式数据，
-      目标是建立"最优学习参数模型"，用于改善教育系统的个性化适配能力。
+      目标是建立"最优学习参数模型"。
     </p>
 
     <h3 style="color:#1a3a5c;margin-bottom:8px">二、实验状态参数说明</h3>
+    <p style="font-size:13px;color:#6b7f93;margin-bottom:12px">共三种参数，由校长账号统一管理与执行。以下为技术备忘。</p>
     <div style="background:#f5f8fc;border-radius:6px;padding:16px;margin-bottom:16px">
-      <p style="margin-bottom:12px"><strong style="color:#c8962e">★ 工作参数（默认状态）</strong></p>
-      <p style="line-height:1.9;font-size:13px">
-        维持受试者持续的深度诱导状态，同步采集脑波与思维模式数据。
-        受试者处于"冬眠样"状态，生命体征稳定但意识完全离线。
-        此为实验的标准运行模式，数据采集效率最高。
+      <p style="margin-bottom:8px;font-size:13px;color:#444"><strong>参数一（默认运行）</strong></p>
+      <p style="line-height:1.9;font-size:13px;color:#666">
+        维持受试者深度诱导状态，持续采集脑波数据。意识完全离线，生命体征稳定。
       </p>
     </div>
     <div style="background:#fffbf0;border:1px solid #f0d090;border-radius:6px;padding:16px;margin-bottom:16px">
-      <p style="margin-bottom:12px"><strong style="color:#856404">★ 待机参数（STANDBY）</strong></p>
-      <p style="line-height:1.9;font-size:13px">
-        暂停数据采集，仪器切换为"生命维持"模式，维持受试者基础生命体征但不进行任何数据读写。
-        受试者仍处于诱导状态。可随时重新切换回工作参数恢复采集。
-      </p>
-      <p style="color:#856404;font-size:12px;margin-top:8px">
-        注意：长期处于待机状态（超过48小时）可能导致受试者醒来后出现轻微记忆碎片化，
-        具体表现为对部分近期记忆的模糊或遗失，通常为非核心情感记忆。
+      <p style="margin-bottom:8px;font-size:13px;color:#444"><strong>参数二（暂停采集）</strong></p>
+      <p style="line-height:1.9;font-size:13px;color:#666">
+        暂停数据读写，切换为生命维持模式。受试者仍处于诱导状态，但长期使用会导致记忆碎片化。
       </p>
     </div>
     <div style="background:#f0fff5;border:1px solid #90d0a0;border-radius:6px;padding:16px;margin-bottom:16px">
-      <p style="margin-bottom:12px"><strong style="color:#1e7e4a">★ 逆向参数（REVERSE）</strong></p>
-      <p style="line-height:1.9;font-size:13px">
-        将已采集的全部思维数据完整写回受试者大脑，等价于对所有采集操作执行"逆向还原"。
-        写回完成后仪器自动断开连接，受试者将在15-30分钟内自然苏醒，记忆与认知完整无损。
-        这是唯一能让受试者在不留后遗症情况下苏醒的参数。
+      <p style="margin-bottom:8px;font-size:13px;color:#444"><strong>参数三（数据写回）</strong></p>
+      <p style="line-height:1.9;font-size:13px;color:#666">
+        将已采集的所有数据完整写回受试者大脑——即对采集操作执行完全的<strong style="color:#1e7e4a">逆向</strong>还原。
+        写回完成后仪器自动断开，受试者在15-30分钟内自然苏醒，记忆与认知完整无损。
+        这是唯一不留后遗症的唤醒方式，参数名称即其操作本质。
       </p>
     </div>
-    <div style="background:#fff0f0;border:1px solid #e09090;border-radius:6px;padding:16px">
-      <p style="margin-bottom:8px"><strong style="color:#c0392b">绝对禁止事项</strong></p>
+    <div style="background:#fff0f0;border:1px solid #e09090;border-radius:6px;padding:14px">
+      <p style="margin-bottom:6px;font-size:13px;color:#c0392b"><strong>禁止事项</strong></p>
       <p style="line-height:1.9;font-size:13px;color:#c0392b">
-        严禁在未完成参数切换的情况下强制手动断开仪器连接，
-        严禁输入无效参数导致系统异常中止。
-        上述操作将导致受试者脑细胞不可逆损伤，后果极其严重。
-        实验异常中止期间，如受试者大脑未完成数据写回，将导致不可逆神经损伤甚至死亡。
+        严禁强制断开仪器连接或输入无效参数。异常中止将导致不可逆神经损伤甚至死亡。
       </p>
     </div>
 
-    <h3 style="color:#1a3a5c;margin:16px 0 8px">三、当前受试者状态</h3>
-    <p style="font-size:13px;color:#6b7f93">（请前往实验室管理系统查看实时数据）</p>
+    <h3 style="color:#1a3a5c;margin:20px 0 8px">三、权限说明</h3>
+    <p style="font-size:13px;color:#6b7f93;line-height:1.9">
+      实验室控制台的实际操作权限归属<strong>校长账号</strong>（wmd_principal）。<br>
+      本账号（dxf_teacher）仅可查看实时状态，无法执行参数切换。<br>
+      如需执行操作，请退出后以校长账号登录。
+    </p>
   </div>
 </div>`;
 
@@ -336,18 +331,9 @@ function searchProject(keyword) {
         <p style="font-size:12px;color:#6b7f93;margin-bottom:14px">
           ⏱ 运行时长：35天16小时 &emsp; 📊 数据采集进度：87.3%
         </p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <button class="campus-btn campus-btn-danger" onclick="confirmEnd()">⏹ 结束实验</button>
-          <button class="campus-btn campus-btn-primary" onclick="showParamInput()">⚙ 调整参数</button>
-        </div>
-        <div id="param-area" class="hidden" style="margin-top:16px">
-          <div class="campus-alert campus-alert-warning">
-            请根据实验档案中的参数说明输入正确参数。操作不可逆，请确认后提交。
-          </div>
-          <div class="campus-search-bar" style="margin-top:10px">
-            <input type="text" class="campus-input" id="param-input" placeholder="输入参数名称…" />
-            <button class="campus-btn campus-btn-accent" onclick="submitParam()">提交</button>
-          </div>
+        <div style="margin-top:14px;padding:12px 16px;background:#f8f0f0;border:1px solid #e0b0a0;border-radius:6px;font-size:13px;color:#8a4030;">
+          权限不足 — 实验终止与参数调整操作需由校长账号执行。<br>
+          <span style="font-size:12px;color:#aaa;margin-top:4px;display:block">如有紧急情况，请联系王明德校长（wmd_principal）登录后处理。</span>
         </div>
       </div>`;
     } else {
@@ -368,7 +354,6 @@ function searchPersonnel(name) {
     const resultEl = document.getElementById("personnel-result");
     if (!resultEl) return;
     const q = name.trim();
-    // 拼音/别名支持
     const aliases = {
         "陈昱": "陈昱", "chenyu": "陈昱", "cy": "陈昱",
         "张国强": "张国强", "zhangguoqiang": "张国强", "zgq": "张国强"
@@ -376,71 +361,31 @@ function searchPersonnel(name) {
     const resolved = aliases[q.toLowerCase().replace(/\s/g,"")] || aliases[q] || q;
     const person = PERSONNEL_DB[resolved];
     if (!person) {
-        resultEl.innerHTML = \`<div class="campus-alert campus-alert-info">未找到人员 "\${q}" 的档案记录<br><span style="font-size:12px;color:#6b7f93">请确认姓名，或联系教务处获取访问权限</span></div>\`;
+        resultEl.innerHTML = '<div class="campus-alert campus-alert-info">未找到人员 "' + q + '" 的档案记录<br><span style="font-size:12px;color:#6b7f93">请确认姓名，或联系教务处获取访问权限</span></div>';
         return;
     }
-    const contactsHtml = person.contacts.map(c => \`<li style="margin-bottom:4px">\${c}</li>\`).join("");
-    resultEl.innerHTML = \`
-    <div class="campus-card mb-16">
-      <div class="campus-card-header">👤 人员档案：\${person.name}</div>
-      <div class="campus-card-body">
-        <table class="campus-table" style="margin-bottom:16px">
-          <tr><th width="120">姓名</th><td>\${person.name}</td></tr>
-          <tr><th>职务/身份</th><td>\${person.title}</td></tr>
-          <tr><th>档案编号</th><td class="text-mono">\${person.id}</td></tr>
-          <tr><th>访问权限</th><td>\${person.access}</td></tr>
-          <tr><th>入职/入校日期</th><td>\${person.entryDate}</td></tr>
-          <tr><th>备注</th><td style="color:#856404">\${person.note}</td></tr>
-        </table>
-        <div style="margin-bottom:12px">
-          <strong>联系方式</strong>
-          <ul style="margin:8px 0 0 16px;font-size:13px;color:#444">\${contactsHtml}</ul>
-        </div>
-        <div style="background:#f8f9fa;border-radius:6px;padding:14px;font-size:13px;line-height:1.8;white-space:pre-line;color:#2c3e50">\${person.background}</div>
-        \${person.warning ? \`<div style="margin-top:12px;background:#fff3cd;border-left:3px solid #c8962e;padding:10px 14px;font-size:12px;color:#856404">\${person.warning}</div>\` : ""}
-      </div>
-    </div>\`;
+    const contactsHtml = person.contacts.map(function(c){ return '<li style="margin-bottom:4px">' + c + '</li>'; }).join("");
+    const warningHtml = person.warning ? '<div style="margin-top:12px;background:#fff3cd;border-left:3px solid #c8962e;padding:10px 14px;font-size:12px;color:#856404">' + person.warning + '</div>' : "";
+    resultEl.innerHTML = '<div class="campus-card mb-16">'
+        + '<div class="campus-card-header">👤 人员档案：' + person.name + '</div>'
+        + '<div class="campus-card-body">'
+        + '<table class="campus-table" style="margin-bottom:16px">'
+        + '<tr><th width="120">姓名</th><td>' + person.name + '</td></tr>'
+        + '<tr><th>职务/身份</th><td>' + person.title + '</td></tr>'
+        + '<tr><th>档案编号</th><td class="text-mono">' + person.id + '</td></tr>'
+        + '<tr><th>访问权限</th><td>' + person.access + '</td></tr>'
+        + '<tr><th>入职/入校日期</th><td>' + person.entryDate + '</td></tr>'
+        + '<tr><th>备注</th><td style="color:#856404">' + person.note + '</td></tr>'
+        + '</table>'
+        + '<div style="margin-bottom:12px"><strong>联系方式</strong>'
+        + '<ul style="margin:8px 0 0 16px;font-size:13px;color:#444">' + contactsHtml + '</ul></div>'
+        + '<div style="background:#f8f9fa;border-radius:6px;padding:14px;font-size:13px;line-height:1.8;white-space:pre-line;color:#2c3e50">' + person.background + '</div>'
+        + warningHtml
+        + '</div></div>';
 }
 
 
-function showParamInput() {
-    document.getElementById("param-area")?.classList.remove("hidden");
-    document.getElementById("param-input")?.focus();
-}
-
-function confirmEnd() {
-    openModal(
-        "确认结束实验",
-        "你确定要<strong>强制结束实验</strong>吗？\n\n此操作将立即断开仪器连接，<strong style='color:#c0392b'>后果不可预测</strong>。",
-        () => { window.location.href = "ending0.html"; }
-    );
-}
-
-function submitParam() {
-    const val = document.getElementById("param-input")?.value.trim();
-    if (!val) return;
-
-    if (val === "待机参数" || val === "STANDBY") {
-        openModal(
-            "确认切换参数",
-            "即将切换为<strong>待机参数</strong>。\n\n仪器将暂停数据采集，维持受试者基础生命体征。\n请确认此操作。",
-            () => { window.location.href = "ending1.html"; }
-        );
-    } else if (val === "逆向参数" || val === "REVERSE") {
-        openModal(
-            "确认切换参数",
-            "即将启动<strong>逆向参数</strong>。\n\n系统将把采集到的全部数据写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
-            () => { window.location.href = "ending2.html"; }
-        );
-    } else {
-        openModal(
-            "参数无效",
-            `输入的参数 "<strong>${val}</strong>" 不在有效参数列表中。\n\n系统将执行<strong style='color:#c0392b'>异常中止流程</strong>，后果不可预测。`,
-            () => { window.location.href = "ending0.html"; },
-            true // danger mode
-        );
-    }
-}
+// 实验室操作已移至 principal.js（校长账号）
 
 // ─── Modal ───
 let _confirmCallback = null;
