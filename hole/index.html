@@ -20,7 +20,7 @@
         <div class="hole-nav-info">
             <span>👁 匿名发布</span>
             <span>🔒 校内访问</span>
-            <a href="../index.html"
+            <a href="../index.html" onclick="sessionStorage.setItem('lbyz_intro_seen','1')"
                 style="color:var(--hole-muted);font-size:13px;text-decoration:none;border:1px solid rgba(255,255,255,0.15);padding:4px 10px;border-radius:4px">←
                 返回校园官网</a>
         </div>
@@ -717,7 +717,8 @@
 
     <footer class="hole-footer">
         hole.lbyz.internal · 匿名平台 · 仅限校园内网访问 · 言论自负
-        &emsp;|&emsp; <a href="../index.html" style="color:rgba(255,255,255,0.35);text-decoration:none">返回狼堡一中校园官网</a>
+        &emsp;|&emsp; <a href="../index.html" onclick="sessionStorage.setItem('lbyz_intro_seen','1')"
+            style="color:rgba(255,255,255,0.35);text-decoration:none">返回狼堡一中校园官网</a>
     </footer>
 
     <script>

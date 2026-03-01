@@ -34,15 +34,51 @@ function doLogin(username, password, remember) {
         localStorage.setItem("lbyz_role", account.role);
         localStorage.setItem("lbyz_username", username.trim());
         localStorage.setItem("lbyz_name", account.name);
-        if (remember) {
-            localStorage.setItem("lbyz_saved_username", username.trim());
-        } else {
-            localStorage.removeItem("lbyz_saved_username");
-        }
+        // 始终将此账号保存到已登录账号列表（用于一键登录）
+        _saveAccountToList(username.trim(), account);
         window.location.href = account.redirect;
         return true;
     }
     return false;
+}
+
+/**
+ * 保存账号到已登录列表（localStorage）
+ */
+function _saveAccountToList(username, account) {
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem("lbyz_accounts_list") || "[]"); } catch (e) { }
+    // 去重：移除同名旧记录
+    list = list.filter(a => a.username !== username);
+    // 最新的放最前
+    list.unshift({ username, name: account.name, role: account.role, password: account.password });
+    // 最多保存4个
+    if (list.length > 4) list = list.slice(0, 4);
+    localStorage.setItem("lbyz_accounts_list", JSON.stringify(list));
+}
+
+/**
+ * 一键登录：根据已保存账号直接登录
+ */
+function quickLogin(username) {
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem("lbyz_accounts_list") || "[]"); } catch (e) { }
+    const saved = list.find(a => a.username === username);
+    if (!saved) return;
+    doLogin(saved.username, saved.password);
+}
+
+/**
+ * 从已登录列表中移除某账号
+ */
+function removeFromAccountList(username, event) {
+    if (event) event.stopPropagation();
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem("lbyz_accounts_list") || "[]"); } catch (e) { }
+    list = list.filter(a => a.username !== username);
+    localStorage.setItem("lbyz_accounts_list", JSON.stringify(list));
+    // 刷新卡片显示
+    if (typeof renderSavedAccounts === "function") renderSavedAccounts();
 }
 
 /**
@@ -104,27 +140,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // 登录表单
     const loginForm = document.getElementById("login-form");
     if (loginForm) {
-        // 预填已保存的账号
-        const savedUsername = localStorage.getItem("lbyz_saved_username");
-        const usernameInput = document.getElementById("username");
-        const rememberChk = document.getElementById("remember-me");
-        if (savedUsername && usernameInput) {
-            usernameInput.value = savedUsername;
-            if (rememberChk) rememberChk.checked = true;
-        }
-
         loginForm.addEventListener("submit", (e) => {
             e.preventDefault();
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
-            const remember = document.getElementById("remember-me")?.checked || false;
 
             if (!username || !password) {
                 showLoginError("请填写账号和密码");
                 return;
             }
 
-            const ok = doLogin(username, password, remember);
+            const ok = doLogin(username, password);
             if (!ok) {
                 showLoginError("账号或密码错误，请联系教务处");
                 document.getElementById("password").value = "";

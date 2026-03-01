@@ -376,7 +376,7 @@ const ID_POSTS = {
   ],
 
   // 干扰项
-  
+
   "zhanggq": [
     {
       title: "竞赛复习资料整理（数论部分）",
@@ -457,7 +457,6 @@ function renderFixedPosts() {
   const container = document.getElementById("forum-posts");
   if (!container) return;
   container.innerHTML = FIXED_POSTS.map(renderPost).join("");
-  bindToggle();
 }
 
 function renderPost(post) {
@@ -501,7 +500,7 @@ function renderPost(post) {
     </div>
     <div class="forum-post-body" style="white-space:pre-line">${post.body}</div>
     <div class="forum-post-footer">
-      <button class="forum-toggle-btn" data-target="${post.id}-replies">
+      <button class="forum-toggle-btn" onclick="forumToggle('${post.id}-replies', this)">
         展开 ${post.comments.length} 条回复 ▾
       </button>
     </div>
@@ -549,7 +548,7 @@ function doForumSearch(query) {
       </div>
       <div class="forum-post-body" style="white-space:pre-line">${p.body}</div>
       <div class="forum-post-footer">
-        <button class="forum-toggle-btn" data-target="${tmpId}-replies">
+        <button class="forum-toggle-btn" onclick="forumToggle('${tmpId}-replies', this)">
           展开 ${p.comments.length} 条回复 ▾
         </button>
       </div>
@@ -564,20 +563,15 @@ function doForumSearch(query) {
       找到用户 "<strong>${resolved}</strong>" 的 ${posts.length} 条发帖记录
     </div>
     ${postsHtml}`;
-  bindToggle();
 }
 
-function bindToggle() {
-  document.querySelectorAll(".forum-toggle-btn").forEach(btn => {
-    btn.addEventListener("click", function () {
-      const target = document.getElementById(this.dataset.target);
-      if (!target) return;
-      const isOpen = target.classList.toggle("open");
-      this.textContent = isOpen
-        ? this.textContent.replace("展开", "收起").replace("▾", "▴")
-        : this.textContent.replace("收起", "展开").replace("▴", "▾");
-    });
-  });
+function forumToggle(targetId, btn) {
+  const target = document.getElementById(targetId);
+  if (!target) return;
+  const isOpen = target.classList.toggle("open");
+  btn.textContent = isOpen
+    ? btn.textContent.replace("展开", "收起").replace("▾", "▴")
+    : btn.textContent.replace("收起", "展开").replace("▴", "▾");
 }
 
 function hashColor(str) {

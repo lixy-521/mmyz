@@ -18,9 +18,18 @@
             color: rgba(255, 255, 255, 0.7);
             letter-spacing: 2px;
         }
-        .banner-bg-1 { background: linear-gradient(135deg, #1a3a5c, #2a6090); }
-        .banner-bg-2 { background: linear-gradient(135deg, #0f2540, #1a5a3a); }
-        .banner-bg-3 { background: linear-gradient(135deg, #2a1a5c, #1a3a5c); }
+
+        .banner-bg-1 {
+            background: linear-gradient(135deg, #1a3a5c, #2a6090);
+        }
+
+        .banner-bg-2 {
+            background: linear-gradient(135deg, #0f2540, #1a5a3a);
+        }
+
+        .banner-bg-3 {
+            background: linear-gradient(135deg, #2a1a5c, #1a3a5c);
+        }
 
         /* 入场动画覆盖层 */
         /* ── 仿微信入场动画 ── */
@@ -35,16 +44,18 @@
             flex-direction: column;
             font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
         }
+
         /* 手机外壳 */
         .intro-phone {
             width: 340px;
             background: #ededed;
             border-radius: 40px;
             overflow: hidden;
-            box-shadow: 0 32px 80px rgba(0,0,0,0.7), inset 0 0 0 1px rgba(255,255,255,0.08);
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
             display: flex;
             flex-direction: column;
         }
+
         /* 系统状态栏 */
         .intro-statusbar {
             background: #ededed;
@@ -57,12 +68,14 @@
             color: #1c1c1e;
             flex-shrink: 0;
         }
+
         .intro-statusbar-icons {
             display: flex;
             gap: 5px;
             align-items: center;
             font-size: 13px;
         }
+
         /* 微信顶部导航栏 */
         .intro-chat-header {
             background: #ededed;
@@ -73,12 +86,14 @@
             border-bottom: 1px solid #d8d8d8;
             position: relative;
         }
+
         .intro-back-btn {
             color: #1677ff;
             font-size: 17px;
             margin-right: 4px;
             line-height: 1;
         }
+
         .intro-chat-title {
             flex: 1;
             text-align: center;
@@ -86,11 +101,13 @@
             font-weight: 600;
             color: #1c1c1e;
         }
+
         .intro-chat-more {
             color: #1c1c1e;
             font-size: 20px;
             letter-spacing: -1px;
         }
+
         /* 消息区域 */
         .intro-messages {
             background: #ededed;
@@ -103,6 +120,7 @@
             gap: 2px;
             flex: 1;
         }
+
         /* 时间戳 */
         .msg-timestamp {
             text-align: center;
@@ -110,6 +128,7 @@
             color: #999;
             margin: 8px 0 4px;
         }
+
         /* 消息行（含头像） */
         .msg-row {
             display: flex;
@@ -120,20 +139,38 @@
             transform: translateY(6px);
             transition: all 0.35s ease;
         }
-        .msg-row.show { opacity: 1; transform: translateY(0); }
-        .msg-row.row-right { flex-direction: row-reverse; }
+
+        .msg-row.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .msg-row.row-right {
+            flex-direction: row-reverse;
+        }
+
         /* 头像 */
         .msg-avatar {
-            width: 38px; height: 38px;
+            width: 38px;
+            height: 38px;
             border-radius: 6px;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 16px;
             font-weight: 700;
             flex-shrink: 0;
             color: #fff;
         }
-        .msg-avatar.av-left  { background: #5a9fd4; }
-        .msg-avatar.av-right { background: #7cb87c; }
+
+        .msg-avatar.av-left {
+            background: #5a9fd4;
+        }
+
+        .msg-avatar.av-right {
+            background: #7cb87c;
+        }
+
         /* 气泡 */
         .msg-bubble {
             max-width: 68%;
@@ -144,21 +181,25 @@
             word-break: break-word;
             white-space: pre-line;
         }
+
         .msg-bubble.bubble-left {
             background: #fff;
             color: #1c1c1e;
             border-radius: 4px 12px 12px 12px;
         }
+
         .msg-bubble.bubble-right {
             background: #95ec69;
             color: #1c1c1e;
             border-radius: 12px 4px 12px 12px;
         }
+
         .msg-link {
             color: #1677ff;
             text-decoration: underline;
             word-break: break-all;
         }
+
         /* 底部输入栏（装饰） */
         .intro-input-bar {
             background: #f5f5f5;
@@ -169,6 +210,7 @@
             gap: 10px;
             flex-shrink: 0;
         }
+
         .intro-input-fake {
             flex: 1;
             background: #fff;
@@ -176,35 +218,61 @@
             height: 34px;
             border: 1px solid #d8d8d8;
         }
+
         .intro-input-icon {
-            width: 28px; height: 28px;
+            width: 28px;
+            height: 28px;
             background: #ccc;
             border-radius: 50%;
             flex-shrink: 0;
         }
+
         /* 跳过提示 */
         .intro-skip {
             margin-top: 20px;
-            color: rgba(255,255,255,0.25);
+            color: rgba(255, 255, 255, 0.25);
             font-size: 12px;
             cursor: pointer;
             letter-spacing: 0.5px;
             font-family: -apple-system, "PingFang SC", sans-serif;
         }
-        .intro-skip:hover { color: rgba(255,255,255,0.5); }
+
+        .intro-skip:hover {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes introPulse {
+
+            0%,
+            100% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.06);
+            }
+        }
 
         /* 陈旧日期样式 */
-        .news-date-stale .day { color: #aaa !important; }
-        .news-title-stale { color: #999 !important; }
+        .news-date-stale .day {
+            color: #aaa !important;
+        }
+
+        .news-title-stale {
+            color: #999 !important;
+        }
+
         .stale-badge {
-            display:inline-block;
-            font-size:10px;
-            background:#f8d7da;
-            color:#c0392b;
-            border-radius:3px;
-            padding:1px 5px;
-            margin-left:4px;
-            vertical-align:middle;
+            display: inline-block;
+            font-size: 10px;
+            background: #f8d7da;
+            color: #c0392b;
+            border-radius: 3px;
+            padding: 1px 5px;
+            margin-left: 4px;
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -281,15 +349,21 @@
         <!-- 轮播图 -->
         <div class="campus-banner" id="banner">
             <div class="campus-banner-slide active">
-                <img src="assets/a2.png" alt="恭喜刘天清同学荣获全市数学竞赛一等奖" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="assets/a2.png" alt="恭喜刘天清同学荣获全市数学竞赛一等奖" style="width: 100%; height: 100%; object-fit: cover;"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="banner-placeholder banner-bg-1" style="display:none">喜报 · 刘天清同学荣获全市数学联赛一等奖</div>
                 <div class="campus-banner-caption">11月20日 · 我校刘天清同学荣获全市数学联赛一等奖 · 全校庆贺</div>
             </div>
             <div class="campus-banner-slide">
-                <img src="assets/a3.png" alt="期末备考进行中" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="assets/a3.png" alt="期末备考进行中" style="width: 100%; height: 100%; object-fit: cover;"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="banner-placeholder banner-bg-2" style="display:none">图书馆延长开放至21:00 · 期中备考加油</div>
                 <div class="campus-banner-caption">图书馆延长开放至21:00 · 期中备考加油</div>
             </div>
             <div class="campus-banner-slide">
-                <img src="assets/a1.png" alt="狼堡一中 · 格物致知，知行合一" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="assets/a1.png" alt="狼堡一中 · 格物致知，知行合一" style="width: 100%; height: 100%; object-fit: cover;"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="banner-placeholder banner-bg-3" style="display:none">狼堡市第一中学 · 创建于1978年</div>
                 <div class="campus-banner-caption">狼堡市第一中学 · 创建于1978年</div>
             </div>
             <div class="campus-banner-dots">
@@ -300,124 +374,131 @@
         </div>
     </div>
 
-        <div class="campus-layout">
-            <!-- 左侧：新闻 -->
-            <div>
-                <div class="campus-card">
-                    <div class="campus-card-header">🗞 校园新闻</div>
-                    <div class="campus-card-body">
-                        <ul class="news-list">
-                            <li class="news-item">
-                                <div class="news-date"><span class="day">25</span>11月</div>
-                                <div>
-                                    <span class="news-tag notice">通知</span>
-                                    <span class="news-title">关于期末考试安排及复习资料发放的通知</span>
-                                </div>
-                            </li>
-                            <li class="news-item">
-                                <div class="news-date"><span class="day">20</span>11月</div>
-                                <div>
-                                    <span class="news-tag notice">通知</span>
-                                    <span class="news-title">关于近期校园夜间安全管理强化措施的补充说明</span>
-                                </div>
-                            </li>
-                            <li class="news-item">
-                                <div class="news-date"><span class="day">10</span>11月</div>
-                                <div>
-                                    <span class="news-tag info">新闻</span>
-                                    <span class="news-title">我校图书馆新增《校园安全手册》《心理健康指导》等馆藏</span>
-                                </div>
-                            </li>
-                            <li class="news-item">
-                                <div class="news-date news-date-stale"><span class="day" style="color:#aaa">15</span>10月</div>
-                                <div>
-                                    <span class="news-tag info">新闻</span>
-                                    <a href="article_award.html" style="color:inherit;text-decoration:none"><span class="news-title news-title-stale">【喜报】我校刘天清同学荣获全市数学联赛一等奖 <span style="color:#1a3a5c;font-size:11px">↗ 查看全文</span></span></a>
-                                </div>
-                            </li>
-                            <li class="news-item">
-                                <div class="news-date news-date-stale"><span class="day" style="color:#aaa">10</span>10月</div>
-                                <div>
-                                    <span class="news-tag important">重要</span>
-                                    <span class="news-title news-title-stale">旧实验楼整修公告：10月10日起暂停使用，禁止学生进入</span>
-                                </div>
-                            </li>
-                            <li class="news-item">
-                                <div class="news-date news-date-stale"><span class="day" style="color:#aaa">20</span>10月</div>
-                                <div>
-                                    <span class="news-tag info">新闻</span>
-                                    <a href="article_gezhi.html" style="color:inherit;text-decoration:none"><span class="news-title news-title-stale">格致创新教育计划成果展示会圆满举行，合作科研机构代表出席致辞 <span style="color:#1a3a5c;font-size:11px">↗ 查看全文</span></span></a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="campus-card">
-                    <div class="campus-card-header">🏛 学校简介</div>
-                    <div class="campus-card-body">
-                        <p style="line-height:1.9;color:#2c3e50;font-size:14px">
-                            狼堡市第一中学（简称"狼堡一中"）创建于1978年，是狼堡市重点示范高中，
-                            连续多年荣获市级"先进集体"称号。学校位于狼堡市中心，占地面积约
-                            7万平方米，现有在校学生1800余名。
-                        </p>
-                        <p style="line-height:1.9;color:#2c3e50;font-size:14px;margin-top:10px">
-                            校训：<strong style="color:#1a3a5c">格物致知，知行合一</strong>
-                        </p>
-                        <p style="line-height:1.9;color:#2c3e50;font-size:14px;margin-top:10px">
-                            英文名：<strong style="color:#1a3a5c">Wolfburg No.1 High School (WOLF)</strong>
-                        </p>
-                        <p style="margin-top:8px;font-size:12px;color:#aaa">
-                            ※ 旧版校训已于1998年更新，原版本见校史室存档。
-                        </p>
-                    </div>
+    <div class="campus-layout">
+        <!-- 左侧：新闻 -->
+        <div>
+            <div class="campus-card">
+                <div class="campus-card-header">🗞 校园新闻</div>
+                <div class="campus-card-body">
+                    <ul class="news-list">
+                        <li class="news-item">
+                            <div class="news-date"><span class="day">25</span>11月</div>
+                            <div>
+                                <span class="news-tag notice">通知</span>
+                                <span class="news-title">关于期末考试安排及复习资料发放的通知</span>
+                            </div>
+                        </li>
+                        <li class="news-item">
+                            <div class="news-date"><span class="day">20</span>11月</div>
+                            <div>
+                                <span class="news-tag notice">通知</span>
+                                <span class="news-title">关于近期校园夜间安全管理强化措施的补充说明</span>
+                            </div>
+                        </li>
+                        <li class="news-item">
+                            <div class="news-date"><span class="day">10</span>11月</div>
+                            <div>
+                                <span class="news-tag info">新闻</span>
+                                <span class="news-title">我校图书馆新增《校园安全手册》《心理健康指导》等馆藏</span>
+                            </div>
+                        </li>
+                        <li class="news-item">
+                            <div class="news-date news-date-stale"><span class="day" style="color:#aaa">15</span>10月
+                            </div>
+                            <div>
+                                <span class="news-tag info">新闻</span>
+                                <a href="article_award.html" style="color:inherit;text-decoration:none"><span
+                                        class="news-title news-title-stale">【喜报】我校刘天清同学荣获全市数学联赛一等奖 <span
+                                            style="color:#1a3a5c;font-size:11px">↗ 查看全文</span></span></a>
+                            </div>
+                        </li>
+                        <li class="news-item">
+                            <div class="news-date news-date-stale"><span class="day" style="color:#aaa">10</span>10月
+                            </div>
+                            <div>
+                                <span class="news-tag important">重要</span>
+                                <span class="news-title news-title-stale">旧实验楼整修公告：10月10日起暂停使用，禁止学生进入</span>
+                            </div>
+                        </li>
+                        <li class="news-item">
+                            <div class="news-date news-date-stale"><span class="day" style="color:#aaa">20</span>10月
+                            </div>
+                            <div>
+                                <span class="news-tag info">新闻</span>
+                                <a href="article_gezhi.html" style="color:inherit;text-decoration:none"><span
+                                        class="news-title news-title-stale">格致创新教育计划成果展示会圆满举行，合作科研机构代表出席致辞 <span
+                                            style="color:#1a3a5c;font-size:11px">↗ 查看全文</span></span></a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- 右侧边栏 -->
-            <div>
-                <div class="campus-card">
-                    <div class="campus-card-header">⚡ 快速导航</div>
-                    <div class="campus-card-body">
-                        <div class="quick-links">
-                            <a class="quick-link-item" href="staff.html">
-                                <span class="quick-link-icon">👨‍🏫</span>师资团队
-                            </a>
-                            <a class="quick-link-item" href="alumni.html">
-                                <span class="quick-link-icon">🏆</span>知名校友
-                            </a>
-                            <a class="quick-link-item" href="forum.html">
-                                <span class="quick-link-icon">💬</span>校园论坛
-                            </a>
-                            <a class="quick-link-item" href="login.html">
-                                <span class="quick-link-icon">🔐</span>登录系统
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="campus-card">
-                    <div class="campus-card-header">📌 近期通知</div>
-                    <div class="campus-card-body">
-                        <ul class="notice-list">
-                            <li class="notice-item">期中考试：10月25日，请备考</li>
-                            <li class="notice-item">图书馆开放时间：7:30—21:00</li>
-                            <li class="notice-item">夜间校园安全管理加强</li>
-                            <li class="notice-item">如发现校内异常情况请及时告知班主任</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="campus-card">
-                    <div class="campus-card-header">🕐 当前时间</div>
-                    <div class="campus-card-body text-center">
-                        <div style="font-size:26px;font-weight:700;color:#1a3a5c;font-family:'Courier New',monospace"
-                            id="clock">--:--:--</div>
-                        <div style="margin-top:6px;font-size:13px;color:#6b7f93">2025年11月25日 星期二</div>
-                    </div>
+            <div class="campus-card">
+                <div class="campus-card-header">🏛 学校简介</div>
+                <div class="campus-card-body">
+                    <p style="line-height:1.9;color:#2c3e50;font-size:14px">
+                        狼堡市第一中学（简称"狼堡一中"）创建于1978年，是狼堡市重点示范高中，
+                        连续多年荣获市级"先进集体"称号。学校位于狼堡市中心，占地面积约
+                        7万平方米，现有在校学生1800余名。
+                    </p>
+                    <p style="line-height:1.9;color:#2c3e50;font-size:14px;margin-top:10px">
+                        校训：<strong style="color:#1a3a5c">格物致知，知行合一</strong>
+                    </p>
+                    <p style="line-height:1.9;color:#2c3e50;font-size:14px;margin-top:10px">
+                        英文名：<strong style="color:#1a3a5c">Wolfburg No.1 High School (WOLF)</strong>
+                    </p>
+                    <p style="margin-top:8px;font-size:12px;color:#aaa">
+                        ※ 旧版校训已于1998年更新，原版本见校史室存档。
+                    </p>
                 </div>
             </div>
         </div>
+
+        <!-- 右侧边栏 -->
+        <div>
+            <div class="campus-card">
+                <div class="campus-card-header">⚡ 快速导航</div>
+                <div class="campus-card-body">
+                    <div class="quick-links">
+                        <a class="quick-link-item" href="staff.html">
+                            <span class="quick-link-icon">👨‍🏫</span>师资团队
+                        </a>
+                        <a class="quick-link-item" href="alumni.html">
+                            <span class="quick-link-icon">🏆</span>知名校友
+                        </a>
+                        <a class="quick-link-item" href="forum.html">
+                            <span class="quick-link-icon">💬</span>校园论坛
+                        </a>
+                        <a class="quick-link-item" href="login.html">
+                            <span class="quick-link-icon">🔐</span>登录系统
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="campus-card">
+                <div class="campus-card-header">📌 近期通知</div>
+                <div class="campus-card-body">
+                    <ul class="notice-list">
+                        <li class="notice-item">期中考试：10月25日，请备考</li>
+                        <li class="notice-item">图书馆开放时间：7:30—21:00</li>
+                        <li class="notice-item">夜间校园安全管理加强</li>
+                        <li class="notice-item">如发现校内异常情况请及时告知班主任</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="campus-card">
+                <div class="campus-card-header">🕐 当前时间</div>
+                <div class="campus-card-body text-center">
+                    <div style="font-size:26px;font-weight:700;color:#1a3a5c;font-family:'Courier New',monospace"
+                        id="clock">--:--:--</div>
+                    <div style="margin-top:6px;font-size:13px;color:#6b7f93">2025年11月25日 星期二</div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <footer class="campus-footer">
@@ -437,14 +518,14 @@
             }
 
             const messages = [
-                { side: "left",  text: "通雪，你最近在哪里？" },
+                { side: "left", text: "通雪，你最近在哪里？" },
                 { side: "right", text: "在家，没什么事啊。" },
-                { side: "left",  text: "今天拿了数学联赛一等奖，本来想跟你庆祝……" },
+                { side: "left", text: "今天拿了数学联赛一等奖，本来想跟你庆祝……" },
                 { side: "right", text: "真的！！恭喜你！！" },
-                { side: "left",  text: "但是我今晚在图书馆发现了一些东西。关于林小雨的" },
+                { side: "left", text: "但是我今晚在图书馆发现了一些东西。关于林小雨的" },
                 { side: "right", text: "什么事？你说清楚……" },
-                { side: "left",  text: "我没时间说了，我把线索藏在这里面了，你去找：\n\nlbyz.edu.cn/campus", link: true },
-                { side: "left",  text: "如果我消失了，不要相信学校说的任何话。去图书馆，找我借过的书。" },
+                { side: "left", text: "我没时间说了，我把线索藏在这里面了，你去找：\n\nlbyz.edu.cn/campus", link: true },
+                { side: "left", text: "如果我消失了，不要相信学校说的任何话。去图书馆，找我借过的书。" },
             ];
 
             let msgIdx = 0;
@@ -452,7 +533,15 @@
 
             function showNextMsg() {
                 if (msgIdx >= messages.length) {
-                    setTimeout(closeIntro, 1400);
+                    // 消息播完后：不自动关闭，更新提示等待点击
+                    const skipBtn = document.querySelector(".intro-skip");
+                    if (skipBtn) {
+                        skipBtn.textContent = "点击进入 ▸";
+                        skipBtn.style.color = "rgba(255,255,255,0.85)";
+                        skipBtn.style.fontSize = "14px";
+                        skipBtn.style.letterSpacing = "2px";
+                        skipBtn.style.animation = "introPulse 1.2s ease-in-out infinite";
+                    }
                     return;
                 }
                 const m = messages[msgIdx++];
@@ -495,7 +584,7 @@
         // ── 轮播图 ──
         let cur = 0;
         const slides = document.querySelectorAll(".campus-banner-slide");
-        const dots   = document.querySelectorAll(".campus-banner-dot");
+        const dots = document.querySelectorAll(".campus-banner-dot");
         function goBanner(n) {
             slides[cur].classList.remove("active"); dots[cur].classList.remove("active");
             cur = n;
@@ -513,4 +602,5 @@
         updateClock(); setInterval(updateClock, 1000);
     </script>
 </body>
+
 </html>
