@@ -57,18 +57,28 @@
             font-size: 15px;
             color: #1e6040;
         }
+        
+        /* 修改后的图片样式 - 增大与文字的空隙 */
         .article-photo {
             width: 100%;
-            background: linear-gradient(135deg, #1e5a3a, #2a8060);
-            border-radius: 8px;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.6);
-            font-size: 13px;
-            margin: 24px 0;
+            margin: 32px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background: #fff;
         }
+
+        .article-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .article-photo img:hover {
+            transform: scale(1.02);
+        }
+        
         .article-person {
             display: flex;
             align-items: flex-start;
@@ -79,11 +89,18 @@
             margin: 20px 0;
         }
         .article-person-avatar {
-            width: 48px; height: 48px;
+            width: 48px; 
+            height: 48px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #1a5c3a, #2a8060);
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-size: 18px; flex-shrink: 0;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #f0f0f0;
+        }
+        .article-person-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         .article-person-name { font-size: 15px; font-weight: 700; color: #1a1a1a; }
         .article-person-title { font-size: 12px; color: #666; margin-top: 2px; }
@@ -157,7 +174,9 @@
         <div class="article-body">
             <p>在2025年度狼堡市高中数学联赛中，我校高二（7）班学生<strong>刘天清</strong>同学以全市第一的成绩摘得一等奖桂冠，这也是我校连续第三年在该项赛事中获得最高荣誉。</p>
 
-            <div class="article-photo"> <img src="../assets/awardceremony.png" alt="刘天清同学获奖照片 · 11月20日"></div>
+            <div class="article-photo"> 
+                <img src="assets/a2.png" alt="刘天清同学获奖照片 · 11月20日">
+            </div>
 
             <p>刘天清同学自小学起便展现出超越同龄人的数学直觉。据悉，他在本次竞赛压轴题（图论与组合分析综合题）中采用了一套极为简洁的逆向分析法，令多位评委印象深刻。</p>
 
@@ -168,7 +187,9 @@
             <p>指导教师<strong>张国强</strong>老师表示，刘天清不仅在数学竞赛上表现优异，近期在自主研究方面也有很多独到的想法，"他最近在研究一些跨学科的东西，我也不完全理解，但能感觉到他在认真地思考一个重要的问题"。</p>
 
             <div class="article-person">
-                <div class="article-person-avatar">张</div>
+                <div class="article-person-avatar">
+                    <img src="assets/zhangguoqiang.png" alt="张国强老师">
+                </div>
                 <div>
                     <div class="article-person-name">张国强</div>
                     <div class="article-person-title">高一数学 · 竞赛指导教师 · 办公室：教学楼A座205</div>
