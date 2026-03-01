@@ -369,10 +369,10 @@ function openModal(title, body, onConfirm, danger = false) {
     const confirmBtn = document.getElementById("modal-confirm");
     confirmBtn.className = "campus-btn " + (danger ? "campus-btn-danger" : "campus-btn-primary");
     window._modalConfirmCb = onConfirm;
-    document.getElementById("app-modal").classList.add("active");
+    document.getElementById("app-modal").classList.add("open");
 }
 
 function closeModal() {
-    document.getElementById("app-modal")?.classList.remove("active");
+    document.getElementById("app-modal")?.classList.remove("open");
     window._modalConfirmCb = null;
 }
