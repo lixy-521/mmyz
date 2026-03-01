@@ -7,7 +7,7 @@ const ACCOUNTS = {
     "security_li":   { password: "101028",       role: "security",   name: "李保安",  redirect: "security.html" },
     "lib_admin":     { password: "guanzhang123",  role: "library",    name: "图书管理员", redirect: "library.html" },
     "dxf_teacher":   { password: "Lbyz@dxf2023!", role: "teacher",    name: "董新飞",  redirect: "teacher.html" },
-    "wmd_principal": { password: "Gezhi@1998!",   role: "principal",  name: "王明德",  redirect: "principal.html" }
+    "wmd_principal": { password: "Gezhi@2023!",   role: "principal",  name: "王明德",  redirect: "principal.html" }
 };
 
 // 密码别名兼容
@@ -15,7 +15,7 @@ const PASSWORD_ALIASES = {
     "guanzhang123":  ["guanzhang123", "Guanzhang123"],
     "101028":        ["101028"],
     "Lbyz@dxf2023!": ["Lbyz@dxf2023!", "lbyz@dxf2023!", "Lbyz@dxf2023"],
-    "Gezhi@1998!":   ["Gezhi@1998!", "gezhi@1998!", "Gezhi@1998"]
+    "Gezhi@2023!":   ["Gezhi@2023!", "gezhi@2023!", "Gezhi@2023"]
 };
 
 function checkPassword(account, inputPwd) {
