@@ -41,7 +41,9 @@ const BORROWER_DB = {
     { title: "都市传说研究", category: "社会学", status: "已还", statusClass: "success" },
     { title: "异常心理学", category: "心理学", status: "已还", statusClass: "success" },
     { title: "建筑结构安全", category: "工程", status: "已还", statusClass: "success" },
-    { title: "逆向思维训练", category: "心理学", status: "已还", statusClass: "success" }
+    { title: "逆向思维训练", category: "心理学", status: "已还", statusClass: "success" },
+    { title: "高中数学竞赛指南", category: "数学", status: "已还", statusClass: "success" },
+    { title: "监控系统原理", category: "工程", status: "已还", statusClass: "success" }
   ],
   "林小雨": [
     { title: "Klein有机化学", category: "化学", status: "已还", statusClass: "success" }
