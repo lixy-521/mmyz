@@ -23,7 +23,7 @@ const PRINCIPAL_ARCHIVE_CONTENT = `
     </div>
 
     <div style="background:#fffbf0;border:1px solid #f0d090;border-radius:6px;padding:16px;margin-bottom:16px">
-      <p style="margin-bottom:8px"><strong style="color:#856404">参数二：待机参数（168.112.96.255）</strong></p>
+      <p style="margin-bottom:8px"><strong style="color:#856404">参数二：待机参数（168.112.43.255）</strong></p>
       <p style="line-height:1.9;font-size:13px">
         暂停数据采集，切换为生命维持模式。受试者仍处于诱导状态，可随时恢复采集。
       </p>
@@ -210,16 +210,16 @@ function submitParam() {
   const val = document.getElementById("param-input")?.value.trim();
   if (!val) return;
 
-  if (val === "168.112.96.255") {
+  if (val === "168.112.43.255") {
     openModal(
       "确认切换参数",
       "即将切换为<strong>待机参数</strong>。\n\n仪器将暂停数据采集，维持受试者基础生命体征。\n请确认此操作。",
       () => { window.location.href = "ending1.html"; }
     );
-  } else if (val === "114.255.14.191") {
+  } else if (val === "88.144.21.1") {
     openModal(
       "确认切换参数",
-      "即将启动逆向参数 <strong style='font-family:monospace'>114.255.14.191</strong>。\n\n系统将把采集到的全部数据完整写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
+      "即将启动逆向参数 <strong style='font-family:monospace'>88.144.21.1</strong>。\n\n系统将把采集到的全部数据完整写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
       () => { window.location.href = "ending2.html"; }
     );
   } else {

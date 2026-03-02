@@ -30,12 +30,6 @@ const ARCHIVE_CONTENT = `
       <p style="line-height:1.9;font-size:13px;color:#666">
         暂停数据读写，切换为生命维持模式。受试者仍处于诱导状态，但长期使用会导致记忆碎片化。
       </p>
-    </div>
-      <p style="font-size:12px;color:#6b7f93;margin-top:8px;font-family:'Courier New',monospace">
-        参数值格式：<strong>xxx.xxx.xx.xxx</strong>
-      </p>
-    </div>
-    <div style="background:#fff0f0;border:1px solid #e09090;border-radius:6px;padding:14px">
       <p style="margin-bottom:6px;font-size:13px;color:#c0392b"><strong>禁止事项</strong></p>
       <p style="line-height:1.9;font-size:13px;color:#c0392b">
         严禁强制断开仪器连接或输入无效参数。异常中止将导致不可逆神经损伤甚至死亡。
