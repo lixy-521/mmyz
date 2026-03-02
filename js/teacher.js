@@ -32,7 +32,7 @@ const ARCHIVE_CONTENT = `
       </p>
     </div>
       <p style="font-size:12px;color:#6b7f93;margin-top:8px;font-family:'Courier New',monospace">
-        参数值格式：<strong>xxx.xxx.xx.xxx</strong>（需从外部线索获取具体数值）
+        参数值格式：<strong>xxx.xxx.xx.xxx</strong>
       </p>
     </div>
     <div style="background:#fff0f0;border:1px solid #e09090;border-radius:6px;padding:14px">
