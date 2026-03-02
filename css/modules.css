@@ -150,6 +150,25 @@
     border: 3px solid var(--accent);
 }
 
+.staff-avatar-use-img {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    overflow: hidden;          /* 保证图片超出部分被裁掉，保持圆形 */
+    flex-shrink: 0;
+    border: 3px solid var(--accent);
+    background: #f0f0f0;       /* 可选：图片加载失败时的占位背景色 */
+    box-sizing: border-box;    /* 可选：让边框占据的宽度包含在 96px 内（总尺寸仍是 96px） */
+    /* 删除原有背景渐变、flex、文字颜色、字号等与文字相关的属性 */
+}
+
+.staff-avatar-use-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;         /* 保持图片比例，填满容器，多余部分裁剪 */
+    display: block;            /* 消除图片底部的多余空隙 */
+}
+
 .staff-info h2 {
     font-size: 20px;
     color: var(--primary);

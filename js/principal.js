@@ -12,7 +12,7 @@ const PRINCIPAL_ARCHIVE_CONTENT = `
     <p style="font-size:12px;color:#6b7f93;margin-bottom:16px">最高机密 | 校长账号专属 | 最后更新：11月20日 | 实验地点：旧实验楼 B203</p>
 
     <h3 style="color:#1a3a5c;margin-bottom:8px">一、实验参数说明</h3>
-    <p style="font-size:13px;color:#6b7f93;margin-bottom:16px">以下三种参数须由校长账号在实验室控制台执行，dxf账号无操作权限。</p>
+    <p style="font-size:13px;color:#6b7f93;margin-bottom:16px">以下三种参数须由校长账号在实验室控制台执行，其他账号无操作权限。</p>
 
     <div style="background:#f5f8fc;border-radius:6px;padding:16px;margin-bottom:16px">
       <p style="margin-bottom:8px"><strong style="color:#c8962e">参数一：工作参数（0.0.0.1）— 默认状态</strong></p>
