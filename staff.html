@@ -6,6 +6,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>师资团队 · 狼堡一中校园信息网</title>
     <link rel="stylesheet" href="css/campus.css" />
+    <style>
+        /* 补充样式确保图片显示正常 */
+        .staff-avatar-use-img {
+            width: 120px;
+            height: 140px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f5f8fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .staff-avatar-use-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .staff-avatar {
+            width: 120px;
+            height: 140px;
+            border-radius: 8px;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #6c757d;
+            flex-shrink: 0;
+        }
+
+        .staff-profile {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .staff-info {
+            flex: 1;
+        }
+
+        .staff-info h2 {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+            color: #2c3e50;
+        }
+
+        .staff-title {
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        .staff-id code {
+            background: #eef2f7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .campus-alert {
+            padding: 16px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            color: #495057;
+        }
+
+        .campus-alert-info {
+            background: #e7f3ff;
+            border-color: #b8daff;
+            color: #004085;
+        }
+    </style>
 </head>
 
 <body>
@@ -58,7 +139,9 @@
                 <div class="campus-card-header">校长介绍</div>
                 <div class="campus-card-body">
                     <div class="staff-profile">
-                        <div class="staff-avatar">👨‍💼</div>
+                        <div class="staff-avatar-use-img">
+                            <img src="assets/wangmingde.png" alt="王明德校长">
+                        </div>
                         <div class="staff-info">
                             <h2>王明德</h2>
                             <div class="staff-title">校长 · 党委书记</div>
@@ -135,38 +218,39 @@
             "陈昱": "陈昱", "chenyu": "陈昱", "cy": "陈昱"
         };
 
+        // 教师数据库 - 包含所有教师信息，添加了图片路径
         const STAFF_DB = {
             "王明德": null, // 用默认展示
             "董新飞": {
-                avatar: "🧪",
+                image: "assets/dxf.png",  // 董新飞照片
                 name: "董新飞",
                 title: "理化组教师 · 实验室负责人",
                 id: "dxf_teacher",
                 bio: `董新飞，男，理学硕士，中学一级教师。现任狼堡一中理化组教师，兼任旧实验楼改造项目负责人。\n\n负责高一高二化学实验课程，同时主持学校与外部科研机构合作的「格致计划」项目。\n\n联系方式：教学楼B座319室（实验室管理办公室）`
             },
             "李慧敏": {
-                avatar: "📚",
+                image: "assets/lihuimin.png",    // 李慧敏照片
                 name: "李慧敏",
                 title: "语文组组长 · 高级教师",
                 id: "—",
                 bio: `李慧敏，女，文学硕士，高级教师。从教22年，现担任高三语文组组长。\n\n曾获省级优秀班主任称号，主编校内作文教辅读本两册。`
             },
             "张国强": {
-                avatar: "📐",
+                image: "assets/article_award/zhangguoqiang.png", // 张国强照片
                 name: "张国强",
                 title: "数学组教师",
                 id: "—",
                 bio: `张国强，男，理学学士，中学一级教师。负责高一数学教学工作，兼任数学竞赛辅导。`
             },
             "陈丽丽": {
-                avatar: "🌏",
+                image: "assets/chenlili.png",    // 陈丽丽照片
                 name: "陈丽丽",
                 title: "英语组教师",
                 id: "—",
                 bio: `陈丽丽，女，英语教育专业，从事高中英语教学十余年，语音标准，深受学生喜爱。`
             },
             "刘芳": {
-                avatar: "📖",
+                image: "assets/liufang.png",     // 刘芳照片
                 name: "刘芳",
                 title: "图书馆馆长",
                 id: "lib_admin",
@@ -193,7 +277,11 @@
             const defaultEl = document.getElementById("staff-default");
             const resultEl = document.getElementById("staff-result");
 
-            if (!raw) { resultEl.innerHTML = ""; defaultEl.classList.remove("hidden"); return; }
+            if (!raw) { 
+                resultEl.innerHTML = ""; 
+                defaultEl.classList.remove("hidden"); 
+                return; 
+            }
 
             if (q === "王明德") {
                 defaultEl.classList.remove("hidden");
@@ -204,27 +292,32 @@
             const info = STAFF_DB[q];
             if (info) {
                 defaultEl.classList.add("hidden");
+                // 生成教师信息HTML，包含图片
                 resultEl.innerHTML = `
-      <div class="campus-card">
-        <div class="campus-card-header">教职工信息</div>
-        <div class="campus-card-body">
-          <div class="staff-profile">
-            <div class="staff-avatar">${info.avatar}</div>
-            <div class="staff-info">
-              <h2>${info.name}</h2>
-              <div class="staff-title">${info.title}</div>
-              <p style="white-space:pre-line;margin-top:8px">${info.bio}</p>
-              ${info.id !== "—" ? `<div class="staff-id" style="margin-top:10px">校园网ID：<code style="background:#eef2f7;padding:2px 6px;border-radius:3px">${info.id}</code></div>` : ""}
-            </div>
-          </div>
-        </div>
-      </div>`;
+                    <div class="campus-card">
+                        <div class="campus-card-header">教职工信息</div>
+                        <div class="campus-card-body">
+                            <div class="staff-profile">
+                                <div class="staff-avatar-use-img">
+                                    <img src="${info.image}" 
+                                         alt="${info.name}"
+                                         onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'staff-avatar\'>${info.avatar || '👤'}</div>'">
+                                </div>
+                                <div class="staff-info">
+                                    <h2>${info.name}</h2>
+                                    <div class="staff-title">${info.title}</div>
+                                    <p style="white-space:pre-line;margin-top:8px">${info.bio}</p>
+                                    ${info.id !== "—" ? `<div class="staff-id" style="margin-top:10px">校园网ID：<code>${info.id}</code></div>` : ""}
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
             } else {
                 defaultEl.classList.add("hidden");
                 resultEl.innerHTML = `
-      <div class="campus-alert campus-alert-info">
-        未找到教职工「${raw}」的相关信息，请确认姓名后重试
-      </div>`;
+                    <div class="campus-alert campus-alert-info">
+                        未找到教职工「${raw}」的相关信息，请确认姓名后重试
+                    </div>`;
             }
         }
     </script>
