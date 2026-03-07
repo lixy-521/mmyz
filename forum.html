@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>校园论坛 · 狼堡一中校园信息网</title>
     <link rel="stylesheet" href="css/campus.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
 </head>
 
 <body>
@@ -25,6 +26,8 @@
                 <a href="forum.html" class="active">校园论坛</a>
             </div>
             <div id="nav-user-area"></div>
+            <button class="nav-hamburger" id="nav-hamburger"
+                aria-label="菜单"><span></span><span></span><span></span></button>
         </div>
     </nav>
     <div class="campus-ticker">
@@ -51,7 +54,7 @@
             <div class="campus-page-title">校园论坛</div>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:start">
+        <div class="forum-layout" style="display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:start">
             <!-- 左侧主体 -->
             <div>
                 <!-- ID搜索区 -->
@@ -115,6 +118,27 @@
     <script src="js/auth.js"></script>
     <script src="js/forum-data.js"></script>
     <script src="js/forum.js"></script>
+    <script>
+        // 汉堡菜单
+        (function () {
+            var btn = document.getElementById('nav-hamburger');
+            var links = document.querySelector('.campus-nav-links');
+            if (!btn || !links) return;
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                btn.classList.toggle('open');
+                links.classList.toggle('open');
+            });
+            document.addEventListener('click', function () {
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+            links.addEventListener('click', function () {
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+        })();
+    </script>
 </body>
 
 </html>

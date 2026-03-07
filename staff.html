@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>师资团队 · 狼堡一中校园信息网</title>
     <link rel="stylesheet" href="css/campus.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
     <style>
         /* 补充样式确保图片显示正常 */
         .staff-avatar-use-img {
@@ -106,6 +107,7 @@
                 <a href="forum.html">校园论坛</a>
             </div>
             <div id="nav-user-area"></div>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
         </div>
     </nav>
     <div class="campus-ticker">
@@ -321,6 +323,26 @@
             }
         }
     </script>
-</body>
+    <script>
+        // 汉堡菜单
+        (function(){
+            var btn = document.getElementById('nav-hamburger');
+            var links = document.querySelector('.campus-nav-links');
+            if (!btn || !links) return;
+            btn.addEventListener('click', function(e){
+                e.stopPropagation();
+                btn.classList.toggle('open');
+                links.classList.toggle('open');
+            });
+            document.addEventListener('click', function(){
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+            links.addEventListener('click', function(){
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+        })();
+    </script></body>
 
 </html>

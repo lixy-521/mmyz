@@ -408,6 +408,98 @@
             padding: 24px 48px;
             line-height: 2;
         }
+
+        /* ─── 响应式 ─── */
+        @media (max-width: 768px) {
+            .bnei-nav {
+                padding: 0 20px;
+                flex-wrap: wrap;
+                height: auto;
+                min-height: 56px;
+            }
+
+            .bnei-nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                padding: 8px 0 12px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .bnei-nav-links a {
+                padding: 12px 4px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .bnei-hero {
+                padding: 48px 24px 40px;
+            }
+
+            .bnei-hero-title {
+                font-size: 28px;
+            }
+
+            .bnei-body {
+                padding: 32px 20px;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partner-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .portal-schools {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bnei-footer {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bnei-hero {
+                padding: 32px 16px 28px;
+            }
+
+            .bnei-hero-title {
+                font-size: 22px;
+            }
+
+            .bnei-hero-desc {
+                font-size: 14px;
+            }
+
+            .bnei-body {
+                padding: 24px 16px;
+            }
+
+            .partner-list {
+                grid-template-columns: 1fr;
+            }
+
+            .partner-portal {
+                padding: 20px 16px;
+            }
+
+            .portal-school {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .portal-school-link {
+                align-self: flex-end;
+            }
+        }
     </style>
 </head>
 

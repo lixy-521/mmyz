@@ -1,4 +1,4 @@
-<!---  
+﻿<!---  
 这个页面目前已经废弃
 -->
 
@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>校园安全专项整治行动启动 · 狼堡一中</title>
     <link rel="stylesheet" href="css/campus.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
     <style>
         .article-wrap {
             max-width: 680px;
@@ -170,6 +171,7 @@
                 <a href="alumni.html">知名校友</a>
                 <a href="forum.html">校园论坛</a>
             </div>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
@@ -321,5 +323,25 @@
     <footer class="campus-footer">
         © 狼堡市第一中学 信息中心 &emsp;|&emsp; 技术支持：教务处信息组
     </footer>
-</body>
+    <script>
+        (function(){
+            var btn = document.getElementById('nav-hamburger');
+            var links = document.querySelector('.campus-nav-links');
+            if (!btn || !links) return;
+            btn.addEventListener('click', function(e){
+                e.stopPropagation();
+                btn.classList.toggle('open');
+                links.classList.toggle('open');
+            });
+            document.addEventListener('click', function(){
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+            links.addEventListener('click', function(){
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+        })();
+    </script></body>
 </html>
+

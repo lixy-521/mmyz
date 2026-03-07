@@ -1,0 +1,557 @@
+/* ============================================
+   mobile.css — 移动端响应式适配
+   策略：纯CSS覆盖，零逻辑改动
+   断点：768px（平板）、480px（手机）
+   ============================================ */
+
+/* ── 汉堡按钮（桌面隐藏，手机显示）── */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.nav-hamburger:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    transform-origin: center;
+}
+
+/* 汉堡变 X 动画 */
+.nav-hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.nav-hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================
+   平板断点：≤ 768px
+   ============================================ */
+@media (max-width: 768px) {
+
+    /* ── 导航栏：显示汉堡按钮 ── */
+    .nav-hamburger {
+        display: flex;
+    }
+
+    .campus-nav-inner {
+        flex-wrap: wrap;
+        padding: 0 16px;
+        height: auto;
+        min-height: 56px;
+        position: relative;
+    }
+
+    .campus-nav-logo {
+        height: 56px;
+    }
+
+    /* 导航链接：默认折叠，点击汉堡后展开 */
+    .campus-nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-left: 0;
+        padding: 8px 0 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        gap: 0;
+        order: 3;
+    }
+
+    .campus-nav-links.open {
+        display: flex;
+    }
+
+    .campus-nav-links a {
+        padding: 12px 16px;
+        border-radius: 0;
+        font-size: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        white-space: normal;
+    }
+
+    .campus-nav-links a:last-child {
+        border-bottom: none;
+    }
+
+    .campus-nav-links a.active {
+        border-bottom-color: transparent;
+        border-left: 3px solid var(--accent);
+    }
+
+    /* 用户区域 */
+    .campus-nav-user {
+        display: none;
+    }
+
+    /* ── 双栏变单栏 ── */
+    .campus-layout {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    /* ── Banner 高度调整 ── */
+    .campus-banner {
+        aspect-ratio: 16 / 7;
+        min-height: 180px;
+    }
+
+    /* ── 系统布局：侧边栏折叠到顶部 ── */
+    .sys-layout {
+        flex-direction: column;
+    }
+
+    .sys-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .sys-sidebar-nav {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 8px;
+        gap: 4px;
+    }
+
+    .sys-sidebar-item {
+        flex: 1 1 auto;
+        min-width: 80px;
+        padding: 10px 12px;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        border-radius: 6px;
+        justify-content: center;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    .sys-sidebar-item:hover {
+        border-left-color: transparent;
+        border-bottom-color: rgba(200, 150, 46, 0.5);
+    }
+
+    .sys-sidebar-item.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--accent);
+    }
+
+    .sys-main {
+        padding: 20px;
+    }
+
+    /* ── 登录框 ── */
+    .login-box {
+        width: 90%;
+        max-width: 420px;
+        padding: 32px 28px;
+    }
+
+    /* ── 教职工卡片 ── */
+    .staff-profile {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .staff-info {
+        width: 100%;
+    }
+
+    /* ── 数据看板网格 ── */
+    .vitals-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ============================================
+   手机断点：≤ 480px
+   ============================================ */
+@media (max-width: 480px) {
+
+    /* ── 全局容器 ── */
+    .campus-container {
+        padding: 16px 12px;
+    }
+
+    /* ── 页面标题 ── */
+    .campus-page-title {
+        font-size: 18px;
+    }
+
+    /* ── 登录框 ── */
+    .login-box {
+        width: 100%;
+        max-width: 100%;
+        padding: 28px 20px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .login-page {
+        align-items: flex-start;
+        padding-top: 0;
+    }
+
+    /* ── 导航更紧凑 ── */
+    .campus-nav-logo .school-name {
+        font-size: 15px;
+    }
+
+    .campus-nav-logo .school-sub {
+        display: none;
+    }
+
+    /* ── Banner 更小 ── */
+    .campus-banner {
+        aspect-ratio: 16 / 9;
+        min-height: 160px;
+    }
+
+    .campus-banner-caption {
+        font-size: 13px;
+        padding: 12px 14px 10px;
+    }
+
+    /* ── 卡片内边距 ── */
+    .campus-card-body {
+        padding: 14px;
+    }
+
+    .campus-card-header {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    /* ── 系统主视图 ── */
+    .sys-main {
+        padding: 14px 12px;
+    }
+
+    .sys-main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .sys-main-title {
+        font-size: 16px;
+    }
+
+    /* ── 论坛帖子 ── */
+    .forum-post-header {
+        padding: 12px 14px 8px;
+    }
+
+    .forum-post-body {
+        padding: 10px 14px;
+    }
+
+    .forum-post-footer {
+        padding: 8px 14px 10px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .forum-post-meta {
+        gap: 8px;
+    }
+
+    /* ── 搜索栏 ── */
+    .campus-search-bar {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .campus-search-bar .campus-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* ── 标签页：横向滚动 ── */
+    .tab-bar {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+        gap: 0;
+    }
+
+    .tab-bar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-btn {
+        flex-shrink: 0;
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    /* ── 终端界面 ── */
+    .terminal {
+        padding: 16px 12px;
+        font-size: 12px;
+    }
+
+    .terminal-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .terminal-label {
+        min-width: unset;
+    }
+
+    .terminal select,
+    .terminal input[type=text] {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .terminal-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ── 表格横向滚动包裹 ── */
+    .campus-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .campus-table {
+        min-width: 480px;
+    }
+
+    /* ── 邮件列表 ── */
+    .mail-name {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+    .mail-date {
+        margin-left: 0;
+        font-size: 11px;
+    }
+
+    /* ── 按钮触控区域最小化 ── */
+    .campus-btn {
+        min-height: 44px;
+        padding: 10px 18px;
+    }
+
+    /* ── 表单输入：防止 iOS 自动缩放到 16px 以下 ── */
+    .campus-input,
+    .campus-select {
+        font-size: 16px;
+    }
+
+    /* ── 弹窗 ── */
+    .modal-box {
+        width: 95%;
+        padding: 22px 18px;
+    }
+
+    .modal-footer {
+        flex-direction: column-reverse;
+        gap: 8px;
+    }
+
+    .modal-footer .campus-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* ── 教职工卡片 ── */
+    .staff-avatar,
+    .staff-avatar-use-img {
+        width: 80px !important;
+        height: 96px !important;
+    }
+
+    .staff-info h2 {
+        font-size: 18px;
+    }
+
+    /* ── 快速导航 ── */
+    .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .quick-link-item {
+        padding: 12px 6px;
+        font-size: 12px;
+    }
+
+    .quick-link-icon {
+        font-size: 20px;
+    }
+
+    /* ── 入场动画手机模型 ── */
+    .intro-phone {
+        width: min(320px, 90vw) !important;
+    }
+
+    /* ── 公告栏 ── */
+    .campus-ticker-inner {
+        padding: 0 12px;
+    }
+
+    /* ── 页脚 ── */
+    .campus-footer {
+        font-size: 11px;
+        padding: 12px;
+    }
+
+    /* ── 数据看板 ── */
+    .vitals-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .vital-value {
+        font-size: 18px;
+    }
+}
+
+/* ============================================
+   hole.css 场景适配（tree hole 匿名论坛）
+   ============================================ */
+@media (max-width: 768px) {
+    .hole-nav {
+        padding: 0 14px;
+        height: 52px;
+    }
+
+    .hole-nav-logo {
+        font-size: 16px;
+    }
+
+    .hole-container {
+        padding: 20px 14px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .hole-nav {
+        padding: 0 12px;
+        height: 50px;
+        flex-wrap: wrap;
+    }
+
+    .hole-nav-logo .logo-text .name {
+        font-size: 15px;
+    }
+
+    .hole-nav-logo .logo-text .sub {
+        display: none;
+    }
+
+    .hole-nav-info {
+        font-size: 11px;
+        gap: 8px;
+    }
+
+    /* 隐藏次要统计项，减少拥挤 */
+    .hole-nav-info span:not(:first-child) {
+        display: none;
+    }
+
+    .hole-container {
+        padding: 14px 10px;
+    }
+
+    .hole-post-card {
+        padding: 14px 12px;
+    }
+
+    .hole-hero-title {
+        font-size: 20px;
+    }
+
+    .hole-hero-sub {
+        font-size: 12px;
+    }
+
+    .hole-post-footer {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .hole-expand-btn {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* vault 输入框 */
+    .vault-input {
+        font-size: 14px;
+        letter-spacing: 2px;
+        padding: 12px 16px;
+    }
+
+    .vault-box {
+        padding: 16px;
+    }
+}
+
+/* ============================================
+   响应式工具类
+   ============================================ */
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* 确保表格容器在手机上滚动（JS动态生成区域用这个class） */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ── 论坛双栏布局响应式 ── */
+@media (max-width: 768px) {
+    .forum-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ── alumni 校友网格卡片响应式 ── */
+@media (max-width: 480px) {
+
+    [style*="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))"],
+    [style*="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))"] {
+        grid-template-columns: 1fr !important;
+    }
+}
