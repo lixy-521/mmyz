@@ -125,8 +125,8 @@
     }
 
     .campus-nav-links a.active {
-        background: rgba(200, 150, 46, 0.15);
-        border-left: 3px solid var(--accent);
+        background: rgba(200, 150, 46, 0.2);
+        color: #fff;
     }
 
     /* 用户区域 */
