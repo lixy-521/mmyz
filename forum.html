@@ -26,7 +26,7 @@
             </div>
             <div id="nav-user-area"></div>
             <a class="nav-home-back" href="index.html">← 首页</a>
-        <button class="nav-hamburger" id="nav-hamburger"
+            <button class="nav-hamburger" id="nav-hamburger"
                 aria-label="菜单"><span></span><span></span><span></span></button>
         </div>
     </nav>
@@ -54,9 +54,10 @@
             <div class="campus-page-title">校园论坛</div>
         </div>
 
-        <div class="forum-layout" style="display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:start">
+        <div class="forum-layout"
+            style="display:flex;flex-direction:column;gap:24px;align-items:stretch;max-width:800px;margin:0 auto">
             <!-- 左侧主体 -->
-            <div>
+            <div style="width:100%">
                 <!-- ID搜索区 -->
                 <div class="campus-card" style="margin-bottom:24px">
                     <div class="campus-card-header">🔍 按ID搜索发帖记录</div>
@@ -70,44 +71,39 @@
                     </div>
                 </div>
 
+                <!-- 当前在线 -->
+                <div class="campus-card" style="margin-bottom:24px">
+                    <div class="campus-card-header">🟢 当前在线</div>
+                    <div class="campus-card-body">
+                        <div style="font-size:13px;color:#2c3e50;line-height:2.2;display:flex;flex-wrap:wrap;gap:16px">
+                            <div style="white-space:nowrap">lj2008<span
+                                    style="color:#27ae60;font-size:11px;margin-left:4px">●</span></div>
+                            <div style="white-space:nowrap">zpy2007<span
+                                    style="color:#27ae60;font-size:11px;margin-left:4px">●</span></div>
+                            <div style="white-space:nowrap">zg2007<span
+                                    style="color:#27ae60;font-size:11px;margin-left:4px">●</span></div>
+                            <div style="white-space:nowrap">stl2008<span
+                                    style="color:#27ae60;font-size:11px;margin-left:4px">●</span></div>
+                            <div style="white-space:nowrap">ltq2007<span
+                                    style="color:#27ae60;font-size:11px;margin-left:4px">●</span></div>
+                            <div style="white-space:nowrap">admin_jw<span
+                                    style="color:#27ae60;font-size:11px;margin-left:4px">●</span></div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- 搜索结果 -->
                 <div id="forum-search-result"></div>
 
-                <!-- 固定帖子 -->
-                <div class="campus-card mb-16" style="border-left:4px solid #c8962e">
+                <!-- 固定帖子提示栏 -->
+                <div class="campus-card"
+                    style="border-left:4px solid #c8962e;margin-bottom:16px;border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:none">
                     <div class="campus-card-body"
                         style="padding:10px 20px;font-size:13px;color:#856404;background:#fffbf0">
                         📌 以下为最新帖子，更多内容请使用ID搜索功能
                     </div>
                 </div>
                 <div id="forum-posts"></div>
-            </div>
-
-            <!-- 右侧：在线用户 -->
-            <div>
-                <div class="campus-card" style="position:sticky;top:80px">
-                    <div class="campus-card-header">🟢 当前在线</div>
-                    <div class="campus-card-body">
-                        <div style="font-size:13px;color:#2c3e50;line-height:2.2">
-                            <div> lj2008<span style="color:#27ae60;font-size:11px">●</span></div>
-                            <div> zpy2007<span style="color:#27ae60;font-size:11px">●</span></div>
-                            <div> zg2007 <span style="color:#27ae60;font-size:11px">●</span></div>
-                            <div> stl2008 <span style="color:#27ae60;font-size:11px">●</span></div>
-                            <div>ltq2007 <span style="color:#27ae60;font-size:11px">●</span></div>
-                            <div>admin_jw <span style="color:#27ae60;font-size:11px">●</span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="campus-card" style="margin-top:16px;position:sticky;top:340px">
-                    <div class="campus-card-header">📊 论坛统计</div>
-                    <div class="campus-card-body" style="font-size:12px;color:#6b7f93;line-height:2">
-                        <div>今日发帖：<strong>23</strong></div>
-                        <div>本周发帖：<strong>147</strong></div>
-                        <div>注册用户：<strong>1,832</strong></div>
-                        <div style="color:#c0392b">已删除帖子：<strong>7</strong>（本月）</div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
