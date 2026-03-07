@@ -5,6 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>树洞 · hole.lbyz.internal</title>
+
+    <link rel="preload" href="css/base.css" as="style" />
+    <link rel="preload" href="css/layout.css" as="style" />
+    <link rel="preload" href="css/mobile.css" as="style" />
+    <link rel="preload" href="assets/index/a1.webp" as="image" />
+    <link rel="preload" href="assets/logo.webp" as="image" />
     <link rel="stylesheet" href="../css/hole.css" />
     <link rel="stylesheet" href="../css/mobile.css" />
 </head>
@@ -560,7 +566,7 @@
                 那个地方真的很乱，桌上贴了一堆便利贴，老李（保安大叔）说那是他记密码的地方……
 
                 附一张我偷拍的图，太好笑了（</div>
-            <img class="hole-post-img" src="../assets/security_room.jpg" alt="保安室内景" id="security-img"
+            <img loading="lazy" class="hole-post-img" src="../assets/security_room.webp" alt="保安室内景" id="security-img"
                 onerror="this.style.display='none';document.getElementById('security-img-fallback').style.display='block'" />
             <div id="security-img-fallback"
                 style="display:none;background:#1a1a2e;border:1px solid rgba(124,77,255,0.2);border-radius:8px;padding:20px;margin-bottom:14px;font-family:'Courier New',monospace;font-size:13px;color:#00cc44">

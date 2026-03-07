@@ -5,6 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>狼堡一中 · 校园信息网</title>
+
+    <link rel="preload" href="css/base.css" as="style" />
+    <link rel="preload" href="css/layout.css" as="style" />
+    <link rel="preload" href="css/mobile.css" as="style" />
+    <link rel="preload" href="assets/index/a1.webp" as="image" />
+    <link rel="preload" href="assets/logo.webp" as="image" />
     <link rel="stylesheet" href="css/campus.css" />
     <link rel="stylesheet" href="css/mobile.css" />
     <style>
@@ -317,7 +323,7 @@
     <nav class="campus-nav">
         <div class="campus-nav-inner">
             <a class="campus-nav-logo" href="index.html">
-                <img src="assets/logo.png" onerror="this.style.display='none'" alt="校徽" />
+                <img src="assets/logo.webp" onerror="this.style.display='none'" alt="校徽" />
                 <div>
                     <div class="school-name">狼堡市第一中学</div>
                 </div>
@@ -350,7 +356,7 @@
         <!-- 轮播图 -->
         <div class="campus-banner" id="banner">
             <div class="campus-banner-slide active">
-                <img src="assets/index/a1.png" alt="狼堡一中 · 格物致知，知行合一" style="width:100%;height:100%;object-fit:cover"
+                <img src="assets/index/a1.webp" alt="狼堡一中 · 格物致知，知行合一" style="width:100%;height:100%;object-fit:cover"
                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                 <div class="banner-placeholder"
                     style="display:none;position:absolute;inset:0;background:linear-gradient(135deg,#1a2a1a 0%,#2a4a2a 40%,#c8962e 100%);align-items:center;justify-content:center;flex-direction:column;gap:12px">
@@ -365,7 +371,7 @@
                 <div class="campus-banner-caption">狼堡市第一中学 · 创建于1978年</div>
             </div>
             <div class="campus-banner-slide">
-                <img src="assets/index/a2.png" alt="恭喜刘天清同学荣获全市数学竞赛一等奖" style="width:100%;height:100%;object-fit:cover"
+                <img loading="lazy" src="assets/index/a2.webp" alt="恭喜刘天清同学荣获全市数学竞赛一等奖" style="width:100%;height:100%;object-fit:cover"
                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                 <div class="banner-placeholder"
                     style="display:none;position:absolute;inset:0;background:linear-gradient(135deg,#0f2540 0%,#1a3a5c 50%,#c8962e 100%);align-items:center;justify-content:center;flex-direction:column;gap:12px">
@@ -378,7 +384,7 @@
                 <div class="campus-banner-caption">11月20日 · 我校刘天清同学荣获全市数学联赛一等奖 · 全校庆贺</div>
             </div>
             <div class="campus-banner-slide">
-                <img src="assets/index/a3.png" alt="期末备考进行中" style="width:100%;height:100%;object-fit:cover"
+                <img loading="lazy" src="assets/index/a3.webp" alt="期末备考进行中" style="width:100%;height:100%;object-fit:cover"
                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                 <div class="banner-placeholder"
                     style="display:none;position:absolute;inset:0;background:linear-gradient(135deg,#1e3a5c 0%,#2a6080 50%,#1e5a3a 100%);align-items:center;justify-content:center;flex-direction:column;gap:12px">
