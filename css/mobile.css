@@ -117,10 +117,32 @@
         gap: 16px;
     }
 
-    /* ── Banner 高度调整 ── */
+    /* ── 手机端卡片顺序：学校简介 → 快速导航区 → 校园新闻 ── */
+    /* 溶解左栏包裹层，让两个卡片成为独立 grid 子项 */
+    .campus-layout>div:first-child {
+        display: contents;
+    }
+
+    /* 校园新闻（原左栏第1个卡片）→ 排到最后 */
+    .campus-layout>.campus-card:nth-child(1) {
+        order: 3;
+    }
+
+    /* 学校简介（原左栏第2个卡片）→ 排到最前 */
+    .campus-layout>.campus-card:nth-child(2) {
+        order: 1;
+    }
+
+    /* 右栏（快速导航 / 近期通知 / 当前时间）→ 排到中间 */
+    .campus-layout>div:last-child {
+        order: 2;
+    }
+
+    /* ── Banner：保持图片原始 16:5 比例，完整显示 ── */
     .campus-banner {
-        aspect-ratio: 16 / 7;
-        min-height: 180px;
+        aspect-ratio: 16 / 5;
+        height: auto;
+        min-height: unset;
     }
 
     /* ── 系统布局：侧边栏折叠到顶部 ── */
@@ -228,15 +250,33 @@
         display: none;
     }
 
-    /* ── Banner 更小 ── */
+    /* ── Banner：手机端同样保持 16:5 完整显示图片 ── */
     .campus-banner {
-        aspect-ratio: 16 / 9;
-        min-height: 160px;
+        aspect-ratio: 16 / 5;
+        height: auto;
+        min-height: unset;
     }
 
+    /* Banner 标题字体缩小 */
     .campus-banner-caption {
-        font-size: 13px;
-        padding: 12px 14px 10px;
+        font-size: 12px;
+        padding: 10px 12px 8px;
+    }
+
+    /* banner-placeholder 内文字适配 */
+    .campus-banner [style*="font-size:32px"],
+    .campus-banner [style*="font-size: 32px"] {
+        font-size: 18px !important;
+    }
+
+    .campus-banner [style*="font-size:28px"],
+    .campus-banner [style*="font-size: 28px"] {
+        font-size: 16px !important;
+    }
+
+    .campus-banner [style*="font-size:20px"],
+    .campus-banner [style*="font-size: 20px"] {
+        font-size: 13px !important;
     }
 
     /* ── 卡片内边距 ── */
@@ -553,5 +593,135 @@
     [style*="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))"],
     [style*="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))"] {
         grid-template-columns: 1fr !important;
+    }
+}
+
+/* ============================================================
+   全面排查补丁：修复遗漏的手机端问题
+   ============================================================ */
+
+/* ── index.html: campus-layout 不在 campus-container 内，需补 padding ── */
+@media (max-width: 480px) {
+    .campus-layout {
+        padding: 0 12px;
+    }
+}
+
+/* ── security.html 终端手动输入区：内联 width:130px 的 input 在手机溢出 ── */
+@media (max-width: 480px) {
+
+    /* 覆盖终端内自定义 input 的宽度 */
+    .terminal input[type="text"][style*="width:130px"],
+    .terminal input[type="text"][style*="width: 130px"] {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* 终端内手动查询行竖向排列 */
+    .terminal .terminal-row[style],
+    .terminal .terminal-row {
+        flex-wrap: wrap;
+    }
+
+    /* terminal-btn inline margin 覆盖 */
+    .terminal .terminal-btn[style*="margin-left"] {
+        margin-left: 0 !important;
+        margin-top: 6px;
+    }
+}
+
+/* ── teacher.html: campus-table 无横向滚动包裹，直接给父卡片 body 设滚动 ── */
+@media (max-width: 600px) {
+
+    .campus-card-body:has(.campus-table),
+    .campus-card-body>.campus-table {
+        overflow-x: auto;
+        display: block;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* 降级方案：直接包裹表格让其可以滚动（has 支持度不够时的兜底） */
+    .campus-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+
+    .campus-table thead,
+    .campus-table tbody,
+    .campus-table tr {
+        display: table;
+        width: 100%;
+    }
+}
+
+/* ── 文章页面：article-wrap 在手机端 padding 缩小 ── */
+@media (max-width: 480px) {
+    .article-wrap {
+        padding: 20px 14px 40px !important;
+    }
+
+    .article-title {
+        font-size: 18px !important;
+    }
+
+    .article-body {
+        font-size: 14px !important;
+    }
+
+    .article-person {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* 文章来源区域 */
+    .article-source {
+        padding: 12px 0 !important;
+    }
+}
+
+/* ── 系统页面 sys-main-header：小屏换行 ── */
+@media (max-width: 600px) {
+    .sys-main-header>span {
+        display: block;
+        margin-top: 4px;
+    }
+}
+
+/* ── principal.html / security.html：sidebar-header 手机端收紧 ── */
+@media (max-width: 480px) {
+    .sys-sidebar-header {
+        padding: 12px;
+    }
+
+    .sys-sidebar-title {
+        font-size: 12px;
+    }
+}
+
+/* ── 导航 nav-user-area 在手机端隐藏（系统类页面会通过 JS 注入用户名） ── */
+@media (max-width: 768px) {
+    #nav-user-area {
+        display: none;
+    }
+}
+
+/* ── hole/vault.html：vault-box 超宽问题 ── */
+@media (max-width: 480px) {
+    .vault-box {
+        max-width: 100%;
+        padding: 16px 14px;
+    }
+
+    .vault-title {
+        font-size: 18px;
+    }
+}
+
+/* ── 保持 campus-layout 不被 padding 双重计算 ── */
+@media (max-width: 768px) {
+    .campus-layout {
+        padding: 0 16px;
     }
 }
