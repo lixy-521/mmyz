@@ -4,6 +4,11 @@
    断点：768px（平板）、480px（手机）
    ============================================ */
 
+/* 返回首页按钮：桌面端隐藏，仅手机端显示 */
+.nav-home-back {
+    display: none;
+}
+
 /* ── 汉堡按钮（桌面隐藏，手机显示）── */
 .nav-hamburger {
     display: none;
@@ -56,33 +61,51 @@
    ============================================ */
 @media (max-width: 768px) {
 
-    /* ── 导航栏：显示汉堡按钮 ── */
+    /* ── 导航栏：显示汉堡按钒 ── */
     .nav-hamburger {
         display: flex;
     }
 
-    .campus-nav-inner {
-        flex-wrap: wrap;
-        padding: 0 16px;
-        height: auto;
-        min-height: 56px;
+    .campus-nav {
         position: relative;
+        /* 为浮层菜单定位基准 */
+    }
+
+    .campus-nav-inner {
+        padding: 0 16px;
+        height: 56px;
+        /* 固定高度，不再被菜单擑大 */
+        flex-wrap: nowrap;
+        /* 不换行，菜单用浮层展开 */
+        overflow: visible;
     }
 
     .campus-nav-logo {
         height: 56px;
     }
 
-    /* 导航链接：默认折叠，点击汉堡后展开 */
+    /* 导航链接：默认折叠，展开时作为浮层显示在导航栏下方 */
     .campus-nav-links {
         display: none;
+        position: absolute;
+        top: 56px;
+        /* 导航栏高度下方开始 */
+        right: 0;
+        /* 靠右对齐 */
+        left: auto;
+        /* 不拉伸到左边 */
         flex-direction: column;
-        width: 100%;
-        margin-left: 0;
-        padding: 8px 0 12px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 100%);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        border-radius: 0 0 0 10px;
+        z-index: 998;
+        padding: 6px 0 10px;
         gap: 0;
-        order: 3;
+        order: unset;
+        width: auto;
+        /* 宽度由内容决定 */
+        min-width: 140px;
+        /* 最小宽度保证可读性 */
     }
 
     .campus-nav-links.open {
@@ -90,10 +113,10 @@
     }
 
     .campus-nav-links a {
-        padding: 12px 16px;
+        padding: 14px 20px;
         border-radius: 0;
         font-size: 15px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
         white-space: normal;
     }
 
@@ -102,13 +125,36 @@
     }
 
     .campus-nav-links a.active {
-        border-bottom-color: transparent;
+        background: rgba(200, 150, 46, 0.15);
         border-left: 3px solid var(--accent);
     }
 
     /* 用户区域 */
     .campus-nav-user {
         display: none;
+    }
+
+    /* 返回首页按钒（手机端可见） */
+    .nav-home-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 13px;
+        padding: 4px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 20px;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s;
+        margin-left: 8px;
+        flex-shrink: 0;
+    }
+
+    .nav-home-back:hover {
+        color: white;
+        border-color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
     }
 
     /* ── 双栏变单栏 ── */
