@@ -57,28 +57,24 @@
             font-size: 15px;
             color: #5a4000;
         }
-        
-        /* 图片样式优化 */
         .article-photo {
             width: 100%;
-            margin: 32px 0;
-            border-radius: 12px;
+            background: linear-gradient(135deg, #1a3a5c, #2a6090);
+            border-radius: 8px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            margin: 24px 0;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            background: #fff;
         }
-
         .article-photo img {
             width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.3s ease;
+            height: 100%;
+            object-fit: cover;
         }
-
-        .article-photo img:hover {
-            transform: scale(1.02);
-        }
-        
         .article-person {
             display: flex;
             align-items: flex-start;
@@ -94,13 +90,17 @@
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
-            background: #f0f0f0;
+            background: linear-gradient(135deg, #3a5c8a, #5a7caa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
         }
         .article-person-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
         }
         .article-person-name { font-size: 15px; font-weight: 700; color: #1a1a1a; }
         .article-person-role { font-size: 12px; color: #666; margin-top: 2px; }
@@ -167,7 +167,13 @@
             <p>来自<strong>北境神经工程研究院</strong>的项目顾问在致辞中对学校的合作态度表示赞赏，并透露研究院将在后续阶段提供更先进的设备支持。</p>
 
             <div class="article-person">
+<<<<<<< HEAD
                 <div class="article-person-avatar">专家</div>
+=======
+                <div class="article-person-avatar">
+                    <img src="assets/chenyu.png" alt="项目顾问">
+                </div>
+>>>>>>> 33bee7c09b4bf12b634646d59869ae21ba0c622f
                 <div>
                     <div class="article-person-name">项目顾问</div>
                     <div class="article-person-role">北境神经工程研究院 · 首席研究员</div>
