@@ -205,10 +205,11 @@
             <div class="campus-card">
                 <div class="campus-card-header">🏛 学校简介</div>
                 <div class="campus-card-body">
-                    <p style="line-height:1.9;color:#2c3e50;font-size:14px">
-                        狼堡市第一中学（简称"狼堡一中"）创建于1978年，是狼堡市重点示范高中，
-                        连续多年荣获市级"先进集体"称号。学校位于狼堡市中心，占地面积约
-                        7万平方米，现有在校学生1800余名。
+                    <p style="line-height:1.9;color:#2c3e50;font-size:14px;text-align:justify;margin-bottom:12px;text-indent:2em">
+                        狼堡市第一中学（简称“狼堡一中”）傲立于青青草原省狼堡市中心地带，自1978年建校以来，始终秉持“格物致知，知行合一”的校训，致力于为莘莘学子提供卓越的基础教育。作为省内首屈一指的地市级名校，我校不仅连续十余年蝉联市级“先进集体”殊荣，更在全省教育界享有盛誉。在青青草原省宏大的教育格局中，除了省会五校（草原一中、草原北关中学、青草中学、绿草中学、第十中学）及省会周边大县强校外，各地级市亦是群星闪耀。我校与羊村市的大肥羊学校、美草实验中学，以及安海市的苇甸一中、虎州市的虎州一中、鱼河市的鱼河一中等共同构筑了全省顶尖的地级市名校矩阵。凭借深厚的底蕴，我校教学质量常年稳居全省前列，在历次统考与竞赛中屡创佳绩，是与之齐名的教育高地。
+                    </p>
+                    <p style="line-height:1.9;color:#2c3e50;font-size:14px;text-align:justify;text-indent:2em">
+                        学校占地面积达7万平方米，绿树成荫、环境优雅，拥有现代化标准实验室、数字化图书馆及多功能体育馆等一流设施。目前现有在校学生1800余名，专任教职工200余人，师资力量雄厚。近半个世纪的风雨洗礼，狼堡一中不仅培育了大批在各类省市级竞赛中折桂的拔尖人才，更注重人文素养与身心健康的全面发展。在这片充满生机与活力的沃土上，无数优秀的毕业生从这里走向全国顶尖学府和各行各业。踔厉奋发，力学不倦，狼堡一中正以更加昂扬的姿态，向着具有国际视野的现代化新锐名校阔步迈进。
                     </p>
                     <p style="line-height:1.9;color:#2c3e50;font-size:14px;margin-top:10px">
                         校训：<strong style="color:#1a3a5c">格物致知，知行合一</strong>
@@ -259,9 +260,16 @@
                 <div class="campus-card-body text-center">
                     <div class="analog-clock" style="margin: 0 auto 16px;">
                         <div class="clock-face">
-                            <div class="clock-hand-wrapper hour-wrapper"><div class="hour-hand"></div></div>
-                            <div class="clock-hand-wrapper min-wrapper"><div class="min-hand"></div></div>
-                            <div class="clock-hand-wrapper second-wrapper" style="transition: transform 0.05s cubic-bezier(0.4, 2.08, 0.55, 0.44);"><div class="second-hand"></div></div>
+                            <div class="clock-hand-wrapper hour-wrapper">
+                                <div class="hour-hand"></div>
+                            </div>
+                            <div class="clock-hand-wrapper min-wrapper">
+                                <div class="min-hand"></div>
+                            </div>
+                            <div class="clock-hand-wrapper second-wrapper"
+                                style="transition: transform 0.05s cubic-bezier(0.4, 2.08, 0.55, 0.44);">
+                                <div class="second-hand"></div>
+                            </div>
                             <div class="clock-center"></div>
                         </div>
                     </div>
@@ -397,16 +405,16 @@
             document.getElementById("clock").textContent =
                 [now.getHours(), now.getMinutes(), now.getSeconds()]
                     .map(n => String(n).padStart(2, "0")).join(":");
-            
+
             // 模拟时钟
             const secs = now.getSeconds();
             const mins = now.getMinutes();
             const hours = now.getHours();
-            
+
             const secDeg = secs * 6;
             const minDeg = mins * 6 + secs * 0.1;
             const hourDeg = (hours % 12) * 30 + mins * 0.5;
-            
+
             const secWrapper = document.querySelector('.second-wrapper');
             if (secWrapper) {
                 if (secs === 0) {
@@ -416,10 +424,10 @@
                 }
                 secWrapper.style.transform = `rotate(${secDeg}deg)`;
             }
-            
+
             const minWrapper = document.querySelector('.min-wrapper');
             if (minWrapper) minWrapper.style.transform = `rotate(${minDeg}deg)`;
-            
+
             const hourWrapper = document.querySelector('.hour-wrapper');
             if (hourWrapper) hourWrapper.style.transform = `rotate(${hourDeg}deg)`;
         }
