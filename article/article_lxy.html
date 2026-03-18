@@ -1,1130 +1,10 @@
-﻿<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>銆愬枩鎶ャ€戞垜鏍″垬澶╂竻鍚屽鑽ｈ幏鍏ㄥ競鏁板鑱旇禌涓€绛夊 路 鐙煎牎涓€涓?/title>
-    <link rel="stylesheet" href="../css/campus.css" />
-    <link rel="stylesheet" href="../css/mobile.css" />
-    <style>
-        .article-wrap {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 40px 24px 80px;
-            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-        }
-
-        .article-source {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 8px;
-        }
-
-        .article-source-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #1a3a5c, #2a6090);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .article-source-name {
-            font-size: 15px;
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
-        .article-source-meta {
-            font-size: 12px;
-            color: #999;
-            margin-top: 2px;
-        }
-
-        .article-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1a1a1a;
-            line-height: 1.4;
-            margin-bottom: 8px;
-        }
-
-        .article-meta {
-            font-size: 13px;
-            color: #999;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .article-body {
-            font-size: 16px;
-            line-height: 1.9;
-            color: #333;
-        }
-
-        .article-body p {
-            margin-bottom: 20px;
-        }
-
-        .article-body .highlight {
-            background: #f0fff5;
-            border-left: 3px solid #27ae60;
-            padding: 12px 16px;
-            margin: 24px 0;
-            font-size: 15px;
-            color: #1e6040;
-        }
-
-        /* 淇敼鍚庣殑鍥剧墖鏍峰紡 - 澧炲ぇ涓庢枃瀛楃殑绌洪殭 */
-        .article-photo {
-            width: 100%;
-            margin: 32px 0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            background: #fff;
-        }
-
-        .article-photo img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .article-photo img:hover {
-            transform: scale(1.02);
-        }
-
-        .article-person {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 20px 0;
-        }
-
-        .article-person-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            overflow: hidden;
-            flex-shrink: 0;
-            background: #f0f0f0;
-        }
-
-        .article-person-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .article-person-name {
-            font-size: 15px;
-            font-weight: 700;
-            color: #1a1a1a;
-        }
-
-        .article-person-title {
-            font-size: 12px;
-            color: #666;
-            margin-top: 2px;
-        }
-
-        .article-person-desc {
-            font-size: 13px;
-            color: #555;
-            margin-top: 8px;
-            line-height: 1.7;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #1a3a5c;
-            font-size: 13px;
-            text-decoration: none;
-            margin-bottom: 24px;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        .comment-box {
-            border-top: 1px solid #eee;
-            margin-top: 40px;
-            padding-top: 24px;
-        }
-
-        .comment-item {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .comment-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-
-        .comment-body {
-            font-size: 13px;
-            color: #444;
-            line-height: 1.7;
-        }
-
-        .comment-name {
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-right: 8px;
-        }
-
-        .comment-time {
-            color: #999;
-            font-size: 11px;
-        }
-    </style>
-</head>
-
-<body>
-    <nav class="campus-nav">
-        <div class="campus-nav-inner">
-            <a class="campus-nav-logo" href="../index.html">
-                <img src="../assets/logo.webp" onerror="this.style.display='none'" alt="鏍″窘" />
-                <div>
-                    <div class="school-name">鐙煎牎甯傜涓€涓</div>
-                </div>
-            </a>
-            <div class="campus-nav-links">
-                <a href="../index.html">棣栭〉</a>
-                <a href="../campus/staff.html">甯堣祫鍥㈤槦</a>
-                <a href="../campus/alumni.html">鐭ュ悕鏍″弸</a>
-                <a href="../campus/forum.html">鏍″洯璁哄潧</a>
-            </div>
-            <a class="nav-home-back" href="../index.html">鈫?棣栭〉</a>
-            <button class="nav-hamburger" id="nav-hamburger"
-                aria-label="鑿滃崟"><span></span><span></span><span></span></button>
-        </div>
-    </nav>
-
-    <div class="article-wrap">
-
-
-        <div class="article-title">銆愬枩鎶ャ€戞垜鏍￠珮浜屽鐢熷垬澶╂竻鍚屽鑽ｈ幏2025骞村害鍏ㄥ競楂樹腑鏁板鑱旇禌涓€绛夊</div>
-
-        <div class="article-source">
-            <div class="article-source-avatar" style="background: none; overflow: hidden;">
-                <img src="../assets/logo.webp" alt="鏍″窘" style="width: 100%; height: 100%; object-fit: cover;" />
-            </div>
-            <div>
-                <div class="article-source-name">鐙煎牎涓€涓?鏍″洯淇℃伅缃?/div>
-                <div class="article-source-meta">瀹樻柟璐﹀彿</div>
-            </div>
-        </div>
-
-        <div class="article-meta">2025骞?1鏈?0鏃?&emsp;|&emsp; 闃呰 2,341 &emsp;|&emsp; 鐙煎牎涓€涓浼犵粍</div>
-
-        <div class="article-body">
-            <p>鍦?025骞村害鐙煎牎甯傞珮涓暟瀛﹁仈璧涗腑锛屾垜鏍￠珮浜岋紙7锛夌彮瀛︾敓<strong>鍒樺ぉ娓?/strong>鍚屽浠ュ叏甯傜涓€鐨勬垚缁╂憳寰椾竴绛夊妗傚啝锛岃繖涔熸槸鎴戞牎杩炵画绗笁骞村湪璇ラ」璧涗簨涓幏寰楁渶楂樿崳瑾夈€?/p>
-
-            <div class="article-photo">
-                <img loading="lazy" src="../assets/article_award/awardceremony.webp" alt="鍒樺ぉ娓呭悓瀛﹁幏濂栫収鐗?路 11鏈?0鏃?>
-            </div>
-
-            <p>鍒樺ぉ娓呭悓瀛﹁嚜灏忓璧蜂究灞曠幇鍑鸿秴瓒婂悓榫勪汉鐨勬暟瀛︾洿瑙夈€傛嵁鎮夛紝浠栧湪鏈绔炶禌鍘嬭酱棰橈紙鍥捐涓庣粍鍚堝垎鏋愮患鍚堥锛変腑閲囩敤浜嗕竴濂楁瀬涓虹畝娲佺殑閫嗗悜鍒嗘瀽娉曪紝浠ゅ浣嶈瘎濮斿嵃璞℃繁鍒汇€?/p>
-
-            <div class="highlight">
-                銆屼粬瀵?閫嗗悜鎺ㄥ'鏈変竴绉嶈繎涔庢湰鑳界殑鍋忕埍鈥斺€旇澶氬悓瀛︽槸浠庢闈㈠缓绔嬫ā鍨嬶紝浠栨€绘槸鍏堟兂缁堢偣锛屽啀鎯宠捣鐐广€傘€嶁€斺€旂珵璧涙寚瀵兼暀甯?寮犲浗寮?
-            </div>
-
-            <p>鎸囧鏁欏笀<strong>寮犲浗寮?/strong>鑰佸笀琛ㄧず锛屽垬澶╂竻涓嶄粎鍦ㄦ暟瀛︾珵璧涗笂琛ㄧ幇浼樺紓锛岃繎鏈熷湪鑷富鐮旂┒鏂归潰涔熸湁寰堝鐙埌鐨勬兂娉曪紝"浠栨渶杩戝湪鐮旂┒涓€浜涜法瀛︾鐨勪笢瑗匡紝鎴戜篃涓嶅畬鍏ㄧ悊瑙ｏ紝浣嗚兘鎰熻鍒颁粬鍦ㄨ鐪熷湴鎬濊€冧竴涓噸瑕佺殑闂"銆?
-            </p>
-
-            <div class="article-person">
-                <div class="article-person-avatar">
-                    <img loading="lazy" src="../assets/staff/zhangguoqiang.webp" alt="寮犲浗寮鸿€佸笀">
-                </div>
-                <div>
-                    <div class="article-person-name">寮犲浗寮?/div>
-                    <div class="article-person-title">楂樹竴鏁板 路 绔炶禌鎸囧鏁欏笀 路 鍔炲叕瀹わ細鏁欏妤糀搴?05</div>
-                    <div class="article-person-desc">
-                        寮犲浗寮鸿€佸笀浠庢暀鍗佷簩骞达紝涓€鐩存媴浠绘暟瀛︾珵璧涜緟瀵煎伐浣滐紝澶氬悕瀛︾敓鍦ㄥ競绾с€佺渷绾х珵璧涗腑鑾峰銆傛嵁鎮夛紝浠栨槸灏戞暟鍑犱綅鐭ラ亾鍒樺ぉ娓呰繎鏈熺爺绌舵柟鍚戠殑鑰佸笀涔嬩竴銆?
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="comment-box">
-            <div style="font-size:14px;font-weight:600;margin-bottom:16px;color:#333">鐣欒█锛?鏉★級</div>
-            <div class="comment-item">
-                <div class="comment-avatar" style="background:#d4edda">馃槉</div>
-                <div>
-                    <div class="comment-body">
-                        <span class="comment-name">楂樹簩涓冪彮鍚屽</span>
-                        <span class="comment-time">11鏈?0鏃?/span>
-                        <div>鎭枩澶╂竻锛侊紒鍏ㄧ彮閮戒负浣犻獎鍌诧紒</div>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-item">
-                <div class="comment-avatar" style="background:#d1ecf1">馃摎</div>
-                <div>
-                    <div class="comment-body">
-                        <span class="comment-name">寮犲浗寮鸿€佸笀</span>
-                        <span class="comment-time">11鏈?0鏃?/span>
-                        <div>瀹炶嚦鍚嶅綊銆傜户缁姞娌癸紝鏈変粈涔堥棶棰橀殢鏃舵潵鎵炬垜銆?/div>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-item">
-                <div class="comment-avatar" style="background:#fff3cd">鉂?/div>
-                <div>
-                    <div class="comment-body">
-                        <span class="comment-name">鍖垮悕</span>
-                        <span class="comment-time">11鏈?4鏃?/span>
-                        <div>涓轰粈涔堣繖绡囨枃绔犺繕娌℃湁涓嬫灦锛熶粬宸茬粡涓嶅湪瀛︽牎浜嗐€?/div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="campus-footer">
-        漏 鐙煎牎甯傜涓€涓 淇℃伅涓績 &emsp;|&emsp; 鎶€鏈敮鎸侊細鏁欏姟澶勪俊鎭粍
-    </footer>
-    <script src="../js/nav.js"></script>
-</body>
-
-</html>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>鏍艰嚧鍒涙柊鏁欒偛璁″垝鎴愭灉灞曠ず浼氬渾婊′妇琛?路 鐙煎牎涓€涓?/title>
-    <link rel="stylesheet" href="../css/campus.css" />
-    <link rel="stylesheet" href="../css/mobile.css" />
-    <style>
-        .article-wrap {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 40px 24px 80px;
-            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-        }
-
-        .article-source {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 8px;
-        }
-
-        .article-source-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #1a3a5c, #2a6090);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .article-source-name {
-            font-size: 15px;
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
-        .article-source-meta {
-            font-size: 12px;
-            color: #999;
-            margin-top: 2px;
-        }
-
-        .article-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1a1a1a;
-            line-height: 1.4;
-            margin-bottom: 8px;
-        }
-
-        .article-meta {
-            font-size: 13px;
-            color: #999;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .article-body {
-            font-size: 16px;
-            line-height: 1.9;
-            color: #333;
-        }
-
-        .article-body p {
-            margin-bottom: 20px;
-        }
-
-        .article-body .highlight {
-            background: #fffbf0;
-            border-left: 3px solid #c8962e;
-            padding: 12px 16px;
-            margin: 24px 0;
-            font-size: 15px;
-            color: #5a4000;
-        }
-
-        .article-photo {
-            width: 100%;
-            background: linear-gradient(135deg, #1a3a5c, #2a6090);
-            border-radius: 8px;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 13px;
-            margin: 24px 0;
-            overflow: hidden;
-        }
-
-        .article-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .article-person {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 20px 0;
-        }
-
-        .article-person-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            overflow: hidden;
-            flex-shrink: 0;
-            background: linear-gradient(135deg, #3a5c8a, #5a7caa);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 18px;
-        }
-
-        .article-person-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .article-person-name {
-            font-size: 15px;
-            font-weight: 700;
-            color: #1a1a1a;
-        }
-
-        .article-person-role {
-            font-size: 12px;
-            color: #666;
-            margin-top: 2px;
-        }
-
-        .article-person-desc {
-            font-size: 13px;
-            color: #555;
-            margin-top: 8px;
-            line-height: 1.7;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #1a3a5c;
-            font-size: 13px;
-            text-decoration: none;
-            margin-bottom: 24px;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-
-<body>
-    <nav class="campus-nav">
-        <div class="campus-nav-inner">
-            <a class="campus-nav-logo" href="../index.html">
-                <img src="../assets/logo.webp" onerror="this.style.display='none'" alt="鏍″窘" />
-                <div>
-                    <div class="school-name">鐙煎牎甯傜涓€涓</div>
-                </div>
-            </a>
-            <div class="campus-nav-links">
-                <a href="../index.html">棣栭〉</a>
-                <a href="../campus/staff.html">甯堣祫鍥㈤槦</a>
-                <a href="../campus/alumni.html">鐭ュ悕鏍″弸</a>
-                <a href="../campus/forum.html">鏍″洯璁哄潧</a>
-            </div>
-            <a class="nav-home-back" href="../index.html">鈫?棣栭〉</a>
-            <button class="nav-hamburger" id="nav-hamburger"
-                aria-label="鑿滃崟"><span></span><span></span><span></span></button>
-        </div>
-    </nav>
-
-    <div class="article-wrap">
-
-
-        <div class="article-title">鏍艰嚧鍒涙柊鏁欒偛璁″垝鎴愭灉灞曠ず浼氬渾婊′妇琛岋紝椤圭洰椤鹃棶鍑哄腑骞惰嚧杈?/div>
-
-        <div class="article-source">
-            <div class="article-source-avatar" style="background: none; overflow: hidden;">
-                <img src="../assets/logo.webp" alt="鏍″窘" style="width: 100%; height: 100%; object-fit: cover;" />
-            </div>
-            <div>
-                <div class="article-source-name">鐙煎牎涓€涓?鏍″洯淇℃伅缃?/div>
-                <div class="article-source-meta">瀹樻柟璐﹀彿</div>
-            </div>
-        </div>
-
-        <div class="article-meta">2025骞?0鏈?0鏃?&emsp;|&emsp; 闃呰 1,847 &emsp;|&emsp; 鐙煎牎涓€涓浼犵粍</div>
-
-        <div class="article-body">
-            <p>2025骞?0鏈?0鏃ワ紝鐙煎牎甯傜涓€涓銆屾牸鑷村垱鏂版暀鑲茶鍒掋€嶇涓€闃舵鎴愭灉灞曠ず浼氬湪瀛︽牎鎶ュ憡鍘呴『鍒╀妇琛屻€傛牎闀跨帇鏄庡痉銆佹牸鑷磋鍒掗」鐩礋璐ｄ汉钁ｆ柊椋炶€佸笀锛屼互鍙婃潵鑷悎浣滅鐮旀満鏋勭殑椤圭洰椤鹃棶鍑哄腑鏈灞曠ず浼氬苟鍒嗗埆鑷磋緸銆?/p>
-
-            <div class="article-photo">
-                <img loading="lazy" src="../assets/article_gezhi/lb.webp" alt="灞曠ず浼氱幇鍦虹収鐗?路 鎶ュ憡鍘?>
-            </div>
-
-            <p>鐜嬫槑寰锋牎闀垮湪鑷磋緸涓〃绀猴紝鏍艰嚧璁″垝鏄鏍℃帹杩涙暀鑲茬幇浠ｅ寲銆佹繁鍖栦骇瀛︾爺鍚堜綔鐨勯噸瑕佹帰绱紝甯屾湜閫氳繃绉戝鎵嬫鏇村ソ鍦扮悊瑙ｅ鐢熺殑瀛︿範瑙勫緥锛屼负涓€у寲鏁欒偛鎻愪緵鏁版嵁鏀拺銆?/p>
-
-            <p>椤圭洰璐熻矗浜鸿懀鏂伴鑰佸笀浠嬬粛浜嗘牸鑷磋鍒掔殑闃舵鎬ц繘灞曪細鑷?023骞?0鏈堝惎鍔ㄤ互鏉ワ紝椤圭洰鍦ㄦ暟鎹噰闆嗐€佺缁忔ā鍨嬫瀯寤虹瓑鏂归潰鍙栧緱浜嗛樁娈垫€ф垚鏋滐紝閮ㄥ垎鏁版嵁璐ㄩ噺"杩滆秴棰勬湡"銆?/p>
-
-            <div class="highlight">
-                銆屾垜浠浉淇★紝姣忎竴涓鐢熺殑鎬濈淮妯″紡閮芥槸鐙壒鐨勩€傛牸鑷磋鍒掔殑鐩爣锛屾槸鍦ㄤ笉骞叉壈姝ｅ父瀛︿範鐨勫墠鎻愪笅锛屽缓绔嬫渶浼樼殑璁ょ煡鍙傛暟妯″瀷銆傘€嶁€斺€旇懀鏂伴
-            </div>
-
-            <p>鏉ヨ嚜<strong>鍖楀绁炵粡宸ョ▼鐮旂┒闄?/strong>鐨勯」鐩【闂湪鑷磋緸涓瀛︽牎鐨勫悎浣滄€佸害琛ㄧず璧炶祻锛屽苟閫忛湶鐮旂┒闄㈠皢鍦ㄥ悗缁樁娈垫彁渚涙洿鍏堣繘鐨勮澶囨敮鎸併€?/p>
-
-            <div class="article-person">
-                <div class="article-person-avatar">
-                    <img loading="lazy" src="../assets/article_gezhi/chenyu.webp" alt="椤圭洰椤鹃棶">
-                </div>
-                <div>
-                    <div class="article-person-name">椤圭洰椤鹃棶</div>
-                    <div class="article-person-role">鍖楀绁炵粡宸ョ▼鐮旂┒闄?路 棣栧腑鐮旂┒鍛?/div>
-                    <div class="article-person-desc">璇ラ【闂负绁炵粡宸ョ▼瀛﹀崥澹紝闀挎湡浠庝簨璁ょ煡绉戝涓庣缁忔帴鍙ｆ妧鏈爺绌讹紝鍦ㄦ€濈淮鏁版嵁閲囬泦棰嗗煙鏈夎秴杩囧崄浜斿勾鐨勭爺绌剁粡楠屻€?/div>
-                    <br /><br />
-                    <span style="color:#999;font-size:12px">娉細鏈枃鎵€闄勪汉鐗╀俊鎭负灞曠ず浼氱幇鍦鸿祫鏂欙紝濡傞渶鑱旂郴璇烽€氳繃鏍℃柟娓犻亾銆?/span>
-                </div>
-            </div>
-        </div>
-
-        <p>灞曠ず浼氭渶鍚庯紝涓庝細甯堢敓灏辨牸鑷磋鍒掔殑鏁版嵁瀹夊叏銆佸疄楠屼鸡鐞嗙瓑闂杩涜浜嗘彁闂€傝懀鏂伴鑰佸笀琛ㄧず锛屾墍鏈夊弬涓庤€呭潎宸茬缃茬煡鎯呭悓鎰忎功锛屽疄楠岃繃绋嬪畬鍏ㄧ鍚堢浉鍏宠鑼冦€?/p>
-
-        <p style="color:#999;font-size:13px">鏈灞曠ず浼氱敱瀛︽牎鏁欏姟澶勪富鍔烇紝鏍艰嚧璁″垝椤圭洰缁勬壙鍔炪€傚鏈夋剰鍚戝弬涓庡悗缁織鎰胯€呮嫑鍕燂紝璇峰叧娉ㄦ牎鍥鍧涢€氱煡銆?/p>
-
-        <p style="color:#ccc;font-size:11px;margin-top:32px;padding-top:16px;border-top:1px solid #f0f0f0;">
-            鏂囩珷缂栧彿锛歀BYZ-NEWS-20251020 &emsp;|&emsp; 椤圭洰妗ｆ缂栧彿锛欸Z路2023路LBYZ &emsp;|&emsp; 褰掓。锛氭暀鍔″淇℃伅缁?/p>
-    </div>
-    </div>
-
-    <footer class="campus-footer">
-        漏 鐙煎牎甯傜涓€涓 淇℃伅涓績 &emsp;|&emsp; 鎶€鏈敮鎸侊細鏁欏姟澶勪俊鎭粍
-    </footer>
-    <script src="../js/nav.js"></script>
-</body>
-
-</html>
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2025骞村叏鍥介珮涓暟瀛﹁仈璧涢潚闈掕崏鍘熻禌鍖鸿幏濂栧悕鍗?/title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
-            background: #f4f4f4; color: #333;
-        }
-        .wx-page {
-            max-width: 680px; margin: 0 auto; background: #fff;
-            min-height: 100vh; padding-bottom: 60px;
-        }
-
-        /* 椤舵爮 */
-        .topbar {
-            display: flex; align-items: center; gap: 10px;
-            padding: 12px 16px; border-bottom: 1px solid #f0f0f0;
-        }
-        .ava {
-            width: 38px; height: 38px; border-radius: 4px; background: #1a3a5c;
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-size: 15px; font-weight: 700; flex-shrink: 0;
-        }
-        .accname { font-size: 14px; font-weight: 600; color: #1a1a1a; }
-        .accsub  { font-size: 11px; color: #999; margin-top: 1px; }
-        .followbtn {
-            margin-left: auto; background: #1677ff; color: #fff;
-            border: none; border-radius: 3px; padding: 5px 13px;
-            font-size: 12px; cursor: default;
-        }
-
-        /* 姝ｆ枃 */
-        .body { padding: 20px 16px 0; }
-        .wtitle {
-            font-size: 21px; font-weight: 700; color: #1a1a1a;
-            line-height: 1.45; margin-bottom: 10px;
-        }
-        .wmeta {
-            font-size: 12px; color: #aaa; padding-bottom: 14px;
-            border-bottom: 1px solid #f2f2f2; margin-bottom: 20px;
-            display: flex; gap: 14px; flex-wrap: wrap;
-        }
-        .prose { font-size: 15px; line-height: 1.95; color: #333; }
-        .prose p { margin-bottom: 16px; }
-        .prose a { color: #576b95; text-decoration: none; }
-        .prose a:hover { text-decoration: underline; }
-
-        /* 鎻愮ず妗?*/
-        .tip {
-            background: #f7f7f7; border-left: 3px solid #1677ff;
-            padding: 11px 14px; margin: 18px 0;
-            font-size: 13px; color: #555; line-height: 1.85;
-        }
-
-        /* 寰界珷琛?*/
-        .badges { display: flex; flex-wrap: wrap; gap: 7px; margin: 16px 0 12px; }
-        .badge { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
-        .b1 { background: #fffbe6; color: #7a5200; border: 1px solid #e8c840; }
-        .b2 { background: #e6f0ff; color: #1a4a9a; border: 1px solid #aac4f0; }
-        .b3 { background: #fff3e6; color: #8a4a10; border: 1px solid #e8b880; }
-        .bt { background: #f0f0f0; color: #666; border: 1px solid #ddd; }
-
-        /* 鍒嗗壊绾?*/
-        .divider {
-            display: flex; align-items: center; gap: 10px;
-            margin: 26px 0 14px;
-        }
-        .divider span { font-size: 14px; font-weight: 700; color: #1a1a1a; white-space: nowrap; }
-        .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #eee; }
-
-        /* 鎼滅储 */
-        .srow { display: flex; align-items: center; gap: 8px; margin: 4px 0 14px; }
-        .srow input {
-            flex: 1; height: 32px; border: 1px solid #ddd; border-radius: 4px;
-            padding: 0 10px; font-size: 13px; outline: none;
-            background: #fafafa; color: #333;
-        }
-        .srow input:focus { border-color: #1677ff; background: #fff; }
-        .srow input::placeholder { color: #ccc; }
-        .scnt { font-size: 12px; color: #aaa; white-space: nowrap; }
-
-        /* 琛ㄦ牸 */
-        .tscroll { overflow-x: auto; }
-        table.T {
-            width: 100%; min-width: 540px;
-            border-collapse: collapse; font-size: 13px;
-        }
-        table.T thead tr { background: #1a3a5c; color: #fff; }
-        table.T thead th {
-            padding: 9px 10px; text-align: left;
-            font-size: 11px; font-weight: 600; letter-spacing: .4px; white-space: nowrap;
-        }
-        table.T thead th:first-child { width: 36px; text-align: center; }
-        table.T tbody tr:nth-child(even) td { background: #fafafa; }
-        table.T tbody tr:hover td { background: #eef5ff !important; }
-        table.T td {
-            padding: 7px 10px; border-bottom: 1px solid #f2f2f2; vertical-align: middle;
-        }
-        table.T td:first-child { text-align: center; color: #ccc; font-size: 11px; }
-        table.T tr.gr td {
-            background: #f2f2f2 !important; font-size: 11px; font-weight: 700;
-            color: #888; letter-spacing: 1.5px;
-            padding: 5px 10px !important; border-bottom: 1px solid #e4e4e4 !important;
-        }
-        table.T tr.hidden { display: none; }
-
-        .aw1 { display:inline-block; font-size:11px; font-weight:700; padding:1px 7px; border-radius:3px; background:#fffbe6; color:#7a5200; border:1px solid #e8c840; }
-        .aw2 { display:inline-block; font-size:11px; font-weight:700; padding:1px 7px; border-radius:3px; background:#e6f0ff; color:#1a4a9a; border:1px solid #aac4f0; }
-        .aw3 { display:inline-block; font-size:11px; font-weight:700; padding:1px 7px; border-radius:3px; background:#fff3e6; color:#8a4a10; border:1px solid #e8b880; }
-        .gm { color:#1a5cc8; font-size:11px; }
-        .gf { color:#c82878; font-size:11px; }
-        .code { font-family: Menlo,Consolas,monospace; font-size:11px; color:#bbb; }
-
-        /* 灏鹃儴 */
-        .tail { margin-top:36px; padding-top:18px; border-top:1px solid #f0f0f0; }
-        .tail p { font-size:13px; color:#bbb; line-height:1.9; margin-bottom:6px; }
-        .acts { display:flex; justify-content:center; gap:32px; padding:22px 0 10px; }
-        .act { display:flex; flex-direction:column; align-items:center; gap:5px; font-size:11px; color:#bbb; }
-        .act-ico { width:42px; height:42px; border-radius:50%; background:#f5f5f5; display:flex; align-items:center; justify-content:center; font-size:19px; }
-
-        @media(max-width:500px){
-            .wtitle{font-size:18px;}
-            .prose{font-size:14px;}
-            table.T{font-size:12px;}
-            table.T td,table.T th{padding:6px 7px;}
-        }
-    </style>
-</head>
-<body>
-<div class="wx-page">
-
-    <div class="topbar">
-        <div class="ava">鑽?/div>
-        <div>
-            <div class="accname">鑽夊師绔炶禌璧勮</div>
-            <div class="accsub">鍘熷垱 路 瀛︾绔炶禌 路 闈掗潚鑽夊師鐪?/div>
-        </div>
-        <button class="followbtn">+ 鍏虫敞</button>
-    </div>
-
-    <div class="body">
-        <div class="wtitle">2025骞村叏鍥介珮涓暟瀛﹁仈璧涢潚闈掕崏鍘熻禌鍖鸿幏濂栧悕鍗曪紙涓€浜屼笁绛夊瀹屾暣鐗堬級</div>
-        <div class="wmeta">
-            <span>鑽夊師绔炶禌璧勮</span>
-            <span>2025骞?1鏈?8鏃?/span>
-            <span>闃呰 11,047</span>
-            <span>闈掗潚鑽夊師鐪?/span>
-        </div>
-
-        <div class="prose">
-
-            <p>杩戞棩锛岄潚闈掕崏鍘熺渷鏁板瀛︿細姝ｅ紡鍏竷浜?025骞村叏鍥介珮涓暟瀛﹁仈璧涢潚闈掕崏鍘熻禌鍖哄畬鏁磋幏濂栧悕鍗曘€傛湰娆＄珵璧涘叡鏈夋潵鑷叏鐪?5鎵€瀛︽牎鐨勫鐢熷弬璧涳紝缁忛槄鍗峰鍛樹細璇勫畾锛屽叡浜х敓涓€绛夊58浜恒€佷簩绛夊97浜恒€佷笁绛夊143浜恒€?/p>
-
-            <p>鍊煎緱鍏虫敞鐨勬槸锛岀渷浼氫簲鏍′緷鐒跺崰鎹竴绛夊缁濆涓诲锛屽叾涓?strong>鑽夊師涓€涓?/strong>浠?2浜虹殑鎴愮哗鐙崰槌屽ご锛?strong>鑽夊師鍖楀叧涓</strong>浠?3浜虹揣闅忓叾鍚庛€傚湴绾у競鏂归潰锛?strong>鐙煎牎涓€涓?/strong>楂樹簩锛?锛夌彮鍒樺ぉ娓呭悓瀛︿互鐙煎牎甯傛渶楂樺垎鎽樺緱涓€绛夊锛屾槸鏈绔炶禌鏈€鍙楃灘鐩殑榛戦┈涔嬩竴銆?/p>
-
-            <p>瀹屾暣鍚嶅崟濡備笅锛?/p>
-
-            <div class="tip">
-                馃搶 <strong>璇存槑锛?/strong>鏈悕鍗曟暟鎹潵婧愪负闈掗潚鑽夊師鐪佹暟瀛﹀浼氬畼鏂瑰叕鍛婏紙缂栧彿锛歈QCY-2025-MATH-047锛夛紝鎸夎幏濂栫瓑绾у強缂栧彿椤哄簭鎺掑垪銆傚鍙戠幇淇℃伅鏈夎锛岃浜庡叕绀烘湡锛?鏃ワ級鍐呴€氳繃鍚勬牎鏁欏姟澶勫悜鐪佺珵璧涘姙涔﹂潰鍙嶉銆傚彲鍦ㄤ笅鏂规悳绱㈡鎸?strong>濮撳悕銆佸鏍℃垨缂栧彿</strong>蹇€熷畾浣嶃€?
-            </div>
-
-            <div class="divider"><span>瀹屾暣鑾峰鍚嶅崟</span></div>
-
-            <div class="badges">
-                <span class="badge b1">馃 涓€绛夊 路 58浜?/span>
-                <span class="badge b2">馃 浜岀瓑濂?路 97浜?/span>
-                <span class="badge b3">馃 涓夌瓑濂?路 143浜?/span>
-                <span class="badge bt">鍚堣 298 浜?路 15 鎵€瀛︽牎</span>
-            </div>
-
-            <div class="srow">
-                <input type="text" id="q" placeholder="鎼滅储濮撳悕 / 瀛︽牎 / 缂栧彿鈥︹€? oninput="doFilter()" />
-                <span class="scnt" id="cnt">鍏?298 鏉?/span>
-            </div>
-
-            <div class="tscroll">
-            <table class="T" id="T">
-                <thead><tr>
-                    <th>#</th><th>濮撳悕</th><th>鎬у埆</th><th>瀛︽牎鍏ㄧО</th><th>骞寸骇</th><th>鑾峰绛夌骇</th><th>缂栧彿</th>
-                </tr></thead>
-                <tbody id="tb">
-
-<!-- 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 涓€绛夊 58浜?鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 -->
-<tr class="gr"><td colspan="7">鈻?涓€绛夊锛?8浜猴級</td></tr>
-<tr><td>1</td><td>娲繆娉?/td><td><span class="gm">鐢?/span></td><td>99涓</td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125054</td></tr>
-<tr><td>2</td><td>搴勯洦钀?/td><td><span class="gf">濂?/span></td><td>闈掕崏涓</td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125039</td></tr>
-<tr><td>3</td><td>鍗㈡槉鏂?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125032</td></tr>
-<tr><td>4</td><td>鍐箰澶?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹竴</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125012</td></tr>
-<tr><td>5</td><td>涓ヤ匠瀹?/td><td><span class="gm">鐢?/span></td><td>缁胯崏涓</td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125045</td></tr>
-<tr><td>6</td><td>鏌存槑鏈?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125033</td></tr>
-<tr><td>7</td><td>娼樺瓙缈?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125020</td></tr>
-<tr><td>8</td><td>鍙堕敠绋?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125036</td></tr>
-<tr><td>9</td><td>鐭抽洦娆?/td><td><span class="gf">濂?/span></td><td>鑽夊師74涓</td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125047</td></tr>
-<tr><td>10</td><td>榄忓瓙杞?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125030</td></tr>
-<tr><td>11</td><td>闇嶄繆鏉?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125017</td></tr>
-<tr><td>12</td><td>琚佸畯浜?/td><td><span class="gm">鐢?/span></td><td>鑽夊師74涓</td><td>楂樹竴</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125050</td></tr>
-<tr><td>13</td><td>寮犲瓙鏈?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125025</td></tr>
-<tr><td>14</td><td>瀛熸櫒闃?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125019</td></tr>
-<tr><td>15</td><td>璋矝闇?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125011</td></tr>
-<tr><td>16</td><td>涓佹旦鐒?/td><td><span class="gm">鐢?/span></td><td>缇庤崏瀹為獙涓</td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125057</td></tr>
-<tr><td>17</td><td>閮戞€濊繙</td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125006</td></tr>
-<tr><td>18</td><td>瀹嬭嫢鐞?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹竴</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125027</td></tr>
-<tr><td>19</td><td>鏇规槑杩?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125009</td></tr>
-<tr><td>20</td><td>钂嬫旦鐒?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125028</td></tr>
-<tr><td>21</td><td>宕旂帀鎴?/td><td><span class="gm">鐢?/span></td><td>鑽夊師74涓</td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125046</td></tr>
-<tr><td>22</td><td>鍒樺ぉ娓?/td><td><span class="gm">鐢?/span></td><td>鐙煎牎涓€涓?/td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125058</td></tr>
-<tr><td>23</td><td>娓╃帀娲?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125014</td></tr>
-<tr><td>24</td><td>宸﹀瓙鐫?/td><td><span class="gm">鐢?/span></td><td>澶ц偉缇婂鏍?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125056</td></tr>
-<tr><td>25</td><td>閭㈡旦瀹?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125034</td></tr>
-<tr><td>26</td><td>閽辫姺钖?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹竴</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125031</td></tr>
-<tr><td>27</td><td>鐔婃辰妤?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125041</td></tr>
-<tr><td>28</td><td>閭撴枃鍗?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125038</td></tr>
-<tr><td>29</td><td>鑼冮摥鍧?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125026</td></tr>
-<tr><td>30</td><td>绔ュ彲娆?/td><td><span class="gf">濂?/span></td><td>妫灄榛戜竴涓?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125053</td></tr>
-<tr><td>31</td><td>鏋楀摬杩?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125005</td></tr>
-<tr><td>32</td><td>娆ч槼鑿?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125029</td></tr>
-<tr><td>33</td><td>璧靛畤娑?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125008</td></tr>
-<tr><td>34</td><td>娼樻€濊繙</td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹竴</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125040</td></tr>
-<tr><td>35</td><td>鑱傚瓙鏄?/td><td><span class="gm">鐢?/span></td><td>鑽夊師74涓</td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125048</td></tr>
-<tr><td>36</td><td>钃濇檽棰?/td><td><span class="gf">濂?/span></td><td>娣℃按婀栦竴涓?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125055</td></tr>
-<tr><td>37</td><td>闄堟檽闆?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125001</td></tr>
-<tr><td>38</td><td>鑻忔鑸?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125003</td></tr>
-<tr><td>39</td><td>闊﹀啺娓?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125010</td></tr>
-<tr><td>40</td><td>楂橀摥杩?/td><td><span class="gm">鐢?/span></td><td>缁胯崏涓</td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125043</td></tr>
-<tr><td>41</td><td>璁告櫒鏇?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125007</td></tr>
-<tr><td>42</td><td>鍛ㄥ崥鏂?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125002</td></tr>
-<tr><td>43</td><td>鐧介洩鐟?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125023</td></tr>
-<tr><td>44</td><td>缈佸瓙棰?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125035</td></tr>
-<tr><td>45</td><td>缃楁閾?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125037</td></tr>
-<tr><td>46</td><td>闃槈鎬?/td><td><span class="gf">濂?/span></td><td>鑽夊師74涓</td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125049</td></tr>
-<tr><td>47</td><td>澶忎緷鐞?/td><td><span class="gf">濂?/span></td><td>闈掕崏涓</td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125042</td></tr>
-<tr><td>48</td><td>瀛ｆ枃杞?/td><td><span class="gm">鐢?/span></td><td>妫灄榛戜竴涓?/td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125052</td></tr>
-<tr><td>49</td><td>鏌抽潤鎬?/td><td><span class="gf">濂?/span></td><td>缁胯崏涓</td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125044</td></tr>
-<tr><td>50</td><td>鍒樻闃?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125024</td></tr>
-<tr><td>51</td><td>瑁存ⅵ鐞?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125018</td></tr>
-<tr><td>52</td><td>璐炬槉澶?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125021</td></tr>
-<tr><td>53</td><td>椹洦妗?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125004</td></tr>
-<tr><td>54</td><td>璐烘槦瀹?/td><td><span class="gm">鐢?/span></td><td>妫灄榛戜竴涓?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125051</td></tr>
-<tr><td>55</td><td>绉﹂洦娆?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125016</td></tr>
-<tr><td>56</td><td>钖涙辰杩?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125015</td></tr>
-<tr><td>57</td><td>鏈辨€濋綈</td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125013</td></tr>
-<tr><td>58</td><td>钂嬩緷鐞?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹竴</td><td><span class="aw1">涓€绛夊</span></td><td class="code">QQ125022</td></tr>
-
-<!-- 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 浜岀瓑濂?97浜?鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 -->
-<tr class="gr"><td colspan="7">鈻?浜岀瓑濂栵紙97浜猴級</td></tr>
-<tr><td>59</td><td>鑻楁檽闆?/td><td><span class="gf">濂?/span></td><td>鐙煎牎涓€涓?/td><td>楂樹竴</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225095</td></tr>
-<tr><td>60</td><td>鍌呭杈?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225013</td></tr>
-<tr><td>61</td><td>灏氶摥杩?/td><td><span class="gm">鐢?/span></td><td>澶ц偉缇婂鏍?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225046</td></tr>
-<tr><td>62</td><td>鎴愭€濋洦</td><td><span class="gf">濂?/span></td><td>鑽夊師74涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225034</td></tr>
-<tr><td>63</td><td>浣曟ⅵ鐞?/td><td><span class="gf">濂?/span></td><td>绗崄涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225033</td></tr>
-<tr><td>64</td><td>宸槈瀹?/td><td><span class="gf">濂?/span></td><td>铏庡窞涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225059</td></tr>
-<tr><td>65</td><td>娓稿瓙鐨?/td><td><span class="gm">鐢?/span></td><td>鑽夊師74涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225092</td></tr>
-<tr><td>66</td><td>璐′繆鍑?/td><td><span class="gm">鐢?/span></td><td>鑽夊師74涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225035</td></tr>
-<tr><td>67</td><td>绔犳檽姊?/td><td><span class="gf">濂?/span></td><td>缁胯崏涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225029</td></tr>
-<tr><td>68</td><td>璐炬槑杞?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225011</td></tr>
-<tr><td>69</td><td>瀹ｆ€濊繙</td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225064</td></tr>
-<tr><td>70</td><td>閭垫辰鐨?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225084</td></tr>
-<tr><td>71</td><td>鍞愪匠鎬?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225007</td></tr>
-<tr><td>72</td><td>鏇惧槈鐞?/td><td><span class="gf">濂?/span></td><td>缁胯崏涓</td><td>楂樹竴</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225097</td></tr>
-<tr><td>73</td><td>褰瘲棰?/td><td><span class="gf">濂?/span></td><td>鑻囩敻涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225094</td></tr>
-<tr><td>74</td><td>鏉滃槈杈?/td><td><span class="gm">鐢?/span></td><td>鑽夊師74涓</td><td>楂樹竴</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225037</td></tr>
-<tr><td>75</td><td>宀虫兜绉?/td><td><span class="gf">濂?/span></td><td>缁胯崏涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225070</td></tr>
-<tr><td>76</td><td>钖涘疂鐞?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225062</td></tr>
-<tr><td>77</td><td>鍗炴櫒鍏?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225068</td></tr>
-<tr><td>78</td><td>瑜氬槈娴?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225091</td></tr>
-<tr><td>79</td><td>渚槑杞?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225020</td></tr>
-<tr><td>80</td><td>闈虫ⅵ棰?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225085</td></tr>
-<tr><td>81</td><td>寤栨枃鍗?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225001</td></tr>
-<tr><td>82</td><td>宕旀€濊繙</td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225003</td></tr>
-<tr><td>83</td><td>鏋楀槈璇?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225008</td></tr>
-<tr><td>84</td><td>璋㈠睍楣?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225023</td></tr>
-<tr><td>85</td><td>鏉繆閫?/td><td><span class="gm">鐢?/span></td><td>娣℃按婀栦竴涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225044</td></tr>
-<tr><td>86</td><td>鐭虫櫞闆?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹竴</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225012</td></tr>
-<tr><td>87</td><td>鏂规辰杩?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225009</td></tr>
-<tr><td>88</td><td>绾€濋洦</td><td><span class="gf">濂?/span></td><td>闈掕崏涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225022</td></tr>
-<tr><td>89</td><td>娈峰槈杈?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225087</td></tr>
-<tr><td>90</td><td>鐢版槉瀹?/td><td><span class="gm">鐢?/span></td><td>鐙煎牎涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225053</td></tr>
-<tr><td>91</td><td>榄忓彲棣?/td><td><span class="gf">濂?/span></td><td>鐙煎牎涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225078</td></tr>
-<tr><td>92</td><td>鑼呭瓙娑?/td><td><span class="gm">鐢?/span></td><td>99涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225096</td></tr>
-<tr><td>93</td><td>闄嗗瓙閾?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹竴</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225017</td></tr>
-<tr><td>94</td><td>缃椾緷濠?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225065</td></tr>
-<tr><td>95</td><td>鏌槑鍝?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225019</td></tr>
-<tr><td>96</td><td>瀹辰鏋?/td><td><span class="gm">鐢?/span></td><td>鐙煎牎涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225054</td></tr>
-<tr><td>97</td><td>鏂囧崥杩?/td><td><span class="gm">鐢?/span></td><td>楸兼渤涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225083</td></tr>
-<tr><td>98</td><td>榄忔旦瀹?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225005</td></tr>
-<tr><td>99</td><td>鍛ㄦⅵ鑿?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225016</td></tr>
-<tr><td>100</td><td>鑹剧儴闇?/td><td><span class="gm">鐢?/span></td><td>铏庡窞涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225081</td></tr>
-<tr><td>101</td><td>绐︽ⅵ鐟?/td><td><span class="gf">濂?/span></td><td>缇庤崏瀹為獙涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225051</td></tr>
-<tr><td>102</td><td>灏佹€″畞</td><td><span class="gf">濂?/span></td><td>99涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225041</td></tr>
-<tr><td>103</td><td>鎴村槈閫?/td><td><span class="gm">鐢?/span></td><td>99涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225074</td></tr>
-<tr><td>104</td><td>鑻楁檽濠?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225014</td></tr>
-<tr><td>105</td><td>鍚存槉瀹?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225066</td></tr>
-<tr><td>106</td><td>浠荤編鑼?/td><td><span class="gf">濂?/span></td><td>鑻囩敻涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225079</td></tr>
-<tr><td>107</td><td>浠樻€濊埅</td><td><span class="gm">鐢?/span></td><td>楸兼渤涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225061</td></tr>
-<tr><td>108</td><td>鐢樺畤閾?/td><td><span class="gm">鐢?/span></td><td>缇庤崏瀹為獙涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225049</td></tr>
-<tr><td>109</td><td>瀛旂ゥ瀹?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225089</td></tr>
-<tr><td>110</td><td>椴嶅瓙娑?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹竴</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225086</td></tr>
-<tr><td>111</td><td>鏂介洦妗?/td><td><span class="gf">濂?/span></td><td>缁胯崏涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225027</td></tr>
-<tr><td>112</td><td>姣曟檽濯?/td><td><span class="gf">濂?/span></td><td>鑽夊師74涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225036</td></tr>
-<tr><td>113</td><td>闃夸緷鍙や附</td><td><span class="gf">濂?/span></td><td>楸兼渤涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225060</td></tr>
-<tr><td>114</td><td>鐗涙娲?/td><td><span class="gm">鐢?/span></td><td>缇庤崏瀹為獙涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225050</td></tr>
-<tr><td>115</td><td>鑳″瀹?/td><td><span class="gm">鐢?/span></td><td>鑽夊師74涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225071</td></tr>
-<tr><td>116</td><td>鍗槈绂?/td><td><span class="gm">鐢?/span></td><td>99涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225042</td></tr>
-<tr><td>117</td><td>鍗㈠畤宄?/td><td><span class="gm">鐢?/span></td><td>缁胯崏涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225028</td></tr>
-<tr><td>118</td><td>寤栧槈鏈?/td><td><span class="gm">鐢?/span></td><td>鑻囩敻涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225057</td></tr>
-<tr><td>119</td><td>绌嗘檽鏅?/td><td><span class="gf">濂?/span></td><td>闈掕崏涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225090</td></tr>
-<tr><td>120</td><td>渚槈棰?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225018</td></tr>
-<tr><td>121</td><td>棰滄槺褰?/td><td><span class="gf">濂?/span></td><td>缇庤崏瀹為獙涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225077</td></tr>
-<tr><td>122</td><td>姹瓙杞?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225063</td></tr>
-<tr><td>123</td><td>姹ゅ杈?/td><td><span class="gm">鐢?/span></td><td>妫灄榛戜竴涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225038</td></tr>
-<tr><td>124</td><td>姝ユ槑杩?/td><td><span class="gm">鐢?/span></td><td>澶ц偉缇婂鏍?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225048</td></tr>
-<tr><td>125</td><td>闂靛織娴?/td><td><span class="gm">鐢?/span></td><td>鑻囩敻涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225055</td></tr>
-<tr><td>126</td><td>浣欓潤娑?/td><td><span class="gf">濂?/span></td><td>闈掕崏涓</td><td>楂樹竴</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225024</td></tr>
-<tr><td>127</td><td>鏉滅堪鏂?/td><td><span class="gm">鐢?/span></td><td>缁胯崏涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225026</td></tr>
-<tr><td>128</td><td>宀虫檽闆?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225010</td></tr>
-<tr><td>129</td><td>绁濇櫒闆?/td><td><span class="gf">濂?/span></td><td>妫灄榛戜竴涓?/td><td>楂樹竴</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225039</td></tr>
-<tr><td>130</td><td>鐢冲瓙娑?/td><td><span class="gm">鐢?/span></td><td>绗崄涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225032</td></tr>
-<tr><td>131</td><td>钂蹭害鍑?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225069</td></tr>
-<tr><td>132</td><td>鏌忔柊杩?/td><td><span class="gm">鐢?/span></td><td>鑻囩敻涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225056</td></tr>
-<tr><td>133</td><td>娆ч槼闆?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225002</td></tr>
-<tr><td>134</td><td>绾畯鍗?/td><td><span class="gm">鐢?/span></td><td>妫灄榛戜竴涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225040</td></tr>
-<tr><td>135</td><td>椴滈挵濠?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225088</td></tr>
-<tr><td>136</td><td>瀛熶匠鐞?/td><td><span class="gf">濂?/span></td><td>鐙煎牎涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225052</td></tr>
-<tr><td>137</td><td>鐧介洩娑?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225004</td></tr>
-<tr><td>138</td><td>鏌村畤缈?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225021</td></tr>
-<tr><td>139</td><td>鏇叉檽鐜?/td><td><span class="gf">濂?/span></td><td>妫灄榛戜竴涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225072</td></tr>
-<tr><td>140</td><td>钁涙櫒闃?/td><td><span class="gm">鐢?/span></td><td>铏庡窞涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225080</td></tr>
-<tr><td>141</td><td>杩炲槈鐞?/td><td><span class="gf">濂?/span></td><td>娣℃按婀栦竴涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225045</td></tr>
-<tr><td>142</td><td>闄堝槈瀹?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225006</td></tr>
-<tr><td>143</td><td>閭撴辰闃?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225015</td></tr>
-<tr><td>144</td><td>鏅€濈惇</td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225067</td></tr>
-<tr><td>145</td><td>浼嶆櫒闃?/td><td><span class="gm">鐢?/span></td><td>缁胯崏涓</td><td>楂樹竴</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225025</td></tr>
-<tr><td>146</td><td>鏂规辰瀹?/td><td><span class="gm">鐢?/span></td><td>缁胯崏涓</td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225030</td></tr>
-<tr><td>147</td><td>瑁存壙瀹?/td><td><span class="gm">鐢?/span></td><td>99涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225043</td></tr>
-<tr><td>148</td><td>濮氶洦娆?/td><td><span class="gf">濂?/span></td><td>99涓</td><td>楂樹竴</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225073</td></tr>
-<tr><td>149</td><td>妗傞Θ鏈?/td><td><span class="gf">濂?/span></td><td>澶ц偉缇婂鏍?/td><td>楂樹簩</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225047</td></tr>
-<tr><td>150</td><td>楠嗘檽瀹?/td><td><span class="gm">鐢?/span></td><td>楸兼渤涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225082</td></tr>
-<tr><td>151</td><td>缈熷畤鑸?/td><td><span class="gm">鐢?/span></td><td>娣℃按婀栦竴涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225075</td></tr>
-<tr><td>152</td><td>闇嶉洦杈?/td><td><span class="gm">鐢?/span></td><td>娣℃按婀栦竴涓?/td><td>楂樹竴</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225076</td></tr>
-<tr><td>153</td><td>鐙勬枃鏉?/td><td><span class="gm">鐢?/span></td><td>铏庡窞涓€涓?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225058</td></tr>
-<tr><td>154</td><td>榫氭檽宄?/td><td><span class="gm">鐢?/span></td><td>绗崄涓</td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225031</td></tr>
-<tr><td>155</td><td>瀹撴€濊繙</td><td><span class="gm">鐢?/span></td><td>澶ц偉缇婂鏍?/td><td>楂樹笁</td><td><span class="aw2">浜岀瓑濂?/span></td><td class="code">QQ225093</td></tr>
-
-<!-- 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 涓夌瓑濂?143浜?鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲 -->
-<tr class="gr"><td colspan="7">鈻?涓夌瓑濂栵紙143浜猴級</td></tr>
-<tr><td>156</td><td>灏瑰湥鍝?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325100</td></tr>
-<tr><td>157</td><td>椹博</td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325103</td></tr>
-<tr><td>158</td><td>瀛ｅ瓙鏄?/td><td><span class="gm">鐢?/span></td><td>鑽夊師74涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325052</td></tr>
-<tr><td>159</td><td>鍗炲畤鏅?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325006</td></tr>
-<tr><td>160</td><td>浣曞瓙娑?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325002</td></tr>
-<tr><td>161</td><td>璧甸敠鑸?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325140</td></tr>
-<tr><td>162</td><td>鍐槈鎬?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325031</td></tr>
-<tr><td>163</td><td>寮犺弫闄?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325125</td></tr>
-<tr><td>164</td><td>杈涚€氳景</td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325141</td></tr>
-<tr><td>165</td><td>瀛ｈ嫢鏇?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325004</td></tr>
-<tr><td>166</td><td>閮瓙绁?/td><td><span class="gm">鐢?/span></td><td>鑽夊師74涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325111</td></tr>
-<tr><td>167</td><td>缃楀槈璞?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325027</td></tr>
-<tr><td>168</td><td>椹ぉ闃?/td><td><span class="gm">鐢?/span></td><td>绗崄涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325128</td></tr>
-<tr><td>169</td><td>绋嬪瓙閿?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325007</td></tr>
-<tr><td>170</td><td>瀛欏搧鍗?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325139</td></tr>
-<tr><td>171</td><td>缈熻嫢鏇?/td><td><span class="gf">濂?/span></td><td>绗崄涓</td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325049</td></tr>
-<tr><td>172</td><td>閲戦Θ鐜?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325010</td></tr>
-<tr><td>173</td><td>鍟嗕竴</td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325106</td></tr>
-<tr><td>174</td><td>绁佹櫒鏇?/td><td><span class="gf">濂?/span></td><td>缁胯崏涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325042</td></tr>
-<tr><td>175</td><td>鑼冨痉閼?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325005</td></tr>
-<tr><td>176</td><td>鍒樿亞姹?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325026</td></tr>
-<tr><td>177</td><td>椹妗?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325086</td></tr>
-<tr><td>178</td><td>椴嶆槑杩?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325032</td></tr>
-<tr><td>179</td><td>娈锋檽闆?/td><td><span class="gf">濂?/span></td><td>99涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325060</td></tr>
-<tr><td>180</td><td>鍗炴檽瀹?/td><td><span class="gm">鐢?/span></td><td>鑻囩敻涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325080</td></tr>
-<tr><td>181</td><td>鐢冲槈绂?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325001</td></tr>
-<tr><td>182</td><td>闄堢繆鏄?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325122</td></tr>
-<tr><td>183</td><td>鏉ㄦ櫒甯?/td><td><span class="gf">濂?/span></td><td>鑽夊師74涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325056</td></tr>
-<tr><td>184</td><td>鍒樿但</td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325142</td></tr>
-<tr><td>185</td><td>鏉ㄥ皻鏋?/td><td><span class="gm">鐢?/span></td><td>鑽夊師74涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325129</td></tr>
-<tr><td>186</td><td>搴勫瓙棰?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325012</td></tr>
-<tr><td>187</td><td>鏈辨檽棰?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325094</td></tr>
-<tr><td>188</td><td>璋堝瓙杞?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325036</td></tr>
-<tr><td>189</td><td>閭撳槈鏈?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325019</td></tr>
-<tr><td>190</td><td>寮犺穬杈?/td><td><span class="gm">鐢?/span></td><td>妫灄榛戜竴涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325112</td></tr>
-<tr><td>191</td><td>鍒樺溅浼?/td><td><span class="gm">鐢?/span></td><td>鑻囩敻涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325118</td></tr>
-<tr><td>192</td><td>瀛旀€濋洦</td><td><span class="gf">濂?/span></td><td>绗崄涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325047</td></tr>
-<tr><td>193</td><td>鐢拌嫢鏅?/td><td><span class="gf">濂?/span></td><td>妫灄榛戜竴涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325057</td></tr>
-<tr><td>194</td><td>鏈卞鍚?/td><td><span class="gf">濂?/span></td><td>铏庡窞涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325082</td></tr>
-<tr><td>195</td><td>闃檽鏅?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325014</td></tr>
-<tr><td>196</td><td>铏炲┓濠?/td><td><span class="gf">濂?/span></td><td>闈掕崏涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325034</td></tr>
-<tr><td>197</td><td>鐭虫槑杞?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325018</td></tr>
-<tr><td>198</td><td>涔堝織鎴?/td><td><span class="gm">鐢?/span></td><td>楸兼渤涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325084</td></tr>
-<tr><td>199</td><td>瀛欐辰瀹?/td><td><span class="gm">鐢?/span></td><td>鑽夊師74涓</td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325054</td></tr>
-<tr><td>200</td><td>钖涙槑杩?/td><td><span class="gm">鐢?/span></td><td>绗崄涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325046</td></tr>
-<tr><td>201</td><td>闄堥懌瀹?/td><td><span class="gm">鐢?/span></td><td>楸兼渤涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325085</td></tr>
-<tr><td>202</td><td>閭靛煿妫?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325097</td></tr>
-<tr><td>203</td><td>璁稿瓙鑺?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325020</td></tr>
-<tr><td>204</td><td>閮戝ソ</td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325087</td></tr>
-<tr><td>205</td><td>璐哄槈瀹?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325038</td></tr>
-<tr><td>206</td><td>瀹旦鏄?/td><td><span class="gm">鐢?/span></td><td>99涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325061</td></tr>
-<tr><td>207</td><td>鏉滃杈?/td><td><span class="gm">鐢?/span></td><td>鐙煎牎涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325073</td></tr>
-<tr><td>208</td><td>璁哥瑧杈?/td><td><span class="gm">鐢?/span></td><td>娣℃按婀栦竴涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325132</td></tr>
-<tr><td>209</td><td>鍚翠繆鍝?/td><td><span class="gm">鐢?/span></td><td>铏庡窞涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325119</td></tr>
-<tr><td>210</td><td>寮犲ゥ瀹?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325121</td></tr>
-<tr><td>211</td><td>鑻楀槈鐜?/td><td><span class="gm">鐢?/span></td><td>缁胯崏涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325040</td></tr>
-<tr><td>212</td><td>寮犳爲鏃?/td><td><span class="gm">鐢?/span></td><td>澶ц偉缇婂鏍?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325133</td></tr>
-<tr><td>213</td><td>楂樿繘閾?/td><td><span class="gm">鐢?/span></td><td>妫灄榛戜竴涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325130</td></tr>
-<tr><td>214</td><td>鐢樺瓙娑?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325022</td></tr>
-<tr><td>215</td><td>绋嬫檽鏇?/td><td><span class="gf">濂?/span></td><td>闈掕崏涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325107</td></tr>
-<tr><td>216</td><td>榻愬９涓?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325091</td></tr>
-<tr><td>217</td><td>鏉庡皬宸?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325124</td></tr>
-<tr><td>218</td><td>璧栨檽娑?/td><td><span class="gf">濂?/span></td><td>闈掕崏涓</td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325037</td></tr>
-<tr><td>219</td><td>浜庡拰杈?/td><td><span class="gm">鐢?/span></td><td>娣℃按婀栦竴涓?/td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325064</td></tr>
-<tr><td>220</td><td>鍗撴€濊繙</td><td><span class="gm">鐢?/span></td><td>鑽夊師74涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325055</td></tr>
-<tr><td>221</td><td>璋㈡杞?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325029</td></tr>
-<tr><td>222</td><td>寰愰摥鐨?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325013</td></tr>
-<tr><td>223</td><td>娓稿叴闃?/td><td><span class="gm">鐢?/span></td><td>绗崄涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325050</td></tr>
-<tr><td>224</td><td>褰槈璞?/td><td><span class="gm">鐢?/span></td><td>绗崄涓</td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325044</td></tr>
-<tr><td>225</td><td>璧甸ⅱ鍝?/td><td><span class="gm">鐢?/span></td><td>鐙煎牎涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325135</td></tr>
-<tr><td>226</td><td>闄嗗槈鐨?/td><td><span class="gm">鐢?/span></td><td>妫灄榛戜竴涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325058</td></tr>
-<tr><td>227</td><td>灏瑰崥杩?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325011</td></tr>
-<tr><td>228</td><td>楂樼珶妗?/td><td><span class="gm">鐢?/span></td><td>楸兼渤涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325138</td></tr>
-<tr><td>229</td><td>閲戠倻鍝?/td><td><span class="gm">鐢?/span></td><td>鑽夊師74涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325143</td></tr>
-<tr><td>230</td><td>娆ф檽鏅?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325030</td></tr>
-<tr><td>231</td><td>鍚存櫒瀹?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325104</td></tr>
-<tr><td>232</td><td>钂查洦娆?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325023</td></tr>
-<tr><td>233</td><td>榄忔檽闆?/td><td><span class="gf">濂?/span></td><td>缁胯崏涓</td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325039</td></tr>
-<tr><td>234</td><td>鍗炲槈鏈?/td><td><span class="gm">鐢?/span></td><td>鐙煎牎涓€涓?/td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325117</td></tr>
-<tr><td>235</td><td>鐜嬫槑杞?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325088</td></tr>
-<tr><td>236</td><td>鍙叉ⅵ鏅?/td><td><span class="gf">濂?/span></td><td>绗崄涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325051</td></tr>
-<tr><td>237</td><td>缈熷槈瀹?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325021</td></tr>
-<tr><td>238</td><td>璐炬柉娑?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325126</td></tr>
-<tr><td>239</td><td>鍗撴檽鐞?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325096</td></tr>
-<tr><td>240</td><td>宀充緷鐒?/td><td><span class="gf">濂?/span></td><td>鑻囩敻涓€涓?/td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325079</td></tr>
-<tr><td>241</td><td>浠囨檽鐕?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325028</td></tr>
-<tr><td>242</td><td>寮犳妗?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325098</td></tr>
-<tr><td>243</td><td>姹槈娴?/td><td><span class="gm">鐢?/span></td><td>缁胯崏涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325108</td></tr>
-<tr><td>244</td><td>鏉ㄦ櫒甯?/td><td><span class="gf">濂?/span></td><td>鑽夊師74涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">閲嶅椤逛慨姝?/td></tr>
-<tr><td>245</td><td>涓佹櫞闆?/td><td><span class="gf">濂?/span></td><td>缁胯崏涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325109</td></tr>
-<tr><td>246</td><td>浠绘牘鐢?/td><td><span class="gm">鐢?/span></td><td>绗崄涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325110</td></tr>
-<tr><td>247</td><td>寤栧瓙鐑?/td><td><span class="gm">鐢?/span></td><td>缁胯崏涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325041</td></tr>
-<tr><td>248</td><td>瀹瓙鐨?/td><td><span class="gm">鐢?/span></td><td>鐙煎牎涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325077</td></tr>
-<tr><td>249</td><td>鏇归Θ鏂?/td><td><span class="gf">濂?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325101</td></tr>
-<tr><td>250</td><td>閽辫帀鏂?/td><td><span class="gf">濂?/span></td><td>闈掕崏涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325105</td></tr>
-<tr><td>251</td><td>鐔婂瓙鍗?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325003</td></tr>
-<tr><td>252</td><td>璁告閾?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325024</td></tr>
-<tr><td>253</td><td>榫氭€濊</td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325017</td></tr>
-<tr><td>254</td><td>闊╁．</td><td><span class="gm">鐢?/span></td><td>缁胯崏涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325127</td></tr>
-<tr><td>255</td><td>姣曠€涘畤</td><td><span class="gm">鐢?/span></td><td>缇庤崏瀹為獙涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325116</td></tr>
-<tr><td>256</td><td>鍛ㄥぇ宄?/td><td><span class="gm">鐢?/span></td><td>澶ц偉缇婂鏍?/td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325115</td></tr>
-<tr><td>257</td><td>鑱傛旦鏂?/td><td><span class="gm">鐢?/span></td><td>绗崄涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325048</td></tr>
-<tr><td>258</td><td>妗戞旦缈?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325102</td></tr>
-<tr><td>259</td><td>鍒佸槈淇?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325015</td></tr>
-<tr><td>260</td><td>寤栧啝闇?/td><td><span class="gm">鐢?/span></td><td>娣℃按婀栦竴涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325114</td></tr>
-<tr><td>261</td><td>浜曟辰瀹?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325035</td></tr>
-<tr><td>262</td><td>缃楁ⅵ濠?/td><td><span class="gf">濂?/span></td><td>缇庤崏瀹為獙涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325072</td></tr>
-<tr><td>263</td><td>鍐Θ鑾?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325090</td></tr>
-<tr><td>264</td><td>棰滄€濊繙</td><td><span class="gm">鐢?/span></td><td>鐙煎牎涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325074</td></tr>
-<tr><td>265</td><td>浜戝瓙閾?/td><td><span class="gm">鐢?/span></td><td>鐙煎牎涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325075</td></tr>
-<tr><td>266</td><td>鐜嬫鏃?/td><td><span class="gm">鐢?/span></td><td>99涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325131</td></tr>
-<tr><td>267</td><td>瑁樻ⅵ杞?/td><td><span class="gm">鐢?/span></td><td>缇庤崏瀹為獙涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325134</td></tr>
-<tr><td>268</td><td>缃楁辰杩?/td><td><span class="gm">鐢?/span></td><td>缁胯崏涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325043</td></tr>
-<tr><td>269</td><td>闊╅懌榫?/td><td><span class="gm">鐢?/span></td><td>99涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325113</td></tr>
-<tr><td>270</td><td>绉︿箖杞?/td><td><span class="gm">鐢?/span></td><td>铏庡窞涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325081</td></tr>
-<tr><td>271</td><td>鑹惧瓙閼?/td><td><span class="gm">鐢?/span></td><td>闈掕崏涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325033</td></tr>
-<tr><td>272</td><td>鑲栭敠绋?/td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325099</td></tr>
-<tr><td>273</td><td>鍐惓鐝?/td><td><span class="gf">濂?/span></td><td>铏庡窞涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325137</td></tr>
-<tr><td>274</td><td>鍊ⅵ濠?/td><td><span class="gf">濂?/span></td><td>澶ц偉缇婂鏍?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325068</td></tr>
-<tr><td>275</td><td>楂樻槙鏇?/td><td><span class="gm">鐢?/span></td><td>铏庡窞涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325083</td></tr>
-<tr><td>276</td><td>鎴堢粛妫?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325095</td></tr>
-<tr><td>277</td><td>瑙ｆ€濊繙</td><td><span class="gm">鐢?/span></td><td>鑽夊師鍖楀叧涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325025</td></tr>
-<tr><td>278</td><td>鍚寸堪鏂?/td><td><span class="gm">鐢?/span></td><td>娣℃按婀栦竴涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325066</td></tr>
-<tr><td>279</td><td>钁ｉⅱ鐒?/td><td><span class="gm">鐢?/span></td><td>鑻囩敻涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325136</td></tr>
-<tr><td>280</td><td>闂璞?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325093</td></tr>
-<tr><td>281</td><td>璧栧畯杩?/td><td><span class="gm">鐢?/span></td><td>鑻囩敻涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325078</td></tr>
-<tr><td>282</td><td>姝ユ檽瀹?/td><td><span class="gm">鐢?/span></td><td>澶ц偉缇婂鏍?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325067</td></tr>
-<tr><td>283</td><td>浣曚匠鏄?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325123</td></tr>
-<tr><td>284</td><td>瀹嬫€€鏅?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325089</td></tr>
-<tr><td>285</td><td>鎴氫緷鏅?/td><td><span class="gf">濂?/span></td><td>缇庤崏瀹為獙涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325070</td></tr>
-<tr><td>286</td><td>澶忛洦妗?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325016</td></tr>
-<tr><td>287</td><td>瑜氭櫒闃?/td><td><span class="gm">鐢?/span></td><td>妫灄榛戜竴涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325059</td></tr>
-<tr><td>288</td><td>鏉庣閿?/td><td><span class="gm">鐢?/span></td><td>楸兼渤涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325120</td></tr>
-<tr><td>289</td><td>鏉ㄥ鐞?/td><td><span class="gf">濂?/span></td><td>鑽夊師涓€涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325092</td></tr>
-<tr><td>290</td><td>鑻戝瓙鍗?/td><td><span class="gm">鐢?/span></td><td>澶ц偉缇婂鏍?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325069</td></tr>
-<tr><td>291</td><td>钂嬩互鐒?/td><td><span class="gm">鐢?/span></td><td>99涓</td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325062</td></tr>
-<tr><td>292</td><td>鑼嗛洩鑾?/td><td><span class="gf">濂?/span></td><td>99涓</td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325063</td></tr>
-<tr><td>293</td><td>杈涙旦鐒?/td><td><span class="gm">鐢?/span></td><td>鑽夊師涓€涓?/td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325009</td></tr>
-<tr><td>294</td><td>浼婃檽鏇?/td><td><span class="gf">濂?/span></td><td>鐙煎牎涓€涓?/td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325076</td></tr>
-<tr><td>295</td><td>搴惧槈閫?/td><td><span class="gm">鐢?/span></td><td>缇庤崏瀹為獙涓</td><td>楂樹竴</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325071</td></tr>
-<tr><td>296</td><td>鍞愪紛濠?/td><td><span class="gf">濂?/span></td><td>绗崄涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325045</td></tr>
-<tr><td>297</td><td>閭€濊彶</td><td><span class="gf">濂?/span></td><td>娣℃按婀栦竴涓?/td><td>楂樹簩</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325065</td></tr>
-<tr><td>298</td><td>瀹撳槈棰?/td><td><span class="gf">濂?/span></td><td>鑽夊師74涓</td><td>楂樹笁</td><td><span class="aw3">涓夌瓑濂?/span></td><td class="code">QQ325053</td></tr>
-
-                </tbody>
-            </table>
-            </div><!-- /tscroll -->
-
-            <div class="tail">
-                <p>鏁版嵁鏉ユ簮锛氶潚闈掕崏鍘熺渷鏁板瀛︿細瀹樻柟鍏憡锛圦QCY-2025-MATH-047锛?/p>
-                <p>濡傚鍚嶅崟鏈夊紓璁紝璇蜂簬鍏ず鏈燂紙7鏃ワ級鍐呴€氳繃鍚勬牎鏁欏姟澶勫悜鐪佺珵璧涘姙涔﹂潰鍙嶉銆?/p>
-                <p style="color:#ddd">鈥斺€斺€?/p>
-                <p>寰€鏈熺浉鍏虫帹閫侊細</p>
-                <p><a href="#" style="color:#576b95;font-size:13px">路 銆?025骞村叏鍥介珮涓暟瀛﹁仈璧涢潚闈掕崏鍘熻禌鍖轰竴绛夊鑾峰鍚嶅崟銆?/a></p>
-                <p><a href="#" style="color:#576b95;font-size:13px">路 銆?024骞撮潚闈掕崏鍘熻禌鍖哄悇濂栨鍚嶅崟姹囨€汇€?/a></p>
-                <p><a href="#" style="color:#576b95;font-size:13px">路 銆婅崏鍘熶竴涓?2浜鸿幏涓€绛夊锛佽儗鍚庣殑璁粌浣撶郴鎻銆?/a></p>
-            </div>
-
-            <div class="acts">
-                <div class="act"><div class="act-ico">馃憤</div><span>鍦ㄧ湅 382</span></div>
-                <div class="act"><div class="act-ico">猸?/div><span>鏀惰棌</span></div>
-                <div class="act"><div class="act-ico">鈫?/div><span>鍒嗕韩</span></div>
-            </div>
-
-        </div><!-- /prose -->
-    </div><!-- /body -->
-</div><!-- /wx-page -->
-
-<script>
-const TOTAL = 298;
-function doFilter() {
-    const q = document.getElementById('q').value.trim().toLowerCase();
-    const rows = document.querySelectorAll('#tb tr:not(.gr)');
-    let vis = 0;
-    rows.forEach(r => {
-        if (!q) { r.classList.remove('hidden'); vis++; return; }
-        const txt = r.innerText.toLowerCase();
-        if (txt.includes(q)) { r.classList.remove('hidden'); vis++; }
-        else r.classList.add('hidden');
-    });
-    // show/hide group headers
-    document.querySelectorAll('#tb tr.gr').forEach(g => {
-        let sib = g.nextElementSibling;
-        let anyVis = false;
-        while (sib && !sib.classList.contains('gr')) {
-            if (!sib.classList.contains('hidden')) anyVis = true;
-            sib = sib.nextElementSibling;
-        }
-        g.style.display = anyVis ? '' : 'none';
-    });
-    document.getElementById('cnt').textContent =
-        q ? `鎵惧埌 ${vis} 鏉 : `鍏?${TOTAL} 鏉;
-}
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>銆愬枩鎶ャ€戞垜鏍″鍚嶅悓瀛﹀湪鐪佺骇鍖栧绔炶禌涓幏濂?路 鐙煎牎涓€涓?/title>
+    <title>【喜报】我校多名同学在省级化学竞赛中获奖 · 狼堡一中</title>
     <link rel="stylesheet" href="../css/campus.css" />
     <link rel="stylesheet" href="../css/mobile.css" />
     <style>
@@ -1230,7 +110,7 @@ function doFilter() {
             transform: scale(1.02);
         }
 
-        /* 鑾峰鍚嶅崟琛ㄦ牸 */
+        /* 获奖名单表格 */
         .award-table-wrap {
             margin: 24px 0;
             border-radius: 8px;
@@ -1404,170 +284,170 @@ function doFilter() {
     <nav class="campus-nav">
         <div class="campus-nav-inner">
             <a class="campus-nav-logo" href="../index.html">
-                <img src="../assets/logo.webp" onerror="this.style.display='none'" alt="鏍″窘" />
+                <img src="../assets/logo.webp" onerror="this.style.display='none'" alt="校徽" />
                 <div>
-                    <div class="school-name">鐙煎牎甯傜涓€涓</div>
+                    <div class="school-name">狼堡市第一中学</div>
                 </div>
             </a>
             <div class="campus-nav-links">
-                <a href="../index.html">棣栭〉</a>
-                <a href="../campus/staff.html">甯堣祫鍥㈤槦</a>
-                <a href="../campus/alumni.html">鐭ュ悕鏍″弸</a>
-                <a href="../campus/forum.html">鏍″洯璁哄潧</a>
+                <a href="../index.html">首页</a>
+                <a href="../staff.html">师资团队</a>
+                <a href="../alumni.html">知名校友</a>
+                <a href="../forum.html">校园论坛</a>
             </div>
-            <a class="nav-home-back" href="../index.html">鈫?棣栭〉</a>
+            <a class="nav-home-back" href="../index.html">← 首页</a>
             <button class="nav-hamburger" id="nav-hamburger"
-                aria-label="鑿滃崟"><span></span><span></span><span></span></button>
+                aria-label="菜单"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
     <div class="article-wrap">
 
-        <div class="article-title">銆愬枩鎶ャ€戞垜鏍″鍚嶅悓瀛﹀湪2025骞撮潚闈掕崏鍘熺渷楂樹腑鍖栧绔炶禌涓枩鑾蜂匠缁╋紝鏋楀皬闆ㄥ悓瀛﹁崳鑾蜂簩绛夊</div>
+        <div class="article-title">【喜报】我校多名同学在2025年青青草原省高中化学竞赛中喜获佳绩，林小雨同学荣获二等奖</div>
 
         <div class="article-source">
             <div class="article-source-avatar" style="background: none; overflow: hidden;">
-                <img src="../assets/logo.webp" alt="鏍″窘" style="width: 100%; height: 100%; object-fit: cover;" />
+                <img src="../assets/logo.webp" alt="校徽" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div>
-                <div class="article-source-name">鐙煎牎涓€涓?鏍″洯淇℃伅缃?/div>
-                <div class="article-source-meta">瀹樻柟璐﹀彿</div>
+                <div class="article-source-name">狼堡一中 校园信息网</div>
+                <div class="article-source-meta">官方账号</div>
             </div>
         </div>
 
-        <div class="article-meta">2025骞?1鏈?7鏃?&emsp;|&emsp; 闃呰 1,203 &emsp;|&emsp; 鐙煎牎涓€涓浼犵粍</div>
+        <div class="article-meta">2025年11月17日 &emsp;|&emsp; 阅读 1,203 &emsp;|&emsp; 狼堡一中宣传组</div>
 
         <div class="article-body">
 
-            <p>2025骞?1鏈堬紝闈掗潚鑽夊師鐪侀珮涓寲瀛︾珵璧涳紙绉嬪璧涳級缁撴灉姝ｅ紡鎻檽銆傛垜鏍″叡鏈?strong>5鍚嶅悓瀛?/strong>鍦ㄦ湰娆＄珵璧涗腑鏂╄幏鐪佺骇濂栭」锛屽叾涓珮浜岋紙3锛夌彮<strong>鏋楀皬闆?/strong>鍚屽浠ヤ紭寮傛垚缁╄崳鑾?strong>浜岀瓑濂?/strong>锛屽彟鏈?鍚嶅悓瀛﹁幏寰椾笁绛夊锛屽垱涓嬫垜鏍″弬鍔犵渷绾у寲瀛︾珵璧涗互鏉ョ殑鏈€浣冲洟浣撴垚缁┿€?/p>
+            <p>2025年11月，青青草原省高中化学竞赛（秋季赛）结果正式揭晓。我校共有<strong>5名同学</strong>在本次竞赛中斩获省级奖项，其中高二（3）班<strong>林小雨</strong>同学以优异成绩荣获<strong>二等奖</strong>，另有4名同学获得三等奖，创下我校参加省级化学竞赛以来的最佳团体成绩。</p>
 
             <div class="article-photo">
-                <img loading="lazy" src="../assets/lxy.webp" alt="鏋楀皬闆ㄩ噰璁?路 11鏈?7鏃?>
+                <img loading="lazy" src="../assets/lxy.webp" alt="林小雨采访 · 11月17日">
             </div>
-            <p>鏈绔炶禌鐢遍潚闈掕崏鍘熺渷鍖栧瀛︿細涓诲姙锛屾潵鑷叏鐪佸悇鍦板競閲嶇偣楂樹腑鐨勯€惧叓鐧惧悕瀛︾敓鍙傝禌銆傜珵璧涘唴瀹规兜鐩栨湁鏈哄寲瀛︺€佹棤鏈哄寲瀛︺€佸寲瀛﹀钩琛′笌鐢靛寲瀛︾瓑鏍稿績妯″潡锛岄鐩毦搴﹁緝寰€灞婃湁鎵€鎻愬崌锛屽挨浠ユ湁鏈哄悎鎴愭帹鏂儴鍒嗕护涓嶅皯閫夋墜鎶樻垷銆?/p>
+            <p>本次竞赛由青青草原省化学学会主办，来自全省各地市重点高中的逾八百名学生参赛。竞赛内容涵盖有机化学、无机化学、化学平衡与电化学等核心模块，题目难度较往届有所提升，尤以有机合成推断部分令不少选手折戟。</p>
 
-            <p><strong>鏋楀皬闆?/strong>鍚屽涓洪珮浜岋紙3锛夌彮瀛︾敓锛岃嚜杩涘叆楂樹腑浠ユ潵渚垮鍖栧灞曠幇鍑烘祿鍘氬叴瓒ｃ€傛嵁鎸囧鏁欏笀浠嬬粛锛屾灄灏忛洦鍦ㄥ璧涙湡闂村挨鍏跺湪鏈夋満鍖栧鏉垮潡涓嬩簡澶ч噺鍔熷か锛屾湰娆＄珵璧涗腑鏈夋満鍚堟垚棰樼殑瀹屾垚搴﹀湪鍏ㄧ渷鍙傝禌閫夋墜涓悕鍒楀墠鑼呫€?/p>
+            <p><strong>林小雨</strong>同学为高二（3）班学生，自进入高中以来便对化学展现出浓厚兴趣。据指导教师介绍，林小雨在备赛期间尤其在有机化学板块下了大量功夫，本次竞赛中有机合成题的完成度在全省参赛选手中名列前茅。</p>
 
             <div class="highlight">
-                銆屽ス鏈変竴绉嶅緢闅惧緱鐨勪範鎯€斺€斿仛瀹岄涔嬪悗浼氬弽杩囨潵闂?杩欓亾棰樿繕鑳戒粠鍝釜瑙掑害鎷嗚В'銆傝繖绉嶆€濈淮鏂瑰紡锛屾槸绔炶禌閫夋墜寰堥毦鍒绘剰鍩瑰吇鍑烘潵鐨勩€傘€嶁€斺€斿寲瀛︾珵璧涙寚瀵兼暀甯?娌堥泤鐞?
+                「她有一种很难得的习惯——做完题之后会反过来问'这道题还能从哪个角度拆解'。这种思维方式，是竞赛选手很难刻意培养出来的。」——化学竞赛指导教师 沈雅琴
             </div>
 
-            <p>鏈鑾峰鍚嶅崟濡備笅锛?/p>
+            <p>本次获奖名单如下：</p>
 
             <div class="award-table-wrap">
-                <div class="award-table-title">馃搵 2025骞撮潚闈掕崏鍘熺渷楂樹腑鍖栧绔炶禌锛堢瀛ｈ禌锛壜?鎴戞牎鑾峰鍚嶅崟</div>
+                <div class="award-table-title">📋 2025年青青草原省高中化学竞赛（秋季赛）· 我校获奖名单</div>
                 <table class="award-table">
                     <thead>
                         <tr>
-                            <th>濮撳悕</th>
-                            <th>鐝骇</th>
-                            <th>鑾峰绛夌骇</th>
-                            <th>鎸囧鏁欏笀</th>
+                            <th>姓名</th>
+                            <th>班级</th>
+                            <th>获奖等级</th>
+                            <th>指导教师</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>鏋楀皬闆?/strong></td>
-                            <td>楂樹簩锛?锛夌彮</td>
-                            <td><span class="aw-badge s2"><span class="aw-star">鈽?/span>浜岀瓑濂?/span></td>
-                            <td>娌堥泤鐞?/td>
+                            <td><strong>林小雨</strong></td>
+                            <td>高二（3）班</td>
+                            <td><span class="aw-badge s2"><span class="aw-star">★</span>二等奖</span></td>
+                            <td>沈雅琴</td>
                         </tr>
                         <tr>
-                            <td>鏂瑰崥娑?/td>
-                            <td>楂樹笁锛?锛夌彮</td>
-                            <td><span class="aw-badge s3">涓夌瓑濂?/span></td>
-                            <td>娌堥泤鐞?/td>
+                            <td>方博涵</td>
+                            <td>高三（1）班</td>
+                            <td><span class="aw-badge s3">三等奖</span></td>
+                            <td>沈雅琴</td>
                         </tr>
                         <tr>
-                            <td>瑁村瓙杞?/td>
-                            <td>楂樹簩锛?锛夌彮</td>
-                            <td><span class="aw-badge s3">涓夌瓑濂?/span></td>
-                            <td>娌堥泤鐞?/td>
+                            <td>裴子轩</td>
+                            <td>高二（5）班</td>
+                            <td><span class="aw-badge s3">三等奖</span></td>
+                            <td>沈雅琴</td>
                         </tr>
                         <tr>
-                            <td>鍚存檽妗?/td>
-                            <td>楂樹笁锛?锛夌彮</td>
-                            <td><span class="aw-badge s3">涓夌瓑濂?/span></td>
-                            <td>娌堥泤鐞?/td>
+                            <td>吴晓桐</td>
+                            <td>高三（2）班</td>
+                            <td><span class="aw-badge s3">三等奖</span></td>
+                            <td>沈雅琴</td>
                         </tr>
                         <tr>
-                            <td>濮滄€濊繙</td>
-                            <td>楂樹簩锛?锛夌彮</td>
-                            <td><span class="aw-badge s3">涓夌瓑濂?/span></td>
-                            <td>娌堥泤鐞?/td>
+                            <td>姜思远</td>
+                            <td>高二（3）班</td>
+                            <td><span class="aw-badge s3">三等奖</span></td>
+                            <td>沈雅琴</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <p>鎸囧鏁欏笀<strong>娌堥泤鐞?/strong>鑰佸笀瀵规湰娆″洟闃熸垚缁╄〃绀烘鎱帮紝鍚屾椂涔熷潶瑷€杩樻湁寰堝ぇ鎻愬崌绌洪棿锛?鍖栧绔炶禌鐨勫鑰冨懆鏈熼暱銆佺煡璇嗚法搴﹀ぇ锛岃繖娆¤兘鏈変簲浣嶅悓瀛﹀悓鏃跺叆鍥寸渷绾ц幏濂栧悕鍗曪紝鏄暣涓璧涘洟闃熷叡鍚屽姫鍔涚殑缁撴灉锛屼絾绂绘嬁鍒颁竴绛夊杩樻湁涓€娈佃窛绂伙紝鎴戜滑鏄庡勾浼氱户缁啿銆?</p>
+            <p>指导教师<strong>沈雅琴</strong>老师对本次团队成绩表示欣慰，同时也坦言还有很大提升空间："化学竞赛的备考周期长、知识跨度大，这次能有五位同学同时入围省级获奖名单，是整个备赛团队共同努力的结果，但离拿到一等奖还有一段距离，我们明年会继续冲。"</p>
 
             <div class="article-person">
                 <div class="article-person-avatar">
-                    <img loading="lazy" src="../assets/staff/syq.webp" alt="娌堥泤鐞磋€佸笀">
+                    <img loading="lazy" src="../assets/syq.webp" alt="沈雅琴老师">
                 </div>
                 <div>
-                    <div class="article-person-name">娌堥泤鐞?/div>
-                    <div class="article-person-title">楂樹腑鍖栧 路 绔炶禌鎸囧鏁欏笀 路 鍔炲叕瀹わ細鏁欏妤糂搴?12</div>
+                    <div class="article-person-name">沈雅琴</div>
+                    <div class="article-person-title">高中化学 · 竞赛指导教师 · 办公室：教学楼B座312</div>
                     <div class="article-person-desc">
-                        娌堥泤鐞磋€佸笀浠庢暀涔濆勾锛岄暱鏈熸媴浠诲寲瀛﹀绉戠珵璧涜緟瀵煎伐浣滐紝鎵€鎸囧瀛︾敓鏇惧娆″湪甯傜骇绔炶禌涓幏濂栥€傛湰娆℃槸濂瑰甫闃熷弬鍔犵渷绾х珵璧涗互鏉ュ彇寰楃殑鏈€浣抽泦浣撴垚缁┿€?
+                        沈雅琴老师从教九年，长期担任化学学科竞赛辅导工作，所指导学生曾多次在市级竞赛中获奖。本次是她带队参加省级竞赛以来取得的最佳集体成绩。
                     </div>
                 </div>
             </div>
 
-            <p>鏍￠暱鐜嬫槑寰峰湪鑾锋倝鑾峰娑堟伅鍚庯紝涓撶▼鍚戣幏濂栧悓瀛﹀強鎸囧鏁欏笀鍙戝幓绁濊春锛屽苟琛ㄧず瀛︽牎灏嗚繘涓€姝ュ姞澶у鐞嗙绔炶禌鐨勬敮鎸佸姏搴︼紝涓烘湁蹇椾簬鍙傚姞瀛︾绔炶禌鐨勫悓瀛︽彁渚涙洿濂界殑澶囪禌鏉′欢銆?/p>
+            <p>校长王明德在获悉获奖消息后，专程向获奖同学及指导教师发去祝贺，并表示学校将进一步加大对理科竞赛的支持力度，为有志于参加学科竞赛的同学提供更好的备赛条件。</p>
 
-            <p style="color:#999; font-size:13px;">鏈绔炶禌鐢卞鏍℃暀鍔″缁熶竴鎶ュ悕锛屽寲瀛︽暀鐮旂粍璐熻矗璧涘墠鍩硅宸ヤ綔銆傚鏈夋剰鍚戝弬鍔?026骞存槬瀛ｈ禌鐨勫悓瀛︼紝璇峰叧娉ㄦ牎鍥鍧涘悗缁€夋嫈閫氱煡銆?/p>
+            <p style="color:#999; font-size:13px;">本次竞赛由学校教务处统一报名，化学教研组负责赛前培训工作。如有意向参加2026年春季赛的同学，请关注校园论坛后续选拔通知。</p>
 
             <p style="color:#ccc; font-size:11px; margin-top:32px; padding-top:16px; border-top:1px solid #f0f0f0;">
-                鏂囩珷缂栧彿锛歀BYZ-NEWS-20250928 &emsp;|&emsp; 褰掓。锛氭暀鍔″淇℃伅缁?
+                文章编号：LBYZ-NEWS-20250928 &emsp;|&emsp; 归档：教务处信息组
             </p>
 
         </div>
 
         <div class="comment-box">
-            <div style="font-size:14px;font-weight:600;margin-bottom:16px;color:#333">鐣欒█锛?鏉★級</div>
+            <div style="font-size:14px;font-weight:600;margin-bottom:16px;color:#333">留言（4条）</div>
 
             <div class="comment-item">
-                <div class="comment-avatar" style="background:#d4edda">馃帀</div>
+                <div class="comment-avatar" style="background:#d4edda">🎉</div>
                 <div>
                     <div class="comment-body">
-                        <span class="comment-name">楂樹簩涓夌彮鍚屽</span>
-                        <span class="comment-time">11鏈?7鏃?/span>
-                        <div>鎭枩灏忛洦锛侊紒鏃╁氨鐭ラ亾浣犱細鎷垮鐨勶紝浣犲璧涢偅娈垫椂闂寸湡鐨勫お鎷间簡</div>
+                        <span class="comment-name">高二三班同学</span>
+                        <span class="comment-time">11月17日</span>
+                        <div>恭喜小雨！！早就知道你会拿奖的，你备赛那段时间真的太拼了</div>
                     </div>
                 </div>
             </div>
 
             <div class="comment-item">
-                <div class="comment-avatar" style="background:#d1ecf1">馃И</div>
+                <div class="comment-avatar" style="background:#d1ecf1">🧪</div>
                 <div>
                     <div class="comment-body">
-                        <span class="comment-name">娌堥泤鐞磋€佸笀</span>
-                        <span class="comment-time">11鏈?7鏃?/span>
-                        <div>浜斾綅鍚屽閮借緵鑻︿簡锛屾垚缁╂槸瀵瑰ぇ瀹惰繖涓€涓湀楂樺己搴﹁缁冩渶濂界殑鍥炴姤銆傜户缁繚鎸侊紝鏄庡勾鍐蹭竴绛夊銆?/div>
+                        <span class="comment-name">沈雅琴老师</span>
+                        <span class="comment-time">11月17日</span>
+                        <div>五位同学都辛苦了，成绩是对大家这一个月高强度训练最好的回报。继续保持，明年冲一等奖。</div>
                     </div>
                 </div>
             </div>
 
             <div class="comment-item">
-                <div class="comment-avatar" style="background:#fff3cd">馃摉</div>
+                <div class="comment-avatar" style="background:#fff3cd">📖</div>
                 <div>
                     <div class="comment-body">
-                        <span class="comment-name">楂樹笁涓€鐝悓瀛?/span>
-                        <span class="comment-time">11鏈?8鏃?/span>
-                        <div>鏂瑰崥娑电墰鐨勶紝楂樹笁杩樿兘鍒嗗嚭鏃堕棿澶囪禌锛岃啘鎷?/div>
+                        <span class="comment-name">高三一班同学</span>
+                        <span class="comment-time">11月18日</span>
+                        <div>方博涵牛的，高三还能分出时间备赛，膜拜</div>
                     </div>
                 </div>
             </div>
 
             <div class="comment-item">
-                <div class="comment-avatar" style="background:#e2d9f3">馃専</div>
+                <div class="comment-avatar" style="background:#e2d9f3">🌟</div>
                 <div>
                     <div class="comment-body">
-                        <span class="comment-name">鍖垮悕</span>
-                        <span class="comment-time">11鏈?7鏃?/span>
-                        <div>璇烽棶鏄庡勾鏄ュ璧涙€庝箞鎶ュ悕锛熸兂鍙傚姞</div>
+                        <span class="comment-name">匿名</span>
+                        <span class="comment-time">11月17日</span>
+                        <div>请问明年春季赛怎么报名？想参加</div>
                     </div>
                 </div>
             </div>
@@ -1576,7 +456,7 @@ function doFilter() {
     </div>
 
     <footer class="campus-footer">
-        漏 鐙煎牎甯傜涓€涓 淇℃伅涓績 &emsp;|&emsp; 鎶€鏈敮鎸侊細鏁欏姟澶勪俊鎭粍
+        © 狼堡市第一中学 信息中心 &emsp;|&emsp; 技术支持：教务处信息组
     </footer>
 
     <script>
@@ -1599,420 +479,6 @@ function doFilter() {
             });
         })();
     </script>
-</body>
-
-</html>
-<!---  
-杩欎釜椤甸潰鐩墠宸茬粡搴熷純
--->
-
-
-
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>鏍″洯瀹夊叏涓撻」鏁存不琛屽姩鍚姩 路 鐙煎牎涓€涓?/title>
-    <link rel="stylesheet" href="../css/campus.css" />
-    <link rel="stylesheet" href="../css/mobile.css" />
-    <style>
-        .article-wrap {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 40px 24px 80px;
-            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-        }
-
-        .article-source {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 8px;
-        }
-
-        .article-source-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #1a3a5c, #2a6090);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .article-source-name {
-            font-size: 15px;
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
-        .article-source-meta {
-            font-size: 12px;
-            color: #999;
-            margin-top: 2px;
-        }
-
-        .article-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1a1a1a;
-            line-height: 1.4;
-            margin-bottom: 8px;
-        }
-
-        .article-meta {
-            font-size: 13px;
-            color: #999;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .article-body {
-            font-size: 16px;
-            line-height: 1.9;
-            color: #333;
-        }
-
-        .article-body p {
-            margin-bottom: 20px;
-        }
-
-        .article-body .highlight {
-            background: #fff3cd;
-            border-left: 3px solid #c8962e;
-            padding: 12px 16px;
-            margin: 24px 0;
-            font-size: 15px;
-            color: #5a4000;
-        }
-
-        .article-photo {
-            width: 100%;
-            background: linear-gradient(135deg, #2c3e50, #3d5a80);
-            border-radius: 8px;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 13px;
-            margin: 24px 0;
-        }
-
-        .article-person {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 20px 0;
-            border: 1px solid #eee;
-        }
-
-        .article-person-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #c0392b, #e74c3c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .article-person-name {
-            font-size: 15px;
-            font-weight: 700;
-            color: #1a1a1a;
-        }
-
-        .article-person-title {
-            font-size: 12px;
-            color: #666;
-            margin-top: 2px;
-        }
-
-        .article-person-desc {
-            font-size: 13px;
-            color: #555;
-            margin-top: 8px;
-            line-height: 1.7;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #1a3a5c;
-            font-size: 13px;
-            text-decoration: none;
-            margin-bottom: 24px;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-
-        .info-table th {
-            background: #f0f4f8;
-            padding: 10px 14px;
-            text-align: left;
-            font-weight: 600;
-            color: #2c3e50;
-            border-bottom: 2px solid #dde;
-        }
-
-        .info-table td {
-            padding: 10px 14px;
-            border-bottom: 1px solid #eee;
-            color: #444;
-            vertical-align: top;
-        }
-
-        .info-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .redacted {
-            background: #333;
-            color: #333;
-            border-radius: 2px;
-            user-select: none;
-        }
-
-        .comment-box {
-            border-top: 1px solid #eee;
-            margin-top: 40px;
-            padding-top: 24px;
-        }
-
-        .comment-item {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .comment-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-
-        .comment-body {
-            font-size: 13px;
-            color: #444;
-            line-height: 1.7;
-        }
-
-        .comment-name {
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-right: 8px;
-        }
-
-        .comment-time {
-            color: #999;
-            font-size: 11px;
-        }
-    </style>
-</head>
-
-<body>
-    <nav class="campus-nav">
-        <div class="campus-nav-inner">
-            <a class="campus-nav-logo" href="../index.html">
-                <img src="../assets/logo.webp" onerror="this.style.display='none'" alt="鏍″窘" />
-                <div>
-                    <div class="school-name">鐙煎牎甯傜涓€涓</div>
-                </div>
-            </a>
-            <div class="campus-nav-links">
-                <a href="../index.html">棣栭〉</a>
-                <a href="../campus/staff.html">甯堣祫鍥㈤槦</a>
-                <a href="../campus/alumni.html">鐭ュ悕鏍″弸</a>
-                <a href="../campus/forum.html">鏍″洯璁哄潧</a>
-            </div>
-            <a class="nav-home-back" href="../index.html">鈫?棣栭〉</a>
-            <button class="nav-hamburger" id="nav-hamburger"
-                aria-label="鑿滃崟"><span></span><span></span><span></span></button>
-        </div>
-    </nav>
-
-    <div class="article-wrap">
-
-
-        <div class="article-title">鏍″洯瀹夊叏涓撻」鏁存不琛屽姩鍚姩锛屽閮ㄩ棬鑱斿悎寮€灞曞闂村贰鏌?/div>
-
-        <div class="article-source">
-            <div class="article-source-avatar" style="background: none; overflow: hidden;">
-                <img src="../assets/logo.webp" alt="鏍″窘" style="width: 100%; height: 100%; object-fit: cover;" />
-            </div>
-            <div>
-                <div class="article-source-name">鐙煎牎涓€涓?鏍″洯淇℃伅缃?/div>
-                <div class="article-source-meta">瀹樻柟璐﹀彿</div>
-            </div>
-        </div>
-
-        <div class="article-meta">2025骞?0鏈?6鏃?&emsp;|&emsp; 闃呰 1,203 &emsp;|&emsp; 鐙煎牎涓€涓浼犵粍</div>
-
-        <div class="article-body">
-            <p>杩戞湡锛岀嫾鍫′竴涓氨鏍″洯瀹夊叏绠＄悊闂鍚姩涓撻」鏁存不琛屽姩銆傛湰娆¤鍔ㄧ敱鏁欏姟澶勭壍澶达紝淇濆畨閮ㄩ棬銆佷俊鎭腑蹇冭仈鍚堝弬涓庯紝閲嶇偣閽堝澶滈棿鏍″洯绠＄悊銆佸嚭鍏ヨ褰曟牳鏌ャ€佷互鍙婅繎鏈熼儴鍒嗗悓瀛﹁韪紓甯哥瓑闂寮€灞曟帓鏌ャ€?/p>
-
-            <div class="article-photo">[ 澶滈棿瀹夊叏宸℃煡鐜板満 路 10鏈?6鏃?]</div>
-
-            <p>鏁欏姟澶勪富浠诲湪宸ヤ綔閮ㄧ讲浼氫笂鎸囧嚭锛屾湰娆℃暣娌昏鍔ㄧ殑璧峰洜涔嬩竴锛屾槸杩戞湡鏀跺埌澶氬悕鍚屽鍜屽闀跨殑鍙嶆槧锛岀О鏈夊鐢熷湪鏍℃湡闂村嚭鐜?strong>闀挎椂闂村け鑱?/strong>鐨勬儏鍐碉紝瀛︽牎瀵规楂樺害閲嶈銆?/p>
-
-            <div class="highlight">
-                銆屽鏍″姣忎竴鍚嶅鐢熺殑浜鸿韩瀹夊叏璐熸湁涓嶅彲鎺ㄥ嵏鐨勮矗浠汇€傚浜庤繎鏈熷嚭鐜扮殑寮傚父鎯呭喌锛屽鏍℃鍦ㄧН鏋侀厤鍚堝闀垮拰鐩稿叧閮ㄩ棬鏍稿疄锛岀浉鍏充俊鎭皢鍦ㄩ€傚綋鏃跺€欎簣浠ヨ鏄庛€傘€嶁€斺€旀暀鍔″涓讳换
-            </div>
-
-            <p>姝ゅ锛岄拡瀵规棫瀹為獙妤兼暣淇湡闂村娆″嚭鐜扮殑寮傚父鐏厜鍜屽０鍝嶉棶棰橈紝瀛︽牎宸茶姹傛壙鍖呮柟銆?strong>鐙煎牎绮句华绉戞妧</strong>銆嶆彁渚涙柦宸ユ棩蹇楋紝骞跺鍑哄叆璁板綍杩涜鏍告煡銆?/p>
-
-            <p>鏍规嵁鏈瀹夊叏鏁存不琛屽姩鐨勯儴缃诧紝瀛︽牎淇℃伅涓績灏嗗鏍″唴缃戠粶鍙婇棬绂佺郴缁熻繘琛屽叏闈㈡帓鏌ャ€傚悓鏃讹紝瀛︽牎杩橀個璇蜂簡澶栭儴瀹夊叏璇勪及涓撳瀵规牎鍥鏂借繘琛屼笓椤规鏌ャ€?/p>
-
-            <!-- 闄堟槺浣滀负"瀹夊叏璇勪及涓撳"鍑虹幇锛岃韩浠借瀹樻柟鏂囩珷鍖呰 -->
-            <div class="article-person">
-                <div class="article-person-avatar">闄?/div>
-                <div>
-                    <div class="article-person-name">闄堟槺</div>
-                    <div class="article-person-title">鍙楅個瀹夊叏璇勪及涓撳 路 鍖楀绁炵粡宸ョ▼鐮旂┒闄?/div>
-                    <div class="article-person-desc">
-                        闄堟槺鍗氬＋鍙楀鏍￠個璇凤紝灏辨湰娆″畨鍏ㄦ暣娌昏鍔ㄦ彁渚涙妧鏈敮鎸侊紝閲嶇偣瀵规棫瀹為獙妤煎尯鍩熺殑璁惧瀹夊叏鐘跺喌杩涜涓撲笟璇勪及銆傞檲鏄卞崥澹浘澶氭涓庢垜鏍″紑灞曞悎浣滐紝鐔熸倝鏍″唴璁炬柦鎯呭喌銆?
-                        <br /><br />
-                        闄堝崥澹〃绀猴紝鏃у疄楠屾ゼ鏁翠慨宸ョ▼鎵€娑夊強鐨勮澶囧睘浜庣簿瀵嗕华鍣ㄨ寖鐣达紝鏂藉伐鏂归渶涓ユ牸閬靛畧鎿嶄綔瑙勮寖锛屽鏍″姝ゅ凡鏈夊厖鍒嗕簡瑙ｃ€?
-                        <br /><br />
-                        <span style="color:#c0392b;font-size:12px">鈿?娉細濡傞渶鑱旂郴闄堝崥澹紝璇烽€氳繃鏍℃柟鏁欏姟澶勬笭閬擄紝涓嶅缓璁洿鎺ヨ仈绯汇€?/span>
-                    </div>
-                </div>
-            </div>
-
-            <p>鏈瀹夊叏鏁存不琛屽姩鐨勫叿浣撴帾鏂藉寘鎷細</p>
-
-            <table class="info-table">
-                <thead>
-                    <tr>
-                        <th>鎺柦</th>
-                        <th>璐熻矗閮ㄩ棬</th>
-                        <th>瀹屾垚鏃堕檺</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>澶滈棿11鐐瑰悗鏍″洯宸￠€婚娆℃彁楂樿嚦姣忓皬鏃朵竴娆?/td>
-                        <td>淇濆畨閮ㄩ棬</td>
-                        <td>鍗虫棩璧?/td>
-                    </tr>
-                    <tr>
-                        <td>鏃у疄楠屾ゼ鍛ㄨ竟澧炶涓存椂鍥存尅锛屼弗绂佹棤鍏充汉鍛樿繘鍏?/td>
-                        <td>鎬诲姟澶?/td>
-                        <td>10鏈?8鏃ュ墠</td>
-                    </tr>
-                    <tr>
-                        <td>瀵硅繎鏈熻鍋囧鐢熻繘琛岄€愪竴鏍稿疄锛岃仈绯诲闀跨‘璁ょ姸鎬?/td>
-                        <td>鍚勭彮鐝富浠?/td>
-                        <td>10鏈?0鏃ュ墠</td>
-                    </tr>
-                    <tr>
-                        <td>鏍″洯闂ㄧ绯荤粺鏃ュ織澶囦唤锛屽紓甯歌褰曟彁浜や俊鎭腑蹇冨鏍?/td>
-                        <td>淇℃伅涓績</td>
-                        <td style="color:#c0392b">鈿?閮ㄥ垎璁板綍鍥犵郴缁熸晠闅滄殏缂猴紝姝ｅ湪鎭㈠涓?/td>
-                    </tr>
-                    <tr>
-                        <td>瀵规壙鍖呮柟鏂藉伐璧勮川鍙婃柦宸ユ棩蹇楄繘琛屾牳鏌?/td>
-                        <td>鏁欏姟澶?/td>
-                        <td style="color:#c0392b">鈿?鏍告煡涓紝<span class="redacted">鐙煎牎绮句华绉戞妧宸ュ晢娉ㄥ唽淇℃伅寰呮牳瀹?/span></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p>瀛︽牎甯屾湜骞垮ぇ鍚屽濡傚彂鐜版牎鍥唴瀛樺湪寮傚父鎯呭喌锛屽強鏃跺悜鐝富浠绘垨淇濆畨瀹ゅ弽鏄狅紝涓嶈鐙嚜鍓嶅線闄岀敓鍖哄煙锛屾洿涓嶈鍦ㄥ闂村湪鏍″洯鍐呭崟鐙鍔ㄣ€?/p>
-
-            <p style="color:#c0392b;font-size:14px">鈿?缂栬緫娉紙10鏈?0鏃ヨ拷鍔狅級锛氭湰鏂囧彂甯冨悗锛屽凡鏈変袱鍚嶅悓瀛﹀闀胯仈绯诲鏍★紝鍙嶆槧鍏跺瓙濂冲け鑱斻€傚鏍℃鍦ㄦ牳瀹烇紝鐩稿叧鎯呭喌浠ユ暀鍔″閫氱煡涓哄噯銆?/p>
-        </div>
-
-        <div class="comment-box">
-            <div style="font-size:14px;font-weight:600;margin-bottom:16px;color:#333">鐣欒█锛?鏉★級</div>
-            <div class="comment-item">
-                <div class="comment-avatar" style="background:#d4edda">馃槓</div>
-                <div>
-                    <div class="comment-body">
-                        <span class="comment-name">鍏冲績鐨勫闀?/span>
-                        <span class="comment-time">10鏈?6鏃?/span>
-                        <div>璇烽棶閭ｄ釜銆屽け鑱斿悓瀛︺€嶆槸浠€涔堟儏鍐碉紵瀛︽牎鑳戒笉鑳芥闈㈠洖搴斾竴涓嬶紵</div>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-item">
-                <div class="comment-avatar" style="background:#f8d7da">鉂?/div>
-                <div>
-                    <div class="comment-body">
-                        <span class="comment-name">楂樹簩瀛︾敓</span>
-                        <span class="comment-time">10鏈?7鏃?/span>
-                        <div>闄堟槺鍗氬＋涓嶆槸鏍艰嚧璁″垝鐨勯【闂悧锛熶粬鎬庝箞鍙堝彉鎴愬畨鍏ㄨ瘎浼颁笓瀹朵簡鈥︹€?/div>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-item">
-                <div class="comment-avatar" style="background:#d1ecf1">馃搶</div>
-                <div>
-                    <div class="comment-body">
-                        <span class="comment-name">淇℃伅涓績</span>
-                        <span class="comment-time">10鏈?7鏃?/span>
-                        <div>闄堝崥澹槸瀛︽牎鐨勯暱鏈熷悎浣滀笓瀹讹紝鍏蜂綋鍚堜綔鑼冨洿鐢辨暀鍔″缁熶竴鍗忚皟銆傝鍕垮瀛︽牎姝ｅ父鍚堜綔浜嬪姟杩涜涓嶅綋鑱旀兂銆?/div>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-item">
-                <div class="comment-avatar" style="background:#fff3cd">馃攳</div>
-                <div>
-                    <div class="comment-body">
-                        <span class="comment-name">鍖垮悕鍚屽</span>
-                        <span class="comment-time">10鏈?8鏃?/span>
-                        <div>琛ㄦ牸閲岄偅涓€岀嫾鍫＄簿浠鎶€宸ュ晢娉ㄥ唽淇℃伅寰呮牳瀹炪€嶁€︹€﹀伐鍟嗗眬缃戠珯鏌ヤ笉鍒拌繖瀹跺叕鍙哥殑浠讳綍淇℃伅銆?/div>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-item">
-                <div class="comment-avatar" style="background:#f8d7da">鉂?/div>
-                <div>
-                    <div class="comment-body">
-                        <span class="comment-name">鍖垮悕</span>
-                        <span class="comment-time">10鏈?0鏃?/span>
-                        <div>鏁欏笀绯荤粺閲岃兘鎼滃埌闄堟槺鐨勬。妗堝悧锛熸垜鎯崇煡閬撲粬鍒板簳鏄粈涔堟潵鍘嗐€?/div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="campus-footer">
-        漏 鐙煎牎甯傜涓€涓 淇℃伅涓績 &emsp;|&emsp; 鎶€鏈敮鎸侊細鏁欏姟澶勪俊鎭粍
-    </footer>
-    <script src="../js/nav.js"></script>
 </body>
 
 </html>

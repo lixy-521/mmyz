@@ -207,7 +207,7 @@ function confirmEnd() {
   openModal(
     "确认结束实验",
     "你确定要<strong>强制结束实验</strong>吗？\n\n此操作将立即断开仪器连接，<strong style='color:#c0392b'>后果不可预测</strong>。",
-    () => { window.location.href = "../endings/ending0.html"; }
+    () => { window.location.href = "endings/ending0.html"; }
   );
 }
 
@@ -219,19 +219,19 @@ function submitParam() {
     openModal(
       "确认切换参数",
       "即将切换为<strong>待机参数</strong>。\n\n仪器将暂停数据采集，维持受试者基础生命体征。\n请确认此操作。",
-      () => { window.location.href = "../endings/ending1.html"; }
+      () => { window.location.href = "endings/ending1.html"; }
     );
   } else if (val === "88.144.21.1") {
     openModal(
       "确认切换参数",
       "即将启动逆向参数 <strong style='font-family:monospace'>88.144.21.1</strong>。\n\n系统将把采集到的全部数据完整写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
-      () => { window.location.href = "../endings/ending2.html"; }
+      () => { window.location.href = "endings/ending2.html"; }
     );
   } else {
     openModal(
       "参数无效",
       `输入的参数 "<strong>${val}</strong>" 不在有效参数列表中。\n\n系统将执行<strong style='color:#c0392b'>异常中止流程</strong>，后果不可预测。`,
-      () => { window.location.href = "../endings/ending0.html"; },
+      () => { window.location.href = "endings/ending0.html"; },
       true
     );
   }

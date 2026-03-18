@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>师资团队 · 狼堡一中校园信息网</title>
-    <link rel="stylesheet" href="../css/campus.css" />
-    <link rel="stylesheet" href="../css/mobile.css" />
+    <link rel="stylesheet" href="css/campus.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
     <style>
         /* 补充样式确保图片显示正常 */
         .staff-avatar-use-img {
@@ -93,20 +93,20 @@
 <body>
     <nav class="campus-nav">
         <div class="campus-nav-inner">
-            <a class="campus-nav-logo" href="../index.html">
-                <img src="../assets/logo.webp" onerror="this.style.display='none'" alt="校徽" />
+            <a class="campus-nav-logo" href="index.html">
+                <img src="assets/logo.webp" onerror="this.style.display='none'" alt="校徽" />
                 <div>
                     <div class="school-name">狼堡市第一中学</div>
                 </div>
             </a>
             <div class="campus-nav-links">
-                <a href="../index.html">首页</a>
+                <a href="index.html">首页</a>
                 <a href="staff.html" class="active">师资团队</a>
                 <a href="alumni.html">知名校友</a>
                 <a href="forum.html">校园论坛</a>
             </div>
             <div id="nav-user-area"></div>
-            <a class="nav-home-back" href="../index.html">← 首页</a>
+            <a class="nav-home-back" href="index.html">← 首页</a>
             <button class="nav-hamburger" id="nav-hamburger"
                 aria-label="菜单"><span></span><span></span><span></span></button>
         </div>
@@ -143,7 +143,7 @@
                 <div class="campus-card-body">
                     <div class="staff-profile">
                         <div class="staff-avatar-use-img">
-                            <img loading="lazy" src="../assets/staff/wangmingde.webp" alt="王明德校长">
+                            <img loading="lazy" src="assets/wangmingde.webp" alt="王明德校长">
                         </div>
                         <div class="staff-info">
                             <h2>王明德</h2>
@@ -208,8 +208,8 @@
         © 狼堡市第一中学 信息中心 &emsp;|&emsp; 技术支持：教务处信息组
     </footer>
 
-    <script src="../js/auth.js"></script>
-    <script src="../js/nav.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/nav.js"></script>
     <script>
         // 拼音/别名映射
         const STAFF_ALIAS = {
@@ -224,28 +224,28 @@
         const STAFF_DB = {
             "王明德": null, // 用默认展示
             "董新飞": {
-                image: "assets/staff/dxf.webp",  // 董新飞照片
+                image: "assets/dxf.webp",  // 董新飞照片
                 name: "董新飞",
                 title: "理化组教师 · 实验室负责人",
                 id: "dxf_teacher",
                 bio: `董新飞，男，理学硕士，中学一级教师。现任狼堡一中理化组教师，兼任旧实验楼改造项目负责人。\n\n负责高一高二化学实验课程，同时主持学校与外部科研机构合作的「格致计划」项目。\n\n联系方式：教学楼B座319室（实验室管理办公室）`
             },
             "沈雅琴": {
-                image: "assets/staff/syq.webp",    // 李慧敏照片
+                image: "assets/syq.webp",    // 李慧敏照片
                 name: "沈雅琴",
                 title: "化学组组长 · 高级教师",
                 id: "—",
                 bio: `沈雅琴，女，理学硕士，高级教师。从教9年，现担任高二化学组组长。\n\n曾获省级优秀班主任称号。`
             },
             "张国强": {
-                image: "assets/staff/zhangguoqiang.webp", // 张国强照片
+                image: "assets/article_award/zhangguoqiang.webp", // 张国强照片
                 name: "张国强",
                 title: "数学组教师",
                 id: "—",
                 bio: `张国强，男，理学学士，中学一级教师。负责高一数学教学工作，兼任数学竞赛辅导。`
             },
             "刘芳": {
-                image: "assets/staff/liufang.webp",     // 刘芳照片
+                image: "assets/liufang.webp",     // 刘芳照片
                 name: "刘芳",
                 title: "图书馆馆长",
                 id: "lib_admin",
@@ -294,7 +294,7 @@
                         <div class="campus-card-body">
                             <div class="staff-profile">
                                 <div class="staff-avatar-use-img">
-                                    <img loading="lazy" src="../${info.image}" 
+                                    <img loading="lazy" src="${info.image}" 
                                          alt="${info.name}"
                                          onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'staff-avatar\'>${info.avatar || '👤'}</div>'">
                                 </div>
