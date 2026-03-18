@@ -117,7 +117,7 @@ const BOOK_DB = {
       },
       {
         user: "林小雨", date: "9月5日", returnDate: "9月7日",
-        comment: "这本书上次dxf借的，还的时候夹了张便条没取走。便条上只有一个网址：<a href=\"../bnei.html\" target=\"_blank\" style=\"color:#1a3a5c;text-decoration:underline\">portal.bnei.edu</a>"
+        comment: "这本书上次dxf借的，还的时候夹了张便条没取走。便条上只有一个网址：<a href=\"G7y0k293s/dxf.html\" style=\"color:#1a3a5c\">hole.lbyz.internal/dxf</a>"
       }
     ]
 
@@ -488,7 +488,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const raw = archiveInput.value.trim().toUpperCase().replace(/[\s·]/g, "-");
     // Flexible matching
     const key = Object.keys(ARCHIVE_DB).find(k =>
-      raw === k || raw.includes(k.replace("LBYZ-","")) || k.includes(raw)
+      raw === k || raw.includes(k.replace("LBYZ-", "")) || k.includes(raw)
     );
 
     if (!key) {
