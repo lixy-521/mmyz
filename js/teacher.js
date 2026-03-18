@@ -214,8 +214,8 @@ function searchPersonnel(name) {
   if (!resultEl) return;
   const q = name.trim();
   const aliases = {
-    "陈昱": "陈昱", "chenyu": "陈昱", "cy": "陈昱",
-    "张国强": "张国强", "zhangguoqiang": "张国强", "zgq": "张国强"
+    "陈昱": "陈昱", "chenyu": "陈昱", 
+    "张国强": "张国强", "zhangguoqiang": "张国强"
   };
   const resolved = aliases[q.toLowerCase().replace(/\s/g, "")] || aliases[q] || q;
   const person = PERSONNEL_DB[resolved];
