@@ -270,6 +270,14 @@
             <div class="campus-card">
                 <div class="campus-card-header">🕐 当前时间</div>
                 <div class="campus-card-body text-center">
+                    <div class="analog-clock" style="margin: 0 auto 16px;">
+                        <div class="clock-face">
+                            <div class="clock-hand-wrapper hour-wrapper"><div class="hour-hand"></div></div>
+                            <div class="clock-hand-wrapper min-wrapper"><div class="min-hand"></div></div>
+                            <div class="clock-hand-wrapper second-wrapper" style="transition: transform 0.05s cubic-bezier(0.4, 2.08, 0.55, 0.44);"><div class="second-hand"></div></div>
+                            <div class="clock-center"></div>
+                        </div>
+                    </div>
                     <div style="font-size:26px;font-weight:700;color:#1a3a5c;font-family:'Courier New',monospace"
                         id="clock">--:--:--</div>
                     <div style="margin-top:6px;font-size:13px;color:#6b7f93">2025年11月25日 星期二</div>
@@ -372,11 +380,61 @@
         setInterval(() => goBanner((cur + 1) % slides.length), 4500);
 
         // ── 时钟 ──
+        function initClockFace() {
+            const face = document.querySelector('.clock-face');
+            if (!face) return;
+            // 60个刻度
+            for (let i = 0; i < 60; i++) {
+                const tick = document.createElement('div');
+                tick.className = 'clock-tick' + (i % 5 === 0 ? ' major' : '');
+                tick.style.transform = `translateX(-50%) rotate(${i * 6}deg)`;
+                face.appendChild(tick);
+            }
+            // 12个数字
+            for (let i = 1; i <= 12; i++) {
+                const num = document.createElement('div');
+                num.className = 'clock-number';
+                num.textContent = i;
+                const angle = i * 30 * (Math.PI / 180);
+                const r = 40; // 数字距离中心的百分比半径（远离刻度）
+                num.style.left = `${50 + r * Math.sin(angle)}%`;
+                num.style.top = `${50 - r * Math.cos(angle)}%`;
+                face.appendChild(num);
+            }
+        }
+        initClockFace();
+
         function updateClock() {
             const now = new Date();
+            // 数字时钟
             document.getElementById("clock").textContent =
                 [now.getHours(), now.getMinutes(), now.getSeconds()]
                     .map(n => String(n).padStart(2, "0")).join(":");
+            
+            // 模拟时钟
+            const secs = now.getSeconds();
+            const mins = now.getMinutes();
+            const hours = now.getHours();
+            
+            const secDeg = secs * 6;
+            const minDeg = mins * 6 + secs * 0.1;
+            const hourDeg = (hours % 12) * 30 + mins * 0.5;
+            
+            const secWrapper = document.querySelector('.second-wrapper');
+            if (secWrapper) {
+                if (secs === 0) {
+                    secWrapper.style.transition = 'none';
+                } else if (secs === 1) {
+                    secWrapper.style.transition = 'transform 0.05s cubic-bezier(0.4, 2.08, 0.55, 0.44)';
+                }
+                secWrapper.style.transform = `rotate(${secDeg}deg)`;
+            }
+            
+            const minWrapper = document.querySelector('.min-wrapper');
+            if (minWrapper) minWrapper.style.transform = `rotate(${minDeg}deg)`;
+            
+            const hourWrapper = document.querySelector('.hour-wrapper');
+            if (hourWrapper) hourWrapper.style.transform = `rotate(${hourDeg}deg)`;
         }
         updateClock(); setInterval(updateClock, 1000);
     </script>
