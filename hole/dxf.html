@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>董的笔记本 · 私人站点</title>
+    <style>
+        :root {
+            --bg: #0e0f12;
+            --surface: #161820;
+            --border: rgba(255,255,255,0.07);
+            --text: #c8c6be;
+            --muted: #6b7080;
+            --accent: #7c6fcd;
+            --accent-dim: rgba(124,111,205,0.15);
+            --warn: #e07b54;
+            --warn-dim: rgba(224,123,84,0.12);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+            font-size: 15px;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        .site-header {
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .site-icon { font-size: 20px; }
+        .site-title { font-size: 15px; color: var(--muted); letter-spacing: 0.05em; }
+        .site-title strong { color: var(--text); font-weight: 500; }
+        .site-notice {
+            margin: 0 auto;
+            max-width: 680px;
+            padding: 12px 20px;
+            margin-top: 20px;
+            background: var(--warn-dim);
+            border: 1px solid rgba(224,123,84,0.25);
+            border-radius: 6px;
+            font-size: 12px;
+            color: var(--warn);
+        }
+        .main {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 32px 20px 80px;
+        }
+        .entry {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 28px;
+            background: var(--surface);
+            overflow: hidden;
+        }
+        .entry-head {
+            padding: 14px 20px 10px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+        .entry-date {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .entry-tag {
+            font-size: 11px;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 1px 7px;
+        }
+        .entry-body {
+            padding: 18px 20px 20px;
+            font-size: 14px;
+            line-height: 2;
+            color: var(--text);
+            white-space: pre-wrap;
+        }
+        .entry-body .redacted {
+            background: var(--warn-dim);
+            color: var(--warn);
+            border-radius: 3px;
+            padding: 0 4px;
+            font-size: 12px;
+        }
+        .pw-entry {
+            border: 1px solid var(--accent-dim);
+            background: var(--accent-dim);
+            border-radius: 4px;
+            padding: 10px 14px;
+            margin-top: 16px;
+            font-size: 12px;
+            color: var(--accent);
+        }
+        .pw-entry code {
+            font-family: monospace;
+            font-size: 13px;
+            background: rgba(124,111,205,0.2);
+            padding: 1px 6px;
+            border-radius: 3px;
+        }
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 12px;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+
+<body>
+    <div class="site-header">
+        <span class="site-icon">📔</span>
+        <div class="site-title"><strong>dxf-notes</strong> · 私人站点 · 非学校系统</div>
+    </div>
+
+    <div class="main">
+
+        <div class="site-notice" style="margin-left:0;margin-right:0;margin-top:0;margin-bottom:28px">
+            ⚠ 你不应该在这里。这个网址不对任何人公开。如果你看到这个页面，说明刘天清把它留给了你。
+        </div>
+
+        <!-- 条目1 -->
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-date">2025年8月29日</span>
+                <span class="entry-tag">起点</span>
+            </div>
+            <div class="entry-body">建延今年化竞又没进省队。
+
+他努力了两年，真的很努力，每天做题到深夜，比我当年用功多了。但那个圈子就是那样——有些学生生下来就是为了竞赛的，建延不是。他的思维方式很扎实，但就是缺少那种直觉，那种一眼看见路的感觉。
+
+我不甘心。
+
+我研究了很多年认知神经科学，我知道"天赋"这个词背后是什么——是神经连接的密度，是思维路径的效率。这些东西是可以被分析的，如果能拿到足够的数据……
+
+陈昱找到我的时候，我听进去了。
+
+我知道这件事不干净。但建延已经高一了，时间不多了。</div>
+        </div>
+
+        <!-- 条目2 -->
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-date">2025年10月5日</span>
+                <span class="entry-tag">进展</span>
+            </div>
+            <div class="entry-body">第一次实验完成了。林小雨，高二三班，化竞二等奖，认知模型构建价值极高——这是陈昱的原话。
+
+我盯着那台设备运转了将近三个小时。我没有睡着，但感觉有什么东西在脑子里松动了，或者说，某种声音被我按下去了。
+
+我在跟自己说：她签过同意书。这是科研项目。对更多人有价值。
+
+但林小雨是我的学生。
+
+我回家的时候建延还在做题，手机在餐桌上放着，我规定他晚上不能碰。他看见我进来，跟我说了一声爸爸，然后低头继续写。
+
+我站在门口看了他几秒钟，没说话，进了书房。</div>
+        </div>
+
+        <!-- 条目3 -->
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-date">2025年11月8日</span>
+                <span class="entry-tag">转折</span>
+            </div>
+            <div class="entry-body">陈昱今天给我的邮件里有一句话，我看了三遍。
+
+原文是："数据归属研究院，这一点不会因任何个人关系而改变。"
+
+我把这封邮件存下来了。
+
+所有的邮件我都打印出来存着了，从8月到现在，一封不少。包括王明德对我说的那些话。包括陈昱所有"放心"、"之后再谈"、"有参考价值"的承诺。
+
+都存着。
+
+我不是蠢。我只是当时太想相信他了。
+
+现在想明白了——我对他们没有任何价值，只有这双手有价值，只有我能进B203有价值。等项目结束，我什么都拿不到，除了一辈子的把柄。
+
+所以我要做一件事。</div>
+        </div>
+
+        <!-- 条目4 -->
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-date">2025年11月10日</span>
+                <span class="entry-tag">行动</span>
+            </div>
+            <div class="entry-body">我把B203的实验控制系统和家里的个人电脑做了端口映射。
+
+这不难。设备是陈昱的研究院的，但B203的局域网接入是我配置的，他不知道我加了一条旁路。从技术上说，现在我家里的电脑可以访问实验室的控制台——虽然是只读的，但够了。
+
+如果有一天他们想甩掉我，我随时可以通过这条线路触发警报。B203里有独立的安防节点，一旦我激活，信号会直接发到我家，同时会有记录写入外部日志。
+
+这是我留给自己的路。
+
+陈昱以为我是工具。他不知道工具有时候会反过来。
+
+————
+
+有一件事我需要记在这里：我在图书馆系统里发现了一点异常。一本化学书，借阅记录里夹着一张我以为没人会看到的便条——林小雨还书的时候，把那张便条夹在里面了。便条上是我的校园网登录密码。
+
+我没有删。如果有人找到那本书，能看懂那条记录，说明他们已经在查这件事了。我不打算为难他们。
+
+我的校园网密码是 <code class="redacted" style="background:rgba(124,111,205,0.2);color:var(--accent);border-radius:3px;padding:1px 6px;font-family:monospace">Lbyz@dxf2023!</code>，但我在这里再放一遍——因为登录我的账号之后，你需要看所有的邮件，才能弄清楚发生了什么。
+
+如果你已经登录过了，那你也知道了。
+
+<div class="pw-entry">校园网账号：<code>dxf_teacher</code>　　密码：<code>Lbyz@dxf2023!</code></div></div>
+        </div>
+
+        <!-- 条目5 -->
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-date">2025年11月21日 00:43</span>
+                <span class="entry-tag">深夜</span>
+            </div>
+            <div class="entry-body">刘天清进来了。
+
+我不知道他怎么找到的，但他进来了，B203，今晚11点多。我们没有别的选择，陈昱让我处置，我……我做了。
+
+两个孩子现在都在设备里。
+
+我回到家，家里警报没响——那是好事，说明我的旁路还没被触发。
+
+建延在睡觉。
+
+我站在他房间门口站了很久。
+
+明天。我得想想明天怎么办。</div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        dxf-notes · 私人站点 · 无备案 · 请勿传播
+        <br><br>
+        <a href="../index.html" style="color:var(--muted)">← 返回狼堡一中校园官网</a>
+    </footer>
+
+</body>
+</html>
