@@ -8,11 +8,20 @@
 
 // SHA-256(密码) 哈希表，键为用户名
 // 计算方式：SHA-256("原始密码") -> 十六进制字符串
+function getBasePath() {
+    const p = window.location.pathname.toLowerCase();
+    const subs = ['/campus/', '/admin/', '/endings/', '/article/', '/hole/', '/g7y0k293s/'];
+    if (subs.some(folder => p.includes(folder))) {
+        return '../';
+    }
+    return './';
+}
+
 const ACCOUNTS = {
-    "security_li":  { hash: "e2f26fd5170fb688d7fad68b8d15c33358db5c3227dd1e6077fcfbccb679f3f2", role: "security",  name: "李保安", redirect: "security.html" },
-    "lib_admin":    { hash: "2c1f41f23fc886a8a9f94808f14fd4c6c1d3561cf9494751d3675b3a1eb9a09d", role: "library",   name: "刘芳",   redirect: "library.html" },
-    "dxf_teacher":  { hash: "280776d53353f902400e0da726d56c0d79b0445a88cafced77eaa173fea02ec9", role: "teacher",   name: "董新飞", redirect: "teacher.html" },
-    "wmd_principal":{ hash: "2565daec6b7a860634f16f6d37b9c67c378a93ba1f9545cd0dfa432a495cf6a1", role: "principal", name: "王明德", redirect: "principal.html" }
+    "security_li":  { hash: "e2f26fd5170fb688d7fad68b8d15c33358db5c3227dd1e6077fcfbccb679f3f2", role: "security",  name: "李保安", redirect: "campus/security.html" },
+    "lib_admin":    { hash: "2c1f41f23fc886a8a9f94808f14fd4c6c1d3561cf9494751d3675b3a1eb9a09d", role: "library",   name: "刘芳",   redirect: "campus/library.html" },
+    "dxf_teacher":  { hash: "280776d53353f902400e0da726d56c0d79b0445a88cafced77eaa173fea02ec9", role: "teacher",   name: "董新飞", redirect: "admin/teacher.html" },
+    "wmd_principal":{ hash: "2565daec6b7a860634f16f6d37b9c67c378a93ba1f9545cd0dfa432a495cf6a1", role: "principal", name: "王明德", redirect: "admin/principal.html" }
 };
 
 /**
@@ -41,7 +50,7 @@ async function doLogin(username, password) {
     localStorage.setItem("lbyz_username", username.trim());
     localStorage.setItem("lbyz_name", account.name);
     _saveAccountToList(username.trim(), account);
-    window.location.href = account.redirect;
+    window.location.href = getBasePath() + account.redirect;
     return true;
 }
 
@@ -70,7 +79,7 @@ function quickLogin(username) {
     localStorage.setItem("lbyz_role", saved.role);
     localStorage.setItem("lbyz_username", saved.username);
     localStorage.setItem("lbyz_name", saved.name);
-    window.location.href = saved.redirect;
+    window.location.href = getBasePath() + saved.redirect;
 }
 
 /**
@@ -92,7 +101,7 @@ function doLogout() {
     localStorage.removeItem("lbyz_role");
     localStorage.removeItem("lbyz_username");
     localStorage.removeItem("lbyz_name");
-    window.location.href = "login.html";
+    window.location.href = getBasePath() + "admin/login.html";
 }
 
 /**
@@ -101,7 +110,7 @@ function doLogout() {
 function requireRole(expectedRole) {
     const role = localStorage.getItem("lbyz_role");
     if (role !== expectedRole) {
-        window.location.href = "login.html";
+        window.location.href = getBasePath() + "admin/login.html";
     }
 }
 
@@ -117,12 +126,12 @@ function renderNavUser() {
     const role = localStorage.getItem("lbyz_role");
     if (username && role) {
         const roleRedirect = {
-            "security": "security.html",
-            "library": "library.html",
-            "teacher": "teacher.html",
-            "principal": "principal.html"
+            "security": "campus/security.html",
+            "library": "campus/library.html",
+            "teacher": "admin/teacher.html",
+            "principal": "admin/principal.html"
         };
-        const href = roleRedirect[role] || "#";
+        const href = roleRedirect[role] ? getBasePath() + roleRedirect[role] : "#";
         area.innerHTML = `
       <div class="campus-nav-user">
         <a href="${href}" class="username" style="color:rgba(255,255,255,0.9);font-size:13px;text-decoration:none;">👤 ${name || username}</a>
@@ -130,7 +139,7 @@ function renderNavUser() {
       </div>`;
     } else {
         area.innerHTML = `<div class="campus-nav-user">
-      <a href="login.html" style="color:rgba(255,255,255,0.75);font-size:13px;">🔐 登录</a>
+      <a href="${getBasePath()}admin/login.html" style="color:rgba(255,255,255,0.75);font-size:13px;">🔐 登录</a>
     </div>`;
     }
 }

@@ -96,7 +96,7 @@ const FIXED_POSTS = [
     body: `近期发现部分同学在论坛发表对老师的不当评论，严重影响校园秩序。\n请所有同学谨记：本论坛为学习交流平台，禁止发表涉及教职工的评价内容，违者将由教务处处理。`,
     comments: [
       { id: "ym2007", text: "……知道了。" },
-      { id: "lw2007", text: `评论老师去树洞，匿名的。<a href="hole/index.html" style="color:#1a3a5c;font-weight:600;text-decoration:underline">hole.lbyz.internal</a>` },
+      { id: "lw2007", text: `评论老师去树洞，匿名的。<a href="../hole/index.html" style="color:#1a3a5c;font-weight:600;text-decoration:underline">hole.lbyz.internal</a>` },
       { id: "yy2008", text: "👆 那个网站学生自己搭的，有意思的东西挺多。" },
       { id: "xm2009", text: "树洞能看什么" },
       { id: "lw2007", text: "各种，什么都有。自己去看。" }
