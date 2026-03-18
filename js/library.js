@@ -494,7 +494,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!key) {
       archiveResult.innerHTML = `<div class="campus-alert campus-alert-info" style="margin-top:12px">
         未检索到编号「${archiveInput.value.trim()}」的馆藏档案。<br>
-        <span style="font-size:12px;color:#6b7f93">提示：请确认编号格式，如 LBYZ-1997-B</span>
+        <span style="font-size:12px;color:#6b7f93"></span>
       </div>`;
       return;
     }
