@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -313,26 +313,7 @@
     <footer class="campus-footer">
         © 狼堡市第一中学 信息中心 &emsp;|&emsp; 技术支持：教务处信息组
     </footer>
-    <script>
-        (function () {
-            var btn = document.getElementById('nav-hamburger');
-            var links = document.querySelector('.campus-nav-links');
-            if (!btn || !links) return;
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                btn.classList.toggle('open');
-                links.classList.toggle('open');
-            });
-            document.addEventListener('click', function () {
-                btn.classList.remove('open');
-                links.classList.remove('open');
-            });
-            links.addEventListener('click', function () {
-                btn.classList.remove('open');
-                links.classList.remove('open');
-            });
-        })();
-    </script>
+    <script src="js/nav.js"></script>
 </body>
 
 </html>

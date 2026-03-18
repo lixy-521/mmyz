@@ -1,71 +1,76 @@
 /**
  * auth.js — 登录验证与状态管理
  * 狼堡一中·学生失踪
+ *
+ * 密码以 SHA-256 哈希形式存储，验证时对输入同样哈希后比对。
+ * localStorage 中不存储任何密码（包括哈希）。
  */
 
+// SHA-256(密码) 哈希表，键为用户名
+// 计算方式：SHA-256("原始密码") -> 十六进制字符串
 const ACCOUNTS = {
-    "security_li": { password: "101028", role: "security", name: "李保安", redirect: "security.html" },
-    "lib_admin": { password: "guanzhang123", role: "library", name: "刘芳", redirect: "library.html" },
-    "dxf_teacher": { password: "Lbyz@dxf2023!", role: "teacher", name: "董新飞", redirect: "teacher.html" },
-    "wmd_principal": { password: "Gezhi@2023!", role: "principal", name: "王明德", redirect: "principal.html" }
+    "security_li":  { hash: "e2f26fd5170fb688d7fad68b8d15c33358db5c3227dd1e6077fcfbccb679f3f2", role: "security",  name: "李保安", redirect: "security.html" },
+    "lib_admin":    { hash: "2c1f41f23fc886a8a9f94808f14fd4c6c1d3561cf9494751d3675b3a1eb9a09d", role: "library",   name: "刘芳",   redirect: "library.html" },
+    "dxf_teacher":  { hash: "280776d53353f902400e0da726d56c0d79b0445a88cafced77eaa173fea02ec9", role: "teacher",   name: "董新飞", redirect: "teacher.html" },
+    "wmd_principal":{ hash: "2565daec6b7a860634f16f6d37b9c67c378a93ba1f9545cd0dfa432a495cf6a1", role: "principal", name: "王明德", redirect: "principal.html" }
 };
 
-// 密码别名兼容
-const PASSWORD_ALIASES = {
-    "guanzhang123": ["guanzhang123", "Guanzhang123"],
-    "101028": ["101028"],
-    "Lbyz@dxf2023!": ["Lbyz@dxf2023!", "lbyz@dxf2023!", "Lbyz@dxf2023"],
-    "Gezhi@2023!": ["Gezhi@2023!", "gezhi@2023!", "GEZHI@2023!", "GeZhi@2023!"]
-};
-
-function checkPassword(account, inputPwd) {
-    const correctPwd = account.password;
-    if (correctPwd === inputPwd) return true;
-    const aliases = PASSWORD_ALIASES[correctPwd];
-    return aliases ? aliases.includes(inputPwd) : false;
+/**
+ * 计算字符串的 SHA-256 哈希（十六进制）
+ */
+async function sha256(str) {
+    const buf = await crypto.subtle.digest(
+        "SHA-256",
+        new TextEncoder().encode(str)
+    );
+    return Array.from(new Uint8Array(buf))
+        .map(b => b.toString(16).padStart(2, "0"))
+        .join("");
 }
 
 /**
- * 执行登录
+ * 执行登录（异步，密码哈希后比对）
  */
-function doLogin(username, password, remember) {
+async function doLogin(username, password) {
     const account = ACCOUNTS[username.trim()];
-    if (account && checkPassword(account, password)) {
-        localStorage.setItem("lbyz_role", account.role);
-        localStorage.setItem("lbyz_username", username.trim());
-        localStorage.setItem("lbyz_name", account.name);
-        // 始终将此账号保存到已登录账号列表（用于一键登录）
-        _saveAccountToList(username.trim(), account);
-        window.location.href = account.redirect;
-        return true;
-    }
-    return false;
+    if (!account) return false;
+    const inputHash = await sha256(password);
+    if (inputHash !== account.hash) return false;
+
+    localStorage.setItem("lbyz_role", account.role);
+    localStorage.setItem("lbyz_username", username.trim());
+    localStorage.setItem("lbyz_name", account.name);
+    _saveAccountToList(username.trim(), account);
+    window.location.href = account.redirect;
+    return true;
 }
 
 /**
  * 保存账号到已登录列表（localStorage）
+ * 注意：只保存无敏感信息的字段（用户名、姓名、角色、跳转链接）
  */
 function _saveAccountToList(username, account) {
     let list = [];
     try { list = JSON.parse(localStorage.getItem("lbyz_accounts_list") || "[]"); } catch (e) { }
-    // 去重：移除同名旧记录
     list = list.filter(a => a.username !== username);
-    // 最新的放最前
-    list.unshift({ username, name: account.name, role: account.role, password: account.password });
-    // 最多保存4个
+    list.unshift({ username, name: account.name, role: account.role, redirect: account.redirect });
     if (list.length > 4) list = list.slice(0, 4);
     localStorage.setItem("lbyz_accounts_list", JSON.stringify(list));
 }
 
 /**
- * 一键登录：根据已保存账号直接登录
+ * 一键登录：已保存账号直接按角色跳转（无需重新验证密码）
  */
 function quickLogin(username) {
     let list = [];
     try { list = JSON.parse(localStorage.getItem("lbyz_accounts_list") || "[]"); } catch (e) { }
     const saved = list.find(a => a.username === username);
-    if (!saved) return;
-    doLogin(saved.username, saved.password);
+    if (!saved || !saved.redirect) return;
+    // 刷新登录态供页面使用
+    localStorage.setItem("lbyz_role", saved.role);
+    localStorage.setItem("lbyz_username", saved.username);
+    localStorage.setItem("lbyz_name", saved.name);
+    window.location.href = saved.redirect;
 }
 
 /**
@@ -77,7 +82,6 @@ function removeFromAccountList(username, event) {
     try { list = JSON.parse(localStorage.getItem("lbyz_accounts_list") || "[]"); } catch (e) { }
     list = list.filter(a => a.username !== username);
     localStorage.setItem("lbyz_accounts_list", JSON.stringify(list));
-    // 刷新卡片显示
     if (typeof renderSavedAccounts === "function") renderSavedAccounts();
 }
 
@@ -140,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 登录表单
     const loginForm = document.getElementById("login-form");
     if (loginForm) {
-        loginForm.addEventListener("submit", (e) => {
+        loginForm.addEventListener("submit", async (e) => {
             e.preventDefault();
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
@@ -150,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            const ok = doLogin(username, password);
+            const ok = await doLogin(username, password);
             if (!ok) {
                 showLoginError("账号或密码错误，请联系教务处");
                 document.getElementById("password").value = "";
