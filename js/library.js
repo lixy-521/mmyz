@@ -63,8 +63,10 @@ const BOOK_DB = {
     status: "在馆",
     currentBorrower: "（当前无人借阅）",
     history: [
-      { user: "刘天清", date: "10月20日", returnDate: "11月1日",
-        comment: "第三章「封闭建筑的地下结构」——学校的老楼通常比档案记录的更深。" }
+      {
+        user: "刘天清", date: "10月20日", returnDate: "11月1日",
+        comment: "第三章「封闭建筑的地下结构」——学校的老楼通常比档案记录的更深。"
+      }
     ]
   },
   "异常心理学": {
@@ -73,8 +75,10 @@ const BOOK_DB = {
     status: "在馆",
     currentBorrower: "（当前无人借阅）",
     history: [
-      { user: "刘天清", date: "10月25日", returnDate: "11月5日",
-        comment: "记忆干预章节。人在深度诱导状态下，思维数据是可以被外部设备读取的。这不是科幻。" }
+      {
+        user: "刘天清", date: "10月25日", returnDate: "11月5日",
+        comment: "记忆干预章节。人在深度诱导状态下，思维数据是可以被外部设备读取的。这不是科幻。"
+      }
     ]
   },
   "建筑结构安全": {
@@ -83,8 +87,9 @@ const BOOK_DB = {
     status: "在馆",
     currentBorrower: "（当前无人借阅）",
     history: [
-      { user: "刘天清", date: "11月3日", returnDate: "11月12日",
-        comment: "旧实验楼1998年档案记录为「拆除」，但图纸显示地下B层结构完整保留。图书馆有没有1997年之前的校园建筑档案？"      
+      {
+        user: "刘天清", date: "11月3日", returnDate: "11月12日",
+        comment: "旧实验楼1998年档案记录上只有地面层的功能，但图纸显示地下B层结构完整保留。图书馆有没有1997年之前的校园建筑档案？"
       },
     ]
   },
@@ -94,8 +99,10 @@ const BOOK_DB = {
     status: "在馆",
     currentBorrower: "（当前无人借阅）",
     history: [
-      { user: "刘天清", date: "11月8日", returnDate: "11月15日",
-        comment: "「把参数重置到起点」——逆向。这个词，记住。" }
+      {
+        user: "刘天清", date: "11月8日", returnDate: "11月15日",
+        comment: "「把参数重置到起点」——逆向。这个词，记住。"
+      }
     ]
   },
   "Klein有机化学": {
@@ -104,12 +111,16 @@ const BOOK_DB = {
     status: "借出（逾期未还）",
     currentBorrower: "刘天清（逾期 52 天）",
     history: [
-      { user: "刘天清", date: "10月5日", returnDate: "-",
-        comment: "这是什么密码吗？" },
-      { user: "林小雨", date: "9月5日", returnDate: "9月7日",
-        comment: "这本书上次dxf借的，还的时候夹了张便条没取走。Lbyz@dxf2023! " }
+      {
+        user: "刘天清", date: "10月5日", returnDate: "-",
+        comment: "这是什么密码吗？"
+      },
+      {
+        user: "林小雨", date: "9月5日", returnDate: "9月7日",
+        comment: "这本书上次dxf借的，还的时候夹了张便条没取走。Lbyz@dxf2023! "
+      }
     ]
-    
+
   },
   "校园安全手册": {
     isbn: "978-7-05-112233-1",
@@ -127,8 +138,10 @@ const BOOK_DB = {
     status: "在馆",
     currentBorrower: "（当前无人借阅）",
     history: [
-      { user: "刘天清", date: "11月18日", returnDate: "11月19日",
-        comment: "114.255.14.191" }
+      {
+        user: "刘天清", date: "11月18日", returnDate: "11月19日",
+        comment: "88.144.21.1"
+      }
     ],
     newArrival: true
   },

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>图书管理系统 · 狼堡一中</title>
     <link rel="stylesheet" href="css/campus.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
 </head>
 
 <body>
     <nav class="campus-nav">
         <div class="campus-nav-inner">
             <a class="campus-nav-logo" href="index.html">
-                <img src="assets/logo.png" onerror="this.style.display='none'" alt="校徽" />
+                <img src="assets/logo.webp" onerror="this.style.display='none'" alt="校徽" />
                 <div>
                     <div class="school-name">狼堡一中</div>
                     <div class="school-sub">图书管理系统</div>
@@ -20,6 +21,8 @@
             </a>
             <div class="campus-nav-links"></div>
             <div id="nav-user-area"></div>
+        <a class="nav-home-back" href="index.html">← 首页</a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
@@ -116,6 +119,26 @@
             });
         });
     </script>
-</body>
+    <script>
+        // 汉堡菜单
+        (function(){
+            var btn = document.getElementById('nav-hamburger');
+            var links = document.querySelector('.campus-nav-links');
+            if (!btn || !links) return;
+            btn.addEventListener('click', function(e){
+                e.stopPropagation();
+                btn.classList.toggle('open');
+                links.classList.toggle('open');
+            });
+            document.addEventListener('click', function(){
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+            links.addEventListener('click', function(){
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+        })();
+    </script></body>
 
 </html>

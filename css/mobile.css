@@ -1,0 +1,773 @@
+/* ============================================
+   mobile.css — 移动端响应式适配
+   策略：纯CSS覆盖，零逻辑改动
+   断点：768px（平板）、480px（手机）
+   ============================================ */
+
+/* 返回首页按钮：桌面端隐藏，仅手机端显示 */
+.nav-home-back {
+    display: none;
+}
+
+/* ── 汉堡按钮（桌面隐藏，手机显示）── */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.nav-hamburger:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    transform-origin: center;
+}
+
+/* 汉堡变 X 动画 */
+.nav-hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.nav-hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================
+   平板断点：≤ 768px
+   ============================================ */
+@media (max-width: 768px) {
+
+    /* ── 导航栏：显示汉堡按钒 ── */
+    .nav-hamburger {
+        display: flex;
+    }
+
+    .campus-nav {
+        position: relative;
+        /* 为浮层菜单定位基准 */
+    }
+
+    .campus-nav-inner {
+        padding: 0 16px;
+        height: 56px;
+        /* 固定高度，不再被菜单擑大 */
+        flex-wrap: nowrap;
+        /* 不换行，菜单用浮层展开 */
+        overflow: visible;
+    }
+
+    .campus-nav-logo {
+        height: 56px;
+    }
+
+    /* 导航链接：默认折叠，展开时作为浮层显示在导航栏下方 */
+    .campus-nav-links {
+        display: none;
+        position: absolute;
+        top: 56px;
+        /* 导航栏高度下方开始 */
+        right: 0;
+        /* 靠右对齐 */
+        left: auto;
+        /* 不拉伸到左边 */
+        flex-direction: column;
+        background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 100%);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        border-radius: 0 0 0 10px;
+        z-index: 998;
+        padding: 6px 0 10px;
+        gap: 0;
+        order: unset;
+        width: auto;
+        /* 宽度由内容决定 */
+        min-width: 140px;
+        /* 最小宽度保证可读性 */
+    }
+
+    .campus-nav-links.open {
+        display: flex;
+    }
+
+    .campus-nav-links a {
+        padding: 14px 20px;
+        border-radius: 0;
+        font-size: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        white-space: normal;
+    }
+
+    .campus-nav-links a:last-child {
+        border-bottom: none;
+    }
+
+    .campus-nav-links a.active {
+        background: rgba(200, 150, 46, 0.2);
+        color: #fff;
+    }
+
+    /* 用户区域 */
+    .campus-nav-user {
+        display: none;
+    }
+
+    /* 返回首页按钒（手机端可见） */
+    .nav-home-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 13px;
+        padding: 4px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 20px;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s;
+        margin-left: 8px;
+        flex-shrink: 0;
+    }
+
+    .nav-home-back:hover {
+        color: white;
+        border-color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+    }
+
+    /* ── 双栏变单栏 ── */
+    .campus-layout {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    /* ── 手机端卡片顺序：学校简介 → 快速导航区 → 校园新闻 ── */
+    /* 溶解左栏包裹层，让两个卡片成为独立 grid 子项 */
+    .campus-layout>div:first-child {
+        display: contents;
+    }
+
+    /* 校园新闻（原左栏第1个卡片）→ 排到最后 */
+    .campus-layout>.campus-card:nth-child(1) {
+        order: 3;
+    }
+
+    /* 学校简介（原左栏第2个卡片）→ 排到最前 */
+    .campus-layout>.campus-card:nth-child(2) {
+        order: 1;
+    }
+
+    /* 右栏（快速导航 / 近期通知 / 当前时间）→ 排到中间 */
+    .campus-layout>div:last-child {
+        order: 2;
+    }
+
+    /* ── Banner：保持图片原始 16:5 比例，完整显示 ── */
+    .campus-banner {
+        aspect-ratio: 16 / 5;
+        height: auto;
+        min-height: unset;
+    }
+
+    /* ── 系统布局：侧边栏折叠到顶部 ── */
+    .sys-layout {
+        flex-direction: column;
+    }
+
+    .sys-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .sys-sidebar-nav {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 8px;
+        gap: 4px;
+    }
+
+    .sys-sidebar-item {
+        flex: 1 1 auto;
+        min-width: 80px;
+        padding: 10px 12px;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        border-radius: 6px;
+        justify-content: center;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    .sys-sidebar-item:hover {
+        border-left-color: transparent;
+        border-bottom-color: rgba(200, 150, 46, 0.5);
+    }
+
+    .sys-sidebar-item.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--accent);
+    }
+
+    .sys-main {
+        padding: 20px;
+    }
+
+    /* ── 登录框 ── */
+    .login-box {
+        width: 90%;
+        max-width: 420px;
+        padding: 32px 28px;
+    }
+
+    /* ── 教职工卡片 ── */
+    .staff-profile {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .staff-info {
+        width: 100%;
+    }
+
+    /* ── 数据看板网格 ── */
+    .vitals-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ============================================
+   手机断点：≤ 480px
+   ============================================ */
+@media (max-width: 480px) {
+
+    /* ── 全局容器 ── */
+    .campus-container {
+        padding: 16px 12px;
+    }
+
+    /* ── 页面标题 ── */
+    .campus-page-title {
+        font-size: 18px;
+    }
+
+    /* ── 登录框 ── */
+    .login-box {
+        width: 100%;
+        max-width: 100%;
+        padding: 28px 20px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .login-page {
+        align-items: flex-start;
+        padding-top: 0;
+    }
+
+    /* ── 导航更紧凑 ── */
+    .campus-nav-logo .school-name {
+        font-size: 15px;
+    }
+
+    .campus-nav-logo .school-sub {
+        display: none;
+    }
+
+    /* ── Banner：手机端同样保持 16:5 完整显示图片 ── */
+    .campus-banner {
+        aspect-ratio: 16 / 5;
+        height: auto;
+        min-height: unset;
+    }
+
+    /* Banner 标题字体缩小 */
+    .campus-banner-caption {
+        font-size: 12px;
+        padding: 10px 12px 8px;
+    }
+
+    /* banner-placeholder 内文字适配 */
+    .campus-banner [style*="font-size:32px"],
+    .campus-banner [style*="font-size: 32px"] {
+        font-size: 18px !important;
+    }
+
+    .campus-banner [style*="font-size:28px"],
+    .campus-banner [style*="font-size: 28px"] {
+        font-size: 16px !important;
+    }
+
+    .campus-banner [style*="font-size:20px"],
+    .campus-banner [style*="font-size: 20px"] {
+        font-size: 13px !important;
+    }
+
+    /* ── 卡片内边距 ── */
+    .campus-card-body {
+        padding: 14px;
+    }
+
+    .campus-card-header {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    /* ── 系统主视图 ── */
+    .sys-main {
+        padding: 14px 12px;
+    }
+
+    .sys-main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .sys-main-title {
+        font-size: 16px;
+    }
+
+    /* ── 论坛帖子 ── */
+    .forum-post-header {
+        padding: 12px 14px 8px;
+    }
+
+    .forum-post-body {
+        padding: 10px 14px;
+    }
+
+    .forum-post-footer {
+        padding: 8px 14px 10px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .forum-post-meta {
+        gap: 8px;
+    }
+
+    /* ── 搜索栏 ── */
+    .campus-search-bar {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .campus-search-bar .campus-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* ── 标签页：横向滚动 ── */
+    .tab-bar {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+        gap: 0;
+    }
+
+    .tab-bar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-btn {
+        flex-shrink: 0;
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    /* ── 终端界面 ── */
+    .terminal {
+        padding: 16px 12px;
+        font-size: 12px;
+    }
+
+    .terminal-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .terminal-label {
+        min-width: unset;
+    }
+
+    .terminal select,
+    .terminal input[type=text] {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .terminal-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ── 表格横向滚动包裹 ── */
+    .campus-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .campus-table {
+        min-width: 480px;
+    }
+
+    /* ── 邮件列表 ── */
+    .mail-name {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+    .mail-date {
+        margin-left: 0;
+        font-size: 11px;
+    }
+
+    /* ── 按钮触控区域最小化 ── */
+    .campus-btn {
+        min-height: 44px;
+        padding: 10px 18px;
+    }
+
+    /* ── 表单输入：防止 iOS 自动缩放到 16px 以下 ── */
+    .campus-input,
+    .campus-select {
+        font-size: 16px;
+    }
+
+    /* ── 弹窗 ── */
+    .modal-box {
+        width: 95%;
+        padding: 22px 18px;
+    }
+
+    .modal-footer {
+        flex-direction: column-reverse;
+        gap: 8px;
+    }
+
+    .modal-footer .campus-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* ── 教职工卡片 ── */
+    .staff-avatar,
+    .staff-avatar-use-img {
+        width: 80px !important;
+        height: 96px !important;
+    }
+
+    .staff-info h2 {
+        font-size: 18px;
+    }
+
+    /* ── 快速导航 ── */
+    .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .quick-link-item {
+        padding: 12px 6px;
+        font-size: 12px;
+    }
+
+    .quick-link-icon {
+        font-size: 20px;
+    }
+
+    /* ── 入场动画手机模型 ── */
+    .intro-phone {
+        width: min(320px, 90vw) !important;
+    }
+
+    /* ── 公告栏 ── */
+    .campus-ticker-inner {
+        padding: 0 12px;
+    }
+
+    /* ── 页脚 ── */
+    .campus-footer {
+        font-size: 11px;
+        padding: 12px;
+    }
+
+    /* ── 数据看板 ── */
+    .vitals-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .vital-value {
+        font-size: 18px;
+    }
+}
+
+/* ============================================
+   hole.css 场景适配（tree hole 匿名论坛）
+   ============================================ */
+@media (max-width: 768px) {
+    .hole-nav {
+        padding: 0 14px;
+        height: 52px;
+    }
+
+    .hole-nav-logo {
+        font-size: 16px;
+    }
+
+    .hole-container {
+        padding: 20px 14px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .hole-nav {
+        padding: 0 12px;
+        height: 50px;
+        flex-wrap: wrap;
+    }
+
+    .hole-nav-logo .logo-text .name {
+        font-size: 15px;
+    }
+
+    .hole-nav-logo .logo-text .sub {
+        display: none;
+    }
+
+    .hole-nav-info {
+        font-size: 11px;
+        gap: 8px;
+    }
+
+    /* 隐藏次要统计项，减少拥挤 */
+    .hole-nav-info span:not(:first-child) {
+        display: none;
+    }
+
+    .hole-container {
+        padding: 14px 10px;
+    }
+
+    .hole-post-card {
+        padding: 14px 12px;
+    }
+
+    .hole-hero-title {
+        font-size: 20px;
+    }
+
+    .hole-hero-sub {
+        font-size: 12px;
+    }
+
+    .hole-post-footer {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .hole-expand-btn {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* vault 输入框 */
+    .vault-input {
+        font-size: 14px;
+        letter-spacing: 2px;
+        padding: 12px 16px;
+    }
+
+    .vault-box {
+        padding: 16px;
+    }
+}
+
+/* ============================================
+   响应式工具类
+   ============================================ */
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* 确保表格容器在手机上滚动（JS动态生成区域用这个class） */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ── 论坛双栏布局响应式 ── */
+@media (max-width: 768px) {
+    .forum-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ── alumni 校友网格卡片响应式 ── */
+@media (max-width: 480px) {
+
+    [style*="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))"],
+    [style*="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))"] {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ============================================================
+   全面排查补丁：修复遗漏的手机端问题
+   ============================================================ */
+
+/* ── index.html: campus-layout 不在 campus-container 内，需补 padding ── */
+@media (max-width: 480px) {
+    .campus-layout {
+        padding: 0 12px;
+    }
+}
+
+/* ── security.html 终端手动输入区：内联 width:130px 的 input 在手机溢出 ── */
+@media (max-width: 480px) {
+
+    /* 覆盖终端内自定义 input 的宽度 */
+    .terminal input[type="text"][style*="width:130px"],
+    .terminal input[type="text"][style*="width: 130px"] {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* 终端内手动查询行竖向排列 */
+    .terminal .terminal-row[style],
+    .terminal .terminal-row {
+        flex-wrap: wrap;
+    }
+
+    /* terminal-btn inline margin 覆盖 */
+    .terminal .terminal-btn[style*="margin-left"] {
+        margin-left: 0 !important;
+        margin-top: 6px;
+    }
+}
+
+/* ── teacher.html: campus-table 无横向滚动包裹，直接给父卡片 body 设滚动 ── */
+@media (max-width: 600px) {
+
+    .campus-card-body:has(.campus-table),
+    .campus-card-body>.campus-table {
+        overflow-x: auto;
+        display: block;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* 降级方案：直接包裹表格让其可以滚动（has 支持度不够时的兜底） */
+    .campus-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+
+    .campus-table thead,
+    .campus-table tbody,
+    .campus-table tr {
+        display: table;
+        width: 100%;
+    }
+}
+
+/* ── 文章页面：article-wrap 在手机端 padding 缩小 ── */
+@media (max-width: 480px) {
+    .article-wrap {
+        padding: 20px 14px 40px !important;
+    }
+
+    .article-title {
+        font-size: 18px !important;
+    }
+
+    .article-body {
+        font-size: 14px !important;
+    }
+
+    .article-person {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* 文章来源区域 */
+    .article-source {
+        padding: 12px 0 !important;
+    }
+}
+
+/* ── 系统页面 sys-main-header：小屏换行 ── */
+@media (max-width: 600px) {
+    .sys-main-header>span {
+        display: block;
+        margin-top: 4px;
+    }
+}
+
+/* ── principal.html / security.html：sidebar-header 手机端收紧 ── */
+@media (max-width: 480px) {
+    .sys-sidebar-header {
+        padding: 12px;
+    }
+
+    .sys-sidebar-title {
+        font-size: 12px;
+    }
+}
+
+/* ── 导航 nav-user-area 在手机端隐藏（系统类页面会通过 JS 注入用户名） ── */
+@media (max-width: 768px) {
+    #nav-user-area {
+        display: none;
+    }
+}
+
+/* ── hole/vault.html：vault-box 超宽问题 ── */
+@media (max-width: 480px) {
+    .vault-box {
+        max-width: 100%;
+        padding: 16px 14px;
+    }
+
+    .vault-title {
+        font-size: 18px;
+    }
+}
+
+/* ── 保持 campus-layout 不被 padding 双重计算 ── */
+@media (max-width: 768px) {
+    .campus-layout {
+        padding: 0 16px;
+    }
+}

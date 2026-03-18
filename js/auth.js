@@ -4,18 +4,18 @@
  */
 
 const ACCOUNTS = {
-    "security_li":   { password: "101028",       role: "security",   name: "李保安",  redirect: "security.html" },
-    "lib_admin":     { password: "guanzhang123",  role: "library",    name: "图书管理员", redirect: "library.html" },
-    "dxf_teacher":   { password: "Lbyz@dxf2023!", role: "teacher",    name: "董新飞",  redirect: "teacher.html" },
-    "wmd_principal": { password: "Gezhi@1998!",   role: "principal",  name: "王明德",  redirect: "principal.html" }
+    "security_li": { password: "101028", role: "security", name: "李保安", redirect: "security.html" },
+    "lib_admin": { password: "guanzhang123", role: "library", name: "刘芳", redirect: "library.html" },
+    "dxf_teacher": { password: "Lbyz@dxf2023!", role: "teacher", name: "董新飞", redirect: "teacher.html" },
+    "wmd_principal": { password: "Gezhi@2023!", role: "principal", name: "王明德", redirect: "principal.html" }
 };
 
 // 密码别名兼容
 const PASSWORD_ALIASES = {
-    "guanzhang123":  ["guanzhang123", "Guanzhang123"],
-    "101028":        ["101028"],
+    "guanzhang123": ["guanzhang123", "Guanzhang123"],
+    "101028": ["101028"],
     "Lbyz@dxf2023!": ["Lbyz@dxf2023!", "lbyz@dxf2023!", "Lbyz@dxf2023"],
-    "Gezhi@1998!":   ["Gezhi@1998!", "gezhi@1998!", "Gezhi@1998"]
+    "Gezhi@2023!": ["Gezhi@2023!", "gezhi@2023!", "GEZHI@2023!", "GeZhi@2023!"]
 };
 
 function checkPassword(account, inputPwd) {
@@ -28,16 +28,57 @@ function checkPassword(account, inputPwd) {
 /**
  * 执行登录
  */
-function doLogin(username, password) {
+function doLogin(username, password, remember) {
     const account = ACCOUNTS[username.trim()];
     if (account && checkPassword(account, password)) {
         localStorage.setItem("lbyz_role", account.role);
         localStorage.setItem("lbyz_username", username.trim());
         localStorage.setItem("lbyz_name", account.name);
+        // 始终将此账号保存到已登录账号列表（用于一键登录）
+        _saveAccountToList(username.trim(), account);
         window.location.href = account.redirect;
         return true;
     }
     return false;
+}
+
+/**
+ * 保存账号到已登录列表（localStorage）
+ */
+function _saveAccountToList(username, account) {
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem("lbyz_accounts_list") || "[]"); } catch (e) { }
+    // 去重：移除同名旧记录
+    list = list.filter(a => a.username !== username);
+    // 最新的放最前
+    list.unshift({ username, name: account.name, role: account.role, password: account.password });
+    // 最多保存4个
+    if (list.length > 4) list = list.slice(0, 4);
+    localStorage.setItem("lbyz_accounts_list", JSON.stringify(list));
+}
+
+/**
+ * 一键登录：根据已保存账号直接登录
+ */
+function quickLogin(username) {
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem("lbyz_accounts_list") || "[]"); } catch (e) { }
+    const saved = list.find(a => a.username === username);
+    if (!saved) return;
+    doLogin(saved.username, saved.password);
+}
+
+/**
+ * 从已登录列表中移除某账号
+ */
+function removeFromAccountList(username, event) {
+    if (event) event.stopPropagation();
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem("lbyz_accounts_list") || "[]"); } catch (e) { }
+    list = list.filter(a => a.username !== username);
+    localStorage.setItem("lbyz_accounts_list", JSON.stringify(list));
+    // 刷新卡片显示
+    if (typeof renderSavedAccounts === "function") renderSavedAccounts();
 }
 
 /**
@@ -69,10 +110,18 @@ function renderNavUser() {
     if (!area) return;
     const username = localStorage.getItem("lbyz_username");
     const name = localStorage.getItem("lbyz_name");
-    if (username) {
+    const role = localStorage.getItem("lbyz_role");
+    if (username && role) {
+        const roleRedirect = {
+            "security": "security.html",
+            "library": "library.html",
+            "teacher": "teacher.html",
+            "principal": "principal.html"
+        };
+        const href = roleRedirect[role] || "#";
         area.innerHTML = `
       <div class="campus-nav-user">
-        <span class="username">👤 ${name || username}</span>
+        <a href="${href}" class="username" style="color:rgba(255,255,255,0.9);font-size:13px;text-decoration:none;">👤 ${name || username}</a>
         <button class="logout-btn" onclick="doLogout()">退出</button>
       </div>`;
     } else {
@@ -95,7 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
-            const errEl = document.getElementById("login-error");
 
             if (!username || !password) {
                 showLoginError("请填写账号和密码");

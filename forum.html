@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>校园论坛 · 狼堡一中校园信息网</title>
     <link rel="stylesheet" href="css/campus.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
 </head>
 
 <body>
     <nav class="campus-nav">
         <div class="campus-nav-inner">
             <a class="campus-nav-logo" href="index.html">
-                <img src="assets/logo.png" onerror="this.style.display='none'" alt="校徽" />
+                <img src="assets/logo.webp" onerror="this.style.display='none'" alt="校徽" />
                 <div>
-                    <div class="school-name">狼堡一中</div>
-                    <div class="school-sub">校园信息网</div>
+                    <div class="school-name">狼堡市第一中学</div>
                 </div>
             </a>
             <div class="campus-nav-links">
@@ -25,6 +25,9 @@
                 <a href="forum.html" class="active">校园论坛</a>
             </div>
             <div id="nav-user-area"></div>
+            <a class="nav-home-back" href="index.html">← 首页</a>
+            <button class="nav-hamburger" id="nav-hamburger"
+                aria-label="菜单"><span></span><span></span><span></span></button>
         </div>
     </nav>
     <div class="campus-ticker">
@@ -33,14 +36,15 @@
             <div class="campus-ticker-track">
                 <div class="campus-ticker-content">
                     <span>期末考试将于1月中旬举行，请认真复习</span>
-                    <span>11月校运会报名通知即将发布，请关注校园论坛</span>
+                    <span>12月校运会报名通知即将发布，请关注校园论坛</span>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- 系统通知：帖子被删 -->
-    <div style="background:#fff3cd;border-bottom:1px solid #f0c040;padding:8px 24px;font-size:12px;color:#856404;display:flex;align-items:center;gap:8px">
+    <div
+        style="background:#fff3cd;border-bottom:1px solid #f0c040;padding:8px 24px;font-size:12px;color:#856404;display:flex;align-items:center;gap:8px">
         <span>⚠</span>
         <span>系统通知：近期部分帖子因涉及违规内容已由管理员删除，如有异议请联系教务处。</span>
     </div>
@@ -50,58 +54,56 @@
             <div class="campus-page-title">校园论坛</div>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:start">
+        <div class="forum-layout"
+            style="display:flex;flex-direction:column;gap:24px;align-items:stretch;max-width:800px;margin:0 auto">
             <!-- 左侧主体 -->
-            <div>
+            <div style="width:100%">
                 <!-- ID搜索区 -->
                 <div class="campus-card" style="margin-bottom:24px">
                     <div class="campus-card-header">🔍 按ID搜索发帖记录</div>
                     <div class="campus-card-body">
                         <div class="campus-search-bar">
-                            <input class="campus-input" type="text" id="forum-search-input" placeholder="输入用户ID搜索其所有帖子…" />
+                            <input class="campus-input" type="text" id="forum-search-input"
+                                placeholder="输入用户ID搜索其所有帖子…" />
                             <button class="campus-btn campus-btn-primary" id="forum-search-btn">搜 索</button>
                         </div>
                         <p class="text-muted" style="font-size:12px">可搜索论坛内出现过的用户ID</p>
                     </div>
                 </div>
 
-                <!-- 搜索结果 -->
-                <div id="forum-search-result"></div>
-
-                <!-- 固定帖子 -->
-                <div class="campus-card mb-16" style="border-left:4px solid #c8962e">
-                    <div class="campus-card-body" style="padding:10px 20px;font-size:13px;color:#856404;background:#fffbf0">
-                        📌 以下为最新帖子，更多内容请使用ID搜索功能
-                    </div>
-                </div>
-                <div id="forum-posts"></div>
-            </div>
-
-            <!-- 右侧：在线用户 -->
-            <div>
-                <div class="campus-card" style="position:sticky;top:80px">
+                <!-- 当前在线 -->
+                <div class="campus-card" style="margin-bottom:24px">
                     <div class="campus-card-header">🟢 当前在线</div>
                     <div class="campus-card-body">
-                        <div style="font-size:13px;color:#2c3e50;line-height:2.2">
-                            <div> lj2008<span style="color:#27ae60;font-size:11px">●</span></div>
-                            <div> zpy2007<span style="color:#27ae60;font-size:11px">●</span></div>
-                            <div> zg2007 <span style="color:#27ae60;font-size:11px">●</span></div>
-                            <div> stl2008 <span style="color:#27ae60;font-size:11px">●</span></div>
-                            <div>ltq2007 <span style="color:#27ae60;font-size:11px">●</span></div>
-                            <div>admin_jw <span style="color:#27ae60;font-size:11px">●</span></div>
+                        <div style="font-size:13px;color:#2c3e50;line-height:2.2;display:flex;flex-wrap:wrap;gap:16px">
+                            <div style="white-space:nowrap"><span
+                                    style="color:#27ae60;font-size:11px;margin-right:4px">●</span>lj2008</div>
+                            <div style="white-space:nowrap"><span
+                                    style="color:#27ae60;font-size:11px;margin-right:4px">●</span>zpy2007</div>
+                            <div style="white-space:nowrap"><span
+                                    style="color:#27ae60;font-size:11px;margin-right:4px">●</span>zg2007</div>
+                            <div style="white-space:nowrap"><span
+                                    style="color:#27ae60;font-size:11px;margin-right:4px">●</span>stl2008</div>
+                            <div style="white-space:nowrap"><span
+                                    style="color:#27ae60;font-size:11px;margin-right:4px">●</span>ltq2007</div>
+                            <div style="white-space:nowrap"><span
+                                    style="color:#27ae60;font-size:11px;margin-right:4px">●</span>admin_jw</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="campus-card" style="margin-top:16px;position:sticky;top:340px">
-                    <div class="campus-card-header">📊 论坛统计</div>
-                    <div class="campus-card-body" style="font-size:12px;color:#6b7f93;line-height:2">
-                        <div>今日发帖：<strong>23</strong></div>
-                        <div>本周发帖：<strong>147</strong></div>
-                        <div>注册用户：<strong>1,832</strong></div>
-                        <div style="color:#c0392b">已删除帖子：<strong>7</strong>（本月）</div>
+                <!-- 搜索结果 -->
+                <div id="forum-search-result"></div>
+
+                <!-- 固定帖子提示栏 -->
+                <div class="campus-card"
+                    style="border-left:4px solid #c8962e;margin-bottom:16px;border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:none">
+                    <div class="campus-card-body"
+                        style="padding:10px 20px;font-size:13px;color:#856404;background:#fffbf0">
+                        📌 以下为最新帖子，更多内容请使用ID搜索功能
                     </div>
                 </div>
+                <div id="forum-posts"></div>
             </div>
         </div>
     </div>
@@ -110,7 +112,29 @@
         © 狼堡市第一中学 信息中心 &emsp;|&emsp; 技术支持：教务处信息组
     </footer>
     <script src="js/auth.js"></script>
+    <script src="js/forum-data.js"></script>
     <script src="js/forum.js"></script>
+    <script>
+        // 汉堡菜单
+        (function () {
+            var btn = document.getElementById('nav-hamburger');
+            var links = document.querySelector('.campus-nav-links');
+            if (!btn || !links) return;
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                btn.classList.toggle('open');
+                links.classList.toggle('open');
+            });
+            document.addEventListener('click', function () {
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+            links.addEventListener('click', function () {
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+        })();
+    </script>
 </body>
 
 </html>

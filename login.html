@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -6,17 +6,180 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>登录 · 狼堡一中校园内网</title>
     <link rel="stylesheet" href="css/campus.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
+    <style>
+        /* ── 已登录账号卡片区 ── */
+        .saved-accounts {
+            margin-bottom: 20px;
+        }
+
+        .saved-accounts-title {
+            font-size: 11px;
+            color: #a0aab8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .clear-all-btn {
+            margin-left: auto;
+            font-size: 11px;
+            color: #c0392b;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: none;
+            letter-spacing: 0;
+            transition: background 0.15s;
+            font-family: inherit;
+        }
+
+        .clear-all-btn:hover {
+            background: #ffe0e0;
+        }
+
+        .saved-accounts-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(26, 58, 92, 0.15);
+        }
+
+        .saved-accounts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .saved-account-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border: 1px solid rgba(26, 58, 92, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+            background: #f8fafd;
+            transition: all 0.18s ease;
+            position: relative;
+        }
+
+        .saved-account-card:hover {
+            background: #eef4fc;
+            border-color: #1a3a5c;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 12px rgba(26, 58, 92, 0.12);
+        }
+
+        .saved-account-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #1a3a5c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .saved-account-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .saved-account-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a2d3e;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .saved-account-id {
+            font-size: 11px;
+            color: #6b7f93;
+            font-family: 'Courier New', monospace;
+            margin-top: 1px;
+        }
+
+        .saved-account-badge {
+            font-size: 10px;
+            padding: 2px 7px;
+            border-radius: 10px;
+            background: #e8f0fb;
+            color: #1a3a5c;
+            white-space: nowrap;
+        }
+
+        .saved-account-remove {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            color: #bbb;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            line-height: 1;
+            padding: 0;
+            transition: all 0.15s;
+        }
+
+        .saved-account-remove:hover {
+            background: #ffe0e0;
+            color: #c0392b;
+        }
+
+        /* 分割线 */
+        .login-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 18px 0 16px;
+            color: #a0aab8;
+            font-size: 12px;
+        }
+
+        .login-divider::before,
+        .login-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(26, 58, 92, 0.12);
+        }
+    </style>
 </head>
 
 <body>
     <div class="login-page">
         <div class="login-box">
             <div class="login-logo">
-                <img src="assets/logo.png" onerror="this.style.background='#1a3a5c';this.style.borderRadius='50%'"
+                <img src="assets/logo.webp" onerror="this.style.background='#1a3a5c';this.style.borderRadius='50%'"
                     alt="校徽" />
                 <h1>狼堡一中</h1>
                 <p>校园信息管理系统 · 教职工登录</p>
             </div>
+
+            <!-- 已登录过的账号 -->
+            <div class="saved-accounts" id="saved-accounts-section" style="display:none">
+                <div class="saved-accounts-title">快速登录
+                    <button class="clear-all-btn" onclick="clearAllAccounts()" title="清空所有已保存账号">清空全部</button>
+                </div>
+                <div class="saved-accounts-list" id="saved-accounts-list"></div>
+                <div class="login-divider">或使用账号密码登录</div>
+            </div>
+
             <form id="login-form" autocomplete="off">
                 <div class="campus-form-group">
                     <label class="campus-label" for="username">账号</label>
@@ -42,6 +205,55 @@
         </div>
     </div>
     <script src="js/auth.js"></script>
+    <script>
+        // 角色对应图标和标签
+        const ROLE_META = {
+            "security": { icon: "🛡️", label: "保安系统" },
+            "library": { icon: "📚", label: "图书管理" },
+            "teacher": { icon: "📋", label: "教师工作台" },
+            "principal": { icon: "🏫", label: "校长系统" }
+        };
+
+        function renderSavedAccounts() {
+            let list = [];
+            try { list = JSON.parse(localStorage.getItem("lbyz_accounts_list") || "[]"); } catch (e) { }
+
+            const section = document.getElementById("saved-accounts-section");
+            const container = document.getElementById("saved-accounts-list");
+            if (!section || !container) return;
+
+            if (list.length === 0) {
+                section.style.display = "none";
+                return;
+            }
+
+            section.style.display = "block";
+            container.innerHTML = list.map(acc => {
+                const meta = ROLE_META[acc.role] || { icon: "👤", label: acc.role };
+                return `
+                <div class="saved-account-card" onclick="quickLogin('${acc.username}')">
+                    <div class="saved-account-avatar">${meta.icon}</div>
+                    <div class="saved-account-info">
+                        <div class="saved-account-name">${acc.name}</div>
+                        <div class="saved-account-id">${acc.username}</div>
+                    </div>
+                    <span class="saved-account-badge">${meta.label}</span>
+                    <button class="saved-account-remove"
+                        onclick="removeFromAccountList('${acc.username}', event)"
+                        title="移除">×</button>
+                </div>`;
+            }).join("");
+        }
+
+        function clearAllAccounts() {
+            if (!confirm('确定要清空所有已保存的账号吗？')) return;
+            localStorage.removeItem('lbyz_accounts_list');
+            renderSavedAccounts();
+        }
+
+        // 页面加载时渲染
+        document.addEventListener("DOMContentLoaded", renderSavedAccounts);
+    </script>
 </body>
 
 </html>

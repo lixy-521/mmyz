@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>格致创新教育计划成果展示会圆满举行 · 狼堡一中</title>
     <link rel="stylesheet" href="css/campus.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
     <style>
         .article-wrap {
             max-width: 680px;
@@ -12,43 +14,67 @@
             padding: 40px 24px 80px;
             font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
         }
+
         .article-source {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 16px 0;
+            padding: 8px 0;
             border-bottom: 1px solid #eee;
-            margin-bottom: 24px;
+            margin-bottom: 8px;
         }
+
         .article-source-avatar {
-            width: 40px; height: 40px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: linear-gradient(135deg, #1a3a5c, #2a6090);
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-size: 13px; font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
         }
-        .article-source-name { font-size: 15px; font-weight: 600; color: #1a1a1a; }
-        .article-source-meta { font-size: 12px; color: #999; margin-top: 2px; }
+
+        .article-source-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .article-source-meta {
+            font-size: 12px;
+            color: #999;
+            margin-top: 2px;
+        }
+
         .article-title {
             font-size: 24px;
             font-weight: 700;
             color: #1a1a1a;
             line-height: 1.4;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
         }
+
         .article-meta {
             font-size: 13px;
             color: #999;
-            margin-bottom: 28px;
-            padding-bottom: 16px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 1px solid #f0f0f0;
         }
+
         .article-body {
             font-size: 16px;
             line-height: 1.9;
             color: #333;
         }
-        .article-body p { margin-bottom: 20px; }
+
+        .article-body p {
+            margin-bottom: 20px;
+        }
+
         .article-body .highlight {
             background: #fffbf0;
             border-left: 3px solid #c8962e;
@@ -57,6 +83,7 @@
             font-size: 15px;
             color: #5a4000;
         }
+
         .article-photo {
             width: 100%;
             background: linear-gradient(135deg, #1a3a5c, #2a6090);
@@ -65,16 +92,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.6);
             font-size: 13px;
             margin: 24px 0;
             overflow: hidden;
         }
+
         .article-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         .article-person {
             display: flex;
             align-items: flex-start;
@@ -84,8 +113,9 @@
             padding: 16px;
             margin: 20px 0;
         }
+
         .article-person-avatar {
-            width: 48px; 
+            width: 48px;
             height: 48px;
             border-radius: 50%;
             overflow: hidden;
@@ -97,14 +127,32 @@
             color: #fff;
             font-size: 18px;
         }
+
         .article-person-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .article-person-name { font-size: 15px; font-weight: 700; color: #1a1a1a; }
-        .article-person-role { font-size: 12px; color: #666; margin-top: 2px; }
-        .article-person-desc { font-size: 13px; color: #555; margin-top: 8px; line-height: 1.7; }
+
+        .article-person-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .article-person-role {
+            font-size: 12px;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .article-person-desc {
+            font-size: 13px;
+            color: #555;
+            margin-top: 8px;
+            line-height: 1.7;
+        }
+
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -114,17 +162,20 @@
             text-decoration: none;
             margin-bottom: 24px;
         }
-        .back-link:hover { text-decoration: underline; }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
+
 <body>
     <nav class="campus-nav">
         <div class="campus-nav-inner">
             <a class="campus-nav-logo" href="index.html">
-                <img src="assets/logo.png" onerror="this.style.display='none'" alt="校徽" />
+                <img src="assets/logo.webp" onerror="this.style.display='none'" alt="校徽" />
                 <div>
-                    <div class="school-name">狼堡一中</div>
-                    <div class="school-sub">校园信息网</div>
+                    <div class="school-name">狼堡市第一中学</div>
                 </div>
             </a>
             <div class="campus-nav-links">
@@ -133,16 +184,21 @@
                 <a href="alumni.html">知名校友</a>
                 <a href="forum.html">校园论坛</a>
             </div>
+            <a class="nav-home-back" href="index.html">← 首页</a>
+            <button class="nav-hamburger" id="nav-hamburger"
+                aria-label="菜单"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
     <div class="article-wrap">
-        <a class="back-link" href="index.html">← 返回校园首页</a>
+
 
         <div class="article-title">格致创新教育计划成果展示会圆满举行，项目顾问出席并致辞</div>
 
         <div class="article-source">
-            <div class="article-source-avatar">狼</div>
+            <div class="article-source-avatar" style="background: none; overflow: hidden;">
+                <img src="assets/logo.webp" alt="校徽" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
             <div>
                 <div class="article-source-name">狼堡一中 校园信息网</div>
                 <div class="article-source-meta">官方账号</div>
@@ -154,11 +210,17 @@
         <div class="article-body">
             <p>2025年10月20日，狼堡市第一中学「格致创新教育计划」第一阶段成果展示会在学校报告厅顺利举行。校长王明德、格致计划项目负责人董新飞老师，以及来自合作科研机构的项目顾问出席本次展示会并分别致辞。</p>
 
+<<<<<<< HEAD
             <div class="article-photo">[ 展示会现场照片 · 报告厅 ]</div>
+=======
+            <div class="article-photo">
+                <img loading="lazy" src="assets/article_gezhi/lb.webp" alt="展示会现场照片 · 报告厅">
+            </div>
+>>>>>>> origin/zdev
 
             <p>王明德校长在致辞中表示，格致计划是学校推进教育现代化、深化产学研合作的重要探索，希望通过科学手段更好地理解学生的学习规律，为个性化教育提供数据支撑。</p>
 
-            <p>项目负责人董新飞老师介绍了格致计划的阶段性进展：自2025年10月启动以来，项目在数据采集、神经模型构建等方面取得了阶段性成果，部分数据质量"远超预期"。</p>
+            <p>项目负责人董新飞老师介绍了格致计划的阶段性进展：自2023年10月启动以来，项目在数据采集、神经模型构建等方面取得了阶段性成果，部分数据质量"远超预期"。</p>
 
             <div class="highlight">
                 「我们相信，每一个学生的思维模式都是独特的。格致计划的目标，是在不干扰正常学习的前提下，建立最优的认知参数模型。」——董新飞
@@ -171,29 +233,51 @@
                 <div class="article-person-avatar">专家</div>
 =======
                 <div class="article-person-avatar">
-                    <img src="assets/chenyu.png" alt="项目顾问">
+                    <img loading="lazy" src="assets/article_gezhi/chenyu.webp" alt="项目顾问">
                 </div>
 >>>>>>> 33bee7c09b4bf12b634646d59869ae21ba0c622f
                 <div>
                     <div class="article-person-name">项目顾问</div>
                     <div class="article-person-role">北境神经工程研究院 · 首席研究员</div>
                     <div class="article-person-desc">该顾问为神经工程学博士，长期从事认知科学与神经接口技术研究，在思维数据采集领域有超过十五年的研究经验。</div>
-                        <br/><br/>
-                        <span style="color:#999;font-size:12px">注：本文所附人物信息为展示会现场资料，如需联系请通过校方渠道。</span>
-                    </div>
+                    <br /><br />
+                    <span style="color:#999;font-size:12px">注：本文所附人物信息为展示会现场资料，如需联系请通过校方渠道。</span>
                 </div>
             </div>
-
-            <p>展示会最后，与会师生就格致计划的数据安全、实验伦理等问题进行了提问。董新飞老师表示，所有参与者均已签署知情同意书，实验过程完全符合相关规范。</p>
-
-            <p style="color:#999;font-size:13px">本次展示会由学校教务处主办，格致计划项目组承办。如有意向参与后续志愿者招募，请关注校园论坛通知。</p>
-
-            <p style="color:#ccc;font-size:11px;margin-top:32px;padding-top:16px;border-top:1px solid #f0f0f0;">文章编号：LBYZ-NEWS-20251020 &emsp;|&emsp; 项目档案编号：GZ·2023·WOLF &emsp;|&emsp; 归档：教务处信息组</p>
         </div>
+
+        <p>展示会最后，与会师生就格致计划的数据安全、实验伦理等问题进行了提问。董新飞老师表示，所有参与者均已签署知情同意书，实验过程完全符合相关规范。</p>
+
+        <p style="color:#999;font-size:13px">本次展示会由学校教务处主办，格致计划项目组承办。如有意向参与后续志愿者招募，请关注校园论坛通知。</p>
+
+        <p style="color:#ccc;font-size:11px;margin-top:32px;padding-top:16px;border-top:1px solid #f0f0f0;">
+            文章编号：LBYZ-NEWS-20251020 &emsp;|&emsp; 项目档案编号：GZ·2023·LBYZ &emsp;|&emsp; 归档：教务处信息组</p>
+    </div>
     </div>
 
     <footer class="campus-footer">
         © 狼堡市第一中学 信息中心 &emsp;|&emsp; 技术支持：教务处信息组
     </footer>
+    <script>
+        (function () {
+            var btn = document.getElementById('nav-hamburger');
+            var links = document.querySelector('.campus-nav-links');
+            if (!btn || !links) return;
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                btn.classList.toggle('open');
+                links.classList.toggle('open');
+            });
+            document.addEventListener('click', function () {
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+            links.addEventListener('click', function () {
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+        })();
+    </script>
 </body>
+
 </html>

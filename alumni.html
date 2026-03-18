@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>知名校友 · 狼堡一中校园信息网</title>
     <link rel="stylesheet" href="css/campus.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
 </head>
 
 <body>
     <nav class="campus-nav">
         <div class="campus-nav-inner">
             <a class="campus-nav-logo" href="index.html">
-                <img src="assets/logo.png" onerror="this.style.display='none'" alt="校徽" />
+                <img src="assets/logo.webp" onerror="this.style.display='none'" alt="校徽" />
                 <div>
-                    <div class="school-name">狼堡一中</div>
-                    <div class="school-sub">校园信息网</div>
+                    <div class="school-name">狼堡市第一中学</div>
                 </div>
             </a>
             <div class="campus-nav-links">
@@ -25,6 +25,8 @@
                 <a href="forum.html">校园论坛</a>
             </div>
             <div id="nav-user-area"></div>
+        <a class="nav-home-back" href="index.html">← 首页</a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
         </div>
     </nav>
     <div class="campus-ticker">
@@ -33,7 +35,7 @@
             <div class="campus-ticker-track">
                 <div class="campus-ticker-content">
                     <span>期末考试将于1月中旬举行，请认真复习</span>
-                    <span>11月校运会报名通知即将发布，请关注校园论坛</span>
+                    <span>12月校运会报名通知即将发布，请关注校园论坛</span>
                 </div>
             </div>
         </div>
@@ -50,7 +52,9 @@
                 <div class="campus-card-header">优秀校友</div>
                 <div class="campus-card-body">
                     <div class="staff-profile">
-                        <div class="staff-avatar">🎖</div>
+                        <div class="staff-avatar-use-img">
+                            <img loading="lazy" src="assets/alumni/Chen.webp" alt="陈志远校友">
+                        </div>
                         <div class="staff-info">
                             <h2>陈志远</h2>
                             <div class="staff-title">1989届 · 现任狼堡市副市长</div>
@@ -68,7 +72,9 @@
                 <div class="campus-card-header">优秀校友</div>
                 <div class="campus-card-body">
                     <div class="staff-profile">
-                        <div class="staff-avatar">🏅</div>
+                        <div class="staff-avatar-use-img">
+                            <img loading="lazy" src="assets/alumni/Lin.webp" alt="林佳雯校友">
+                        </div>
                         <div class="staff-info">
                             <h2>林佳雯</h2>
                             <div class="staff-title">1998届 · 全国冠军运动员</div>
@@ -86,11 +92,13 @@
                 <div class="campus-card-header">优秀校友</div>
                 <div class="campus-card-body">
                     <div class="staff-profile">
-                        <div class="staff-avatar">🔬</div>
+                        <div class="staff-avatar-use-img">
+                            <img loading="lazy" src="assets/alumni/Su.webp" alt="苏明浩校友">
+                        </div>
                         <div class="staff-info">
                             <h2>苏明浩</h2>
                             <div class="staff-title">2003届 · 中国科学院研究员</div>
-                            <p>苏明浩，毕业于狼堡一中2003届，获北京大学生命科学学士及博士学位。
+                            <p>苏明浩，毕业于狼堡一中2003届，获北境大学生命科学学士及博士学位。
                                 现任中国科学院生命科学研究所研究员，主要研究方向为神经生物学与认知科学。
                                 发表SCI论文40余篇。</p>
                             <p style="margin-top:8px;font-size:12px;color:#6b7f93">
@@ -101,7 +109,7 @@
                 </div>
             </div>
 
-            
+
 
         </div>
     </div>
@@ -110,6 +118,26 @@
         © 狼堡市第一中学 信息中心 &emsp;|&emsp; 技术支持：教务处信息组
     </footer>
     <script src="js/auth.js"></script>
-</body>
+    <script>
+        // 汉堡菜单
+        (function(){
+            var btn = document.getElementById('nav-hamburger');
+            var links = document.querySelector('.campus-nav-links');
+            if (!btn || !links) return;
+            btn.addEventListener('click', function(e){
+                e.stopPropagation();
+                btn.classList.toggle('open');
+                links.classList.toggle('open');
+            });
+            document.addEventListener('click', function(){
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+            links.addEventListener('click', function(){
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+        })();
+    </script></body>
 
 </html>

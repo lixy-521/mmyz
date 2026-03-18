@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>青青草原省高中数学联赛获奖名单</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+        :root {
+            --gold: #c8962e;
+            --gold-light: #f0d080;
+            --silver: #8a9bb5;
+            --bronze: #b07040;
+            --bg: #faf8f4;
+            --bg-warm: #f5f0e8;
+            --ink: #1a1208;
+            --ink-mid: #4a3c28;
+            --ink-light: #8a7a5a;
+            --accent: #1a3a5c;
+            --border: #e8dfc8;
+            --red: #c0392b;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            min-height: 100vh;
+        }
+
+        /* ── header ── */
+        .page-header {
+            background: var(--accent);
+            color: #fff;
+            text-align: center;
+            padding: 48px 24px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255,255,255,0.02) 20px,
+                rgba(255,255,255,0.02) 40px
+            );
+        }
+        .header-badge {
+            display: inline-block;
+            border: 1px solid rgba(200,150,46,0.6);
+            color: var(--gold-light);
+            font-size: 11px;
+            letter-spacing: 3px;
+            padding: 4px 16px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+        .page-header h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(22px, 4vw, 34px);
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .page-header p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 1px;
+        }
+        .header-deco {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .header-deco-line {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold));
+        }
+        .header-deco-line.right {
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+        .header-deco-star {
+            color: var(--gold);
+            font-size: 14px;
+        }
+
+        /* ── nav ── */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250,248,244,0.96);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 16px;
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .sticky-nav::-webkit-scrollbar { display: none; }
+        .nav-tab {
+            flex-shrink: 0;
+            padding: 12px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ink-light);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .nav-tab:hover { color: var(--accent); }
+        .nav-tab.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* ── main ── */
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 32px 16px 80px;
+        }
+
+        /* ── section ── */
+        .school-section {
+            margin-bottom: 40px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .school-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            background: var(--bg-warm);
+            border-bottom: 1px solid var(--border);
+        }
+        .school-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .school-name-wrap {}
+        .school-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+        .school-meta {
+            font-size: 11px;
+            color: var(--ink-light);
+            margin-top: 2px;
+        }
+        .school-stats {
+            margin-left: auto;
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        .stat-pill {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 10px;
+        }
+        .stat-pill .num {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .stat-pill .lbl { color: var(--ink-light); }
+        .stat-pill.gold .num { color: var(--gold); }
+        .stat-pill.silver .num { color: var(--silver); }
+        .stat-pill.bronze .num { color: var(--bronze); }
+
+        /* ── table ── */
+        .award-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .award-table th {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--ink-light);
+            letter-spacing: 1px;
+            text-align: left;
+            padding: 10px 20px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+        .award-table td {
+            padding: 11px 20px;
+            font-size: 14px;
+            border-bottom: 1px solid #f5f0e8;
+        }
+        .award-table tr:last-child td { border-bottom: none; }
+        .award-table tr:hover td { background: #fffdf8; }
+
+        .award-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .award-badge.first {
+            background: #fff8e6;
+            color: #8a6000;
+            border: 1px solid #e8c860;
+        }
+        .award-badge.second {
+            background: #f0f4f8;
+            color: #4a6080;
+            border: 1px solid #b8c8d8;
+        }
+        .award-badge.third {
+            background: #fdf5f0;
+            color: #7a4820;
+            border: 1px solid #d8a880;
+        }
+
+        .student-name {
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .student-class {
+            font-size: 12px;
+            color: var(--ink-light);
+            margin-top: 1px;
+        }
+        .coach-name {
+            color: var(--ink-mid);
+            font-size: 13px;
+        }
+        .year-tag {
+            font-size: 11px;
+            color: var(--ink-light);
+        }
+
+        /* ── category label ── */
+        .category-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 20px 20px 8px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--ink-light);
+            text-transform: uppercase;
+        }
+        .category-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── summary banner ── */
+        .summary-banner {
+            background: var(--accent);
+            color: #fff;
+            border-radius: 10px;
+            padding: 20px 24px;
+            display: flex;
+            gap: 0;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+        .summary-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        .summary-item + .summary-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 10%; bottom: 10%;
+            width: 1px;
+            background: rgba(255,255,255,0.15);
+        }
+        .summary-item .big {
+            font-size: 30px;
+            font-weight: 900;
+            font-family: 'Noto Serif SC', serif;
+        }
+        .summary-item .big.g { color: var(--gold-light); }
+        .summary-item .big.s { color: #c8d8e8; }
+        .summary-item .big.b { color: #e8c8a8; }
+        .summary-item .small {
+            font-size: 11px;
+            opacity: 0.6;
+            margin-top: 2px;
+            letter-spacing: 1px;
+        }
+
+        /* ── footer ── */
+        .page-footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 12px;
+            color: var(--ink-light);
+            border-top: 1px solid var(--border);
+            background: var(--bg-warm);
+        }
+
+        /* ── responsive ── */
+        @media (max-width: 600px) {
+            .school-stats { display: none; }
+            .award-table th:nth-child(4),
+            .award-table td:nth-child(4) { display: none; }
+            .summary-banner { flex-wrap: wrap; gap: 12px; }
+            .summary-item { min-width: 80px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="page-header">
+    <div class="header-badge">官方公告</div>
+    <h1>青青草原省高中数学联赛获奖名单</h1>
+    <p>2025年度 · 青青草原省教育厅竞赛管理办公室</p>
+    <div class="header-deco">
+        <div class="header-deco-line"></div>
+        <span class="header-deco-star">✦</span>
+        <div class="header-deco-line right"></div>
+    </div>
+</header>
+
+<nav class="sticky-nav" id="mainNav">
+    <div class="nav-tab active" onclick="scrollTo('all')">全部</div>
+    <div class="nav-tab" onclick="scrollTo('cap')">省会五校</div>
+    <div class="nav-tab" onclick="scrollTo('county')">省会附近大县强校</div>
+    <div class="nav-tab" onclick="scrollTo('city')">地级市名校</div>
+</nav>
+
+<div class="main-content">
+
+    <div class="summary-banner">
+        <div class="summary-item">
+            <div class="big g">18</div>
+            <div class="small">一等奖</div>
+        </div>
+        <div class="summary-item">
+            <div class="big s">34</div>
+            <div class="small">二等奖</div>
+        </div>
+        <div class="summary-item">
+            <div class="big b">52</div>
+            <div class="small">三等奖</div>
+        </div>
+        <div class="summary-item">
+            <div class="big" style="color:#fff">15</div>
+            <div class="small">参赛学校</div>
+        </div>
+    </div>
+
+    <!-- ===== 省会五校 ===== -->
+    <div class="category-label" id="cap">省会五校</div>
+
+    <!-- 草原一中 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon">一</div>
+            <div class="school-name-wrap">
+                <div class="school-name">草原一中</div>
+                <div class="school-meta">青青草原省省会 · 重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">3</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">4</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">6</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr>
+                <th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th>
+            </tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">陈晓雯</div><div class="student-class">高三（2）班</div></td><td class="coach-name">李建国</td><td class="year-tag">满分</td></tr>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">周博文</div><div class="student-class">高二（5）班</div></td><td class="coach-name">李建国</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">苏梓航</div><div class="student-class">高三（1）班</div></td><td class="coach-name">王芳</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">马雨桐</div><div class="student-class">高二（3）班</div></td><td class="coach-name">王芳</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">林哲远</div><div class="student-class">高二（1）班</div></td><td class="coach-name">李建国</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">郑思远</div><div class="student-class">高三（4）班</div></td><td class="coach-name">刘晓峰</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">许晨曦</div><div class="student-class">高二（7）班</div></td><td class="coach-name">刘晓峰</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">赵宇涵</div><div class="student-class">高一（6）班</div></td><td class="coach-name">王芳</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">曹明远</div><div class="student-class">高二（2）班</div></td><td class="coach-name">李建国</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">韦冰清</div><div class="student-class">高三（3）班</div></td><td class="coach-name">刘晓峰</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">谭沛霖</div><div class="student-class">高二（4）班</div></td><td class="coach-name">李建国</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">冯乐天</div><div class="student-class">高一（3）班</div></td><td class="coach-name">王芳</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">朱思齐</div><div class="student-class">高二（8）班</div></td><td class="coach-name">刘晓峰</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 草原北关中学 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon">北</div>
+            <div class="school-name-wrap">
+                <div class="school-name">草原北关中学</div>
+                <div class="school-meta">青青草原省省会 · 重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">2</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">3</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">4</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">白雪瑶</div><div class="student-class">高三（1）班</div></td><td class="coach-name">孙伟明</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">刘正阳</div><div class="student-class">高二（4）班</div></td><td class="coach-name">孙伟明</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">张子木</div><div class="student-class">高二（2）班</div></td><td class="coach-name">陈晶晶</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">范铭坤</div><div class="student-class">高三（3）班</div></td><td class="coach-name">孙伟明</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">宋若琳</div><div class="student-class">高一（5）班</div></td><td class="coach-name">陈晶晶</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">蒋浩然</div><div class="student-class">高二（6）班</div></td><td class="coach-name">陈晶晶</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">欧阳菲</div><div class="student-class">高三（2）班</div></td><td class="coach-name">孙伟明</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">魏子轩</div><div class="student-class">高二（1）班</div></td><td class="coach-name">陈晶晶</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">钱芷薇</div><div class="student-class">高一（2）班</div></td><td class="coach-name">孙伟明</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 青草中学 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon">青</div>
+            <div class="school-name-wrap">
+                <div class="school-name">青草中学</div>
+                <div class="school-meta">青青草原省省会 · 省示范性高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">2</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">3</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">3</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">叶锦程</div><div class="student-class">高三（1）班</div></td><td class="coach-name">黄志远</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">罗梓铭</div><div class="student-class">高二（3）班</div></td><td class="coach-name">黄志远</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">邓文博</div><div class="student-class">高二（2）班</div></td><td class="coach-name">吴晓燕</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">庄雨萱</div><div class="student-class">高三（4）班</div></td><td class="coach-name">黄志远</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">潘思远</div><div class="student-class">高一（7）班</div></td><td class="coach-name">吴晓燕</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">熊泽楷</div><div class="student-class">高二（5）班</div></td><td class="coach-name">吴晓燕</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">夏依琳</div><div class="student-class">高三（2）班</div></td><td class="coach-name">黄志远</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">侯明轩</div><div class="student-class">高二（6）班</div></td><td class="coach-name">吴晓燕</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 绿草中学 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon">绿</div>
+            <div class="school-name-wrap">
+                <div class="school-name">绿草中学</div>
+                <div class="school-meta">青青草原省省会 · 省重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">1</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">2</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">4</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">高铭远</div><div class="student-class">高三（3）班</div></td><td class="coach-name">谢振华</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">柳静怡</div><div class="student-class">高二（1）班</div></td><td class="coach-name">谢振华</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">严佳宁</div><div class="student-class">高二（4）班</div></td><td class="coach-name">程丽娟</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">伍晨阳</div><div class="student-class">高一（2）班</div></td><td class="coach-name">程丽娟</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">杜翰文</div><div class="student-class">高二（6）班</div></td><td class="coach-name">谢振华</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">施雨桐</div><div class="student-class">高三（1）班</div></td><td class="coach-name">程丽娟</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">卢宇峰</div><div class="student-class">高二（3）班</div></td><td class="coach-name">谢振华</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 第十中学 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon">十</div>
+            <div class="school-name-wrap">
+                <div class="school-name">第十中学</div>
+                <div class="school-meta">青青草原省省会 · 省重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">1</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">2</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">3</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">龚晓峰</div><div class="student-class">高三（2）班</div></td><td class="coach-name">方建军</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">申子涵</div><div class="student-class">高二（5）班</div></td><td class="coach-name">方建军</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">何梦琪</div><div class="student-class">高二（3）班</div></td><td class="coach-name">姜丽华</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">彭嘉豪</div><div class="student-class">高一（4）班</div></td><td class="coach-name">姜丽华</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">唐伊婷</div><div class="student-class">高三（1）班</div></td><td class="coach-name">方建军</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">薛明远</div><div class="student-class">高二（6）班</div></td><td class="coach-name">姜丽华</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== 省会附近大县强校 ===== -->
+    <div class="category-label" id="county">省会附近大县强校</div>
+
+    <!-- 草原74中学 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon" style="background:#2a5c3a">七四</div>
+            <div class="school-name-wrap">
+                <div class="school-name">草原74中学</div>
+                <div class="school-meta">省会附近大县 · 县域重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">1</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">2</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">3</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">崔玉成</div><div class="student-class">高三（2）班</div></td><td class="coach-name">曾红旗</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">石雨欣</div><div class="student-class">高二（1）班</div></td><td class="coach-name">曾红旗</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">聂子昂</div><div class="student-class">高三（1）班</div></td><td class="coach-name">卓静芳</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">阮嘉怡</div><div class="student-class">高二（4）班</div></td><td class="coach-name">卓静芳</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">袁宏亮</div><div class="student-class">高一（3）班</div></td><td class="coach-name">曾红旗</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">成思雨</div><div class="student-class">高二（2）班</div></td><td class="coach-name">卓静芳</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 森林黑一中 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon" style="background:#2a4060">森</div>
+            <div class="school-name-wrap">
+                <div class="school-name">森林黑一中</div>
+                <div class="school-meta">省会附近大县 · 县域重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">1</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">2</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">2</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">贺星宇</div><div class="student-class">高三（3）班</div></td><td class="coach-name">宁文超</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">季文轩</div><div class="student-class">高二（2）班</div></td><td class="coach-name">宁文超</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">童可欣</div><div class="student-class">高三（1）班</div></td><td class="coach-name">纪明华</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">汤奕辰</div><div class="student-class">高二（5）班</div></td><td class="coach-name">纪明华</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">祝晨雨</div><div class="student-class">高一（4）班</div></td><td class="coach-name">宁文超</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 99中学 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon" style="background:#5a3060">九九</div>
+            <div class="school-name-wrap">
+                <div class="school-name">99中学</div>
+                <div class="school-meta">省会附近大县 · 县域重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">1</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">1</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">3</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">洪俊泽</div><div class="student-class">高三（2）班</div></td><td class="coach-name">刁思颖</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">封怡宁</div><div class="student-class">高二（3）班</div></td><td class="coach-name">刁思颖</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">卫嘉禾</div><div class="student-class">高二（1）班</div></td><td class="coach-name">刁思颖</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">裴承宇</div><div class="student-class">高三（4）班</div></td><td class="coach-name">沈婷婷</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">姚雨欣</div><div class="student-class">高一（6）班</div></td><td class="coach-name">沈婷婷</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 淡水湖一中 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon" style="background:#2a6068">淡</div>
+            <div class="school-name-wrap">
+                <div class="school-name">淡水湖一中</div>
+                <div class="school-meta">省会附近大县 · 县域重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">1</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">2</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">2</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">蓝晓颖</div><div class="student-class">高三（1）班</div></td><td class="coach-name">关德胜</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">杭俊逸</div><div class="student-class">高二（2）班</div></td><td class="coach-name">关德胜</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">连嘉琦</div><div class="student-class">高二（4）班</div></td><td class="coach-name">闻秀英</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">翟宇航</div><div class="student-class">高三（3）班</div></td><td class="coach-name">闻秀英</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">霍雨辰</div><div class="student-class">高一（1）班</div></td><td class="coach-name">关德胜</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== 地级市名校 ===== -->
+    <div class="category-label" id="city">地级市名校</div>
+
+    <!-- 大肥羊学校 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon" style="background:#7a4020">羊</div>
+            <div class="school-name-wrap">
+                <div class="school-name">大肥羊学校</div>
+                <div class="school-meta">羊村市 · 市级重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">1</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">1</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">2</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">左子睿</div><div class="student-class">高三（2）班</div></td><td class="coach-name">米晓东</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">尚铭远</div><div class="student-class">高二（3）班</div></td><td class="coach-name">米晓东</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">桂馨月</div><div class="student-class">高二（1）班</div></td><td class="coach-name">符洁云</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">步明轩</div><div class="student-class">高三（4）班</div></td><td class="coach-name">符洁云</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 美草实验中学 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon" style="background:#3a6040">美</div>
+            <div class="school-name-wrap">
+                <div class="school-name">美草实验中学</div>
+                <div class="school-meta">羊村市 · 市级重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">1</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">2</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">2</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">丁浩然</div><div class="student-class">高三（1）班</div></td><td class="coach-name">窦海燕</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">甘宇铭</div><div class="student-class">高二（5）班</div></td><td class="coach-name">窦海燕</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">牛梓洛</div><div class="student-class">高三（3）班</div></td><td class="coach-name">聂文韬</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">戚依晨</div><div class="student-class">高二（2）班</div></td><td class="coach-name">聂文韬</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">庾嘉逸</div><div class="student-class">高一（6）班</div></td><td class="coach-name">窦海燕</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 狼堡一中 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon" style="background:#1a3a5c">狼</div>
+            <div class="school-name-wrap">
+                <div class="school-name">狼堡一中</div>
+                <div class="school-meta">狼堡市 · 市级重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">1</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">2</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">3</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">刘天清</div><div class="student-class">高二（7）班</div></td><td class="coach-name">张国强</td><td class="year-tag">全市第一</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">孟佳琦</div><div class="student-class">高三（2）班</div></td><td class="coach-name">张国强</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">田昊宇</div><div class="student-class">高二（4）班</div></td><td class="coach-name">卢明静</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">魏可馨</div><div class="student-class">高三（3）班</div></td><td class="coach-name">卢明静</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">宫泽林</div><div class="student-class">高二（1）班</div></td><td class="coach-name">张国强</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">苗晓雯</div><div class="student-class">高一（5）班</div></td><td class="coach-name">卢明静</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 苇甸一中 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon" style="background:#3a6858">苇</div>
+            <div class="school-name-wrap">
+                <div class="school-name">苇甸一中</div>
+                <div class="school-meta">安海市 · 市级重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">1</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">1</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">2</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">闵志浩</div><div class="student-class">高三（2）班</div></td><td class="coach-name">邹依萍</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">柏新远</div><div class="student-class">高二（3）班</div></td><td class="coach-name">邹依萍</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">廖嘉木</div><div class="student-class">高三（1）班</div></td><td class="coach-name">秦博远</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">任美茜</div><div class="student-class">高二（5）班</div></td><td class="coach-name">秦博远</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 虎州一中 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon" style="background:#7a3030">虎</div>
+            <div class="school-name-wrap">
+                <div class="school-name">虎州一中</div>
+                <div class="school-meta">虎州市 · 市级重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">1</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">1</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">2</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">狄文杰</div><div class="student-class">高三（3）班</div></td><td class="coach-name">游思远</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">巫嘉宁</div><div class="student-class">高二（2）班</div></td><td class="coach-name">游思远</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">葛晨阳</div><div class="student-class">高三（1）班</div></td><td class="coach-name">章倩倩</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">艾烨霖</div><div class="student-class">高二（4）班</div></td><td class="coach-name">章倩倩</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 鱼河一中 -->
+    <div class="school-section">
+        <div class="school-header">
+            <div class="school-icon" style="background:#205868">鱼</div>
+            <div class="school-name-wrap">
+                <div class="school-name">鱼河一中</div>
+                <div class="school-meta">鱼河市 · 市级重点高中</div>
+            </div>
+            <div class="school-stats">
+                <div class="stat-pill gold"><span class="num">1</span><span class="lbl">一等</span></div>
+                <div class="stat-pill silver"><span class="num">1</span><span class="lbl">二等</span></div>
+                <div class="stat-pill bronze"><span class="num">2</span><span class="lbl">三等</span></div>
+            </div>
+        </div>
+        <table class="award-table">
+            <thead><tr><th>奖项</th><th>姓名 / 年级</th><th>指导教师</th><th>备注</th></tr></thead>
+            <tbody>
+                <tr><td><span class="award-badge first">🥇 一等奖</span></td><td><div class="student-name">阿依古丽</div><div class="student-class">高三（2）班</div></td><td class="coach-name">桑成林</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge second">🥈 二等奖</span></td><td><div class="student-name">付思航</div><div class="student-class">高二（1）班</div></td><td class="coach-name">桑成林</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">骆晓宇</div><div class="student-class">高三（4）班</div></td><td class="coach-name">卞雪婷</td><td class="year-tag">—</td></tr>
+                <tr><td><span class="award-badge third">🥉 三等奖</span></td><td><div class="student-name">文博远</div><div class="student-class">高二（3）班</div></td><td class="coach-name">卞雪婷</td><td class="year-tag">—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</div><!-- /main-content -->
+
+<footer class="page-footer">
+    <div>青青草原省教育厅竞赛管理办公室 &emsp;|&emsp; 2025年度高中数学联赛</div>
+    <div style="margin-top:6px;font-size:11px;color:#bbb">如有疑问请通过各校教务处反馈 &emsp;|&emsp; 本名单为最终公示版本</div>
+</footer>
+
+<script>
+    // Smooth scroll to section
+    function scrollTo(id) {
+        const tabs = document.querySelectorAll('.nav-tab');
+        tabs.forEach(t => t.classList.remove('active'));
+        event.target.classList.add('active');
+
+        if (id === 'all') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+        const el = document.getElementById(id);
+        if (el) {
+            const offset = el.getBoundingClientRect().top + window.scrollY - 52;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+    }
+
+    // Highlight active nav on scroll
+    window.addEventListener('scroll', () => {
+        const sections = ['cap', 'county', 'city'];
+        const tabs = document.querySelectorAll('.nav-tab');
+        let current = 'all';
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el && el.getBoundingClientRect().top <= 70) current = id;
+        });
+        tabs.forEach((t, i) => {
+            t.classList.remove('active');
+            if (i === 0 && current === 'all') t.classList.add('active');
+            if (i === 1 && current === 'cap') t.classList.add('active');
+            if (i === 2 && current === 'county') t.classList.add('active');
+            if (i === 3 && current === 'city') t.classList.add('active');
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,11 +9,16 @@
         BNEI 内部系统备忘（请勿外传）
         合作院校管理账号统一由研究院技术部分配
         狼堡一中校长账号：wmd_principal
-        初始密码：Gezhi@1998!
+        初始密码：Gezhi@2023!
         如需重置请联系技术部 ext.203
     -->
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --ink: #0d1a2a;
             --mid: #2c4a6a;
@@ -22,6 +28,7 @@
             --muted: #6a8aaa;
             --border: #c8dcea;
         }
+
         body {
             background: #f4f8fc;
             color: var(--text);
@@ -38,6 +45,7 @@
             justify-content: space-between;
             height: 60px;
         }
+
         .bnei-nav-logo {
             display: flex;
             align-items: center;
@@ -45,25 +53,48 @@
             color: #fff;
             text-decoration: none;
         }
+
         .bnei-logo-mark {
-            width: 36px; height: 36px;
-            border: 2px solid rgba(255,255,255,0.4);
+            width: 36px;
+            height: 36px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
             border-radius: 6px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 16px; font-weight: 700;
-            color: rgba(255,255,255,0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.85);
             letter-spacing: 1px;
         }
-        .bnei-logo-text { font-size: 15px; font-weight: 600; letter-spacing: 0.5px; }
-        .bnei-logo-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
-        .bnei-nav-links { display: flex; gap: 28px; }
+
+        .bnei-logo-text {
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .bnei-logo-sub {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 2px;
+        }
+
+        .bnei-nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
         .bnei-nav-links a {
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
             font-size: 13px;
             transition: color 0.2s;
         }
-        .bnei-nav-links a:hover { color: #fff; }
+
+        .bnei-nav-links a:hover {
+            color: #fff;
+        }
 
         /* ─── Hero ─── */
         .bnei-hero {
@@ -72,17 +103,24 @@
             position: relative;
             overflow: hidden;
         }
+
         .bnei-hero::before {
             content: '';
             position: absolute;
             inset: 0;
             background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
-        .bnei-hero-inner { max-width: 960px; margin: 0 auto; position: relative; }
+
+        .bnei-hero-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+        }
+
         .bnei-hero-tag {
             display: inline-block;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.55);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.55);
             font-size: 11px;
             letter-spacing: 2px;
             padding: 4px 12px;
@@ -90,6 +128,7 @@
             margin-bottom: 24px;
             text-transform: uppercase;
         }
+
         .bnei-hero-title {
             font-size: 38px;
             font-weight: 300;
@@ -98,16 +137,24 @@
             margin-bottom: 20px;
             letter-spacing: 1px;
         }
-        .bnei-hero-title strong { font-weight: 600; }
+
+        .bnei-hero-title strong {
+            font-weight: 600;
+        }
+
         .bnei-hero-desc {
             font-size: 15px;
-            color: rgba(255,255,255,0.55);
+            color: rgba(255, 255, 255, 0.55);
             line-height: 1.9;
             max-width: 560px;
         }
 
         /* ─── 主体 ─── */
-        .bnei-body { max-width: 960px; margin: 0 auto; padding: 56px 48px; }
+        .bnei-body {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 56px 48px;
+        }
 
         /* ─── 版块标题 ─── */
         .section-label {
@@ -117,12 +164,14 @@
             color: var(--accent);
             margin-bottom: 10px;
         }
+
         .section-title {
             font-size: 22px;
             font-weight: 600;
             color: var(--ink);
             margin-bottom: 8px;
         }
+
         .section-desc {
             font-size: 14px;
             color: var(--muted);
@@ -137,15 +186,31 @@
             gap: 20px;
             margin-bottom: 56px;
         }
+
         .research-card {
             background: #fff;
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 24px;
         }
-        .research-icon { font-size: 28px; margin-bottom: 14px; }
-        .research-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
-        .research-desc { font-size: 13px; color: var(--muted); line-height: 1.8; }
+
+        .research-icon {
+            font-size: 28px;
+            margin-bottom: 14px;
+        }
+
+        .research-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+
+        .research-desc {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.8;
+        }
 
         /* ─── 合作院校 ─── */
         .partner-section {
@@ -155,12 +220,14 @@
             padding: 32px;
             margin-bottom: 56px;
         }
+
         .partner-list {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
             margin-top: 24px;
         }
+
         .partner-item {
             border: 1px solid var(--border);
             border-radius: 6px;
@@ -169,7 +236,13 @@
             font-size: 13px;
             color: var(--muted);
         }
-        .partner-item strong { display: block; color: var(--text); margin-bottom: 4px; font-size: 14px; }
+
+        .partner-item strong {
+            display: block;
+            color: var(--text);
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
 
         /* ─── 合作方内网入口 ─── */
         .partner-portal {
@@ -179,32 +252,51 @@
             padding: 32px;
             margin-bottom: 56px;
         }
+
         .portal-header {
             display: flex;
             align-items: center;
             gap: 12px;
             margin-bottom: 20px;
         }
+
         .portal-icon {
-            width: 40px; height: 40px;
+            width: 40px;
+            height: 40px;
             background: var(--accent);
             border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
         }
-        .portal-title { font-size: 16px; font-weight: 600; color: var(--ink); }
-        .portal-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+        .portal-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .portal-sub {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
         .portal-desc {
             font-size: 13px;
             color: var(--muted);
             line-height: 1.9;
             margin-bottom: 20px;
         }
+
         .portal-schools {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
         }
+
         .portal-school {
             background: #fff;
             border: 1px solid var(--border);
@@ -215,7 +307,12 @@
             justify-content: space-between;
             font-size: 13px;
         }
-        .portal-school-name { color: var(--text); font-weight: 500; }
+
+        .portal-school-name {
+            color: var(--text);
+            font-weight: 500;
+        }
+
         .portal-school-link {
             font-size: 12px;
             color: var(--accent);
@@ -225,9 +322,21 @@
             border-radius: 3px;
             transition: all 0.2s;
         }
-        .portal-school-link:hover { background: var(--accent); color: #fff; }
-        .portal-school.highlight { border-color: var(--accent); background: #eef6fc; }
-        .portal-school.highlight .portal-school-name { color: var(--ink); font-weight: 600; }
+
+        .portal-school-link:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .portal-school.highlight {
+            border-color: var(--accent);
+            background: #eef6fc;
+        }
+
+        .portal-school.highlight .portal-school-name {
+            color: var(--ink);
+            font-weight: 600;
+        }
 
         /* 注意事项小字 */
         .portal-note {
@@ -244,8 +353,17 @@
             gap: 32px;
             margin-bottom: 56px;
         }
-        .about-text { font-size: 14px; color: var(--text); line-height: 2; }
-        .about-text p { margin-bottom: 16px; }
+
+        .about-text {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 2;
+        }
+
+        .about-text p {
+            margin-bottom: 16px;
+        }
+
         .about-meta {
             background: #fff;
             border: 1px solid var(--border);
@@ -253,6 +371,7 @@
             padding: 24px;
             align-self: start;
         }
+
         .about-meta-row {
             display: flex;
             flex-direction: column;
@@ -260,21 +379,130 @@
             padding-bottom: 16px;
             border-bottom: 1px solid var(--border);
         }
-        .about-meta-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-        .about-meta-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; margin-bottom: 4px; }
-        .about-meta-val { font-size: 13px; color: var(--text); font-weight: 500; }
+
+        .about-meta-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .about-meta-label {
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .about-meta-val {
+            font-size: 13px;
+            color: var(--text);
+            font-weight: 500;
+        }
 
         /* ─── 页脚 ─── */
         .bnei-footer {
             background: var(--ink);
-            color: rgba(255,255,255,0.35);
+            color: rgba(255, 255, 255, 0.35);
             font-size: 12px;
             text-align: center;
             padding: 24px 48px;
             line-height: 2;
         }
+
+        /* ─── 响应式 ─── */
+        @media (max-width: 768px) {
+            .bnei-nav {
+                padding: 0 20px;
+                flex-wrap: wrap;
+                height: auto;
+                min-height: 56px;
+            }
+
+            .bnei-nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                padding: 8px 0 12px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .bnei-nav-links a {
+                padding: 12px 4px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .bnei-hero {
+                padding: 48px 24px 40px;
+            }
+
+            .bnei-hero-title {
+                font-size: 28px;
+            }
+
+            .bnei-body {
+                padding: 32px 20px;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partner-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .portal-schools {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bnei-footer {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bnei-hero {
+                padding: 32px 16px 28px;
+            }
+
+            .bnei-hero-title {
+                font-size: 22px;
+            }
+
+            .bnei-hero-desc {
+                font-size: 14px;
+            }
+
+            .bnei-body {
+                padding: 24px 16px;
+            }
+
+            .partner-list {
+                grid-template-columns: 1fr;
+            }
+
+            .partner-portal {
+                padding: 20px 16px;
+            }
+
+            .portal-school {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .portal-school-link {
+                align-self: flex-end;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- 导航 -->
@@ -394,7 +622,7 @@
                 <div class="section-label">About</div>
                 <div class="section-title">关于研究院</div>
                 <div class="about-text">
-                    <p>北境神经工程研究院（BNEI）成立于2015年，前身为北境大学神经工程实验室。研究院专注于神经接口技术的基础研究与教育应用，现有研究人员三十余名。</p>
+                    <p>北境神经工程研究院（BNEI）成立于1995年，前身为北境大学神经工程实验室。研究院专注于神经接口技术的基础研究与教育应用，现有研究人员三十余名。</p>
                     <p>研究院与多所高中及高校建立了长期合作关系，在认知数据采集、思维参数建模等方向积累了丰富的研究经验与专有技术。</p>
                     <p>首席研究员陈昱博士主导多项合作项目，在神经接口技术领域有超过十五年的研究经历，在国内外学术期刊发表论文数十篇。</p>
                 </div>
@@ -431,4 +659,5 @@
     </footer>
 
 </body>
+
 </html>
