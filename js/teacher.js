@@ -1,8 +1,9 @@
-﻿/** teacher.js - Logic only. Data in teacher-data.js */
+/** teacher.js - Logic only. Data in teacher-data.js */
 
 
 // ─── 档案内容 ───
-const ARCHIVE_PASSWORD = "GZ2023LBYZ";
+// SHA-256("GZ2023LBYZ")
+const ARCHIVE_HASH = "f58b5efe0982ca18f796fbc44cbba872a5105a46c0f327dda6702d9412efc96a";
 const ARCHIVE_CONTENT = `
 <div class="campus-card mb-16">
   <div class="campus-card-header">📋 格致计划 — 实验参数说明文档 v2.3</div>
@@ -112,13 +113,17 @@ function initArchive() {
   }
 }
 
-function doArchiveUnlock() {
+async function doArchiveUnlock() {
   const input = document.getElementById("archive-password");
   const resultEl = document.getElementById("archive-content");
   const errEl = document.getElementById("archive-error");
   if (!input || !resultEl) return;
 
-  if (input.value.trim() === ARCHIVE_PASSWORD) {
+  const inputVal = input.value.trim();
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(inputVal));
+  const inputHash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+
+  if (inputHash === ARCHIVE_HASH) {
     if (errEl) errEl.classList.add("hidden");
     document.getElementById("archive-lock")?.classList.add("hidden");
     resultEl.innerHTML = ARCHIVE_CONTENT;
