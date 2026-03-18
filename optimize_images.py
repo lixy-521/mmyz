@@ -47,7 +47,7 @@ def replace_references(root_dir):
                 print(f"Updated references in: {os.path.relpath(file_path, root_dir)}")
 
 if __name__ == '__main__':
-    base_dir = r"c:\Users\21934\Desktop\tuozhu\mmyz"
+    base_dir = r"C:\Users\李翔宇\Desktop\tuozhu\mmyz"
     assets_dir = os.path.join(base_dir, "assets")
     
     # 执行压缩和替换
