@@ -141,28 +141,8 @@
     </div>
 
     <script src="js/auth.js"></script>
+    <script src="js/nav.js"></script>
     <script src="js/principal-data.js"></script>
-    <script src="js/principal.js"></script>
-    <script>
-        // 汉堡菜单
-        (function(){
-            var btn = document.getElementById('nav-hamburger');
-            var links = document.querySelector('.campus-nav-links');
-            if (!btn || !links) return;
-            btn.addEventListener('click', function(e){
-                e.stopPropagation();
-                btn.classList.toggle('open');
-                links.classList.toggle('open');
-            });
-            document.addEventListener('click', function(){
-                btn.classList.remove('open');
-                links.classList.remove('open');
-            });
-            links.addEventListener('click', function(){
-                btn.classList.remove('open');
-                links.classList.remove('open');
-            });
-        })();
-    </script></body>
+    <script src="js/principal.js"></script></body>
 
 </html>

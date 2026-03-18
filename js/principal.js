@@ -1,8 +1,9 @@
-﻿/** principal.js - Logic only. Data in principal-data.js */
+/** principal.js - Logic only. Data in principal-data.js */
 
 
-// ─── 档案密码 ───
-const PRINCIPAL_ARCHIVE_PASSWORD = "GZ2023LBYZ";
+// ─── 档案密码（哈希）───
+// SHA-256("GZ2023LBYZ")
+const PRINCIPAL_ARCHIVE_HASH = "f58b5efe0982ca18f796fbc44cbba872a5105a46c0f327dda6702d9412efc96a";
 
 // ─── 档案内容（校长版：更高权限，含完整参数名称）───
 const PRINCIPAL_ARCHIVE_CONTENT = `
@@ -109,11 +110,15 @@ function initArchive() {
   if (input) input.addEventListener("keydown", e => { if (e.key === "Enter") tryUnlock(); });
 }
 
-function tryUnlock() {
+async function tryUnlock() {
   const val = document.getElementById("archive-password")?.value.trim();
   const errEl = document.getElementById("archive-error");
   if (!val) return;
-  if (val === PRINCIPAL_ARCHIVE_PASSWORD) {
+
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
+  const inputHash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+
+  if (inputHash === PRINCIPAL_ARCHIVE_HASH) {
     archiveUnlocked = true;
     document.getElementById("archive-lock").classList.add("hidden");
     const content = document.getElementById("archive-content");
