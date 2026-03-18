@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2025年全国高中数学联赛青青草原赛区获奖名单</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+            background: #f4f4f4; color: #333;
+        }
+        .wx-page {
+            max-width: 680px; margin: 0 auto; background: #fff;
+            min-height: 100vh; padding-bottom: 60px;
+        }
+
+        /* 顶栏 */
+        .topbar {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 16px; border-bottom: 1px solid #f0f0f0;
+        }
+        .ava {
+            width: 38px; height: 38px; border-radius: 4px; background: #1a3a5c;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 15px; font-weight: 700; flex-shrink: 0;
+        }
+        .accname { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+        .accsub  { font-size: 11px; color: #999; margin-top: 1px; }
+        .followbtn {
+            margin-left: auto; background: #1677ff; color: #fff;
+            border: none; border-radius: 3px; padding: 5px 13px;
+            font-size: 12px; cursor: default;
+        }
+
+        /* 正文 */
+        .body { padding: 20px 16px 0; }
+        .wtitle {
+            font-size: 21px; font-weight: 700; color: #1a1a1a;
+            line-height: 1.45; margin-bottom: 10px;
+        }
+        .wmeta {
+            font-size: 12px; color: #aaa; padding-bottom: 14px;
+            border-bottom: 1px solid #f2f2f2; margin-bottom: 20px;
+            display: flex; gap: 14px; flex-wrap: wrap;
+        }
+        .prose { font-size: 15px; line-height: 1.95; color: #333; }
+        .prose p { margin-bottom: 16px; }
+        .prose a { color: #576b95; text-decoration: none; }
+        .prose a:hover { text-decoration: underline; }
+
+        /* 提示框 */
+        .tip {
+            background: #f7f7f7; border-left: 3px solid #1677ff;
+            padding: 11px 14px; margin: 18px 0;
+            font-size: 13px; color: #555; line-height: 1.85;
+        }
+
+        /* 徽章行 */
+        .badges { display: flex; flex-wrap: wrap; gap: 7px; margin: 16px 0 12px; }
+        .badge { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+        .b1 { background: #fffbe6; color: #7a5200; border: 1px solid #e8c840; }
+        .b2 { background: #e6f0ff; color: #1a4a9a; border: 1px solid #aac4f0; }
+        .b3 { background: #fff3e6; color: #8a4a10; border: 1px solid #e8b880; }
+        .bt { background: #f0f0f0; color: #666; border: 1px solid #ddd; }
+
+        /* 分割线 */
+        .divider {
+            display: flex; align-items: center; gap: 10px;
+            margin: 26px 0 14px;
+        }
+        .divider span { font-size: 14px; font-weight: 700; color: #1a1a1a; white-space: nowrap; }
+        .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #eee; }
+
+        /* 搜索 */
+        .srow { display: flex; align-items: center; gap: 8px; margin: 4px 0 14px; }
+        .srow input {
+            flex: 1; height: 32px; border: 1px solid #ddd; border-radius: 4px;
+            padding: 0 10px; font-size: 13px; outline: none;
+            background: #fafafa; color: #333;
+        }
+        .srow input:focus { border-color: #1677ff; background: #fff; }
+        .srow input::placeholder { color: #ccc; }
+        .scnt { font-size: 12px; color: #aaa; white-space: nowrap; }
+
+        /* 表格 */
+        .tscroll { overflow-x: auto; }
+        table.T {
+            width: 100%; min-width: 540px;
+            border-collapse: collapse; font-size: 13px;
+        }
+        table.T thead tr { background: #1a3a5c; color: #fff; }
+        table.T thead th {
+            padding: 9px 10px; text-align: left;
+            font-size: 11px; font-weight: 600; letter-spacing: .4px; white-space: nowrap;
+        }
+        table.T thead th:first-child { width: 36px; text-align: center; }
+        table.T tbody tr:nth-child(even) td { background: #fafafa; }
+        table.T tbody tr:hover td { background: #eef5ff !important; }
+        table.T td {
+            padding: 7px 10px; border-bottom: 1px solid #f2f2f2; vertical-align: middle;
+        }
+        table.T td:first-child { text-align: center; color: #ccc; font-size: 11px; }
+        table.T tr.gr td {
+            background: #f2f2f2 !important; font-size: 11px; font-weight: 700;
+            color: #888; letter-spacing: 1.5px;
+            padding: 5px 10px !important; border-bottom: 1px solid #e4e4e4 !important;
+        }
+        table.T tr.hidden { display: none; }
+
+        .aw1 { display:inline-block; font-size:11px; font-weight:700; padding:1px 7px; border-radius:3px; background:#fffbe6; color:#7a5200; border:1px solid #e8c840; }
+        .aw2 { display:inline-block; font-size:11px; font-weight:700; padding:1px 7px; border-radius:3px; background:#e6f0ff; color:#1a4a9a; border:1px solid #aac4f0; }
+        .aw3 { display:inline-block; font-size:11px; font-weight:700; padding:1px 7px; border-radius:3px; background:#fff3e6; color:#8a4a10; border:1px solid #e8b880; }
+        .gm { color:#1a5cc8; font-size:11px; }
+        .gf { color:#c82878; font-size:11px; }
+        .code { font-family: Menlo,Consolas,monospace; font-size:11px; color:#bbb; }
+
+        /* 尾部 */
+        .tail { margin-top:36px; padding-top:18px; border-top:1px solid #f0f0f0; }
+        .tail p { font-size:13px; color:#bbb; line-height:1.9; margin-bottom:6px; }
+        .acts { display:flex; justify-content:center; gap:32px; padding:22px 0 10px; }
+        .act { display:flex; flex-direction:column; align-items:center; gap:5px; font-size:11px; color:#bbb; }
+        .act-ico { width:42px; height:42px; border-radius:50%; background:#f5f5f5; display:flex; align-items:center; justify-content:center; font-size:19px; }
+
+        @media(max-width:500px){
+            .wtitle{font-size:18px;}
+            .prose{font-size:14px;}
+            table.T{font-size:12px;}
+            table.T td,table.T th{padding:6px 7px;}
+        }
+    </style>
+</head>
+<body>
+<div class="wx-page">
+
+    <div class="topbar">
+        <div class="ava">草</div>
+        <div>
+            <div class="accname">草原竞赛资讯</div>
+            <div class="accsub">原创 · 学科竞赛 · 青青草原省</div>
+        </div>
+        <button class="followbtn">+ 关注</button>
+    </div>
+
+    <div class="body">
+        <div class="wtitle">2025年全国高中数学联赛青青草原赛区获奖名单（一二三等奖完整版）</div>
+        <div class="wmeta">
+            <span>草原竞赛资讯</span>
+            <span>2025年11月18日</span>
+            <span>阅读 11,047</span>
+            <span>青青草原省</span>
+        </div>
+
+        <div class="prose">
+
+            <p>近日，青青草原省数学学会正式公布了2025年全国高中数学联赛青青草原赛区完整获奖名单。本次竞赛共有来自全省15所学校的学生参赛，经阅卷委员会评定，共产生一等奖58人、二等奖97人、三等奖143人。</p>
+
+            <p>值得关注的是，省会五校依然占据一等奖绝对主导，其中<strong>草原一中</strong>以22人的成绩独占鳌头，<strong>草原北关中学</strong>以13人紧随其后。地级市方面，<strong>狼堡一中</strong>高二（7）班刘天清同学以全省最高分摘得一等奖，是本次竞赛最受瞩目的黑马之一。</p>
+
+            <p>完整名单如下：</p>
+
+            <div class="tip">
+                📌 <strong>说明：</strong>本名单数据来源为青青草原省数学学会官方公告（编号：QQCY-2025-MATH-047），按获奖等级及编号顺序排列。如发现信息有误，请于公示期（7日）内通过各校教务处向省竞赛办书面反馈。可在下方搜索框按<strong>姓名、学校或编号</strong>快速定位。
+            </div>
+
+            <div class="divider"><span>完整获奖名单</span></div>
+
+            <div class="badges">
+                <span class="badge b1">🥇 一等奖 · 58人</span>
+                <span class="badge b2">🥈 二等奖 · 97人</span>
+                <span class="badge b3">🥉 三等奖 · 143人</span>
+                <span class="badge bt">合计 298 人 · 15 所学校</span>
+            </div>
+
+            <div class="srow">
+                <input type="text" id="q" placeholder="搜索姓名 / 学校 / 编号……" oninput="doFilter()" />
+                <span class="scnt" id="cnt">共 298 条</span>
+            </div>
+
+            <div class="tscroll">
+            <table class="T" id="T">
+                <thead><tr>
+                    <th>#</th><th>姓名</th><th>性别</th><th>学校全称</th><th>年级</th><th>获奖等级</th><th>编号</th>
+                </tr></thead>
+                <tbody id="tb">
+
+<!-- ══════════════════ 一等奖 58人 ══════════════════ -->
+<tr class="gr"><td colspan="7">▌ 一等奖（58人）</td></tr>
+<tr><td>1</td><td>陈晓雯</td><td><span class="gf">女</span></td><td>草原一中</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125001</td></tr>
+<tr><td>2</td><td>周博文</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125002</td></tr>
+<tr><td>3</td><td>苏梓航</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125003</td></tr>
+<tr><td>4</td><td>马雨桐</td><td><span class="gf">女</span></td><td>草原一中</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125004</td></tr>
+<tr><td>5</td><td>林哲远</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125005</td></tr>
+<tr><td>6</td><td>郑思远</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125006</td></tr>
+<tr><td>7</td><td>许晨曦</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125007</td></tr>
+<tr><td>8</td><td>赵宇涵</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125008</td></tr>
+<tr><td>9</td><td>曹明远</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125009</td></tr>
+<tr><td>10</td><td>韦冰清</td><td><span class="gf">女</span></td><td>草原一中</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125010</td></tr>
+<tr><td>11</td><td>谭沛霖</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125011</td></tr>
+<tr><td>12</td><td>冯乐天</td><td><span class="gm">男</span></td><td>草原一中</td><td>高一</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125012</td></tr>
+<tr><td>13</td><td>朱思齐</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125013</td></tr>
+<tr><td>14</td><td>温玉洁</td><td><span class="gf">女</span></td><td>草原一中</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125014</td></tr>
+<tr><td>15</td><td>薛泽远</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125015</td></tr>
+<tr><td>16</td><td>秦雨欣</td><td><span class="gf">女</span></td><td>草原一中</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125016</td></tr>
+<tr><td>17</td><td>霍俊杰</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125017</td></tr>
+<tr><td>18</td><td>裴梦琦</td><td><span class="gf">女</span></td><td>草原一中</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125018</td></tr>
+<tr><td>19</td><td>孟晨阳</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125019</td></tr>
+<tr><td>20</td><td>潘子翼</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125020</td></tr>
+<tr><td>21</td><td>贾昊天</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125021</td></tr>
+<tr><td>22</td><td>蒋依琳</td><td><span class="gf">女</span></td><td>草原一中</td><td>高一</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125022</td></tr>
+<tr><td>23</td><td>白雪瑶</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125023</td></tr>
+<tr><td>24</td><td>刘正阳</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125024</td></tr>
+<tr><td>25</td><td>张子木</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125025</td></tr>
+<tr><td>26</td><td>范铭坤</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125026</td></tr>
+<tr><td>27</td><td>宋若琳</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高一</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125027</td></tr>
+<tr><td>28</td><td>蒋浩然</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125028</td></tr>
+<tr><td>29</td><td>欧阳菲</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125029</td></tr>
+<tr><td>30</td><td>魏子轩</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125030</td></tr>
+<tr><td>31</td><td>钱芷薇</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高一</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125031</td></tr>
+<tr><td>32</td><td>卢昊文</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125032</td></tr>
+<tr><td>33</td><td>柴明月</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125033</td></tr>
+<tr><td>34</td><td>邢浩宇</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125034</td></tr>
+<tr><td>35</td><td>翁子颐</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125035</td></tr>
+<tr><td>36</td><td>叶锦程</td><td><span class="gm">男</span></td><td>青草中学</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125036</td></tr>
+<tr><td>37</td><td>罗梓铭</td><td><span class="gm">男</span></td><td>青草中学</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125037</td></tr>
+<tr><td>38</td><td>邓文博</td><td><span class="gm">男</span></td><td>青草中学</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125038</td></tr>
+<tr><td>39</td><td>庄雨萱</td><td><span class="gf">女</span></td><td>青草中学</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125039</td></tr>
+<tr><td>40</td><td>潘思远</td><td><span class="gm">男</span></td><td>青草中学</td><td>高一</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125040</td></tr>
+<tr><td>41</td><td>熊泽楷</td><td><span class="gm">男</span></td><td>青草中学</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125041</td></tr>
+<tr><td>42</td><td>夏依琳</td><td><span class="gf">女</span></td><td>青草中学</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125042</td></tr>
+<tr><td>43</td><td>高铭远</td><td><span class="gm">男</span></td><td>绿草中学</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125043</td></tr>
+<tr><td>44</td><td>柳静怡</td><td><span class="gf">女</span></td><td>绿草中学</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125044</td></tr>
+<tr><td>45</td><td>严佳宁</td><td><span class="gm">男</span></td><td>绿草中学</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125045</td></tr>
+<tr><td>46</td><td>崔玉成</td><td><span class="gm">男</span></td><td>草原74中学</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125046</td></tr>
+<tr><td>47</td><td>石雨欣</td><td><span class="gf">女</span></td><td>草原74中学</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125047</td></tr>
+<tr><td>48</td><td>聂子昂</td><td><span class="gm">男</span></td><td>草原74中学</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125048</td></tr>
+<tr><td>49</td><td>阮嘉怡</td><td><span class="gf">女</span></td><td>草原74中学</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125049</td></tr>
+<tr><td>50</td><td>袁宏亮</td><td><span class="gm">男</span></td><td>草原74中学</td><td>高一</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125050</td></tr>
+<tr><td>51</td><td>贺星宇</td><td><span class="gm">男</span></td><td>森林黑一中</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125051</td></tr>
+<tr><td>52</td><td>季文轩</td><td><span class="gm">男</span></td><td>森林黑一中</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125052</td></tr>
+<tr><td>53</td><td>童可欣</td><td><span class="gf">女</span></td><td>森林黑一中</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125053</td></tr>
+<tr><td>54</td><td>洪俊泽</td><td><span class="gm">男</span></td><td>99中学</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125054</td></tr>
+<tr><td>55</td><td>蓝晓颖</td><td><span class="gf">女</span></td><td>淡水湖一中</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125055</td></tr>
+<tr><td>56</td><td>左子睿</td><td><span class="gm">男</span></td><td>大肥羊学校</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125056</td></tr>
+<tr><td>57</td><td>丁浩然</td><td><span class="gm">男</span></td><td>美草实验中学</td><td>高三</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125057</td></tr>
+<tr><td>58</td><td>刘天清</td><td><span class="gm">男</span></td><td>狼堡一中</td><td>高二</td><td><span class="aw1">一等奖</span></td><td class="code">QQ125058</td></tr>
+
+<!-- ══════════════════ 二等奖 97人 ══════════════════ -->
+<tr class="gr"><td colspan="7">▌ 二等奖（97人）</td></tr>
+<tr><td>59</td><td>廖文博</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225001</td></tr>
+<tr><td>60</td><td>欧阳雨</td><td><span class="gf">女</span></td><td>草原一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225002</td></tr>
+<tr><td>61</td><td>崔思远</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225003</td></tr>
+<tr><td>62</td><td>白雪涵</td><td><span class="gf">女</span></td><td>草原一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225004</td></tr>
+<tr><td>63</td><td>魏浩宇</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225005</td></tr>
+<tr><td>64</td><td>陈嘉宝</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225006</td></tr>
+<tr><td>65</td><td>唐佳怡</td><td><span class="gf">女</span></td><td>草原一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225007</td></tr>
+<tr><td>66</td><td>林嘉诚</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225008</td></tr>
+<tr><td>67</td><td>方泽远</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225009</td></tr>
+<tr><td>68</td><td>岳晓雯</td><td><span class="gf">女</span></td><td>草原一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225010</td></tr>
+<tr><td>69</td><td>贾明轩</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225011</td></tr>
+<tr><td>70</td><td>石晴雨</td><td><span class="gf">女</span></td><td>草原一中</td><td>高一</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225012</td></tr>
+<tr><td>71</td><td>傅奕辰</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225013</td></tr>
+<tr><td>72</td><td>苗晓婷</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225014</td></tr>
+<tr><td>73</td><td>邓泽阳</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225015</td></tr>
+<tr><td>74</td><td>周梦菲</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225016</td></tr>
+<tr><td>75</td><td>陆子铭</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高一</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225017</td></tr>
+<tr><td>76</td><td>侯嘉颖</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225018</td></tr>
+<tr><td>77</td><td>柯明哲</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225019</td></tr>
+<tr><td>78</td><td>侯明轩</td><td><span class="gm">男</span></td><td>青草中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225020</td></tr>
+<tr><td>79</td><td>柴宇翔</td><td><span class="gm">男</span></td><td>青草中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225021</td></tr>
+<tr><td>80</td><td>纪思雨</td><td><span class="gf">女</span></td><td>青草中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225022</td></tr>
+<tr><td>81</td><td>谢展鹏</td><td><span class="gm">男</span></td><td>青草中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225023</td></tr>
+<tr><td>82</td><td>余静涵</td><td><span class="gf">女</span></td><td>青草中学</td><td>高一</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225024</td></tr>
+<tr><td>83</td><td>伍晨阳</td><td><span class="gm">男</span></td><td>绿草中学</td><td>高一</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225025</td></tr>
+<tr><td>84</td><td>杜翰文</td><td><span class="gm">男</span></td><td>绿草中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225026</td></tr>
+<tr><td>85</td><td>施雨桐</td><td><span class="gf">女</span></td><td>绿草中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225027</td></tr>
+<tr><td>86</td><td>卢宇峰</td><td><span class="gm">男</span></td><td>绿草中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225028</td></tr>
+<tr><td>87</td><td>章晓梅</td><td><span class="gf">女</span></td><td>绿草中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225029</td></tr>
+<tr><td>88</td><td>方泽宇</td><td><span class="gm">男</span></td><td>绿草中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225030</td></tr>
+<tr><td>89</td><td>龚晓峰</td><td><span class="gm">男</span></td><td>第十中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225031</td></tr>
+<tr><td>90</td><td>申子涵</td><td><span class="gm">男</span></td><td>第十中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225032</td></tr>
+<tr><td>91</td><td>何梦琪</td><td><span class="gf">女</span></td><td>第十中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225033</td></tr>
+<tr><td>92</td><td>成思雨</td><td><span class="gf">女</span></td><td>草原74中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225034</td></tr>
+<tr><td>93</td><td>贡俊凯</td><td><span class="gm">男</span></td><td>草原74中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225035</td></tr>
+<tr><td>94</td><td>毕晓媛</td><td><span class="gf">女</span></td><td>草原74中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225036</td></tr>
+<tr><td>95</td><td>杜嘉辉</td><td><span class="gm">男</span></td><td>草原74中学</td><td>高一</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225037</td></tr>
+<tr><td>96</td><td>汤奕辰</td><td><span class="gm">男</span></td><td>森林黑一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225038</td></tr>
+<tr><td>97</td><td>祝晨雨</td><td><span class="gf">女</span></td><td>森林黑一中</td><td>高一</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225039</td></tr>
+<tr><td>98</td><td>纪宏博</td><td><span class="gm">男</span></td><td>森林黑一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225040</td></tr>
+<tr><td>99</td><td>封怡宁</td><td><span class="gf">女</span></td><td>99中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225041</td></tr>
+<tr><td>100</td><td>卫嘉禾</td><td><span class="gm">男</span></td><td>99中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225042</td></tr>
+<tr><td>101</td><td>裴承宇</td><td><span class="gm">男</span></td><td>99中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225043</td></tr>
+<tr><td>102</td><td>杭俊逸</td><td><span class="gm">男</span></td><td>淡水湖一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225044</td></tr>
+<tr><td>103</td><td>连嘉琦</td><td><span class="gf">女</span></td><td>淡水湖一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225045</td></tr>
+<tr><td>104</td><td>尚铭远</td><td><span class="gm">男</span></td><td>大肥羊学校</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225046</td></tr>
+<tr><td>105</td><td>桂馨月</td><td><span class="gf">女</span></td><td>大肥羊学校</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225047</td></tr>
+<tr><td>106</td><td>步明远</td><td><span class="gm">男</span></td><td>大肥羊学校</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225048</td></tr>
+<tr><td>107</td><td>甘宇铭</td><td><span class="gm">男</span></td><td>美草实验中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225049</td></tr>
+<tr><td>108</td><td>牛梓洛</td><td><span class="gm">男</span></td><td>美草实验中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225050</td></tr>
+<tr><td>109</td><td>窦梦瑶</td><td><span class="gf">女</span></td><td>美草实验中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225051</td></tr>
+<tr><td>110</td><td>孟佳琦</td><td><span class="gf">女</span></td><td>狼堡一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225052</td></tr>
+<tr><td>111</td><td>田昊宇</td><td><span class="gm">男</span></td><td>狼堡一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225053</td></tr>
+<tr><td>112</td><td>宫泽林</td><td><span class="gm">男</span></td><td>狼堡一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225054</td></tr>
+<tr><td>113</td><td>闵志浩</td><td><span class="gm">男</span></td><td>苇甸一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225055</td></tr>
+<tr><td>114</td><td>柏新远</td><td><span class="gm">男</span></td><td>苇甸一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225056</td></tr>
+<tr><td>115</td><td>廖嘉木</td><td><span class="gm">男</span></td><td>苇甸一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225057</td></tr>
+<tr><td>116</td><td>狄文杰</td><td><span class="gm">男</span></td><td>虎州一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225058</td></tr>
+<tr><td>117</td><td>巫嘉宁</td><td><span class="gf">女</span></td><td>虎州一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225059</td></tr>
+<tr><td>118</td><td>阿依古丽</td><td><span class="gf">女</span></td><td>鱼河一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225060</td></tr>
+<tr><td>119</td><td>付思航</td><td><span class="gm">男</span></td><td>鱼河一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225061</td></tr>
+<tr><td>120</td><td>薛宝琳</td><td><span class="gf">女</span></td><td>草原一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225062</td></tr>
+<tr><td>121</td><td>汪子轩</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225063</td></tr>
+<tr><td>122</td><td>宣思远</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225064</td></tr>
+<tr><td>123</td><td>罗依婷</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225065</td></tr>
+<tr><td>124</td><td>吴昊宇</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225066</td></tr>
+<tr><td>125</td><td>景思琪</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225067</td></tr>
+<tr><td>126</td><td>卞晨光</td><td><span class="gm">男</span></td><td>青草中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225068</td></tr>
+<tr><td>127</td><td>蒲亦凡</td><td><span class="gm">男</span></td><td>青草中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225069</td></tr>
+<tr><td>128</td><td>岳涵秋</td><td><span class="gf">女</span></td><td>绿草中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225070</td></tr>
+<tr><td>129</td><td>胡宸宇</td><td><span class="gm">男</span></td><td>草原74中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225071</td></tr>
+<tr><td>130</td><td>曲晓玲</td><td><span class="gf">女</span></td><td>森林黑一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225072</td></tr>
+<tr><td>131</td><td>姚雨欣</td><td><span class="gf">女</span></td><td>99中学</td><td>高一</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225073</td></tr>
+<tr><td>132</td><td>戴嘉逸</td><td><span class="gm">男</span></td><td>99中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225074</td></tr>
+<tr><td>133</td><td>翟宇航</td><td><span class="gm">男</span></td><td>淡水湖一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225075</td></tr>
+<tr><td>134</td><td>霍雨辰</td><td><span class="gm">男</span></td><td>淡水湖一中</td><td>高一</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225076</td></tr>
+<tr><td>135</td><td>颜昱彤</td><td><span class="gf">女</span></td><td>美草实验中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225077</td></tr>
+<tr><td>136</td><td>魏可馨</td><td><span class="gf">女</span></td><td>狼堡一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225078</td></tr>
+<tr><td>137</td><td>任美茜</td><td><span class="gf">女</span></td><td>苇甸一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225079</td></tr>
+<tr><td>138</td><td>葛晨阳</td><td><span class="gm">男</span></td><td>虎州一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225080</td></tr>
+<tr><td>139</td><td>艾烨霖</td><td><span class="gm">男</span></td><td>虎州一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225081</td></tr>
+<tr><td>140</td><td>骆晓宇</td><td><span class="gm">男</span></td><td>鱼河一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225082</td></tr>
+<tr><td>141</td><td>文博远</td><td><span class="gm">男</span></td><td>鱼河一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225083</td></tr>
+<tr><td>142</td><td>邵泽皓</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225084</td></tr>
+<tr><td>143</td><td>靳梦颖</td><td><span class="gf">女</span></td><td>草原一中</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225085</td></tr>
+<tr><td>144</td><td>鲍子涵</td><td><span class="gm">男</span></td><td>草原一中</td><td>高一</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225086</td></tr>
+<tr><td>145</td><td>殷嘉辉</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225087</td></tr>
+<tr><td>146</td><td>鲜钰婷</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225088</td></tr>
+<tr><td>147</td><td>孔祥宇</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225089</td></tr>
+<tr><td>148</td><td>穆晓晴</td><td><span class="gf">女</span></td><td>青草中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225090</td></tr>
+<tr><td>149</td><td>褚嘉浩</td><td><span class="gm">男</span></td><td>青草中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225091</td></tr>
+<tr><td>150</td><td>游子皓</td><td><span class="gm">男</span></td><td>草原74中学</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225092</td></tr>
+<tr><td>151</td><td>宓思远</td><td><span class="gm">男</span></td><td>大肥羊学校</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225093</td></tr>
+<tr><td>152</td><td>彭诗颖</td><td><span class="gf">女</span></td><td>苇甸一中</td><td>高三</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225094</td></tr>
+<tr><td>153</td><td>苗晓雯</td><td><span class="gf">女</span></td><td>狼堡一中</td><td>高一</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225095</td></tr>
+<tr><td>154</td><td>茅子涵</td><td><span class="gm">男</span></td><td>99中学</td><td>高二</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225096</td></tr>
+<tr><td>155</td><td>曾嘉琦</td><td><span class="gf">女</span></td><td>绿草中学</td><td>高一</td><td><span class="aw2">二等奖</span></td><td class="code">QQ225097</td></tr>
+
+<!-- ══════════════════ 三等奖 143人 ══════════════════ -->
+<tr class="gr"><td colspan="7">▌ 三等奖（143人）</td></tr>
+<tr><td>156</td><td>申嘉禾</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325001</td></tr>
+<tr><td>157</td><td>何子涵</td><td><span class="gf">女</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325002</td></tr>
+<tr><td>158</td><td>熊子博</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325003</td></tr>
+<tr><td>159</td><td>季若曦</td><td><span class="gf">女</span></td><td>草原一中</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325004</td></tr>
+<tr><td>160</td><td>范德鑫</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325005</td></tr>
+<tr><td>161</td><td>卞宇晗</td><td><span class="gf">女</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325006</td></tr>
+<tr><td>162</td><td>程子锐</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325007</td></tr>
+<tr><td>163</td><td>聂晓桐</td><td><span class="gf">女</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325008</td></tr>
+<tr><td>164</td><td>辛浩然</td><td><span class="gm">男</span></td><td>草原一中</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325009</td></tr>
+<tr><td>165</td><td>金馨玥</td><td><span class="gf">女</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325010</td></tr>
+<tr><td>166</td><td>尹博远</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325011</td></tr>
+<tr><td>167</td><td>庄子颖</td><td><span class="gf">女</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325012</td></tr>
+<tr><td>168</td><td>徐铭皓</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325013</td></tr>
+<tr><td>169</td><td>阮晓晨</td><td><span class="gf">女</span></td><td>草原一中</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325014</td></tr>
+<tr><td>170</td><td>刁嘉俊</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325015</td></tr>
+<tr><td>171</td><td>夏雨桐</td><td><span class="gf">女</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325016</td></tr>
+<tr><td>172</td><td>龚思语</td><td><span class="gf">女</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325017</td></tr>
+<tr><td>173</td><td>石明轩</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325018</td></tr>
+<tr><td>174</td><td>邓嘉木</td><td><span class="gm">男</span></td><td>草原一中</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325019</td></tr>
+<tr><td>175</td><td>许子芸</td><td><span class="gf">女</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325020</td></tr>
+<tr><td>176</td><td>翟嘉宁</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325021</td></tr>
+<tr><td>177</td><td>甘子涵</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325022</td></tr>
+<tr><td>178</td><td>蒲雨欣</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325023</td></tr>
+<tr><td>179</td><td>许梓铭</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325024</td></tr>
+<tr><td>180</td><td>解思远</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325025</td></tr>
+<tr><td>181</td><td>刘聆汐</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325026</td></tr>
+<tr><td>182</td><td>罗嘉豪</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325027</td></tr>
+<tr><td>183</td><td>仇晓燕</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325028</td></tr>
+<tr><td>184</td><td>谢梓轩</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325029</td></tr>
+<tr><td>185</td><td>欧晓晴</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325030</td></tr>
+<tr><td>186</td><td>冯嘉怡</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325031</td></tr>
+<tr><td>187</td><td>鲍明远</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325032</td></tr>
+<tr><td>188</td><td>艾子鑫</td><td><span class="gm">男</span></td><td>青草中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325033</td></tr>
+<tr><td>189</td><td>虞婷婷</td><td><span class="gf">女</span></td><td>青草中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325034</td></tr>
+<tr><td>190</td><td>井泽宇</td><td><span class="gm">男</span></td><td>青草中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325035</td></tr>
+<tr><td>191</td><td>谈子轩</td><td><span class="gm">男</span></td><td>青草中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325036</td></tr>
+<tr><td>192</td><td>赖晓涵</td><td><span class="gf">女</span></td><td>青草中学</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325037</td></tr>
+<tr><td>193</td><td>贺嘉宝</td><td><span class="gm">男</span></td><td>青草中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325038</td></tr>
+<tr><td>194</td><td>魏晓雨</td><td><span class="gf">女</span></td><td>绿草中学</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325039</td></tr>
+<tr><td>195</td><td>苗嘉玮</td><td><span class="gm">男</span></td><td>绿草中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325040</td></tr>
+<tr><td>196</td><td>廖子烨</td><td><span class="gm">男</span></td><td>绿草中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325041</td></tr>
+<tr><td>197</td><td>祁晨曦</td><td><span class="gf">女</span></td><td>绿草中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325042</td></tr>
+<tr><td>198</td><td>罗泽远</td><td><span class="gm">男</span></td><td>绿草中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325043</td></tr>
+<tr><td>199</td><td>彭嘉豪</td><td><span class="gm">男</span></td><td>第十中学</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325044</td></tr>
+<tr><td>200</td><td>唐伊婷</td><td><span class="gf">女</span></td><td>第十中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325045</td></tr>
+<tr><td>201</td><td>薛明远</td><td><span class="gm">男</span></td><td>第十中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325046</td></tr>
+<tr><td>202</td><td>孔思雨</td><td><span class="gf">女</span></td><td>第十中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325047</td></tr>
+<tr><td>203</td><td>聂浩文</td><td><span class="gm">男</span></td><td>第十中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325048</td></tr>
+<tr><td>204</td><td>翟若曦</td><td><span class="gf">女</span></td><td>第十中学</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325049</td></tr>
+<tr><td>205</td><td>游兴阳</td><td><span class="gm">男</span></td><td>第十中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325050</td></tr>
+<tr><td>206</td><td>史梦晴</td><td><span class="gf">女</span></td><td>第十中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325051</td></tr>
+<tr><td>207</td><td>季子昂</td><td><span class="gm">男</span></td><td>草原74中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325052</td></tr>
+<tr><td>208</td><td>宓嘉颖</td><td><span class="gf">女</span></td><td>草原74中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325053</td></tr>
+<tr><td>209</td><td>孙泽宇</td><td><span class="gm">男</span></td><td>草原74中学</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325054</td></tr>
+<tr><td>210</td><td>卓思远</td><td><span class="gm">男</span></td><td>草原74中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325055</td></tr>
+<tr><td>211</td><td>杨晨希</td><td><span class="gf">女</span></td><td>草原74中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325056</td></tr>
+<tr><td>212</td><td>田若晨</td><td><span class="gf">女</span></td><td>森林黑一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325057</td></tr>
+<tr><td>213</td><td>陆嘉皓</td><td><span class="gm">男</span></td><td>森林黑一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325058</td></tr>
+<tr><td>214</td><td>褚晨阳</td><td><span class="gm">男</span></td><td>森林黑一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325059</td></tr>
+<tr><td>215</td><td>殷晓雯</td><td><span class="gf">女</span></td><td>99中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325060</td></tr>
+<tr><td>216</td><td>宫浩明</td><td><span class="gm">男</span></td><td>99中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325061</td></tr>
+<tr><td>217</td><td>蒋以然</td><td><span class="gm">男</span></td><td>99中学</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325062</td></tr>
+<tr><td>218</td><td>茆雪莹</td><td><span class="gf">女</span></td><td>99中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325063</td></tr>
+<tr><td>219</td><td>霍雨辰</td><td><span class="gm">男</span></td><td>淡水湖一中</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325064</td></tr>
+<tr><td>220</td><td>邬思菲</td><td><span class="gf">女</span></td><td>淡水湖一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325065</td></tr>
+<tr><td>221</td><td>吴翰文</td><td><span class="gm">男</span></td><td>淡水湖一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325066</td></tr>
+<tr><td>222</td><td>步晓宇</td><td><span class="gm">男</span></td><td>大肥羊学校</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325067</td></tr>
+<tr><td>223</td><td>倪梦婷</td><td><span class="gf">女</span></td><td>大肥羊学校</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325068</td></tr>
+<tr><td>224</td><td>苑子博</td><td><span class="gm">男</span></td><td>大肥羊学校</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325069</td></tr>
+<tr><td>225</td><td>戚依晨</td><td><span class="gf">女</span></td><td>美草实验中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325070</td></tr>
+<tr><td>226</td><td>庾嘉逸</td><td><span class="gm">男</span></td><td>美草实验中学</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325071</td></tr>
+<tr><td>227</td><td>罗梦婷</td><td><span class="gf">女</span></td><td>美草实验中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325072</td></tr>
+<tr><td>228</td><td>杜奕辰</td><td><span class="gm">男</span></td><td>狼堡一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325073</td></tr>
+<tr><td>229</td><td>颜思远</td><td><span class="gm">男</span></td><td>狼堡一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325074</td></tr>
+<tr><td>230</td><td>云子铭</td><td><span class="gm">男</span></td><td>狼堡一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325075</td></tr>
+<tr><td>231</td><td>伊晓曦</td><td><span class="gf">女</span></td><td>狼堡一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325076</td></tr>
+<tr><td>232</td><td>宫子皓</td><td><span class="gm">男</span></td><td>狼堡一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325077</td></tr>
+<tr><td>233</td><td>赖宏远</td><td><span class="gm">男</span></td><td>苇甸一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325078</td></tr>
+<tr><td>234</td><td>岳依然</td><td><span class="gf">女</span></td><td>苇甸一中</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325079</td></tr>
+<tr><td>235</td><td>卞晓宇</td><td><span class="gm">男</span></td><td>苇甸一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325080</td></tr>
+<tr><td>236</td><td>秦乃轩</td><td><span class="gm">男</span></td><td>虎州一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325081</td></tr>
+<tr><td>237</td><td>朱奕名</td><td><span class="gf">女</span></td><td>虎州一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325082</td></tr>
+<tr><td>238</td><td>高昕曈</td><td><span class="gm">男</span></td><td>虎州一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325083</td></tr>
+<tr><td>239</td><td>么志成</td><td><span class="gm">男</span></td><td>鱼河一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325084</td></tr>
+<tr><td>240</td><td>陈鑫宇</td><td><span class="gm">男</span></td><td>鱼河一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325085</td></tr>
+<tr><td>241</td><td>马语桐</td><td><span class="gf">女</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325086</td></tr>
+<tr><td>242</td><td>郑好</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325087</td></tr>
+<tr><td>243</td><td>王明轩</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325088</td></tr>
+<tr><td>244</td><td>宋怀智</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325089</td></tr>
+<tr><td>245</td><td>冯馨莹</td><td><span class="gf">女</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325090</td></tr>
+<tr><td>246</td><td>齐壹丞</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325091</td></tr>
+<tr><td>247</td><td>杨家琳</td><td><span class="gf">女</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325092</td></tr>
+<tr><td>248</td><td>闫家豪</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325093</td></tr>
+<tr><td>249</td><td>朱晓颖</td><td><span class="gf">女</span></td><td>草原一中</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325094</td></tr>
+<tr><td>250</td><td>戈绍森</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325095</td></tr>
+<tr><td>251</td><td>卓晓琳</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325096</td></tr>
+<tr><td>252</td><td>邵培森</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325097</td></tr>
+<tr><td>253</td><td>张梓桐</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325098</td></tr>
+<tr><td>254</td><td>肖锦程</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325099</td></tr>
+<tr><td>255</td><td>尹圣哲</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325100</td></tr>
+<tr><td>256</td><td>曹馨文</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325101</td></tr>
+<tr><td>257</td><td>桑浩翔</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325102</td></tr>
+<tr><td>258</td><td>马岩</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325103</td></tr>
+<tr><td>259</td><td>吴晨宇</td><td><span class="gm">男</span></td><td>青草中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325104</td></tr>
+<tr><td>260</td><td>钱莉新</td><td><span class="gf">女</span></td><td>青草中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325105</td></tr>
+<tr><td>261</td><td>商一</td><td><span class="gm">男</span></td><td>青草中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325106</td></tr>
+<tr><td>262</td><td>程晓曦</td><td><span class="gf">女</span></td><td>青草中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325107</td></tr>
+<tr><td>263</td><td>汪嘉浩</td><td><span class="gm">男</span></td><td>绿草中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325108</td></tr>
+<tr><td>264</td><td>丁晴雨</td><td><span class="gf">女</span></td><td>绿草中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325109</td></tr>
+<tr><td>265</td><td>任栩男</td><td><span class="gm">男</span></td><td>第十中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325110</td></tr>
+<tr><td>266</td><td>郭子祺</td><td><span class="gm">男</span></td><td>草原74中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325111</td></tr>
+<tr><td>267</td><td>张跃达</td><td><span class="gm">男</span></td><td>森林黑一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325112</td></tr>
+<tr><td>268</td><td>韩鑫龙</td><td><span class="gm">男</span></td><td>99中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325113</td></tr>
+<tr><td>269</td><td>廖冠霖</td><td><span class="gm">男</span></td><td>淡水湖一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325114</td></tr>
+<tr><td>270</td><td>周大峦</td><td><span class="gm">男</span></td><td>大肥羊学校</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325115</td></tr>
+<tr><td>271</td><td>毕瀛宇</td><td><span class="gm">男</span></td><td>美草实验中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325116</td></tr>
+<tr><td>272</td><td>卞嘉木</td><td><span class="gm">男</span></td><td>狼堡一中</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325117</td></tr>
+<tr><td>273</td><td>刘彦伯</td><td><span class="gm">男</span></td><td>苇甸一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325118</td></tr>
+<tr><td>274</td><td>吴俊哲</td><td><span class="gm">男</span></td><td>虎州一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325119</td></tr>
+<tr><td>275</td><td>李禹锡</td><td><span class="gm">男</span></td><td>鱼河一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325120</td></tr>
+<tr><td>276</td><td>张奥宸</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325121</td></tr>
+<tr><td>277</td><td>陈翊昂</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325122</td></tr>
+<tr><td>278</td><td>何佳昊</td><td><span class="gm">男</span></td><td>草原一中</td><td>高一</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325123</td></tr>
+<tr><td>279</td><td>李小川</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325124</td></tr>
+<tr><td>280</td><td>张菁陈</td><td><span class="gf">女</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325125</td></tr>
+<tr><td>281</td><td>贾斯涵</td><td><span class="gm">男</span></td><td>青草中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325126</td></tr>
+<tr><td>282</td><td>韩壮</td><td><span class="gm">男</span></td><td>绿草中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325127</td></tr>
+<tr><td>283</td><td>马天阳</td><td><span class="gm">男</span></td><td>第十中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325128</td></tr>
+<tr><td>284</td><td>杨尚林</td><td><span class="gm">男</span></td><td>草原74中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325129</td></tr>
+<tr><td>285</td><td>高进铭</td><td><span class="gm">男</span></td><td>森林黑一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325130</td></tr>
+<tr><td>286</td><td>王梓旭</td><td><span class="gm">男</span></td><td>99中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325131</td></tr>
+<tr><td>287</td><td>许笑辰</td><td><span class="gm">男</span></td><td>淡水湖一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325132</td></tr>
+<tr><td>288</td><td>张树旺</td><td><span class="gm">男</span></td><td>大肥羊学校</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325133</td></tr>
+<tr><td>289</td><td>裘梦轩</td><td><span class="gm">男</span></td><td>美草实验中学</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325134</td></tr>
+<tr><td>290</td><td>赵颢哲</td><td><span class="gm">男</span></td><td>狼堡一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325135</td></tr>
+<tr><td>291</td><td>董颢然</td><td><span class="gm">男</span></td><td>苇甸一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325136</td></tr>
+<tr><td>292</td><td>冯琳珊</td><td><span class="gf">女</span></td><td>虎州一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325137</td></tr>
+<tr><td>293</td><td>高竟桐</td><td><span class="gm">男</span></td><td>鱼河一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325138</td></tr>
+<tr><td>294</td><td>孙品卓</td><td><span class="gm">男</span></td><td>草原一中</td><td>高三</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325139</td></tr>
+<tr><td>295</td><td>赵锦航</td><td><span class="gm">男</span></td><td>草原一中</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325140</td></tr>
+<tr><td>296</td><td>辛瀚辰</td><td><span class="gm">男</span></td><td>草原北关中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325141</td></tr>
+<tr><td>297</td><td>刘赫</td><td><span class="gm">男</span></td><td>青草中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325142</td></tr>
+<tr><td>298</td><td>金炜哲</td><td><span class="gm">男</span></td><td>草原74中学</td><td>高二</td><td><span class="aw3">三等奖</span></td><td class="code">QQ325143</td></tr>
+
+                </tbody>
+            </table>
+            </div><!-- /tscroll -->
+
+            <div class="tail">
+                <p>数据来源：青青草原省数学学会官方公告（QQCY-2025-MATH-047）</p>
+                <p>如对名单有异议，请于公示期（7日）内通过各校教务处向省竞赛办书面反馈。</p>
+                <p style="color:#ddd">———</p>
+                <p>往期相关推送：</p>
+                <p><a href="#" style="color:#576b95;font-size:13px">· 《2025年全国高中数学联赛青青草原赛区一等奖获奖名单》</a></p>
+                <p><a href="#" style="color:#576b95;font-size:13px">· 《2024年青青草原赛区各奖次名单汇总》</a></p>
+                <p><a href="#" style="color:#576b95;font-size:13px">· 《草原一中22人获一等奖！背后的训练体系揭秘》</a></p>
+            </div>
+
+            <div class="acts">
+                <div class="act"><div class="act-ico">👍</div><span>在看 382</span></div>
+                <div class="act"><div class="act-ico">⭐</div><span>收藏</span></div>
+                <div class="act"><div class="act-ico">↗</div><span>分享</span></div>
+            </div>
+
+        </div><!-- /prose -->
+    </div><!-- /body -->
+</div><!-- /wx-page -->
+
+<script>
+const TOTAL = 298;
+function doFilter() {
+    const q = document.getElementById('q').value.trim().toLowerCase();
+    const rows = document.querySelectorAll('#tb tr:not(.gr)');
+    let vis = 0;
+    rows.forEach(r => {
+        if (!q) { r.classList.remove('hidden'); vis++; return; }
+        const txt = r.innerText.toLowerCase();
+        if (txt.includes(q)) { r.classList.remove('hidden'); vis++; }
+        else r.classList.add('hidden');
+    });
+    // show/hide group headers
+    document.querySelectorAll('#tb tr.gr').forEach(g => {
+        let sib = g.nextElementSibling;
+        let anyVis = false;
+        while (sib && !sib.classList.contains('gr')) {
+            if (!sib.classList.contains('hidden')) anyVis = true;
+            sib = sib.nextElementSibling;
+        }
+        g.style.display = anyVis ? '' : 'none';
+    });
+    document.getElementById('cnt').textContent =
+        q ? `找到 ${vis} 条` : `共 ${TOTAL} 条`;
+}
+</script>
+</body>
+</html>
