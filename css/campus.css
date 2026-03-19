@@ -1,11 +1,14 @@
-/* ============================================
-   campus.css — 样式入口文件（统一导入）
-   各子文件：
-     base.css       变量 / 重置 / NAV / TICKER
-     layout.css     布局 / 卡片 / Banner / 新闻 / 快速链接
-     components.css 表单 / 按钮 / 表格 / 徽章 / 弹窗提示
-     modules.css    论坛 / 系统 / 邮件 / 登录 / 工具类 / 响应式
-   ============================================ */
+/* 
+  文件名称：css/campus.css
+  功能描述：样式入口统筹文件 - 通过 @import 集中导入全站所有子样式模块
+  导入模块顺序：
+    1. base.css (基础与变量)
+    2. layout.css (结构与页面组件)
+    3. components.css (通用 UI 控件)
+    4. modules.css (功能性业务模块)
+  维护部门：狼堡一中信息中心
+  最后更新：2026-03-19
+*/
 @import url('base.css');
 @import url('layout.css');
 @import url('components.css');

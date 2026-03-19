@@ -1,4 +1,12 @@
-/** principal.js - Logic only. Data in principal-data.js */
+/**
+ * 文件名称：js/principal.js
+ * 功能描述：校长办公系统核心逻辑 - 处理高权限档案解锁、实验室实时参数监控与项目管理
+ * 依赖文件：
+ *   - js/principal-data.js (邮件数据支持)
+ *   - js/auth.js (权限校验支持)
+ * 维护部门：狼堡一中校长办公室 / 信息中心
+ * 最后更新：2026-03-19
+ */
 
 
 // ─── 档案密码（哈希）───

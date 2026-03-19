@@ -1,6 +1,10 @@
-/* ============================================
-   base.css — 变量 / 重置 / NAV / TICKER
-   ============================================ */
+/* 
+  文件名称：css/base.css
+  功能描述：全局基础样式 - 包含 CSS 变量定义、浏览器内容重置、通用导航栏 (NAV) 与滚动公告 (TICKER)
+  设计规范：色彩体系 (--primary, --accent)、字体规范 (--font-main, --font-mono)
+  维护部门：狼堡一中信息中心
+  最后更新：2026-03-19
+*/
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
 :root {

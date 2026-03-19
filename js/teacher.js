@@ -1,4 +1,12 @@
-/** teacher.js - Logic only. Data in teacher-data.js */
+/**
+ * 文件名称：js/teacher.js
+ * 功能描述：教师办公系统核心逻辑 - 处理实验室状态查看、邮件阅读与人员档案检索
+ * 依赖文件：
+ *   - js/teacher-data.js (人员/邮件数据支持)
+ *   - js/auth.js (权限校验支持)
+ * 维护部门：狼堡一中教务处
+ * 最后更新：2026-03-19
+ */
 
 
 // ─── 档案内容 ───
