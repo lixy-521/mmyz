@@ -24,7 +24,8 @@ const BOOK_PINYIN = {
   "有机化学": "Klein有机化学", "youjihuaxue": "Klein有机化学",
   "校园安全手册": "校园安全手册", "anquan": "校园安全手册",
   "监控系统原理": "监控系统原理", "jiankong": "监控系统原理",
-  "高中数学竞赛指南": "高中数学竞赛指南", "suxue": "高中数学竞赛指南"
+  "高中数学竞赛指南": "高中数学竞赛指南", "suxue": "高中数学竞赛指南",
+  "密码学基础": "密码学基础", "mimaxue": "密码学基础"
 };
 
 function resolveName(raw) {
@@ -44,6 +45,7 @@ function resolveBook(raw) {
 
 const BORROWER_DB = {
   "刘天清": [
+    { title: "密码学基础", category: "计算机", status: "已还", statusClass: "success" },
     { title: "都市传说研究", category: "社会学", status: "已还", statusClass: "success" },
     { title: "异常心理学", category: "心理学", status: "已还", statusClass: "success" },
     { title: "建筑结构安全", category: "工程", status: "已还", statusClass: "success" },
@@ -107,7 +109,7 @@ const BOOK_DB = {
     history: [
       {
         user: "刘天清", date: "11月8日", returnDate: "11月15日",
-        comment: "「把参数重置到起点」——逆向。这个词，记住。"
+        comment: "「把参数按位反转」——逆向。这个词，记住。"
       }
     ]
   },
@@ -145,8 +147,21 @@ const BOOK_DB = {
     currentBorrower: "（当前无人借阅）",
     history: [
       {
-        user: "刘天清", date: "11月18日", returnDate: "11月19日",
-        comment: "88.144.21.1"
+        user: "刘天清", date: "11月13日", returnDate: "11月15日",
+        comment: "稍微翻了一下，感觉咱们学校现在的监控探头全是上个世纪的老古董，特别是旧实验楼那边，全损画质而且还有死角，有跟没有一样。"
+      }
+    ],
+    newArrival: true
+  },
+  "密码学基础": {
+    isbn: "978-7-03-123456-0",
+    category: "计算机",
+    status: "在馆",
+    currentBorrower: "（当前无人借阅）",
+    history: [
+      {
+        user: "刘天清", date: "11月17日", returnDate: "11月19日",
+        comment: "第四章古典加密与现代通讯有点意思，这两天跑去提取旧实验楼B区配电间待机状态下的加密日志，利用波形分析提取密钥流后进行按位取反操作，发现好像得出了一个挺有意思的参数。"
       }
     ],
     newArrival: true
@@ -494,7 +509,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const raw = archiveInput.value.trim().toUpperCase().replace(/[\s·]/g, "-");
     // Flexible matching
     const key = Object.keys(ARCHIVE_DB).find(k =>
-      raw === k || raw.includes(k.replace("LBYZ-","")) || k.includes(raw)
+      raw === k || raw.includes(k.replace("LBYZ-", "")) || k.includes(raw)
     );
 
     if (!key) {

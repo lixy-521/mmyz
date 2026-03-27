@@ -229,10 +229,10 @@ function submitParam() {
       "即将切换为<strong>待机参数</strong>。\n\n仪器将暂停数据采集，维持受试者基础生命体征。\n请确认此操作。",
       () => { window.location.href = "endings/ending1.html"; }
     );
-  } else if (val === "88.144.21.1") {
+  } else if (val === "87.143.20.0") {
     openModal(
       "确认切换参数",
-      "即将启动逆向参数 <strong style='font-family:monospace'>88.144.21.1</strong>。\n\n系统将把采集到的全部数据完整写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
+      "即将启动逆向参数 <strong style='font-family:monospace'>87.143.20.0</strong>。\n\n系统将把采集到的全部数据完整写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
       () => { window.location.href = "endings/ending2.html"; }
     );
   } else {
