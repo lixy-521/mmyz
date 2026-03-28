@@ -32,13 +32,45 @@ async function sha256(str) {
 }
 
 /**
- * 执行登录（异步，密码哈希后比对）
+ * 执行登录（异步，密码哈希后比对，支持忽略大小写及中英文符号差异）
  */
 async function doLogin(username, password) {
     const account = ACCOUNTS[username.trim()];
     if (!account) return false;
-    const inputHash = await sha256(password);
-    if (inputHash !== account.hash) return false;
+    
+    // 符号全角转半角
+    const map = {'！':'!','＠':'@','＃':'#','＄':'$','％':'%','＾':'^','＆':'&','＊':'*','（':'(','）':')','－':'-','＿':'_','＋':'+','＝':'=','｛':'{','｝':'}','［':'[','］':']','｜':'|','＼':'\\','：':':','；':';','＂':'"','＇':"'",'＜':'<','＞':'>','，':',','．':'.','？':'?','／':'/'};
+    const norm = password.split('').map(c => map[c] || c).join('');
+    
+    // 收集所有区分大小写的字母
+    let letters = [];
+    for (let i = 0; i < norm.length; i++) {
+        if (norm[i].toLowerCase() !== norm[i].toUpperCase()) {
+            letters.push({ i, lower: norm[i].toLowerCase(), upper: norm[i].toUpperCase() });
+        }
+    }
+    
+    // 限制最大枚举位数（防止超长输入卡死浏览器）
+    if (letters.length > 15) letters = letters.slice(0, 15);
+    
+    let matched = false;
+    const max = 1 << letters.length;
+    const baseChars = norm.toLowerCase().split('');
+    
+    // 枚举所有大小写组合进行哈希比对
+    for (let i = 0; i < max; i++) {
+        const chars = [...baseChars];
+        for (let j = 0; j < letters.length; j++) {
+            if (i & (1 << j)) chars[letters[j].i] = letters[j].upper;
+        }
+        const candidateHash = await sha256(chars.join(''));
+        if (candidateHash === account.hash) {
+            matched = true;
+            break;
+        }
+    }
+    
+    if (!matched) return false;
 
     localStorage.setItem("lbyz_role", account.role);
     localStorage.setItem("lbyz_username", username.trim());
