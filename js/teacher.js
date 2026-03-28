@@ -128,10 +128,37 @@ async function doArchiveUnlock() {
   if (!input || !resultEl) return;
 
   const inputVal = input.value.trim();
-  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(inputVal));
-  const inputHash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+  
+  // 符号全角转半角
+  const map = {'！':'!','＠':'@','＃':'#','＄':'$','％':'%','＾':'^','＆':'&','＊':'*','（':'(','）':')','－':'-','＿':'_','＋':'+','＝':'=','｛':'{','｝':'}','［':'[','］':']','｜':'|','＼':'\\','：':':','；':';','＂':'"','＇':"'",'＜':'<','＞':'>','，':',','．':'.','？':'?','／':'/'};
+  const norm = inputVal.split('').map(c => map[c] || c).join('');
+  
+  let letters = [];
+  for (let i = 0; i < norm.length; i++) {
+    if (norm[i].toLowerCase() !== norm[i].toUpperCase()) {
+      letters.push({ i, lower: norm[i].toLowerCase(), upper: norm[i].toUpperCase() });
+    }
+  }
+  if (letters.length > 15) letters = letters.slice(0, 15);
+  
+  let matched = false;
+  const max = 1 << letters.length;
+  const baseChars = norm.toLowerCase().split('');
+  
+  for (let i = 0; i < max; i++) {
+    const chars = [...baseChars];
+    for (let j = 0; j < letters.length; j++) {
+      if (i & (1 << j)) chars[letters[j].i] = letters[j].upper;
+    }
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(chars.join('')));
+    const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+    if (hash === ARCHIVE_HASH) {
+      matched = true;
+      break;
+    }
+  }
 
-  if (inputHash === ARCHIVE_HASH) {
+  if (matched) {
     if (errEl) errEl.classList.add("hidden");
     document.getElementById("archive-lock")?.classList.add("hidden");
     resultEl.innerHTML = ARCHIVE_CONTENT;

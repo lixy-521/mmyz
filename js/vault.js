@@ -29,9 +29,12 @@ function tryUnlock() {
     const input = document.getElementById("vault-input");
     if (!input) return;
 
-    const val = input.value.trim();
+    // 符号全角转半角
+    const map = {'！':'!','＠':'@','＃':'#','＄':'$','％':'%','＾':'^','＆':'&','＊':'*','（':'(','）':')','－':'-','＿':'_','＋':'+','＝':'=','｛':'{','｝':'}','［':'[','］':']','｜':'|','＼':'\\','：':':','；':';','＂':'"','＇':"'",'＜':'<','＞':'>','，':',','．':'.','？':'?','／':'/'};
+    const val = input.value.trim().split('').map(c => map[c] || c).join('').toLowerCase();
+    const VALID_LOWER = VALID_PASSWORDS.map(p => p.toLowerCase());
 
-    if (VALID_PASSWORDS.includes(val)) {
+    if (VALID_LOWER.includes(val)) {
         // 解锁成功
         document.getElementById("vault-lock-area").classList.add("hidden");
         document.getElementById("vault-content-area").classList.remove("hidden");
