@@ -189,21 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // 显示 loading 状态，防止手机端计算哈希时界面假死
-            const submitBtn = loginForm.querySelector('button[type="submit"]');
-            const origText = submitBtn ? submitBtn.textContent : "";
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.textContent = "验证中…";
-            }
-
             const ok = await doLogin(username, password);
-
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = origText;
-            }
-
             if (!ok) {
                 showLoginError("账号或密码错误，请联系教务处");
                 document.getElementById("password").value = "";

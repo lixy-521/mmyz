@@ -245,8 +245,3 @@ img {
         transform: translateX(-100%);
     }
 }
-
-/* ── 全局隐藏工具类 ── */
-.hidden {
-    display: none !important;
-}

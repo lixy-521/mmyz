@@ -166,7 +166,6 @@
     .campus-layout {
         grid-template-columns: 1fr;
         gap: 16px;
-        padding: 0 16px;
     }
 
     /* ── 手机端卡片顺序：学校简介 → 快速导航区 → 校园新闻 ── */
@@ -256,12 +255,6 @@
 
     .staff-info {
         width: 100%;
-    }
-
-    .staff-avatar,
-    .staff-avatar-use-img {
-        width: 140px !important;
-        height: 140px !important;
     }
 
     /* ── 数据看板网格 ── */
@@ -492,8 +485,8 @@
     /* ── 教职工卡片 ── */
     .staff-avatar,
     .staff-avatar-use-img {
-        width: 120px !important;
-        height: 120px !important;
+        width: 80px !important;
+        height: 96px !important;
     }
 
     .staff-info h2 {
@@ -517,11 +510,6 @@
     /* ── 入场动画手机模型 ── */
     .intro-phone {
         width: min(320px, 90vw) !important;
-        max-height: 75vh !important;
-    }
-
-    .intro-messages {
-        max-height: 260px;
     }
 
     /* ── 公告栏 ── */
@@ -542,13 +530,6 @@
 
     .vital-value {
         font-size: 18px;
-    }
-
-    /* ── 系统侧栏小屏修正 ── */
-    .sys-sidebar-item {
-        min-width: 0;
-        padding: 8px 6px;
-        font-size: 12px;
     }
 }
 
@@ -788,4 +769,10 @@
         font-size: 18px;
     }
 }
-
+
+/* ── 保持 campus-layout 不被 padding 双重计算 ── */
+@media (max-width: 768px) {
+    .campus-layout {
+        padding: 0 16px;
+    }
+}

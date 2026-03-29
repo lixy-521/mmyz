@@ -327,7 +327,7 @@ a:hover {
 }
 
 .hole-comments.open {
-    max-height: 2000px;
+    max-height: 800px;
 }
 
 .hole-comments-inner {

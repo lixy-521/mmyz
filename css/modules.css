@@ -73,7 +73,7 @@
 }
 
 .forum-replies.open {
-    max-height: 2000px;
+    max-height: 600px;
 }
 
 .forum-replies-inner {
