@@ -517,11 +517,7 @@
     /* ── 入场动画手机模型 ── */
     .intro-phone {
         width: min(320px, 90vw) !important;
-        max-height: 75vh !important;
-    }
-
-    .intro-messages {
-        max-height: 260px;
+        height: min(75vh, 520px) !important;
     }
 
     /* ── 公告栏 ── */
