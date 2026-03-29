@@ -8,18 +8,26 @@
 document.addEventListener('DOMContentLoaded', function () {
     var btn = document.getElementById('nav-hamburger');
     var links = document.querySelector('.campus-nav-links');
-    if (!btn || !links) return;
-    btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        btn.classList.toggle('open');
-        links.classList.toggle('open');
-    });
-    document.addEventListener('click', function () {
-        btn.classList.remove('open');
-        links.classList.remove('open');
-    });
-    links.addEventListener('click', function () {
-        btn.classList.remove('open');
-        links.classList.remove('open');
+    if (btn && links) {
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            btn.classList.toggle('open');
+            links.classList.toggle('open');
+        });
+        document.addEventListener('click', function () {
+            btn.classList.remove('open');
+            links.classList.remove('open');
+        });
+        links.addEventListener('click', function () {
+            btn.classList.remove('open');
+            links.classList.remove('open');
+        });
+    }
+
+    // 所有指向首页的链接自动跳过入场动画
+    document.querySelectorAll('a[href$="index.html"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+            sessionStorage.setItem('lbyz_intro_seen', '1');
+        });
     });
 });

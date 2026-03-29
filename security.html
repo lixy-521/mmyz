@@ -32,8 +32,9 @@
             </a>
             <div class="campus-nav-links"></div>
             <div id="nav-user-area"></div>
-        <a class="nav-home-back" href="index.html">← 首页</a>
-        <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
+            <a class="nav-home-back" href="index.html">← 首页</a>
+            <button class="nav-hamburger" id="nav-hamburger"
+                aria-label="菜单"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
@@ -87,7 +88,7 @@
                                     <span class="terminal-label">日期：</span>
                                     <input type="text" id="manual-date" placeholder="例：9月12日"
                                         style="background:#0f1a2e;border:1px solid #1a3a2a;color:#00cc88;padding:4px 8px;font-family:'Courier New',monospace;font-size:12px;border-radius:3px;width:130px;outline:none">
-                                    <span class="terminal-label" style="margin-left:10px">地点：</span>
+                                    <span class="terminal-label">地点：</span>
                                     <input type="text" id="manual-loc" placeholder="例：教学楼"
                                         style="background:#0f1a2e;border:1px solid #1a3a2a;color:#00cc88;padding:4px 8px;font-family:'Courier New',monospace;font-size:12px;border-radius:3px;width:130px;outline:none">
                                     <button class="terminal-btn" id="manual-query-btn"
@@ -148,6 +149,7 @@
         // 显示当前用户
         const uname = localStorage.getItem("lbyz_username");
         if (uname) document.getElementById("sidebar-user").textContent = uname;
-    </script></body>
+    </script>
+</body>
 
 </html>
