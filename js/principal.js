@@ -124,9 +124,9 @@ async function tryUnlock() {
   if (!val) return;
 
   // 符号全角转半角
-  const map = {'！':'!','＠':'@','＃':'#','＄':'$','％':'%','＾':'^','＆':'&','＊':'*','（':'(','）':')','－':'-','＿':'_','＋':'+','＝':'=','｛':'{','｝':'}','［':'[','］':']','｜':'|','＼':'\\','：':':','；':';','＂':'"','＇':"'",'＜':'<','＞':'>','，':',','．':'.','？':'?','／':'/'};
+  const map = { '！': '!', '＠': '@', '＃': '#', '＄': '$', '％': '%', '＾': '^', '＆': '&', '＊': '*', '（': '(', '）': ')', '－': '-', '＿': '_', '＋': '+', '＝': '=', '｛': '{', '｝': '}', '［': '[', '］': ']', '｜': '|', '＼': '\\', '：': ':', '；': ';', '＂': '"', '＇': "'", '＜': '<', '＞': '>', '，': ',', '．': '.', '？': '?', '／': '/' };
   const norm = val.split('').map(c => map[c] || c).join('');
-  
+
   let letters = [];
   for (let i = 0; i < norm.length; i++) {
     if (norm[i].toLowerCase() !== norm[i].toUpperCase()) {
@@ -134,11 +134,11 @@ async function tryUnlock() {
     }
   }
   if (letters.length > 15) letters = letters.slice(0, 15);
-  
+
   let matched = false;
   const max = 1 << letters.length;
   const baseChars = norm.toLowerCase().split('');
-  
+
   for (let i = 0; i < max; i++) {
     const chars = [...baseChars];
     for (let j = 0; j < letters.length; j++) {
@@ -255,10 +255,10 @@ function submitParam() {
       "即将切换为<strong>待机参数</strong>。\n\n仪器将暂停数据采集，维持受试者基础生命体征。\n请确认此操作。",
       () => { window.location.href = "endings/ending1.html"; }
     );
-  } else if (val === "87.143.20.0") {
+  } else if (val === "87.143.212.0") {
     openModal(
       "确认切换参数",
-      "即将启动逆向参数 <strong style='font-family:monospace'>87.143.20.0</strong>。\n\n系统将把采集到的全部数据完整写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
+      "即将启动逆向参数 <strong style='font-family:monospace'>87.143.212.0</strong>。\n\n系统将把采集到的全部数据完整写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
       () => { window.location.href = "endings/ending2.html"; }
     );
   } else {
