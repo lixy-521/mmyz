@@ -8,7 +8,6 @@
 
 
 // ─── 档案内容 ───
-// SHA-256("GZ2023LBYZ")
 const ARCHIVE_HASH = "f58b5efe0982ca18f796fbc44cbba872a5105a46c0f327dda6702d9412efc96a";
 const ARCHIVE_CONTENT = `
 <div class="campus-card mb-16">
@@ -126,11 +125,11 @@ async function doArchiveUnlock() {
   if (!input || !resultEl) return;
 
   const inputVal = input.value.trim();
-  
+
   // 符号全角转半角
-  const map = {'！':'!','＠':'@','＃':'#','＄':'$','％':'%','＾':'^','＆':'&','＊':'*','（':'(','）':')','－':'-','＿':'_','＋':'+','＝':'=','｛':'{','｝':'}','［':'[','］':']','｜':'|','＼':'\\','：':':','；':';','＂':'"','＇':"'",'＜':'<','＞':'>','，':',','．':'.','？':'?','／':'/'};
+  const map = { '！': '!', '＠': '@', '＃': '#', '＄': '$', '％': '%', '＾': '^', '＆': '&', '＊': '*', '（': '(', '）': ')', '－': '-', '＿': '_', '＋': '+', '＝': '=', '｛': '{', '｝': '}', '［': '[', '］': ']', '｜': '|', '＼': '\\', '：': ':', '；': ';', '＂': '"', '＇': "'", '＜': '<', '＞': '>', '，': ',', '．': '.', '？': '?', '／': '/' };
   const norm = inputVal.split('').map(c => map[c] || c).join('');
-  
+
   let letters = [];
   for (let i = 0; i < norm.length; i++) {
     if (norm[i].toLowerCase() !== norm[i].toUpperCase()) {
@@ -138,11 +137,11 @@ async function doArchiveUnlock() {
     }
   }
   if (letters.length > 15) letters = letters.slice(0, 15);
-  
+
   let matched = false;
   const max = 1 << letters.length;
   const baseChars = norm.toLowerCase().split('');
-  
+
   for (let i = 0; i < max; i++) {
     const chars = [...baseChars];
     for (let j = 0; j < letters.length; j++) {
@@ -247,7 +246,7 @@ function searchPersonnel(name) {
   if (!resultEl) return;
   const q = name.trim();
   const aliases = {
-    "陈昱": "陈昱", "chenyu": "陈昱", 
+    "陈昱": "陈昱", "chenyu": "陈昱",
     "张国强": "张国强", "zhangguoqiang": "张国强"
   };
   const resolved = aliases[q.toLowerCase().replace(/\s/g, "")] || aliases[q] || q;

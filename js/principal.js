@@ -8,7 +8,6 @@
 
 
 // ─── 档案密码（哈希）───
-// SHA-256("GZ2023LBYZ")
 const PRINCIPAL_ARCHIVE_HASH = "f58b5efe0982ca18f796fbc44cbba872a5105a46c0f327dda6702d9412efc96a";
 
 // ─── 档案内容（校长版：更高权限，含完整参数名称）───
