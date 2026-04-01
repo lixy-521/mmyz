@@ -41,7 +41,11 @@ html {
 
 body {
     font-family: var(--font);
-    background: var(--hole-bg);
+    background-color: var(--hole-bg);
+    background-image: url('../assets/hole.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--hole-text);
     min-height: 100vh;
     line-height: 1.7;
