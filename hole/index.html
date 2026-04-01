@@ -1043,6 +1043,18 @@
             btn.textContent = isOpen ? btn.textContent.replace("展开", "收起").replace("▾", "▴")
                 : btn.textContent.replace("收起", "展开").replace("▴", "▾");
         }
+
+        // Parallax background effect
+        let ticking = false;
+        window.addEventListener('scroll', function () {
+            if (!ticking) {
+                window.requestAnimationFrame(function () {
+                    document.body.style.backgroundPositionY = 'calc(50% - ' + (window.scrollY * 0.3) + 'px)';
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
     </script>
 </body>
 
