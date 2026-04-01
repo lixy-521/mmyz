@@ -153,40 +153,36 @@
     .ending-text p {
       font-size: 16px;
       line-height: 2.1;
-      color: #1e3a5f;
-      /* 深蓝灰 */
-      font-weight: 380;
+      color: #0b1f3c;
+      font-weight: 500;
+      text-shadow: 0 1px 4px rgba(255, 255, 255, 0.9);
       opacity: 0;
       animation: fadeUp 0.7s ease forwards;
       margin-bottom: 10px;
     }
 
     .ending-text p:nth-child(1) {
-      animation-delay: 0.6s;
+      animation-delay: 0.8s;
     }
 
     .ending-text p:nth-child(2) {
-      animation-delay: 1.4s;
+      animation-delay: 2.0s;
     }
 
     .ending-text p:nth-child(3) {
-      animation-delay: 2.2s;
+      animation-delay: 3.2s;
     }
 
     .ending-text p:nth-child(4) {
-      animation-delay: 3.0s;
+      animation-delay: 4.4s;
     }
 
     .ending-text p:nth-child(5) {
-      animation-delay: 3.8s;
+      animation-delay: 5.6s;
     }
 
     .ending-text p:nth-child(6) {
-      animation-delay: 4.6s;
-    }
-
-    .ending-text p:nth-child(7) {
-      animation-delay: 5.4s;
+      animation-delay: 6.8s;
     }
 
     .ending-text .name {
@@ -231,7 +227,7 @@
       border-radius: 14px;
       opacity: 0;
       animation: fadeUp 0.7s ease forwards;
-      animation-delay: 4.6s;
+      animation-delay: 8.0s;
       box-shadow: 0 6px 16px rgba(180, 60, 60, 0.1);
       font-weight: 450;
     }
@@ -258,13 +254,13 @@
       }
     }
 
-    .open-ending {
+    .ending-text p.open-ending {
       font-size: 15px;
       color: #3a5f7a;
       font-style: italic;
       opacity: 0;
       animation: fadeUp 0.7s ease forwards;
-      animation-delay: 5.4s;
+      animation-delay: 9.2s;
       margin-top: 12px;
     }
 
@@ -284,7 +280,7 @@
       font-family: 'Noto Sans SC', sans-serif;
       opacity: 0;
       animation: fadeUp 0.7s ease forwards;
-      animation-delay: 6.2s;
+      animation-delay: 10.4s;
       box-shadow: 0 6px 18px rgba(35, 100, 180, 0.15);
     }
 
@@ -316,15 +312,20 @@
       background-repeat: repeat-y;
       background-position: center top;
       background-size: 100% auto;
-      opacity: 0.15;
-      z-index: -1;
+      opacity: 0.4;
+      z-index: 0;
       pointer-events: none;
       animation: bgScroll 200s linear infinite;
     }
 
     @keyframes bgScroll {
-      0% { background-position: center 0; }
-      100% { background-position: center 10000px; }
+      0% {
+        background-position: center 0;
+      }
+
+      100% {
+        background-position: center 10000px;
+      }
     }
   </style>
 </head>
@@ -333,8 +334,6 @@
   <div class="dynamic-bg"></div>
   <!-- 云/光点装饰 (原stars容器) -->
   <div class="stars" id="stars"></div>
-  <!-- 明亮的窗户光 -->
-  <div class="window-glow"></div>
 
   <div class="ending-wrap">
     <div class="ending-tag">E N D I N G &nbsp; 2</div>
