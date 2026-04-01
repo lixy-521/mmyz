@@ -180,10 +180,32 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 24px rgba(200, 150, 46, 0.4)
         }
+
+        .dynamic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../assets/hole.webp');
+            background-repeat: repeat-y;
+            background-position: center top;
+            background-size: 100% auto;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+            animation: bgScroll 200s linear infinite;
+        }
+
+        @keyframes bgScroll {
+            0% { background-position: center 0; }
+            100% { background-position: center 10000px; }
+        }
     </style>
 </head>
 
 <body>
+    <div class="dynamic-bg"></div>
     <div class="ending-wrap">
         <div class="hospital-icon">🏥</div>
         <div class="ending-tag">E N D I N G &nbsp; 1</div>
