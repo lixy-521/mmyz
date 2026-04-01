@@ -5,8 +5,6 @@
  *   - SHA-256 密码哈希比对 (ACCOUNTS)
  *   - 登录态管理 (localStorage: lbyz_role, lbyz_username)
  *   - 导航栏用户信息动态渲染 (renderNavUser)
- * 维护部门：狼堡一中教务处 / 信息中心
- * 最后更新：2026-03-19
  */
 
 // SHA-256(密码) 哈希表，键为用户名

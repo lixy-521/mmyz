@@ -6,8 +6,6 @@
     2. layout.css (结构与页面组件)
     3. components.css (通用 UI 控件)
     4. modules.css (功能性业务模块)
-  维护部门：狼堡一中信息中心
-  最后更新：2026-03-19
 */
 @import url('base.css');
 @import url('layout.css');

@@ -4,8 +4,6 @@
  * 依赖文件：
  *   - js/forum-data.js (提供底层数据映射)
  *   - css/forum.css (视图样式)
- * 维护部门：狼堡一中学生会 / 信息中心
- * 最后更新：2026-03-19
  */
 
 document.addEventListener("DOMContentLoaded", () => {
