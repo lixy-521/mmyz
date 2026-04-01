@@ -107,7 +107,7 @@ const BOOK_DB = {
     history: [
       {
         user: "刘天清", date: "11月8日", returnDate: "11月18日",
-        comment: "「把参数按位反转」——逆向。这个词，记住。"
+        comment: "「把参数反转」——逆向。这个词，记住。"
       }
     ]
   },
