@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMails();
   initArchive();
   initLab();
+  initPersonnel();
   initModal();
 });
 
@@ -266,6 +267,49 @@ function submitParam() {
       true
     );
   }
+}
+
+// ─── 人员档案搜索 ───
+function initPersonnel() {
+  const btn = document.getElementById("personnel-search-btn");
+  const input = document.getElementById("personnel-search-input");
+  if (btn) btn.addEventListener("click", () => searchPersonnel(input?.value));
+  if (input) input.addEventListener("keydown", e => { if (e.key === "Enter") searchPersonnel(input.value); });
+}
+
+function searchPersonnel(name) {
+  if (!name) return;
+  const resultEl = document.getElementById("personnel-result");
+  if (!resultEl) return;
+  const q = name.trim();
+  const aliases = {
+    "陈昱": "陈昱", "chenyu": "陈昱",
+    "张国强": "张国强", "zhangguoqiang": "张国强"
+  };
+  const resolved = aliases[q.toLowerCase().replace(/\s/g, "")] || aliases[q] || q;
+  const person = PERSONNEL_DB[resolved];
+  if (!person) {
+    resultEl.innerHTML = '<div class="campus-alert campus-alert-info">未找到人员 "' + q + '" 的档案记录<br><span style="font-size:12px;color:#6b7f93">请确认姓名，或联系教务处获取访问权限</span></div>';
+    return;
+  }
+  const contactsHtml = person.contacts.map(function (c) { return '<li style="margin-bottom:4px">' + c + '</li>'; }).join("");
+  const warningHtml = person.warning ? '<div style="margin-top:12px;background:#fff3cd;border-left:3px solid #c8962e;padding:10px 14px;font-size:12px;color:#856404">' + person.warning + '</div>' : "";
+  resultEl.innerHTML = '<div class="campus-card mb-16">'
+    + '<div class="campus-card-header">👤 人员档案：' + person.name + '</div>'
+    + '<div class="campus-card-body">'
+    + '<table class="campus-table" style="margin-bottom:16px">'
+    + '<tr><th width="120">姓名</th><td>' + person.name + '</td></tr>'
+    + '<tr><th>职务/身份</th><td>' + person.title + '</td></tr>'
+    + '<tr><th>档案编号</th><td class="text-mono">' + person.id + '</td></tr>'
+    + '<tr><th>访问权限</th><td>' + person.access + '</td></tr>'
+    + '<tr><th>入职/入校日期</th><td>' + person.entryDate + '</td></tr>'
+    + '<tr><th>备注</th><td style="color:#856404">' + person.note + '</td></tr>'
+    + '</table>'
+    + '<div style="margin-bottom:12px"><strong>联系方式</strong>'
+    + '<ul style="margin:8px 0 0 16px;font-size:13px;color:#444">' + contactsHtml + '</ul></div>'
+    + '<div style="background:#f8f9fa;border-radius:6px;padding:14px;font-size:13px;line-height:1.8;white-space:pre-line;color:#2c3e50">' + person.background + '</div>'
+    + warningHtml
+    + '</div></div>';
 }
 
 // ─── 模态框 ───

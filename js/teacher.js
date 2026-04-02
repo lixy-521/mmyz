@@ -26,13 +26,13 @@ const ARCHIVE_CONTENT = `
     <h3 style="color:#1a3a5c;margin-bottom:8px">二、实验状态参数说明</h3>
     <p style="font-size:13px;color:#6b7f93;margin-bottom:12px">参数由校长账号统一管理与执行。以下为技术备忘。</p>
     <div style="background:#f5f8fc;border-radius:6px;padding:16px;margin-bottom:16px">
-      <p style="margin-bottom:8px;font-size:13px;color:#444"><strong>参数一（默认运行）</strong></p>
+      <p style="margin-bottom:8px;font-size:13px;color:#444"><strong>参数一 0.0.0.1 （默认运行）</strong></p>
       <p style="line-height:1.9;font-size:13px;color:#666">
         维持受试者深度诱导状态，持续采集脑波数据。意识完全离线，生命体征稳定。
       </p>
     </div>
     <div style="background:#fffbf0;border:1px solid #f0d090;border-radius:6px;padding:16px;margin-bottom:16px">
-      <p style="margin-bottom:8px;font-size:13px;color:#444"><strong>参数二（暂停采集）</strong></p>
+      <p style="margin-bottom:8px;font-size:13px;color:#444"><strong>参数二 168.112.43.255 （暂停采集）</strong></p>
       <p style="line-height:1.9;font-size:13px;color:#666">
         暂停数据读写，切换为生命维持模式。受试者仍处于诱导状态，但长期使用会导致记忆碎片化。
       </p>

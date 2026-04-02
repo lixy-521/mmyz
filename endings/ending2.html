@@ -1,12 +1,14 @@
 <!-- 
   文件名称：endings/ending2.html
-  功能描述：游戏结局页面 (Ending 2) - 展示“完整的醒来”的真结局/完美结局剧情文本（输入逆向参数，受试者无伤苏醒但主谋逃脱，留下开放式悬念）
+  功能描述：游戏结局页面 (Ending 2) - 展示“完整的醒来”的完美结局/剧情文本（输入逆向参数，受试者无伤苏醒但主谋逃脱，留下开放式悬念）
   特色功能：
     - 明亮通透的全屏背景与漂浮云点特效
     - 细腻的DOM出场动画队列配合错落有致的文案展示
 -->
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,8 +23,10 @@
     }
 
     body {
-      background: #f5f9ff;  /* 明亮通透的基底 */
-      color: #1a2b3c;       /* 深色文字，保证可读 */
+      background: #f5f9ff;
+      /* 明亮通透的基底 */
+      color: #1a2b3c;
+      /* 深色文字，保证可读 */
       font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
       min-height: 100vh;
       display: flex;
@@ -31,7 +35,8 @@
       justify-content: center;
       padding: 40px 20px;
       position: relative;
-      overflow-x: hidden;    /* 保留隐藏溢出，但取消 overflow: hidden 防止剪裁装饰 */
+      overflow-x: hidden;
+      /* 保留隐藏溢出，但取消 overflow: hidden 防止剪裁装饰 */
     }
 
     /* 明亮干净的光晕 —— 代替深夜的深色渐变 */
@@ -40,7 +45,7 @@
       position: absolute;
       inset: 0;
       background: radial-gradient(ellipse at 20% 30%, rgba(180, 210, 255, 0.5) 0%, transparent 50%),
-                  radial-gradient(ellipse at 90% 70%, rgba(130, 170, 250, 0.3) 0%, transparent 60%);
+        radial-gradient(ellipse at 90% 70%, rgba(130, 170, 250, 0.3) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -60,8 +65,17 @@
     }
 
     @keyframes softGlow {
-      0%, 100% { opacity: 0.7; box-shadow: 0 0 40px #ffe4a0; }
-      50%      { opacity: 1;   box-shadow: 0 0 70px #ffd98c; }
+
+      0%,
+      100% {
+        opacity: 0.7;
+        box-shadow: 0 0 40px #ffe4a0;
+      }
+
+      50% {
+        opacity: 1;
+        box-shadow: 0 0 70px #ffd98c;
+      }
     }
 
     /* 白天几乎看不见星星，改成淡淡的云点 (抽象) */
@@ -73,16 +87,28 @@
 
     .star {
       position: absolute;
-      background: #bcd0f0;        /* 柔和灰蓝，像远处云 */
+      background: #bcd0f0;
+      /* 柔和灰蓝，像远处云 */
       border-radius: 60%;
       opacity: 0.15;
       animation: floatCloud linear infinite;
     }
 
     @keyframes floatCloud {
-      0% { transform: translateX(0) translateY(0); opacity: 0.1; }
-      50% { transform: translateX(6px) translateY(-3px); opacity: 0.3; }
-      100% { transform: translateX(0) translateY(0); opacity: 0.1; }
+      0% {
+        transform: translateX(0) translateY(0);
+        opacity: 0.1;
+      }
+
+      50% {
+        transform: translateX(6px) translateY(-3px);
+        opacity: 0.3;
+      }
+
+      100% {
+        transform: translateX(0) translateY(0);
+        opacity: 0.1;
+      }
     }
 
     .ending-wrap {
@@ -91,7 +117,8 @@
       text-align: center;
       position: relative;
       z-index: 5;
-      background: rgba(255, 255, 255, 0.6);    /* 半透明白色层，让文字更扎实 */
+      background: rgba(255, 255, 255, 0.6);
+      /* 半透明白色层，让文字更扎实 */
       backdrop-filter: blur(4px);
       padding: 40px 40px 50px;
       border-radius: 32px;
@@ -102,7 +129,8 @@
     .ending-tag {
       display: inline-block;
       padding: 6px 18px;
-      background: #dbeafe;           /* 浅蓝底 */
+      background: #dbeafe;
+      /* 浅蓝底 */
       border: 1px solid #7b9fe0;
       border-radius: 40px;
       font-size: 13px;
@@ -125,28 +153,47 @@
     .ending-text p {
       font-size: 16px;
       line-height: 2.1;
-      color: #1e3a5f;               /* 深蓝灰 */
-      font-weight: 380;
+      color: #0b1f3c;
+      font-weight: 500;
+      text-shadow: 0 1px 4px rgba(255, 255, 255, 0.9);
       opacity: 0;
       animation: fadeUp 0.7s ease forwards;
       margin-bottom: 10px;
     }
 
-    .ending-text p:nth-child(1) { animation-delay: 0.6s; }
-    .ending-text p:nth-child(2) { animation-delay: 1.4s; }
-    .ending-text p:nth-child(3) { animation-delay: 2.2s; }
-    .ending-text p:nth-child(4) { animation-delay: 3.0s; }
-    .ending-text p:nth-child(5) { animation-delay: 3.8s; }
-    .ending-text p:nth-child(6) { animation-delay: 4.6s; }
-    .ending-text p:nth-child(7) { animation-delay: 5.4s; }
+    .ending-text p:nth-child(1) {
+      animation-delay: 0.8s;
+    }
+
+    .ending-text p:nth-child(2) {
+      animation-delay: 2.0s;
+    }
+
+    .ending-text p:nth-child(3) {
+      animation-delay: 3.2s;
+    }
+
+    .ending-text p:nth-child(4) {
+      animation-delay: 4.4s;
+    }
+
+    .ending-text p:nth-child(5) {
+      animation-delay: 5.6s;
+    }
+
+    .ending-text p:nth-child(6) {
+      animation-delay: 6.8s;
+    }
 
     .ending-text .name {
-      color: #0066b3;               /* 饱和一点的蓝 */
+      color: #0066b3;
+      /* 饱和一点的蓝 */
       font-weight: 550;
     }
 
     .ending-text .danger {
-      color: #c7362b;               /* 醒目的红，但不过激 */
+      color: #c7362b;
+      /* 醒目的红，但不过激 */
       font-weight: 520;
     }
 
@@ -156,8 +203,15 @@
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* 终端警报——明亮模式下的「白底/浅色警告」 */
@@ -173,7 +227,7 @@
       border-radius: 14px;
       opacity: 0;
       animation: fadeUp 0.7s ease forwards;
-      animation-delay: 4.6s;
+      animation-delay: 8.0s;
       box-shadow: 0 6px 16px rgba(180, 60, 60, 0.1);
       font-weight: 450;
     }
@@ -189,17 +243,24 @@
     }
 
     @keyframes blinkLight {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.2; }
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.2;
+      }
     }
 
-    .open-ending {
+    .ending-text p.open-ending {
       font-size: 15px;
       color: #3a5f7a;
       font-style: italic;
       opacity: 0;
       animation: fadeUp 0.7s ease forwards;
-      animation-delay: 5.4s;
+      animation-delay: 9.2s;
       margin-top: 12px;
     }
 
@@ -219,7 +280,7 @@
       font-family: 'Noto Sans SC', sans-serif;
       opacity: 0;
       animation: fadeUp 0.7s ease forwards;
-      animation-delay: 6.2s;
+      animation-delay: 10.4s;
       box-shadow: 0 6px 18px rgba(35, 100, 180, 0.15);
     }
 
@@ -232,23 +293,55 @@
 
     /* 适应小屏幕 */
     @media (max-width: 500px) {
-      .ending-wrap { padding: 30px 20px; }
-      .ending-title { font-size: 22px; }
+      .ending-wrap {
+        padding: 30px 20px;
+      }
+
+      .ending-title {
+        font-size: 22px;
+      }
+    }
+
+    .dynamic-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('../assets/hole.webp');
+      background-repeat: repeat-y;
+      background-position: center top;
+      background-size: 100% auto;
+      opacity: 0.4;
+      z-index: 0;
+      pointer-events: none;
+      animation: bgScroll 200s linear infinite;
+    }
+
+    @keyframes bgScroll {
+      0% {
+        background-position: center 0;
+      }
+
+      100% {
+        background-position: center 10000px;
+      }
     }
   </style>
 </head>
+
 <body>
+  <div class="dynamic-bg"></div>
   <!-- 云/光点装饰 (原stars容器) -->
   <div class="stars" id="stars"></div>
-  <!-- 明亮的窗户光 -->
-  <div class="window-glow"></div>
 
   <div class="ending-wrap">
     <div class="ending-tag">E N D I N G &nbsp; 2</div>
     <div class="ending-title">完整的醒来</div>
     <div class="ending-text">
       <p>逆向参数开始运行。这是刘天清自己推导出来的数字——系统档案里没有它，陈昱的文档里也没有。</p>
-      <p>数据缓缓回流，脑波逐渐恢复正常。<br /><span class="name">刘天清</span>和<span class="name">林小雨</span>在警察赶到前就已经睁开了眼睛。<br />他们记得一切。</p>
+      <p>数据缓缓回流，脑波逐渐恢复正常。<br /><span class="name">刘天清</span>和<span class="name">林小雨</span>在警察赶到前就已经睁开了眼睛。<br />他们记得一切。
+      </p>
       <p>但在这个参数被写入的那一瞬间，<br />董新飞家里的电脑发出了警报。</p>
       <p>那是他自己埋下的旁路——一条把B203控制台接回家里的线。<br />任何系统未登记的参数执行，都会在那里留下记录，触发提示音。</p>
       <p>他没有多想。他拿起一个包，带着那些存了所有邮件的硬盘，出门了。<br />王明德校长被捕了。<br />但<span class="danger">董新飞失踪了</span>。</p>
@@ -260,7 +353,7 @@
   </div>
 
   <script>
-    (function() {
+    (function () {
       // 生成清淡的云状光点 (原星星数量减少，柔和)
       const starsContainer = document.getElementById("stars");
       for (let i = 0; i < 30; i++) {
@@ -300,4 +393,5 @@
     })();
   </script>
 </body>
+
 </html>

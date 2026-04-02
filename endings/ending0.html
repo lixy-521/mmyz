@@ -36,7 +36,9 @@
         .ending-wrap {
             max-width: 600px;
             width: 100%;
-            text-align: center
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .ending-tag {
@@ -62,8 +64,9 @@
         .ending-text p {
             font-size: 16px;
             line-height: 2.2;
-            color: #ccc;
-            font-weight: 300;
+            color: #f0f0f0;
+            font-weight: 400;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
             opacity: 0;
             animation: fadeInLine 0.8s ease forwards;
             margin-bottom: 4px;
@@ -136,10 +139,37 @@
             border-color: #666;
             color: #999
         }
+
+        .dynamic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../assets/hole.webp');
+            background-repeat: repeat-y;
+            background-position: center top;
+            background-size: 100% auto;
+            opacity: 0.4;
+            z-index: 0;
+            pointer-events: none;
+            animation: bgScroll 200s linear infinite;
+        }
+
+        @keyframes bgScroll {
+            0% {
+                background-position: center 0;
+            }
+
+            100% {
+                background-position: center 10000px;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div class="dynamic-bg"></div>
     <div class="ending-wrap">
         <div class="ending-tag">E N D I N G &nbsp; 0</div>
         <div class="ending-title">无法挽回</div>
