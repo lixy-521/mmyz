@@ -118,15 +118,10 @@ const BOOK_DB = {
     currentBorrower: "刘天清（逾期 52 天）",
     history: [
       {
-        user: "刘天清", date: "10月5日", returnDate: "-",
-        comment: "这个很有意思啊，真没想到dxf是这样的"
-      },
-      {
         user: "林小雨", date: "9月5日", returnDate: "9月7日",
-        comment: "这本书上次dxf借的，还的时候夹了张便条没取走。便条上只有一个网址：<a href=\"G7y0k293s/dxf.html\" style=\"color:#1a3a5c\">G7y0k293s/dxf.html\</a>"
+        comment: "这本书夹了张便条没取走。便条上只有一个网址：<a href=\"G7y0k293s/dxf.html\" style=\"color:#1a3a5c\">G7y0k293s/dxf.html\</a>我点进去看了，什么都没有。"
       }
     ]
-
   },
   "校园安全手册": {
     isbn: "978-7-05-112233-1",
