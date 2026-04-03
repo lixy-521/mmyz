@@ -280,6 +280,7 @@ const ARCHIVE_DB = {
     year: "1997年",
     type: "建筑图纸 / 工程档案",
     condition: "纸质原件已数字化扫描，原件存于B1档案室",
+    acceptanceNo: "LB-97-EXP-0312",
     note: "本图纸为1997年竣工验收版本，含地面层（1F）及地下层（B1）完整平面布局。1998年后仅有局部设备更新记录，整体结构未变。",
     svg: true
   }
@@ -385,8 +386,6 @@ function ARCHIVE_SVG() {
         <text x="30" y="15" font-size="11" fill="#1a3a5c" font-weight="700">1F 地面层</text>
         <!-- 指北针 -->
         <text x="618" y="14" font-size="10" fill="#888">N↑</text>
-        <!-- 竣工验收编号 -->
-        <text x="618" y="26" font-size="9" fill="#888" text-anchor="end" font-family="monospace">竣工验收编号: LB-97-EXP-0312</text>
 
         <!-- 门（主入口） -->
         <rect x="295" y="218" width="50" height="4" fill="#555" rx="1"/>
@@ -471,8 +470,6 @@ function ARCHIVE_SVG() {
         <!-- 楼层标注 -->
         <text x="30" y="12" font-size="11" fill="#1a3a5c" font-weight="700">B1 地下层</text>
         <text x="618" y="12" font-size="10" fill="#888">N↑</text>
-        <!-- 竣工验收编号 -->
-        <text x="618" y="24" font-size="9" fill="#888" text-anchor="end" font-family="monospace">竣工验收编号: LB-97-EXP-0312</text>
 
         <!-- 红色标注线：楼梯B → B203 路径 -->
         <path d="M 165 205 L 165 210 L 300 210 L 300 195" fill="none" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="6 3" opacity="0.6"/>
@@ -525,6 +522,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <tr><th>归档年份</th><td>${a.year}</td></tr>
             <tr><th>档案类型</th><td>${a.type}</td></tr>
             <tr><th>存档状态</th><td>${a.condition}</td></tr>
+            ${a.acceptanceNo ? `<tr><th>验收编号</th><td class="text-mono" style="font-weight:600;color:#c0392b">${a.acceptanceNo}</td></tr>` : ""}
             <tr><th>说明</th><td style="font-size:13px;color:#555">${a.note}</td></tr>
           </table>
         </div>

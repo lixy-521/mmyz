@@ -47,7 +47,7 @@ const PRINCIPAL_ARCHIVE_CONTENT = `
 
     <h3 style="color:#1a3a5c;margin:20px 0 8px">二、控制台操作说明</h3>
     <p style="font-size:13px;color:#6b7f93;line-height:1.9">
-      前往「实验室管理」→ 搜索「格致」→ 点击「调整参数」→ 输入参数 → 确认执行。<br>
+      前往「实验室管理」→ 搜索「格致」→ 输入「旧实验楼竣工验收编号」→  点击「调整参数」→ 输入参数 → 确认执行。<br>
       或点击「结束实验」强制中止（不推荐，后果不可逆）。
     </p>
   </div>
