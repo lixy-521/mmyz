@@ -496,40 +496,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!archiveBtn || !archiveInput || !archiveResult) return;
 
-  function doArchiveSearch() {
+  async function doArchiveSearch() {
     const inputValue = archiveInput.value.trim();
     if (!inputValue) return; // 拦截空输入
     
     const raw = inputValue.toUpperCase().replace(/[\s·]/g, "-");
-    // 严格匹配
-    const key = Object.keys(ARCHIVE_DB).find(k => raw === k);
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(raw));
+    const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
 
-    if (!key) {
+    // Hash for "LBYZ-1997-B"
+    if (hash === "c2587ba232ceb0047135bccbe66c727016f74a9e4442866527967e1b6e1ff80c") {
+      const a = ARCHIVE_DB["LBYZ-1997-B"];
+      archiveResult.innerHTML = `
+        <div class="campus-alert campus-alert-success" style="margin-top:12px">检索结果：<strong>LBYZ-1997-B</strong></div>
+        <div class="campus-card" style="margin-top:12px">
+          <div class="campus-card-header">档案基本信息</div>
+          <div class="campus-card-body">
+            <table class="campus-table">
+              <tr><th width="100">档案名称</th><td>${a.title}</td></tr>
+              <tr><th>归档年份</th><td>${a.year}</td></tr>
+              <tr><th>档案类型</th><td>${a.type}</td></tr>
+              <tr><th>存档状态</th><td>${a.condition}</td></tr>
+              ${a.acceptanceNo ? `<tr><th>验收编号</th><td class="text-mono" style="font-weight:600;color:#c0392b">${a.acceptanceNo}</td></tr>` : ""}
+              <tr><th>说明</th><td style="font-size:13px;color:#555">${a.note}</td></tr>
+            </table>
+          </div>
+        </div>
+        ${a.svg ? ARCHIVE_SVG() : ""}
+      `;
+    } else {
       archiveResult.innerHTML = `<div class="campus-alert campus-alert-info" style="margin-top:12px">
         未检索到编号「${archiveInput.value.trim()}」的馆藏档案。<br>
         <span style="font-size:12px;color:#6b7f93">提示：请确认编号格式</span>
       </div>`;
-      return;
     }
-
-    const a = ARCHIVE_DB[key];
-    archiveResult.innerHTML = `
-      <div class="campus-alert campus-alert-success" style="margin-top:12px">检索结果：<strong>${key}</strong></div>
-      <div class="campus-card" style="margin-top:12px">
-        <div class="campus-card-header">档案基本信息</div>
-        <div class="campus-card-body">
-          <table class="campus-table">
-            <tr><th width="100">档案名称</th><td>${a.title}</td></tr>
-            <tr><th>归档年份</th><td>${a.year}</td></tr>
-            <tr><th>档案类型</th><td>${a.type}</td></tr>
-            <tr><th>存档状态</th><td>${a.condition}</td></tr>
-            ${a.acceptanceNo ? `<tr><th>验收编号</th><td class="text-mono" style="font-weight:600;color:#c0392b">${a.acceptanceNo}</td></tr>` : ""}
-            <tr><th>说明</th><td style="font-size:13px;color:#555">${a.note}</td></tr>
-          </table>
-        </div>
-      </div>
-      ${a.svg ? ARCHIVE_SVG() : ""}
-    `;
   }
 
   archiveBtn.addEventListener("click", doArchiveSearch);

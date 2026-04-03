@@ -248,10 +248,16 @@ function showParamInput() {
   document.getElementById("param-input")?.focus();
 }
 
-function verifyCompliance() {
+async function verifyCompliance() {
   const val = document.getElementById("compliance-input")?.value.trim().toUpperCase();
   const errorEl = document.getElementById("compliance-error");
-  if (val === "LB-97-EXP-0312") {
+  if (!val) return;
+
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
+  const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+
+  // Hash for "LB-97-EXP-0312"
+  if (hash === "d7a4a1dbf965db3f3ca526d57eabb4c66d7f3a051fb84abc43329d5c035b02e9") {
     document.getElementById("compliance-area").classList.add("hidden");
     document.getElementById("control-area").classList.remove("hidden");
   } else {
@@ -270,17 +276,22 @@ function confirmEnd() {
   );
 }
 
-function submitParam() {
+async function submitParam() {
   const val = document.getElementById("param-input")?.value.trim();
   if (!val) return;
 
-  if (val === "168.112.43.255") {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
+  const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+
+  // Hash for "168.112.43.255"
+  if (hash === "f6ca6680e272eec98230c8fa3dfa3f8593b4a06ecf2e52d5591593ab10f1e1d3") {
     openModal(
       "确认切换参数",
       "即将切换为<strong>待机参数</strong>。\n\n仪器将暂停数据采集，维持受试者基础生命体征。\n请确认此操作。",
       () => { window.location.href = "endings/ending_common.html"; }
     );
-  } else if (val === "87.143.212.0") {
+  // Hash for "87.143.212.0"
+  } else if (hash === "904188a647a52d6a0edb40e30e7965ee87fb6d46b6d6727b50f788c273e7ed4b") {
     openModal(
       "确认切换参数",
       "即将启动逆向参数 <strong style='font-family:monospace'>87.143.212.0</strong>。\n\n系统将把采集到的全部数据完整写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
