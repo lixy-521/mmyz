@@ -114,8 +114,8 @@ const BOOK_DB = {
   "Klein有机化学": {
     isbn: "978-7-04-567890-1",
     category: "化学",
-    status: "借出（逾期未还）",
-    currentBorrower: "刘天清（逾期 52 天）",
+    status: "在馆",
+    currentBorrower: "（当前无人借阅）",
     history: [
       {
         user: "林小雨", date: "9月5日", returnDate: "9月7日",
