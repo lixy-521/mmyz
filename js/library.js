@@ -394,7 +394,6 @@ function ARCHIVE_SVG() {
       <!-- B1 平面图 -->
       <div style="font-size:13px;font-weight:600;color:#1a3a5c;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #eee">
         地下层（B1）· 旧实验楼
-        <span style="font-size:11px;color:#c0392b;font-weight:400;margin-left:10px">⚠ 1998年后本层长期停用，2025年10月起重新启用</span>
       </div>
       <svg width="100%" viewBox="0 0 640 220" style="display:block;margin-bottom:8px;border:1px solid #ddd;border-radius:6px;background:#f5f0ea">
         <!-- 外墙（地下层用略深色背景暗示） -->
@@ -454,10 +453,8 @@ function ARCHIVE_SVG() {
 
         <!-- B203 核心实验室（重点标记） -->
         <rect x="300" y="123" width="150" height="82" fill="#f0d0d0" stroke="#c0392b" stroke-width="2.5"/>
-        <text x="375" y="153" text-anchor="middle" font-size="11" fill="#7b1a1a" font-weight="700">B203</text>
-        <text x="375" y="167" text-anchor="middle" font-size="9" fill="#7b1a1a">综合实验室</text>
-        <text x="375" y="181" text-anchor="middle" font-size="9" fill="#c0392b" font-weight="700">★ 格致计划</text>
-        <text x="375" y="194" text-anchor="middle" font-size="8" fill="#999">（2025年10月重新启用）</text>
+        <text x="375" y="160" text-anchor="middle" font-size="10" fill="#7b1a1a" font-weight="700">综合实验室</text>
+        <text x="375" y="173" text-anchor="middle" font-size="9" fill="#999" font-weight="700">（B203）</text>
 
         <!-- B204 -->
         <rect x="450" y="123" width="90" height="82" fill="#fde8c8" stroke="#c8962e" stroke-width="1"/>
@@ -481,10 +478,10 @@ function ARCHIVE_SVG() {
       <!-- 图纸说明 -->
       <div style="background:#fffbf0;border-left:3px solid #c8962e;padding:10px 14px;border-radius:4px;font-size:12px;color:#5a4000;line-height:1.9;margin-top:8px">
         <strong>档案说明</strong>（1997年竣工记录）<br>
-        地下层 B1 于建校初期作为实验辅助区使用，设有综合实验室（B203）、档案储藏室（B102）等功能分区。<br>
+        旧实验楼地下层（B1）最初定位为精密实验与辅助区，设有综合实验室（B203）、档案储藏室（B102）等核心功能分区。<br>
         <strong>地面层通往地下层的通道：</strong>楼梯间A（ST-A，北侧）及楼梯间B（ST-B，<span style="color:#c0392b;font-weight:600">锅炉房旁</span>，南侧主入口）。<br>
-        1998年后，B1层因设备老化停止使用，对外封闭。<span style="color:#c0392b">2025年10月起，B203重新启用，用途未对外公示。</span>
-      </div>
+        <strong>1998年底因设备老化及通风隐患，B1层整体停用并对外彻底封闭。<strong>
+        </div>
 
     </div>
   </div>
