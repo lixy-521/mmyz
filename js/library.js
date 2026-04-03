@@ -291,7 +291,7 @@ function ARCHIVE_SVG() {
   <div class="campus-card">
     <div class="campus-card-header" style="display:flex;align-items:center;justify-content:space-between">
       <span>📐 建筑平面图（数字化版本）</span>
-      <span style="font-size:11px;color:#6b7f93;font-weight:400">档案编号 LBYZ-1997-B · 1997年竣工版</span>
+      <span style="font-size:11px;color:#6b7f93;font-weight:400">档案编号 LBYZ-1997-B </span>
     </div>
     <div class="campus-card-body" style="padding:16px 12px">
 
