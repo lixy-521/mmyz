@@ -5,7 +5,7 @@ endings_dir = "endings"
 if not os.path.exists(endings_dir):
     os.makedirs(endings_dir)
 
-files = ["ending0.html", "ending1.html", "ending2.html"]
+files = ["ending0.html", "ending_common.html", "ending_nb.html"]
 
 for f in files:
     if os.path.exists(f):
