@@ -385,6 +385,8 @@ function ARCHIVE_SVG() {
         <text x="30" y="15" font-size="11" fill="#1a3a5c" font-weight="700">1F 地面层</text>
         <!-- 指北针 -->
         <text x="618" y="14" font-size="10" fill="#888">N↑</text>
+        <!-- 竣工验收编号 -->
+        <text x="618" y="26" font-size="9" fill="#888" text-anchor="end" font-family="monospace">竣工验收编号: LB-97-EXP-0312</text>
 
         <!-- 门（主入口） -->
         <rect x="295" y="218" width="50" height="4" fill="#555" rx="1"/>
@@ -469,6 +471,8 @@ function ARCHIVE_SVG() {
         <!-- 楼层标注 -->
         <text x="30" y="12" font-size="11" fill="#1a3a5c" font-weight="700">B1 地下层</text>
         <text x="618" y="12" font-size="10" fill="#888">N↑</text>
+        <!-- 竣工验收编号 -->
+        <text x="618" y="24" font-size="9" fill="#888" text-anchor="end" font-family="monospace">竣工验收编号: LB-97-EXP-0312</text>
 
         <!-- 红色标注线：楼梯B → B203 路径 -->
         <path d="M 165 205 L 165 210 L 300 210 L 300 195" fill="none" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="6 3" opacity="0.6"/>

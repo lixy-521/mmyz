@@ -211,10 +211,23 @@ function searchProject(keyword) {
         <p style="font-size:12px;color:#6b7f93;margin-bottom:14px">
           ⏱ 运行时长：35天16小时 &emsp; 📊 数据采集进度：87.3%
         </p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <button class="campus-btn campus-btn-danger" onclick="confirmEnd()">⏹ 结束实验</button>
-          <button class="campus-btn campus-btn-primary" onclick="showParamInput()">⚙ 调整参数</button>
+        <div id="compliance-area" style="margin-top:16px; background:#fffbf0; border:1px solid #c8962e; border-radius:6px; padding:14px;">
+          <h4 style="margin:0 0 8px; color:#7a5010; font-size:14px;">⚠️ 设施安全验证</h4>
+          <p style="font-size:12px; color:#5a4000; margin-bottom:12px; line-height:1.6;">
+            注意：操作高危设备前，系统须核查实验设施合规状态。<br>
+            请输入<strong>实验设施所在建筑的竣工验收编号</strong>以解锁控制权限。
+          </p>
+          <div class="campus-search-bar" style="margin-top:10px">
+            <input type="text" class="campus-input" id="compliance-input" placeholder="输入验收编号（如 XX-00-XXX-0000）…" />
+            <button class="campus-btn campus-btn-primary" onclick="verifyCompliance()">验证</button>
+          </div>
+          <div id="compliance-error" class="hidden" style="color:#c0392b; font-size:12px; margin-top:8px;"></div>
         </div>
+        <div id="control-area" class="hidden" style="margin-top:16px">
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="campus-btn campus-btn-danger" onclick="confirmEnd()">⏹ 结束实验</button>
+            <button class="campus-btn campus-btn-primary" onclick="showParamInput()">⚙ 调整参数</button>
+          </div>
         <div id="param-area" class="hidden" style="margin-top:16px">
           <div class="campus-alert campus-alert-warning">
             请根据档案系统中的参数说明输入正确参数名称。操作不可逆，请确认后提交。
@@ -233,6 +246,20 @@ function searchProject(keyword) {
 function showParamInput() {
   document.getElementById("param-area")?.classList.remove("hidden");
   document.getElementById("param-input")?.focus();
+}
+
+function verifyCompliance() {
+  const val = document.getElementById("compliance-input")?.value.trim().toUpperCase();
+  const errorEl = document.getElementById("compliance-error");
+  if (val === "LB-97-EXP-0312") {
+    document.getElementById("compliance-area").classList.add("hidden");
+    document.getElementById("control-area").classList.remove("hidden");
+  } else {
+    if (errorEl) {
+      errorEl.textContent = "验证失败：竣工验收编号错误";
+      errorEl.classList.remove("hidden");
+    }
+  }
 }
 
 function confirmEnd() {
