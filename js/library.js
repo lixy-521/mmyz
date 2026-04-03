@@ -497,11 +497,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!archiveBtn || !archiveInput || !archiveResult) return;
 
   function doArchiveSearch() {
-    const raw = archiveInput.value.trim().toUpperCase().replace(/[\s·]/g, "-");
-    // Flexible matching
-    const key = Object.keys(ARCHIVE_DB).find(k =>
-      raw === k || raw.includes(k.replace("LBYZ-", "")) || k.includes(raw)
-    );
+    const inputValue = archiveInput.value.trim();
+    if (!inputValue) return; // 拦截空输入
+    
+    const raw = inputValue.toUpperCase().replace(/[\s·]/g, "-");
+    // 严格匹配
+    const key = Object.keys(ARCHIVE_DB).find(k => raw === k);
 
     if (!key) {
       archiveResult.innerHTML = `<div class="campus-alert campus-alert-info" style="margin-top:12px">
