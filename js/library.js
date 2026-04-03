@@ -499,12 +499,11 @@ document.addEventListener("DOMContentLoaded", () => {
   async function doArchiveSearch() {
     const inputValue = archiveInput.value.trim();
     if (!inputValue) return; // 拦截空输入
-    
+
     const raw = inputValue.toUpperCase().replace(/[\s·]/g, "-");
     const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(raw));
     const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
 
-    // Hash for "LBYZ-1997-B"
     if (hash === "c2587ba232ceb0047135bccbe66c727016f74a9e4442866527967e1b6e1ff80c") {
       const a = ARCHIVE_DB["LBYZ-1997-B"];
       archiveResult.innerHTML = `

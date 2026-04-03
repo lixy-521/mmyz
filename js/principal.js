@@ -256,7 +256,6 @@ async function verifyCompliance() {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
   const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
 
-  // Hash for "LB-97-EXP-0312"
   if (hash === "d7a4a1dbf965db3f3ca526d57eabb4c66d7f3a051fb84abc43329d5c035b02e9") {
     document.getElementById("compliance-area").classList.add("hidden");
     document.getElementById("control-area").classList.remove("hidden");
@@ -283,14 +282,12 @@ async function submitParam() {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
   const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
 
-  // Hash for "168.112.43.255"
   if (hash === "f6ca6680e272eec98230c8fa3dfa3f8593b4a06ecf2e52d5591593ab10f1e1d3") {
     openModal(
       "确认切换参数",
       "即将切换为<strong>待机参数</strong>。\n\n仪器将暂停数据采集，维持受试者基础生命体征。\n请确认此操作。",
       () => { window.location.href = "endings/ending_common.html"; }
     );
-  // Hash for "87.143.212.0"
   } else if (hash === "904188a647a52d6a0edb40e30e7965ee87fb6d46b6d6727b50f788c273e7ed4b") {
     openModal(
       "确认切换参数",
