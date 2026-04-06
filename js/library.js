@@ -119,7 +119,7 @@ const BOOK_DB = {
     history: [
       {
         user: "林小雨", date: "9月5日", returnDate: "9月7日",
-        comment: "这本书夹了张便条没取走。便条上只有一个网址：<a href=\"G7y0k293s/dxf.html\" style=\"color:#1a3a5c\">G7y0k293s/dxf.html\</a>我点进去看了，什么都没有。"
+        comment: "这本书夹了张便条没取走。便条上只有一个网址：<a href=\"G7y0k293s/dxf.html\" style=\"color:#1a3a5c\">G7y0k293s/dxf.html\</a>我搜了一下，什么都没有。"
       }
     ]
   },
