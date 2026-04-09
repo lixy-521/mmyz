@@ -1,8 +1,14 @@
-﻿/** teacher.js - Logic only. Data in teacher-data.js */
+/**
+ * 文件名称：js/teacher.js
+ * 功能描述：教师办公系统核心逻辑 - 处理实验室状态查看、邮件阅读与人员档案检索
+ * 依赖文件：
+ *   - js/teacher-data.js (人员/邮件数据支持)
+ *   - js/auth.js (权限校验支持)
+ */
 
 
 // ─── 档案内容 ───
-const ARCHIVE_PASSWORD = "GZ2023LBYZ";
+const ARCHIVE_HASH = "f58b5efe0982ca18f796fbc44cbba872a5105a46c0f327dda6702d9412efc96a";
 const ARCHIVE_CONTENT = `
 <div class="campus-card mb-16">
   <div class="campus-card-header">📋 格致计划 — 实验参数说明文档 v2.3</div>
@@ -20,13 +26,13 @@ const ARCHIVE_CONTENT = `
     <h3 style="color:#1a3a5c;margin-bottom:8px">二、实验状态参数说明</h3>
     <p style="font-size:13px;color:#6b7f93;margin-bottom:12px">参数由校长账号统一管理与执行。以下为技术备忘。</p>
     <div style="background:#f5f8fc;border-radius:6px;padding:16px;margin-bottom:16px">
-      <p style="margin-bottom:8px;font-size:13px;color:#444"><strong>参数一（默认运行）</strong></p>
+      <p style="margin-bottom:8px;font-size:13px;color:#444"><strong>参数一 0.0.0.1 （默认运行）</strong></p>
       <p style="line-height:1.9;font-size:13px;color:#666">
         维持受试者深度诱导状态，持续采集脑波数据。意识完全离线，生命体征稳定。
       </p>
     </div>
     <div style="background:#fffbf0;border:1px solid #f0d090;border-radius:6px;padding:16px;margin-bottom:16px">
-      <p style="margin-bottom:8px;font-size:13px;color:#444"><strong>参数二（暂停采集）</strong></p>
+      <p style="margin-bottom:8px;font-size:13px;color:#444"><strong>参数二 168.112.43.255 （暂停采集）</strong></p>
       <p style="line-height:1.9;font-size:13px;color:#666">
         暂停数据读写，切换为生命维持模式。受试者仍处于诱导状态，但长期使用会导致记忆碎片化。
       </p>
@@ -112,13 +118,44 @@ function initArchive() {
   }
 }
 
-function doArchiveUnlock() {
+async function doArchiveUnlock() {
   const input = document.getElementById("archive-password");
   const resultEl = document.getElementById("archive-content");
   const errEl = document.getElementById("archive-error");
   if (!input || !resultEl) return;
 
-  if (input.value.trim() === ARCHIVE_PASSWORD) {
+  const inputVal = input.value.trim();
+
+  // 符号全角转半角
+  const map = { '！': '!', '＠': '@', '＃': '#', '＄': '$', '％': '%', '＾': '^', '＆': '&', '＊': '*', '（': '(', '）': ')', '－': '-', '＿': '_', '＋': '+', '＝': '=', '｛': '{', '｝': '}', '［': '[', '］': ']', '｜': '|', '＼': '\\', '：': ':', '；': ';', '＂': '"', '＇': "'", '＜': '<', '＞': '>', '，': ',', '．': '.', '？': '?', '／': '/' };
+  const norm = inputVal.split('').map(c => map[c] || c).join('');
+
+  let letters = [];
+  for (let i = 0; i < norm.length; i++) {
+    if (norm[i].toLowerCase() !== norm[i].toUpperCase()) {
+      letters.push({ i, lower: norm[i].toLowerCase(), upper: norm[i].toUpperCase() });
+    }
+  }
+  if (letters.length > 15) letters = letters.slice(0, 15);
+
+  let matched = false;
+  const max = 1 << letters.length;
+  const baseChars = norm.toLowerCase().split('');
+
+  for (let i = 0; i < max; i++) {
+    const chars = [...baseChars];
+    for (let j = 0; j < letters.length; j++) {
+      if (i & (1 << j)) chars[letters[j].i] = letters[j].upper;
+    }
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(chars.join('')));
+    const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+    if (hash === ARCHIVE_HASH) {
+      matched = true;
+      break;
+    }
+  }
+
+  if (matched) {
     if (errEl) errEl.classList.add("hidden");
     document.getElementById("archive-lock")?.classList.add("hidden");
     resultEl.innerHTML = ARCHIVE_CONTENT;
@@ -209,8 +246,8 @@ function searchPersonnel(name) {
   if (!resultEl) return;
   const q = name.trim();
   const aliases = {
-    "陈昱": "陈昱", "chenyu": "陈昱", "cy": "陈昱",
-    "张国强": "张国强", "zhangguoqiang": "张国强", "zgq": "张国强"
+    "陈昱": "陈昱", "chenyu": "陈昱",
+    "张国强": "张国强", "zhangguoqiang": "张国强"
   };
   const resolved = aliases[q.toLowerCase().replace(/\s/g, "")] || aliases[q] || q;
   const person = PERSONNEL_DB[resolved];

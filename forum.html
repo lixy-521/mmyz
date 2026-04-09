@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+<!-- 
+  文件名称：forum.html
+  功能描述：校园论坛页 - 提供帖子浏览、ID搜索及在线用户展示
+  主要脚本：
+    - js/auth.js (权限验证与登录态展示)
+    - js/nav.js (导航栏响应式交互)
+    - js/forum-data.js (论坛帖子静态数据)
+    - js/forum.js (论坛搜索与渲染逻辑)
+-->
+<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -35,7 +44,7 @@
             <div class="campus-ticker-label">公告</div>
             <div class="campus-ticker-track">
                 <div class="campus-ticker-content">
-                    <span>期末考试将于1月中旬举行，请认真复习</span>
+                    <span>踔厉奋发冬仨月，力学不倦铸辉煌，用更好的自己迎接来年的春天</span>
                     <span>12月校运会报名通知即将发布，请关注校园论坛</span>
                 </div>
             </div>
@@ -112,29 +121,9 @@
         © 狼堡市第一中学 信息中心 &emsp;|&emsp; 技术支持：教务处信息组
     </footer>
     <script src="js/auth.js"></script>
+    <script src="js/nav.js"></script>
     <script src="js/forum-data.js"></script>
     <script src="js/forum.js"></script>
-    <script>
-        // 汉堡菜单
-        (function () {
-            var btn = document.getElementById('nav-hamburger');
-            var links = document.querySelector('.campus-nav-links');
-            if (!btn || !links) return;
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                btn.classList.toggle('open');
-                links.classList.toggle('open');
-            });
-            document.addEventListener('click', function () {
-                btn.classList.remove('open');
-                links.classList.remove('open');
-            });
-            links.addEventListener('click', function () {
-                btn.classList.remove('open');
-                links.classList.remove('open');
-            });
-        })();
-    </script>
 </body>
 
 </html>

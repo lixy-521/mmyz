@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+<!-- 
+  文件名称：login.html
+  功能描述：教职工后台登录页 - 包含快速登录账号展示与传统账密登录表单
+  主要脚本：
+    - js/auth.js (身份验证核心逻辑与本地存储管理)
+-->
+<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -200,7 +206,7 @@
                 普通学生账号不支持后台登录
             </p>
             <div style="margin-top:20px;text-align:center">
-                <a href="index.html" style="font-size:13px;color:#1a3a5c">← 返回校园网首页</a>
+                <a href="index.html" onclick="sessionStorage.setItem('lbyz_intro_seen','1')" style="font-size:13px;color:#1a3a5c">← 返回校园网首页</a>
             </div>
         </div>
     </div>

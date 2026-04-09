@@ -1,7 +1,8 @@
-/* ============================================
-   树洞匿名论坛 — 全局样式
-   设计风格：暗黑赛博，紫色荧光
-   ============================================ */
+/* 
+  文件名称：css/hole.css
+  功能描述：树洞匿名论坛 (Hole) 专用样式 - 采用暗黑赛博视觉风格、紫色荧光视觉引导
+  核心设计：Glassmorphism 磨砂玻璃效果、Vault 密码验证页动画、Lightbox 图片灯箱样式
+*/
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
 :root {
@@ -38,7 +39,11 @@ html {
 
 body {
     font-family: var(--font);
-    background: var(--hole-bg);
+    background-color: var(--hole-bg);
+    background-image: url('../assets/hole.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--hole-text);
     min-height: 100vh;
     line-height: 1.7;
@@ -324,7 +329,7 @@ a:hover {
 }
 
 .hole-comments.open {
-    max-height: 800px;
+    max-height: 2000px;
 }
 
 .hole-comments-inner {

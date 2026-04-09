@@ -1,6 +1,9 @@
-/* ============================================
-   components.css — 页头 / 表单 / 按钮 / 表格 / 徽章 / 弹窗提示 / 动画
-   ============================================ */
+/* 
+  文件名称：css/components.css
+  功能描述：通用 UI 组件样式 - 包含页面标题、表单控件、按钮组、数据表格、状态徽章、警告框及模拟时钟控件
+*/
+
+
 
 /* PAGE HEADER */
 .campus-page-header {
@@ -267,4 +270,111 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+/* ============================================
+   模拟时钟 (Analog Clock)
+   ============================================ */
+.analog-clock {
+    width: 130px;
+    height: 130px;
+    border: 4px solid #1a3a5c;
+    border-radius: 50%;
+    position: relative;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05), inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.clock-face {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* 刻度线和数字 */
+.clock-tick {
+    position: absolute;
+    width: 1px;
+    height: 4px;
+    background: #aab8c2;
+    left: 50%;
+    top: 0;
+    /* 130px外径 - 8px边框 = 122px内径。半径为 61px。由于 top:0，旋转中心就是 61px 处 */
+    transform-origin: 50% 61px;
+}
+
+/* 5 的倍数刻度稍粗、长一些 */
+.clock-tick.major {
+    width: 2px;
+    height: 7px;
+    background: #1a3a5c;
+    top: 0;
+    transform-origin: 50% 61px;
+}
+
+.clock-number {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a3a5c;
+    font-family: -apple-system, sans-serif;
+    line-height: 1;
+}
+
+.clock-hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    border-radius: 4px;
+    transform: translateX(-50%);
+    transition: transform 0.05s cubic-bezier(0.4, 2.08, 0.55, 0.44); /* 增加弹性效果 */
+}
+
+.clock-hand-wrapper {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+
+.hour-hand {
+    width: 4px;
+    height: 25%;
+    background: #1a3a5c;
+    bottom: 50%; left: calc(50% - 2px);
+    position: absolute;
+    transform-origin: bottom center;
+    border-radius: 2px;
+}
+
+.min-hand {
+    width: 3px;
+    height: 35%;
+    background: #3d5a80;
+    bottom: 50%; left: calc(50% - 1.5px);
+    position: absolute;
+    transform-origin: bottom center;
+    border-radius: 2px;
+}
+
+.second-hand {
+    width: 2px;
+    height: 40%;
+    background: #e74c3c;
+    bottom: 50%; left: calc(50% - 1px);
+    position: absolute;
+    transform-origin: bottom center;
+    border-radius: 1px;
+}
+
+.clock-center {
+    width: 8px;
+    height: 8px;
+    background: #1a3a5c;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #fff;
+    z-index: 10;
 }

@@ -1,0 +1,493 @@
+<!-- 
+  文件名称：article/article_lxy.html
+  功能描述：校园新闻页 - 林小雨荣获省级化学竞赛二等奖喜报
+  主要脚本：
+    - 包含内联脚本：(匿名自执行函数) (实现手机端导航栏折叠交互)
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>【喜报】我校多名同学在省级化学竞赛中获奖 · 狼堡一中</title>
+    <link rel="stylesheet" href="../css/campus.css" />
+    <link rel="stylesheet" href="../css/mobile.css" />
+    <style>
+        .article-wrap {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+
+        .article-source {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 8px;
+        }
+
+        .article-source-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a3a5c, #2a6090);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .article-source-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .article-source-meta {
+            font-size: 12px;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        .article-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .article-meta {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .article-body {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #333;
+        }
+
+        .article-body p {
+            margin-bottom: 20px;
+        }
+
+        .article-body .highlight {
+            background: #f0fff5;
+            border-left: 3px solid #27ae60;
+            padding: 12px 16px;
+            margin: 24px 0;
+            font-size: 15px;
+            color: #1e6040;
+        }
+
+        .article-photo {
+            width: 100%;
+            margin: 32px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #1a4a2a, #2a7a4a);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+        }
+
+        .article-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .article-photo img:hover {
+            transform: scale(1.02);
+        }
+
+        /* 获奖名单表格 */
+        .award-table-wrap {
+            margin: 24px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        .award-table-title {
+            background: #1a4a2a;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 16px;
+            letter-spacing: 0.5px;
+        }
+
+        table.award-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        table.award-table thead tr {
+            background: #f5f5f5;
+        }
+
+        table.award-table th {
+            padding: 9px 14px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            color: #888;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        table.award-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #f5f5f5;
+            color: #333;
+        }
+
+        table.award-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table.award-table tr:hover td {
+            background: #fafffe;
+        }
+
+        .aw-badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 2px 9px;
+            border-radius: 20px;
+        }
+
+        .aw-badge.s2 {
+            background: #e6f4ea;
+            color: #1e6040;
+            border: 1px solid #7ec89a;
+        }
+
+        .aw-badge.s3 {
+            background: #fdf5ef;
+            color: #8a4a10;
+            border: 1px solid #e8b880;
+        }
+
+        .aw-star {
+            color: #f5a623;
+            margin-right: 2px;
+        }
+
+        .article-person {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        .article-person-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #1a4a2a, #2a7a4a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .article-person-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .article-person-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .article-person-title {
+            font-size: 12px;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .article-person-desc {
+            font-size: 13px;
+            color: #555;
+            margin-top: 8px;
+            line-height: 1.7;
+        }
+
+        .comment-box {
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            padding-top: 24px;
+        }
+
+        .comment-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .comment-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .comment-body {
+            font-size: 13px;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .comment-name {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-right: 8px;
+        }
+
+        .comment-time {
+            color: #999;
+            font-size: 11px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="campus-nav">
+        <div class="campus-nav-inner">
+            <a class="campus-nav-logo" href="../index.html">
+                <img src="../assets/logo.webp" onerror="this.style.display='none'" alt="校徽" />
+                <div>
+                    <div class="school-name">狼堡市第一中学</div>
+                </div>
+            </a>
+            <div class="campus-nav-links">
+                <a href="../index.html">首页</a>
+                <a href="../staff.html">师资团队</a>
+                <a href="../alumni.html">知名校友</a>
+                <a href="../forum.html">校园论坛</a>
+            </div>
+            <a class="nav-home-back" href="../index.html">← 首页</a>
+            <button class="nav-hamburger" id="nav-hamburger"
+                aria-label="菜单"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-wrap">
+
+        <div class="article-title">【喜报】我校多名同学在2025年青青草原省高中化学竞赛中喜获佳绩，林小雨同学荣获二等奖</div>
+
+        <div class="article-source">
+            <div class="article-source-avatar" style="background: none; overflow: hidden;">
+                <img src="../assets/logo.webp" alt="校徽" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div>
+                <div class="article-source-name">狼堡一中 校园信息网</div>
+                <div class="article-source-meta">官方账号</div>
+            </div>
+        </div>
+
+        <div class="article-meta">2025年10月27日 &emsp;|&emsp; 阅读 1,203 &emsp;|&emsp; 狼堡一中宣传组</div>
+
+        <div class="article-body">
+
+            <p>2025年10月，青青草原省高中化学竞赛（秋季赛）结果正式揭晓。我校共有<strong>5名同学</strong>在本次竞赛中斩获省级奖项，其中高二（3）班<strong>林小雨</strong>同学以优异成绩荣获<strong>二等奖</strong>，另有4名同学获得三等奖，创下我校参加省级化学竞赛以来的最佳团体成绩。
+            </p>
+
+            <div class="article-photo">
+                <img loading="lazy" src="../assets/lxy.webp" alt="林小雨采访 · 10月27日">
+            </div>
+            <p>本次竞赛由青青草原省化学学会主办，来自全省各地市重点高中的逾八百名学生参赛。竞赛内容涵盖有机化学、无机化学、化学平衡与电化学等核心模块，题目难度较往届有所提升，尤以有机合成推断部分令不少选手折戟。</p>
+
+            <p><strong>林小雨</strong>同学为高二（3）班学生，自进入高中以来便对化学展现出浓厚兴趣。据指导教师介绍，林小雨在备赛期间尤其在有机化学板块下了大量功夫，本次竞赛中有机合成题的完成度在全省参赛选手中名列前茅。
+            </p>
+
+            <div class="highlight">
+                「她有一种很难得的习惯——做完题之后会反过来问'这道题还能从哪个角度拆解'。这种思维方式，是竞赛选手很难刻意培养出来的。」——化学竞赛指导教师 沈雅琴
+            </div>
+
+            <p>本次获奖名单如下：</p>
+
+            <div class="award-table-wrap">
+                <div class="award-table-title">📋 2025年青青草原省高中化学竞赛（秋季赛）· 我校获奖名单</div>
+                <table class="award-table">
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>班级</th>
+                            <th>获奖等级</th>
+                            <th>指导教师</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>林小雨</strong></td>
+                            <td>高二（3）班</td>
+                            <td><span class="aw-badge s2"><span class="aw-star">★</span>二等奖</span></td>
+                            <td>沈雅琴</td>
+                        </tr>
+                        <tr>
+                            <td>方博涵</td>
+                            <td>高三（1）班</td>
+                            <td><span class="aw-badge s3">三等奖</span></td>
+                            <td>沈雅琴</td>
+                        </tr>
+                        <tr>
+                            <td>董建延</td>
+                            <td>高二（5）班</td>
+                            <td><span class="aw-badge s3">三等奖</span></td>
+                            <td>沈雅琴</td>
+                        </tr>
+                        <tr>
+                            <td>吴晓桐</td>
+                            <td>高三（2）班</td>
+                            <td><span class="aw-badge s3">三等奖</span></td>
+                            <td>沈雅琴</td>
+                        </tr>
+                        <tr>
+                            <td>姜思远</td>
+                            <td>高二（3）班</td>
+                            <td><span class="aw-badge s3">三等奖</span></td>
+                            <td>沈雅琴</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>指导教师<strong>沈雅琴</strong>老师对本次团队成绩表示欣慰，同时也坦言还有很大提升空间："化学竞赛的备考周期长、知识跨度大，这次能有五位同学同时入围省级获奖名单，是整个备赛团队共同努力的结果，但离拿到一等奖还有一段距离，我们明年会继续冲。"
+            </p>
+
+            <div class="article-person">
+                <div class="article-person-avatar">
+                    <img loading="lazy" src="../assets/syq.webp" alt="沈雅琴老师">
+                </div>
+                <div>
+                    <div class="article-person-name">沈雅琴</div>
+                    <div class="article-person-title">高中化学 · 竞赛指导教师 · 办公室：教学楼B座312</div>
+                    <div class="article-person-desc">
+                        沈雅琴老师从教九年，长期担任化学学科竞赛辅导工作，所指导学生曾多次在市级竞赛中获奖。本次是她带队参加省级竞赛以来取得的最佳集体成绩。
+                    </div>
+                </div>
+            </div>
+
+            <p>校长王明德在获悉获奖消息后，专程向获奖同学及指导教师发去祝贺，并表示学校将进一步加大对理科竞赛的支持力度，为有志于参加学科竞赛的同学提供更好的备赛条件。</p>
+
+            <p style="color:#999; font-size:13px;">本次竞赛由学校教务处统一报名，化学教研组负责赛前培训工作。如有意向参加2026年春季赛的同学，请关注校园论坛后续选拔通知。</p>
+
+            <p style="color:#ccc; font-size:11px; margin-top:32px; padding-top:16px; border-top:1px solid #f0f0f0;">
+                文章编号：LBYZ-NEWS-20250928 &emsp;|&emsp; 归档：教务处信息组
+            </p>
+
+        </div>
+
+        <div class="comment-box">
+            <div style="font-size:14px;font-weight:600;margin-bottom:16px;color:#333">留言（4条）</div>
+
+            <div class="comment-item">
+                <div class="comment-avatar" style="background:#d4edda">🎉</div>
+                <div>
+                    <div class="comment-body">
+                        <span class="comment-name">高二三班同学</span>
+                        <span class="comment-time">10月27日</span>
+                        <div>恭喜小雨！！早就知道你会拿奖的，你备赛那段时间真的太拼了</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-item">
+                <div class="comment-avatar" style="background:#d1ecf1">🧪</div>
+                <div>
+                    <div class="comment-body">
+                        <span class="comment-name">沈雅琴老师</span>
+                        <span class="comment-time">10月27日</span>
+                        <div>五位同学都辛苦了，成绩是对大家这一个月高强度训练最好的回报。继续保持，明年冲一等奖。</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-item">
+                <div class="comment-avatar" style="background:#fff3cd">📖</div>
+                <div>
+                    <div class="comment-body">
+                        <span class="comment-name">高三一班同学</span>
+                        <span class="comment-time">10月28日</span>
+                        <div>方博涵牛的，高三还能分出时间备赛，膜拜</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-item">
+                <div class="comment-avatar" style="background:#e2d9f3">🌟</div>
+                <div>
+                    <div class="comment-body">
+                        <span class="comment-name">匿名</span>
+                        <span class="comment-time">10月27日</span>
+                        <div>请问明年春季赛怎么报名？想参加</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="campus-footer">
+        © 狼堡市第一中学 信息中心 &emsp;|&emsp; 技术支持：教务处信息组
+    </footer>
+
+    <script>
+        (function () {
+            var btn = document.getElementById('nav-hamburger');
+            var links = document.querySelector('.campus-nav-links');
+            if (!btn || !links) return;
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                btn.classList.toggle('open');
+                links.classList.toggle('open');
+            });
+            document.addEventListener('click', function () {
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+            links.addEventListener('click', function () {
+                btn.classList.remove('open');
+                links.classList.remove('open');
+            });
+        })();
+    </script>
+</body>
+
+</html>

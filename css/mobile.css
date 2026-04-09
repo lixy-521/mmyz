@@ -1,8 +1,11 @@
-/* ============================================
-   mobile.css — 移动端响应式适配
-   策略：纯CSS覆盖，零逻辑改动
-   断点：768px（平板）、480px（手机）
-   ============================================ */
+/* 
+  文件名称：css/mobile.css
+  功能描述：移动端响应式适配补丁 - 处理 768px(平板) 与 480px(手机) 断点的样式覆盖
+  核心改动：
+    - 汉堡菜单 (Hamburger Menu) 在手机端的逻辑实现
+    - 布局由双栏转为单栏并重排特定内容顺序
+    - 表单控件在触控屏下的间距优化
+*/
 
 /* 返回首页按钮：桌面端隐藏，仅手机端显示 */
 .nav-home-back {
@@ -161,6 +164,7 @@
     .campus-layout {
         grid-template-columns: 1fr;
         gap: 16px;
+        padding: 0 16px;
     }
 
     /* ── 手机端卡片顺序：学校简介 → 快速导航区 → 校园新闻 ── */
@@ -250,6 +254,12 @@
 
     .staff-info {
         width: 100%;
+    }
+
+    .staff-avatar,
+    .staff-avatar-use-img {
+        width: 140px !important;
+        height: 140px !important;
     }
 
     /* ── 数据看板网格 ── */
@@ -480,8 +490,8 @@
     /* ── 教职工卡片 ── */
     .staff-avatar,
     .staff-avatar-use-img {
-        width: 80px !important;
-        height: 96px !important;
+        width: 120px !important;
+        height: 120px !important;
     }
 
     .staff-info h2 {
@@ -505,6 +515,7 @@
     /* ── 入场动画手机模型 ── */
     .intro-phone {
         width: min(320px, 90vw) !important;
+        height: min(75vh, 520px) !important;
     }
 
     /* ── 公告栏 ── */
@@ -525,6 +536,13 @@
 
     .vital-value {
         font-size: 18px;
+    }
+
+    /* ── 系统侧栏小屏修正 ── */
+    .sys-sidebar-item {
+        min-width: 0;
+        padding: 8px 6px;
+        font-size: 12px;
     }
 }
 
@@ -765,9 +783,3 @@
     }
 }
 
-/* ── 保持 campus-layout 不被 padding 双重计算 ── */
-@media (max-width: 768px) {
-    .campus-layout {
-        padding: 0 16px;
-    }
-}

@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+<!-- 
+  文件名称：principal.html
+  功能描述：校长工作平台内部页 - 包含校内信息交流、档案查询与实验室管理系统
+  主要脚本：
+    - js/auth.js (权限验证与登录态展示)
+    - js/nav.js (导航栏响应式交互)
+    - js/principal-data.js (校长办公系统静态数据)
+    - js/principal.js (邮件展示、档案解锁与实验室搜索逻辑)
+-->
+<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -21,8 +30,9 @@
             </a>
             <div class="campus-nav-links"></div>
             <div id="nav-user-area"></div>
-        <a class="nav-home-back" href="index.html">← 首页</a>
-        <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
+            <a class="nav-home-back" href="index.html">← 首页</a>
+            <button class="nav-hamburger" id="nav-hamburger"
+                aria-label="菜单"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
@@ -31,7 +41,6 @@
             <div class="sys-sidebar-header">
                 <div class="sys-sidebar-title">校长工作平台</div>
                 <div class="sys-sidebar-user">wmd_principal</div>
-                <div style="font-size:11px;color:rgba(255,150,150,0.7);margin-top:4px">上次登录：11月20日 23:55</div>
             </div>
             <div class="sys-sidebar-nav">
                 <div class="sys-sidebar-item active" data-section="mail">
@@ -42,6 +51,9 @@
                 </div>
                 <div class="sys-sidebar-item" data-section="lab">
                     <span class="sys-sidebar-icon">🧪</span>实验室管理
+                </div>
+                <div class="sys-sidebar-item" data-section="personnel">
+                    <span class="sys-sidebar-icon">👤</span>人员档案
                 </div>
             </div>
         </div>
@@ -125,6 +137,28 @@
                 <div id="lab-result"></div>
             </div>
 
+            <!-- 人员档案 -->
+            <div class="sys-section" id="sec-personnel">
+                <div class="sys-main-header">
+                    <div class="sys-main-title">👤 人员档案查询</div>
+                    <span style="font-size:12px;color:#6b7f93">输入姓名查询教职工及外聘人员信息</span>
+                </div>
+                
+                <div class="campus-alert campus-alert-info" style="margin-bottom: 20px;">
+                    <span style="font-size: 16px; margin-top: -2px;">💡</span>
+                    <div>
+                        您当前登录的账号是 <strong>【wmd_principal】</strong>，可查询 <strong>【北境神经工程研究院x狼堡一中——格致计划】</strong> 相关人员信息
+                    </div>
+                </div>
+
+                <div class="campus-search-bar" style="margin-bottom:20px">
+                    <input class="campus-input" type="text" id="personnel-search-input" placeholder="输入实验相关人员姓名" />
+                    <button class="campus-btn campus-btn-primary" id="personnel-search-btn">查 询</button>
+                </div>
+
+                <div id="personnel-result"></div>
+            </div>
+
         </div>
     </div>
 
@@ -141,28 +175,10 @@
     </div>
 
     <script src="js/auth.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/teacher-data.js"></script>
     <script src="js/principal-data.js"></script>
     <script src="js/principal.js"></script>
-    <script>
-        // 汉堡菜单
-        (function(){
-            var btn = document.getElementById('nav-hamburger');
-            var links = document.querySelector('.campus-nav-links');
-            if (!btn || !links) return;
-            btn.addEventListener('click', function(e){
-                e.stopPropagation();
-                btn.classList.toggle('open');
-                links.classList.toggle('open');
-            });
-            document.addEventListener('click', function(){
-                btn.classList.remove('open');
-                links.classList.remove('open');
-            });
-            links.addEventListener('click', function(){
-                btn.classList.remove('open');
-                links.classList.remove('open');
-            });
-        })();
-    </script></body>
+</body>
 
 </html>

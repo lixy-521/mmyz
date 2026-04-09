@@ -1,0 +1,108 @@
+<!-- 
+  文件名称：hole/bib.html
+  圣经
+  这个文件是类似于dxx选集和轮语的一个文档，记录了一些经典言论。
+  完成后会放在树洞里面，
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>盛经 · hole.lbyz.internal/bib</title>
+    <link rel="stylesheet" href="../css/hole.css" />
+    <link rel="stylesheet" href="../css/mobile.css" />
+</head>
+
+<body>
+    <nav class="hole-nav">
+        <div class="hole-nav-logo">
+            <div class="logo-icon">🕳</div>
+            <div class="logo-text">
+                <span class="name">树 洞</span>
+                <span class="sub">hole.lbyz.internal / 盛经</span>
+            </div>
+        </div>
+        <div class="hole-nav-info" style="display:flex;gap:16px;align-items:center">
+            <a href="index.html" style="color:var(--hole-muted);font-size:13px;text-decoration:none">← 返回树洞</a>
+            <a href="../index.html" onclick="sessionStorage.setItem('lbyz_intro_seen','1')"
+                style="color:var(--hole-muted);font-size:13px;text-decoration:none;border:1px solid rgba(255,255,255,0.15);padding:4px 10px;border-radius:4px">返回校园官网</a>
+        </div>
+    </nav>
+
+    <div class="vault-page">
+        <div id="vault-particles" class="vault-particles"></div>
+
+        <div class="vault-box">
+
+
+            <div class="vault-section">
+                <div class="vault-section-body">月考纪
+
+                    1:1.那盛人说：“你们不应评论这套题出的怎么样，因为这套题是我出的。”
+                    1:2.盛人又说：“我认为这套题是好的，至少比去年好。”
+                    1:3.众学生说：“这套卷子并非适合学生，题目模棱两可，没有人能回答。”
+                    1:4.盛人说：“(没考好)是题出的有问题，它和出题者还没关系。”
+
+                    2:1.盛人晓谕学生说：“那考试不就在纸上写几个答案吗？”
+                    2:2.盛人又说：“你们不应该把考试当成是对你们的考验，而应该把它当成是对出题者的考验。”
+
+                    3:1.盛人说：“哎呀，这道题你还错呢？”
+                    3:2.盛人又说：“得低分不是坏事，说明你比得150分的同学提升空间大。”
+
+                </div>
+            </div>
+
+            <div class="vault-section">
+                <div class="vault-section-body">吃饭书
+
+                    1:1. 盛人看到众学生在教室里吃饭。
+                    1:2. 盛人说：“哪个同学再把咱班给吃得饭店味，同学有权利声讨他，把他驱逐出去。”
+                    1:3. 盛人又说：“有同学满嘴都是饭的……信口开河的……这个词不好吧？是个贬义词吧？”
+                    1:4. 众学生笑。
+
+                    2:1. 又过了几日。
+                    2:2. 盛人说：“那学校都给你提供食堂了，你咋不去食堂吃呢？”
+                    2:3. 有学生说：“食堂不好吃啊。”
+                    2:4. 盛人说：“那食堂不好吃，那教室是吃饭的地吗？”
+                </div>
+            </div>
+
+            <div class="vault-section">
+                <div class="vault-section-body">体育书
+                    1:1. 体育课被物理所占。
+                    1:2. 有一个学生说：“老师，我想上体育课。”
+                    1:3. 众学生附和。
+                    1:4. 盛人又说：“那你就先想着吧。”
+                    1:5. 众学生说：“那我想也没用啊。”
+                    1:6. 盛人说：“体育课是体育老师的事，物理课是物理老师的事，你们想上体育课去找体育老师啊。”
+
+                    2:1. 又有一个学生说：“老师，我想上体育课。”
+                    2:2. 众学生附和。
+                    2:3. 盛人说：“好好干活吧！”
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <script src="../js/vault.js"></script>
+    <script>
+        // Parallax background effect
+        let tickingVault = false;
+        window.addEventListener('scroll', function () {
+            if (!tickingVault) {
+                window.requestAnimationFrame(function () {
+                    document.body.style.backgroundPositionY = 'calc(50% - ' + (window.scrollY * 0.3) + 'px)';
+                    tickingVault = false;
+                });
+                tickingVault = true;
+            }
+        });
+    </script>
+</body>
+
+</html>

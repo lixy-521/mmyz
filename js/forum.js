@@ -1,4 +1,10 @@
-﻿/** forum.js - Logic only. Data in forum-data.js */
+/**
+ * 文件名称：js/forum.js
+ * 功能描述：校园论坛前端交互逻辑 - 处理帖子渲染、折叠回复及 ID 实时搜索
+ * 依赖文件：
+ *   - js/forum-data.js (提供底层数据映射)
+ *   - css/forum.css (视图样式)
+ */
 
 document.addEventListener("DOMContentLoaded", () => {
   renderFixedPosts();

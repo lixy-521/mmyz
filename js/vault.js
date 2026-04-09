@@ -25,13 +25,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-function tryUnlock() {
+async function tryUnlock() {
     const input = document.getElementById("vault-input");
     if (!input) return;
 
-    const val = input.value.trim();
+    // 符号全角转半角
+    const map = {'！':'!','＠':'@','＃':'#','＄':'$','％':'%','＾':'^','＆':'&','＊':'*','（':'(','）':')','－':'-','＿':'_','＋':'+','＝':'=','｛':'{','｝':'}','［':'[','］':']','｜':'|','＼':'\\','：':':','；':';','＂':'"','＇':"'",'＜':'<','＞':'>','，':',','．':'.','？':'?','／':'/'};
+    const val = input.value.trim().split('').map(c => map[c] || c).join('').toLowerCase();
+    
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
+    const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
 
-    if (VALID_PASSWORDS.includes(val)) {
+    const VALID_HASHES = [
+      "b2ecd160b01d75697268e9c0abeec838311ab4959366fd05574c3de7cf133b5e", // nixiang
+      "2e8ec0f082bcd5a7bbc417fb51c529b0e84b0181680cb304a886be9a3a6834c5", // 逆向
+      "5d59d9f0f3bed0db8c7d46d14e7f3dfcfe7c9ca16dd61ca4570df6a77391e83f", // 逆向参数
+      "b2d7f24e833051d5fc296d4a747281e9d155ecfb636b983cfd70b51ed9b45a32", // reverse
+      "389687f2e85d609f4673ce3e6bfd0ccb34dd7f697d55f811240d7a6c5723c11a"  // 逆向还原
+    ];
+
+    if (VALID_HASHES.includes(hash)) {
         // 解锁成功
         document.getElementById("vault-lock-area").classList.add("hidden");
         document.getElementById("vault-content-area").classList.remove("hidden");

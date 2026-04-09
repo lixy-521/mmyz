@@ -1,0 +1,19 @@
+# Version control
+.git/
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Binary assets
+assets/**/*.webp
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.ico
+**/*.pdf
+
+# Explicitly ignored documentation
+docs/攻略与开发(请忽略）/

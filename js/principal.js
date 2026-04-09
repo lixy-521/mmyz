@@ -1,8 +1,14 @@
-﻿/** principal.js - Logic only. Data in principal-data.js */
+/**
+ * 文件名称：js/principal.js
+ * 功能描述：校长办公系统核心逻辑 - 处理高权限档案解锁、实验室实时参数监控与项目管理
+ * 依赖文件：
+ *   - js/principal-data.js (邮件数据支持)
+ *   - js/auth.js (权限校验支持)
+ */
 
 
-// ─── 档案密码 ───
-const PRINCIPAL_ARCHIVE_PASSWORD = "GZ2023LBYZ";
+// ─── 档案密码（哈希）───
+const PRINCIPAL_ARCHIVE_HASH = "f58b5efe0982ca18f796fbc44cbba872a5105a46c0f327dda6702d9412efc96a";
 
 // ─── 档案内容（校长版：更高权限，含完整参数名称）───
 const PRINCIPAL_ARCHIVE_CONTENT = `
@@ -41,7 +47,7 @@ const PRINCIPAL_ARCHIVE_CONTENT = `
 
     <h3 style="color:#1a3a5c;margin:20px 0 8px">二、控制台操作说明</h3>
     <p style="font-size:13px;color:#6b7f93;line-height:1.9">
-      前往「实验室管理」→ 搜索「格致」→ 点击「调整参数」→ 输入参数 → 确认执行。<br>
+      前往「实验室管理」→ 搜索「格致」→ 输入「旧实验楼竣工验收编号」→  点击「调整参数」→ 输入参数 → 确认执行。<br>
       或点击「结束实验」强制中止（不推荐，后果不可逆）。
     </p>
   </div>
@@ -54,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMails();
   initArchive();
   initLab();
+  initPersonnel();
   initModal();
 });
 
@@ -109,11 +116,41 @@ function initArchive() {
   if (input) input.addEventListener("keydown", e => { if (e.key === "Enter") tryUnlock(); });
 }
 
-function tryUnlock() {
+async function tryUnlock() {
   const val = document.getElementById("archive-password")?.value.trim();
   const errEl = document.getElementById("archive-error");
   if (!val) return;
-  if (val === PRINCIPAL_ARCHIVE_PASSWORD) {
+
+  // 符号全角转半角
+  const map = { '！': '!', '＠': '@', '＃': '#', '＄': '$', '％': '%', '＾': '^', '＆': '&', '＊': '*', '（': '(', '）': ')', '－': '-', '＿': '_', '＋': '+', '＝': '=', '｛': '{', '｝': '}', '［': '[', '］': ']', '｜': '|', '＼': '\\', '：': ':', '；': ';', '＂': '"', '＇': "'", '＜': '<', '＞': '>', '，': ',', '．': '.', '？': '?', '／': '/' };
+  const norm = val.split('').map(c => map[c] || c).join('');
+
+  let letters = [];
+  for (let i = 0; i < norm.length; i++) {
+    if (norm[i].toLowerCase() !== norm[i].toUpperCase()) {
+      letters.push({ i, lower: norm[i].toLowerCase(), upper: norm[i].toUpperCase() });
+    }
+  }
+  if (letters.length > 15) letters = letters.slice(0, 15);
+
+  let matched = false;
+  const max = 1 << letters.length;
+  const baseChars = norm.toLowerCase().split('');
+
+  for (let i = 0; i < max; i++) {
+    const chars = [...baseChars];
+    for (let j = 0; j < letters.length; j++) {
+      if (i & (1 << j)) chars[letters[j].i] = letters[j].upper;
+    }
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(chars.join('')));
+    const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+    if (hash === PRINCIPAL_ARCHIVE_HASH) {
+      matched = true;
+      break;
+    }
+  }
+
+  if (matched) {
     archiveUnlocked = true;
     document.getElementById("archive-lock").classList.add("hidden");
     const content = document.getElementById("archive-content");
@@ -174,10 +211,23 @@ function searchProject(keyword) {
         <p style="font-size:12px;color:#6b7f93;margin-bottom:14px">
           ⏱ 运行时长：35天16小时 &emsp; 📊 数据采集进度：87.3%
         </p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <button class="campus-btn campus-btn-danger" onclick="confirmEnd()">⏹ 结束实验</button>
-          <button class="campus-btn campus-btn-primary" onclick="showParamInput()">⚙ 调整参数</button>
+        <div id="compliance-area" style="margin-top:16px; background:#fffbf0; border:1px solid #c8962e; border-radius:6px; padding:14px;">
+          <h4 style="margin:0 0 8px; color:#7a5010; font-size:14px;">⚠️ 设施安全验证</h4>
+          <p style="font-size:12px; color:#5a4000; margin-bottom:12px; line-height:1.6;">
+            注意：操作高危设备前，系统须核查实验设施合规状态。<br>
+            请输入<strong>实验设施所在建筑的竣工验收编号</strong>以解锁控制权限。
+          </p>
+          <div class="campus-search-bar" style="margin-top:10px">
+            <input type="text" class="campus-input" id="compliance-input" placeholder="输入验收编号（如 XX-00-XXX-0000）…" />
+            <button class="campus-btn campus-btn-primary" onclick="verifyCompliance()">验证</button>
+          </div>
+          <div id="compliance-error" class="hidden" style="color:#c0392b; font-size:12px; margin-top:8px;"></div>
         </div>
+        <div id="control-area" class="hidden" style="margin-top:16px">
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="campus-btn campus-btn-danger" onclick="confirmEnd()">⏹ 结束实验</button>
+            <button class="campus-btn campus-btn-primary" onclick="showParamInput()">⚙ 调整参数</button>
+          </div>
         <div id="param-area" class="hidden" style="margin-top:16px">
           <div class="campus-alert campus-alert-warning">
             请根据档案系统中的参数说明输入正确参数名称。操作不可逆，请确认后提交。
@@ -198,38 +248,103 @@ function showParamInput() {
   document.getElementById("param-input")?.focus();
 }
 
+async function verifyCompliance() {
+  const val = document.getElementById("compliance-input")?.value.trim().toUpperCase();
+  const errorEl = document.getElementById("compliance-error");
+  if (!val) return;
+
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
+  const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+
+  if (hash === "d7a4a1dbf965db3f3ca526d57eabb4c66d7f3a051fb84abc43329d5c035b02e9") {
+    document.getElementById("compliance-area").classList.add("hidden");
+    document.getElementById("control-area").classList.remove("hidden");
+  } else {
+    if (errorEl) {
+      errorEl.textContent = "验证失败：竣工验收编号错误";
+      errorEl.classList.remove("hidden");
+    }
+  }
+}
+
 function confirmEnd() {
   openModal(
     "确认结束实验",
     "你确定要<strong>强制结束实验</strong>吗？\n\n此操作将立即断开仪器连接，<strong style='color:#c0392b'>后果不可预测</strong>。",
-    () => { window.location.href = "ending0.html"; }
+    () => { window.location.href = "endings/ending0.html"; }
   );
 }
 
-function submitParam() {
+async function submitParam() {
   const val = document.getElementById("param-input")?.value.trim();
   if (!val) return;
 
-  if (val === "168.112.43.255") {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
+  const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+
+  if (hash === "f6ca6680e272eec98230c8fa3dfa3f8593b4a06ecf2e52d5591593ab10f1e1d3") {
     openModal(
       "确认切换参数",
       "即将切换为<strong>待机参数</strong>。\n\n仪器将暂停数据采集，维持受试者基础生命体征。\n请确认此操作。",
-      () => { window.location.href = "ending1.html"; }
+      () => { window.location.href = "endings/ending_common.html"; }
     );
-  } else if (val === "88.144.21.1") {
+  } else if (hash === "904188a647a52d6a0edb40e30e7965ee87fb6d46b6d6727b50f788c273e7ed4b") {
     openModal(
       "确认切换参数",
-      "即将启动逆向参数 <strong style='font-family:monospace'>88.144.21.1</strong>。\n\n系统将把采集到的全部数据完整写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
-      () => { window.location.href = "ending2.html"; }
+      "即将启动逆向参数 <strong style='font-family:monospace'>87.143.212.0</strong>。\n\n系统将把采集到的全部数据完整写回受试者大脑。\n此过程约需15-30分钟，完成后受试者自然苏醒。\n\n请确认此操作。",
+      () => { window.location.href = "endings/ending_nb.html"; }
     );
   } else {
     openModal(
       "参数无效",
       `输入的参数 "<strong>${val}</strong>" 不在有效参数列表中。\n\n系统将执行<strong style='color:#c0392b'>异常中止流程</strong>，后果不可预测。`,
-      () => { window.location.href = "ending0.html"; },
+      () => { window.location.href = "endings/ending0.html"; },
       true
     );
   }
+}
+
+// ─── 人员档案搜索 ───
+function initPersonnel() {
+  const btn = document.getElementById("personnel-search-btn");
+  const input = document.getElementById("personnel-search-input");
+  if (btn) btn.addEventListener("click", () => searchPersonnel(input?.value));
+  if (input) input.addEventListener("keydown", e => { if (e.key === "Enter") searchPersonnel(input.value); });
+}
+
+function searchPersonnel(name) {
+  if (!name) return;
+  const resultEl = document.getElementById("personnel-result");
+  if (!resultEl) return;
+  const q = name.trim();
+  const aliases = {
+    "陈昱": "陈昱", "chenyu": "陈昱",
+    "张国强": "张国强", "zhangguoqiang": "张国强"
+  };
+  const resolved = aliases[q.toLowerCase().replace(/\s/g, "")] || aliases[q] || q;
+  const person = PERSONNEL_DB[resolved];
+  if (!person) {
+    resultEl.innerHTML = '<div class="campus-alert campus-alert-info">未找到人员 "' + q + '" 的档案记录<br><span style="font-size:12px;color:#6b7f93">请确认姓名，或联系教务处获取访问权限</span></div>';
+    return;
+  }
+  const contactsHtml = person.contacts.map(function (c) { return '<li style="margin-bottom:4px">' + c + '</li>'; }).join("");
+  const warningHtml = person.warning ? '<div style="margin-top:12px;background:#fff3cd;border-left:3px solid #c8962e;padding:10px 14px;font-size:12px;color:#856404">' + person.warning + '</div>' : "";
+  resultEl.innerHTML = '<div class="campus-card mb-16">'
+    + '<div class="campus-card-header">👤 人员档案：' + person.name + '</div>'
+    + '<div class="campus-card-body">'
+    + '<table class="campus-table" style="margin-bottom:16px">'
+    + '<tr><th width="120">姓名</th><td>' + person.name + '</td></tr>'
+    + '<tr><th>职务/身份</th><td>' + person.title + '</td></tr>'
+    + '<tr><th>档案编号</th><td class="text-mono">' + person.id + '</td></tr>'
+    + '<tr><th>访问权限</th><td>' + person.access + '</td></tr>'
+    + '<tr><th>入职/入校日期</th><td>' + person.entryDate + '</td></tr>'
+    + '<tr><th>备注</th><td style="color:#856404">' + person.note + '</td></tr>'
+    + '</table>'
+    + '<div style="margin-bottom:12px"><strong>联系方式</strong>'
+    + '<ul style="margin:8px 0 0 16px;font-size:13px;color:#444">' + contactsHtml + '</ul></div>'
+    + '<div style="background:#f8f9fa;border-radius:6px;padding:14px;font-size:13px;line-height:1.8;white-space:pre-line;color:#2c3e50">' + person.background + '</div>'
+    + warningHtml
+    + '</div></div>';
 }
 
 // ─── 模态框 ───
